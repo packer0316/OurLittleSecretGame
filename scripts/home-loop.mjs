@@ -8,7 +8,7 @@ const check=async(name,fn)=>{try{const detail=await fn();results.push({name,pass
 const shot=async name=>{await page.waitForTimeout(300);await page.screenshot({path:`${out}/${name}.png`});};
 const close=async()=>{for(let i=0;i<22;i++){if(!await page.evaluate(()=>!!window.__game.story?.modal))break;await page.keyboard.press('Enter');await page.waitForTimeout(70);}};
 const aim=async(id,pos)=>page.evaluate(([id,pos])=>{const g=window.__game,t=g.map.storyWorld.targets.find(t=>t.id===id).position,p=g.player;if(pos)p.teleport(...pos);const dx=t.x-p.pos.x,dz=t.z-p.pos.z,dy=t.y-p.pos.y-p.eye;p.teleport(p.pos.x,p.pos.y,p.pos.z,Math.atan2(-dx,-dz),Math.atan2(dy,Math.hypot(dx,dz)));g.renderOnce();return g.story.focused()?.id;},[id,pos]);
-const inspect=async(id,pos)=>{const got=await aim(id,pos);if(got!==id)throw Error(`${id} focus hit ${got}`);await page.keyboard.press('e');await page.waitForTimeout(100);};
+const inspect=async(id,pos)=>{let got=await aim(id,pos);if(id==='slip'){await page.waitForFunction(()=>!window.__game.map.storyWorld.doorEventActive,null,{timeout:10000});got=await aim(id);}if(got!==id)throw Error(`${id} focus hit ${got}`);await page.keyboard.press('e');await page.waitForTimeout(100);};
 try{
   await page.goto('http://127.0.0.1:5178/?auto&map=home');await page.waitForFunction(()=>window.__game?.running&&window.__game.story?.state.scene==='home',null,{timeout:120000});
   await shot('01-desk-first-look');

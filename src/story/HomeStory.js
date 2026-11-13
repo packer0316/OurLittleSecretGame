@@ -18,7 +18,7 @@ export class HomeStory extends Story {
     if(h.step<5){this.game.player.flashOn=false;this.game.player.flashPower=0;}
   }
   advance(step){this.state.home.step=Math.max(step,this.state.home.step);this.sync();this.save();}
-  active(id){const n=this.state.home?.step||0;return id===goals[Math.min(n,5)][0]||['calendar','window','message','door'].includes(id)||id==='letter'&&n>0||id==='photo'&&n>1||id==='phone'&&n>2;}
+  active(id){const n=this.state.home?.step||0;if(id==='slip'&&this.world.doorEventActive)return false;return id===goals[Math.min(n,5)][0]||['calendar','window','message','door'].includes(id)||id==='letter'&&n>0||id==='photo'&&n>1||id==='phone'&&n>2;}
   focused(){
     // Small desk props require a tighter view cone so the letter cannot steal the photo's focus.
     const target=super.focused();if(!target)return null;
@@ -42,7 +42,7 @@ export class HomeStory extends Story {
         ['我','你讓她接電話。我可以報警——'],
         ['電話裡的男人','不要叫別人。這次，別再留下一個。'],
       ],()=>{
-        this.game.audio.breathCue();this.show({eyebrow:'同一口吸氣，分毫不差',title:'電話還沒掛斷',body:'<p>聽筒裡的雨停了。門外卻響起三下敲門聲。</p><p>一個像我母親的聲音隔著門說：「以安，你在家嗎？」</p><p>母親住在另一個縣市。她今晚沒有說要來。</p>',options:[{text:'不出聲，等門外安靜',action:()=>this.afterCall(false)},{text:'透過門問：「誰在外面？」',action:()=>this.afterCall(true)}]});
+        this.game.audio.breathCue();this.show({eyebrow:'同一口吸氣，分毫不差',title:'電話還沒掛斷',body:'<p>聽筒裡的雨停了。門外傳來衣料摩擦木門的聲音。</p><p>一個像我母親的聲音隔著門說：「以安，你在家嗎？」</p><p>母親住在另一個縣市。她今晚沒有說要來。</p>',options:[{text:'不出聲，等門外安靜',action:()=>this.afterCall(false)},{text:'透過門問：「誰在外面？」',action:()=>this.afterCall(true)}]});
       },'23:47・阿哲來電');return true;
     }
     if(id==='slip'){
@@ -63,9 +63,9 @@ export class HomeStory extends Story {
     if(optional){if(!h.notes.includes(id)){h.notes.push(id);this.sync();this.save();}this.show({eyebrow:'住處・可回看的筆記',title:optional[0],body:optional[1].split('\n').map(t=>`<p>${t}</p>`).join('')});return true;}return false;
   }
   afterCall(answered){
-    this.advance(3);this.game.audio.storyCue('gate');this.dialogue(answered?[
+    this.advance(3);this.dialogue(answered?[
       ['門外，自己的聲音','誰在外面？'],['我','它把我的話原樣說了一次。連停頓都一樣。'],['電話裡很遠的童聲','不要讓它再學會一句。'],
-    ]:[['門外的聲音','我知道你在家。'],['電話裡很遠的童聲','先看留下的東西。不要只聽聲音。'],['我','通話中斷了。螢幕上卻顯示，通話時間是零。']],()=>this.toast('門縫底下出現一張紙。走到玄關，低頭調查。'),'三下敲門之後');
+    ]:[['門外的聲音','我知道你在家。'],['電話裡很遠的童聲','先看留下的東西。不要只聽聲音。'],['我','通話中斷了。螢幕上卻顯示，通話時間是零。']],()=>{this.world.startDoorEvent();this.toast('門外有人。走向玄關，留意門底。');},'通話中斷之後');
   }
   travel(){
     this.transitioning=true;this.state.home.step=6;this.state.flags.prologueComplete=true;this.state.scene='road';this.state.position=null;
@@ -80,6 +80,6 @@ export class HomeStory extends Story {
     if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0)$('story-toast').classList.remove('show');}
     if(this.tick<.1)return;this.tick=0;
     const target=this.focused();$('interact-prompt').innerHTML=target?`<kbd>E</kbd><span>${target.label}</span>`:'';
-    const goal=goals[Math.min(this.state.home.step,5)];$('objective-title').textContent=goal[1];$('objective-place').textContent=goal[2];$('objective-distance').textContent='';$('waypoint').classList.add('hidden');
+    const goal=goals[Math.min(this.state.home.step,5)];$('objective-title').textContent=this.world.doorEventActive?'走向玄關，留意門縫下方':goal[1];$('objective-place').textContent=goal[2];$('objective-distance').textContent='';$('waypoint').classList.add('hidden');
   }
 }

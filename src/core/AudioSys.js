@@ -251,4 +251,15 @@ export class AudioSys {
       o.connect(g).connect(this.master);o.start(t+start);o.stop(t+start+.18);
     }
   }
+
+  doorKnock(strength=1) {
+    if(!this.ctx||!this.running)return;
+    const ctx=this.ctx,t=ctx.currentTime;
+    const noise=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();noise.buffer=this.brown;
+    filter.type='bandpass';filter.frequency.value=280;filter.Q.value=1.6;
+    gain.gain.setValueAtTime(.32*strength,t);gain.gain.exponentialRampToValueAtTime(.0001,t+.19);
+    noise.connect(filter).connect(gain).connect(this.master);noise.start(t,.2,.21);
+    const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(92,t);o.frequency.exponentialRampToValueAtTime(51,t+.13);
+    g.gain.setValueAtTime(.17*strength,t);g.gain.exponentialRampToValueAtTime(.0001,t+.23);o.connect(g).connect(this.master);o.start(t);o.stop(t+.25);
+  }
 }
