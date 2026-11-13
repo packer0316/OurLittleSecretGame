@@ -30,6 +30,7 @@ export class Player {
 
     // 手電筒
     this.flashOn = true;
+    this.flashAvailable = true;
     this.flash = new THREE.SpotLight(0xfff1dc, 0, 50, 0.62, 0.6, 1.1);
     this.flash.castShadow = true;
     this.flash.shadow.mapSize.set(1024, 1024);
@@ -68,6 +69,7 @@ export class Player {
   }
 
   toggleFlash() {
+    if(!this.flashAvailable)return;
     this.flashOn = !this.flashOn;
     this.audio?.click();
   }

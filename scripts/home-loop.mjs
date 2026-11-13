@@ -1,0 +1,28 @@
+import {chromium} from 'playwright-core';
+import fs from 'node:fs';
+const out='artifacts/home-loop';fs.mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-angle=d3d11','--enable-gpu','--ignore-gpu-blocklist','--autoplay-policy=no-user-gesture-required']});
+const page=await browser.newPage({viewport:{width:1440,height:900}}),errors=[],results=[];
+page.on('pageerror',e=>errors.push(e.stack||e.message));
+const check=async(name,fn)=>{try{const detail=await fn();results.push({name,pass:true,detail});console.log('PASS',name,detail||'');}catch(e){results.push({name,pass:false,error:String(e)});console.log('FAIL',name,String(e));}};
+const shot=async name=>{await page.waitForTimeout(300);await page.screenshot({path:`${out}/${name}.png`});};
+const close=async()=>{for(let i=0;i<22;i++){if(!await page.evaluate(()=>!!window.__game.story?.modal))break;await page.keyboard.press('Enter');await page.waitForTimeout(70);}};
+const aim=async(id,pos)=>page.evaluate(([id,pos])=>{const g=window.__game,t=g.map.storyWorld.targets.find(t=>t.id===id).position,p=g.player;if(pos)p.teleport(...pos);const dx=t.x-p.pos.x,dz=t.z-p.pos.z,dy=t.y-p.pos.y-p.eye;p.teleport(p.pos.x,p.pos.y,p.pos.z,Math.atan2(-dx,-dz),Math.atan2(dy,Math.hypot(dx,dz)));g.renderOnce();return g.story.focused()?.id;},[id,pos]);
+const inspect=async(id,pos)=>{const got=await aim(id,pos);if(got!==id)throw Error(`${id} focus hit ${got}`);await page.keyboard.press('e');await page.waitForTimeout(100);};
+try{
+  await page.goto('http://127.0.0.1:5178/?auto&map=home');await page.waitForFunction(()=>window.__game?.running&&window.__game.story?.state.scene==='home',null,{timeout:120000});
+  await shot('01-desk-first-look');
+  await check('home starts in playable lamplit room with flashlight locked',async()=>{const r=await page.evaluate(()=>{const g=window.__game;return {modal:!!g.story.modal,available:g.player.flashAvailable,flash:g.player.flashOn};});await page.keyboard.press('f');if(r.modal||r.available||r.flash||await page.evaluate(()=>window.__game.player.flashOn))throw Error(JSON.stringify(r));});
+  await check('letter is reachable with E and reveals physical photo',async()=>{await inspect('letter');await shot('02-envelope');await close();if(!await page.evaluate(()=>window.__game.story.state.home.step===1))throw Error('step');});
+  await check('photo follows letter and phone rings',async()=>{await inspect('photo');await shot('03-photograph');await close();if(!await page.evaluate(()=>window.__game.story.state.home.step===2))throw Error('step');});
+  await check('phone conversation, repeated breath and door event',async()=>{await inspect('phone');for(let i=0;i<5;i++){await page.keyboard.press('Enter');await page.waitForTimeout(80);}await shot('04-call-choice');await page.keyboard.press('1');await close();if(!await page.evaluate(()=>window.__game.story.state.home.step===3))throw Error('step');});
+  await check('reading and keyboard journal cannot move the player',async()=>{await page.keyboard.press('j');const before=await page.evaluate(()=>window.__game.player.pos.toArray());await page.keyboard.down('w');await page.waitForTimeout(250);await page.keyboard.up('w');const after=await page.evaluate(()=>window.__game.player.pos.toArray());if(Math.hypot(...after.map((x,i)=>x-before[i]))>.02)throw Error('moved during reading');await close();});
+  await check('walk from desk across apartment using WASD',async()=>{await page.evaluate(()=>{const p=window.__game.player;p.yaw=Math.PI;p.pitch=0;});await page.keyboard.down('w');await page.waitForTimeout(1100);await page.keyboard.up('w');await page.waitForTimeout(250);const z=await page.evaluate(()=>window.__game.player.pos.z);if(z<.7)throw Error('room route blocked '+z);return z;});
+  await aim('door',[.2,0,.4]);await shot('05-apartment-door');
+  await check('door slip and key cabinet are reachable',async()=>{await inspect('slip',[1.6,0,2.4]);await shot('06-door-slip');await close();await inspect('kit',[2.3,0,1.7]);if(!await page.evaluate(()=>window.__game.story.state.home.step===5&&window.__game.player.flashAvailable))throw Error('kit missing');});
+  await check('optional clues persist and reload at the current home step',async()=>{for(const [id,p]of [['calendar',[-2.4,0,-2.5]],['window',[.7,0,-2.7]],['message',[-.65,0,-1.65]]]){await inspect(id,p);await close();}await page.evaluate(()=>window.__game.story.save());await page.goto('http://127.0.0.1:5178/?auto&map=home&resume');await page.waitForFunction(()=>window.__game?.running&&window.__game.story?.state.home.step===5);const h=await page.evaluate(()=>window.__game.story.state.home);if(h.notes.length!==3)throw Error(JSON.stringify(h));return h;});
+  await aim('letter',[1.9,0,.6]);await shot('07-room-return');
+  await check('exit carries evidence into temple without replaying the letter',async()=>{await inspect('door',[1.65,0,2.5]);await page.keyboard.press('1');await page.waitForFunction(()=>window.__game?.running&&window.__game.map?.id!=='home'&&window.__game.story?.state.flags.prologueComplete,null,{timeout:180000});const s=await page.evaluate(()=>window.__game.story.state);if(s.scene!=='temple'||!s.evidence.includes('photo')||await page.evaluate(()=>!!window.__game.story.modal))throw Error('transition failed');await shot('08-temple-arrival');});
+}catch(e){errors.push(e.stack||String(e));}
+finally{fs.writeFileSync(out+'/results.json',JSON.stringify({results,errors},null,2));console.log('ERRORS',errors);await browser.close();}
+if(errors.length||results.some(r=>!r.pass))process.exitCode=1;

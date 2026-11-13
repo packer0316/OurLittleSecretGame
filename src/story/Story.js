@@ -37,6 +37,7 @@ export class Story {
     const layer=document.createElement('section');layer.id='story-layer';layer.className='story-layer hidden';layer.setAttribute('role','dialog');layer.setAttribute('aria-modal','true');layer.setAttribute('aria-labelledby','story-title');document.body.appendChild(layer);
   }
   start(){if(this.started)return;this.started=true;
+    if(this.state.flags.prologueComplete){this.toast('02:47。照片與來電都指向慈雲寺。沿參道進入正殿。');return;}
     if(this.state.flags.incense||this.state.elapsed>5){this.toast('已繼續上次的調查。J 開啟筆記。');return;}
     this.game.audio.breathCue?.();
     this.document('photo',()=>this.dialogue([
@@ -58,7 +59,7 @@ export class Story {
   }
   choose(i){const opt=this.modal?.options[i];if(!opt||opt.disabled)return;
     this.modal=null;$('story-layer').classList.add('hidden');opt.action?.();
-    if(!this.modal&&!this.state.ending&&this.game.map){this.game.player.keys=Object.create(null);this.game.player.enabled=true;this.onResume();}
+    if(!this.modal&&!this.state.ending&&!this.transitioning&&this.game.map&&this.game.story===this){this.game.player.keys=Object.create(null);this.game.player.enabled=true;this.onResume();}
   }
   dialogue(lines,done=()=>{},title='聽見的聲音',i=0){const [speaker,text]=lines[i];this.show({eyebrow:title,title:speaker,body:`<p class="dialogue-line">${escape(text)}</p>`,kind:'dialogue',options:[{text:i===lines.length-1?'繼續調查':'繼續',action:()=>i+1<lines.length?this.dialogue(lines,done,title,i+1):done()}]});}
   document(id,done=()=>{}){const e=EVIDENCE[id];this.show({eyebrow:`證物 ${String(Object.keys(EVIDENCE).indexOf(id)+1).padStart(2,'0')} / 11　${e.place}`,title:e.title,image:e.image,redacted:e.redacted&&!this.state.flags.sent,body:`<p class="document-date">${escape(e.date)}</p>${paragraphs(e.text)}<aside class="deduction">${escape(e.inference)}</aside>`,dismiss:true,options:[{text:'收進筆記，繼續調查',action:done}]});}

@@ -1,6 +1,7 @@
 import { Game } from './core/Game.js';
 import { MAPS } from './maps/registry.js';
 import { Story, readSave } from './story/Story.js';
+import { HomeStory } from './story/HomeStory.js';
 
 const $ = (id) => document.getElementById(id);
 const canvas = $('game');
@@ -40,7 +41,7 @@ function buildLobby() {
     if(saved&&!confirm('開始新故事會取代目前的自動存檔。確定重新開始？'))return;
     enterMap(MAPS[0],false);
   };
-  $('continue-story').onclick=()=>enterMap(MAPS[0],true);
+  $('continue-story').onclick=()=>enterMap(MAPS.find(m=>m.id===saved?.scene)||MAPS.find(m=>m.id==='temple'),true);
 }
 
 let settings = {};
@@ -76,7 +77,8 @@ async function enterMap(def, resume = false) {
     return;
   }
   zoneName = '';
-  game.story = new Story(game, { resume, onLobby: returnToLobby, onResume: () => {
+  const Controller=def.id==='home'?HomeStory:Story;
+  game.story = new Controller(game, { resume, onLobby: returnToLobby, onTravel:id=>enterMap(MAPS.find(m=>m.id===id),true), onResume: () => {
     if (AUTO) return;
     canvas.requestPointerLock().catch(() => { game.stop(); game.audio.stop(); setState('paused'); });
   }});
@@ -144,7 +146,7 @@ const TELEPORTS = {
 };
 const TELEPORT_Y = { Digit4: 6.9, Digit5: 11.9, Digit6: 16.9 };
 window.addEventListener('keydown', (e) => {
-  if (state !== 'playing' || e.repeat || !DEV || game.story?.modal) return;
+  if (state !== 'playing' || e.repeat || !DEV || game.story?.modal || currentMap.id!=='temple') return;
   if (e.code === 'KeyL') game.map.setFullBright(!game.map.fullBright);
   if (e.code === 'KeyV') { game.player.fly = !game.player.fly; flash(game.player.fly ? '飛行模式：開（Space 上升 / Ctrl 下降）' : '飛行模式：關'); }
   if (e.code === 'KeyP') ui.debug.classList.toggle('hidden');

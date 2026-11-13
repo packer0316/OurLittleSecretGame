@@ -133,8 +133,10 @@ export class Game {
 
   respawn() {
     const s = this.map.spawn;
-    this.player.teleport(s.x, this.map.world.probe(s.x, s.z, 1000).g, s.z, s.yaw, 0);
-    this.player.flashOn = true;
+    this.player.teleport(s.x, this.map.world.probe(s.x, s.z, 1000).g, s.z, s.yaw, s.pitch||0);
+    this.player.flashAvailable = this.map.flashAvailable !== false;
+    this.player.flashOn = this.map.flashOn !== false;
+    this.player.flashPower = this.player.flashOn ? 1 : 0;
   }
 
   unloadMap() {

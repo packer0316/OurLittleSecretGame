@@ -9,7 +9,7 @@ const test=async(name,fn)=>{try{await fn();results.push({name,pass:true});consol
 try{
   await page.goto('http://127.0.0.1:5178/');
   await test('new game enters through normal title and pointer lock UI',async()=>{
-    await page.click('#start-story');await page.waitForSelector('#overlay:not(.hidden)',{timeout:180000});await page.click('#btn-resume');await expect(()=>!!window.__game.story.modal,'intro missing');
+    await page.click('#start-story');await page.waitForSelector('#overlay:not(.hidden)',{timeout:180000});await page.click('#btn-resume');await expect(()=>window.__game.running&&window.__game.map.id==='home','home prologue missing');
     for(let i=0;i<12;i++){if(!await page.evaluate(()=>window.__game.story.modal))break;await page.keyboard.press('Enter');await page.waitForTimeout(80);}
     await expect(()=>document.pointerLockElement===document.getElementById('game')&&window.__game.player.enabled,'pointer lock did not resume');
   });
@@ -25,7 +25,7 @@ try{
     await expect(()=>window.__game.running,'continue failed');
   });
   await test('all runtime assets load locally',async()=>{const external=requests.filter(u=>!u.startsWith('http://127.0.0.1:5178/')&&!u.startsWith('blob:http://127.0.0.1:5178/')&&!u.startsWith('data:'));if(external.length)throw Error(external.join('\n'));});
-  await test('small evidence layout preserves red face marking',async()=>{await page.setViewportSize({width:800,height:700});await page.evaluate(()=>window.__game.story.document('photo'));const visible=await page.locator('.photo-scribble').isVisible();if(!visible)throw Error('redaction hidden');await page.screenshot({path:'artifacts/story/11-evidence-small.png'});});
+  await test('small evidence layout preserves red face marking',async()=>{await page.setViewportSize({width:800,height:700});await page.evaluate(()=>window.__game.story.document('photo'));await page.locator('.photo-scribble').waitFor({state:'visible',timeout:5000});await page.screenshot({path:'artifacts/story/11-evidence-small.png'});});
 }catch(e){errors.push(e.stack||String(e));}
 finally{fs.writeFileSync('artifacts/story/ui-results.json',JSON.stringify({results,errors},null,2));console.log('ERRORS',errors);await browser.close();}
 if(errors.length||results.some(r=>!r.pass))process.exitCode=1;

@@ -96,6 +96,10 @@ export class AudioSys {
     this._t += dt;
     this.indoor += (indoor - this.indoor) * Math.min(1, dt * 2);
     const out = 1 - this.indoor;
+    if(this.profile==='home'){
+      this.windGain.gain.setTargetAtTime(.09,now,.8);this.howlGain.gain.setTargetAtTime(0,now,.5);
+      this.cricketGate.gain.setTargetAtTime(0,now,.2);this.droneGain.gain.setTargetAtTime(.018,now,1);return;
+    }
     if(this.released){this.howlGain.gain.setTargetAtTime(0,now,1.5);this.droneGain.gain.setTargetAtTime(.012,now,1.5);this.windGain.gain.setTargetAtTime(.12,now,1.5);this.cricketGate.gain.setTargetAtTime(0,now,.5);return;}
     if (this._t > this._nextGust) {
       this._nextGust = this._t + 3 + Math.random() * 6;
@@ -236,5 +240,15 @@ export class AudioSys {
     g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(kind==='clue'?0.08:0.23,t+0.04);g.gain.exponentialRampToValueAtTime(0.0001,t+duration);
     o.connect(g).connect(this.master);o.start(t);o.stop(t+duration+0.03);
     if(kind==='gate')this.footstep(1.2,'wood');
+  }
+
+  phoneRing() {
+    if(!this.ctx||!this.running)return;
+    const t=this.ctx.currentTime;
+    for(const start of [0,.22,.65,.87])for(const frequency of [640,800]){
+      const o=this.ctx.createOscillator(),g=this.ctx.createGain();o.frequency.value=frequency;
+      g.gain.setValueAtTime(0,t+start);g.gain.linearRampToValueAtTime(.018,t+start+.008);g.gain.exponentialRampToValueAtTime(.0001,t+start+.16);
+      o.connect(g).connect(this.master);o.start(t+start);o.stop(t+start+.18);
+    }
   }
 }
