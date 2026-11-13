@@ -113,11 +113,11 @@ export class AudioSys {
       const on = Math.random() < 0.6;
       this.cricketGate.gain.setTargetAtTime(on ? 0.011 * out * out : 0, now, 0.12);
     }
-    if (this._t > this._nextBell) {
+    if (this._t > this._nextBell && this.profile!=='road') {
       this._nextBell = this._t + 80 + Math.random() * 80;
       this.bell(0.5 + Math.random() * 0.5);
     }
-    if (this._t > this._nextKnock && this.indoor > 0.6) {
+    if (this._t > this._nextKnock && this.indoor > 0.6 && this.profile!=='road') {
       this._nextKnock = this._t + 45 + Math.random() * 60;
       this.woodenFish(3 + Math.floor(Math.random() * 4));
     }

@@ -1,0 +1,231 @@
+{
+  "animationCount": 0,
+  "categories": [
+    {
+      "uid": "2d643ff5ed03405b9c34ecdffff9d8d8",
+      "name": "Characters & Creatures",
+      "slug": "characters-creatures",
+      "uri": "https://api.sketchfab.com/v3/categories/2d643ff5ed03405b9c34ecdffff9d8d8",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/f778c3dbe6efa00a06c257762c0e27ef-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/2d643ff5ed03405b9c34ecdffff9d8d8/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/2d643ff5ed03405b9c34ecdffff9d8d8/800x450.png"
+        }
+      ]
+    },
+    {
+      "uid": "17d20ca7b35243d4a45171838b50704c",
+      "name": "Science & Technology",
+      "slug": "science-technology",
+      "uri": "https://api.sketchfab.com/v3/categories/17d20ca7b35243d4a45171838b50704c",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/86b1bae49e0ed3f43b2d59b26700234e-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/17d20ca7b35243d4a45171838b50704c/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/17d20ca7b35243d4a45171838b50704c/800x450.png"
+        }
+      ]
+    }
+  ],
+  "commentCount": 1,
+  "createdAt": "2024-10-12T11:14:21.747621",
+  "embedUrl": "https://sketchfab.com/models/8c47bfa9478543e1a7dab0ef29fb8c45/embed",
+  "faceCount": 49999,
+  "isAgeRestricted": false,
+  "license": {
+    "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+    "label": "CC Attribution",
+    "fullName": "Creative Commons Attribution",
+    "requirements": "Author must be credited. Commercial use is allowed.",
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "slug": "by"
+  },
+  "likeCount": 49,
+  "name": "Severed mutated human arm",
+  "publishedAt": "2024-10-12T11:14:39.075984",
+  "soundCount": 0,
+  "staffpickedAt": null,
+  "tags": [
+    {
+      "name": "severed",
+      "slug": "severed",
+      "uri": "https://api.sketchfab.com/v3/tags/severed"
+    },
+    {
+      "name": "arm",
+      "slug": "arm",
+      "uri": "https://api.sketchfab.com/v3/tags/arm"
+    },
+    {
+      "name": "bloody",
+      "slug": "bloody",
+      "uri": "https://api.sketchfab.com/v3/tags/bloody"
+    },
+    {
+      "name": "fingers",
+      "slug": "fingers",
+      "uri": "https://api.sketchfab.com/v3/tags/fingers"
+    },
+    {
+      "name": "realistic",
+      "slug": "realistic",
+      "uri": "https://api.sketchfab.com/v3/tags/realistic"
+    },
+    {
+      "name": "bodyparts",
+      "slug": "bodyparts",
+      "uri": "https://api.sketchfab.com/v3/tags/bodyparts"
+    },
+    {
+      "name": "limb",
+      "slug": "limb",
+      "uri": "https://api.sketchfab.com/v3/tags/limb"
+    },
+    {
+      "name": "halloween",
+      "slug": "halloween",
+      "uri": "https://api.sketchfab.com/v3/tags/halloween"
+    },
+    {
+      "name": "hand",
+      "slug": "hand",
+      "uri": "https://api.sketchfab.com/v3/tags/hand"
+    },
+    {
+      "name": "horror",
+      "slug": "horror",
+      "uri": "https://api.sketchfab.com/v3/tags/horror"
+    },
+    {
+      "name": "severedlimb",
+      "slug": "severedlimb",
+      "uri": "https://api.sketchfab.com/v3/tags/severedlimb"
+    },
+    {
+      "name": "severedarm",
+      "slug": "severedarm",
+      "uri": "https://api.sketchfab.com/v3/tags/severedarm"
+    },
+    {
+      "name": "severedperson",
+      "slug": "severedperson",
+      "uri": "https://api.sketchfab.com/v3/tags/severedperson"
+    },
+    {
+      "name": "severedbodyparts",
+      "slug": "severedbodyparts",
+      "uri": "https://api.sketchfab.com/v3/tags/severedbodyparts"
+    }
+  ],
+  "thumbnails": {
+    "images": [
+      {
+        "uid": "693432929cfa40778edcedbb565a9fb1",
+        "width": 1920,
+        "height": 1080,
+        "size": 290635,
+        "url": "https://media.sketchfab.com/models/8c47bfa9478543e1a7dab0ef29fb8c45/thumbnails/3e1ec374cde3450995673eaf4ecffb42/d58b3a282e0b4c25801713008c7ba89e.jpeg"
+      },
+      {
+        "uid": "f3e2f9813a9e49bab90caca24c181381",
+        "width": 1024,
+        "height": 576,
+        "size": 74415,
+        "url": "https://media.sketchfab.com/models/8c47bfa9478543e1a7dab0ef29fb8c45/thumbnails/3e1ec374cde3450995673eaf4ecffb42/379ca0d3d4014b3f921fd08bfebad8dc.jpeg"
+      },
+      {
+        "uid": "f65603cd6829430bad3836df8be10f46",
+        "width": 720,
+        "height": 405,
+        "size": 35436,
+        "url": "https://media.sketchfab.com/models/8c47bfa9478543e1a7dab0ef29fb8c45/thumbnails/3e1ec374cde3450995673eaf4ecffb42/aea32887c2274eb9bf876098223a25c7.jpeg"
+      },
+      {
+        "uid": "f45086d5a235415b8ff5466e9ea542d3",
+        "width": 256,
+        "height": 144,
+        "size": 5206,
+        "url": "https://media.sketchfab.com/models/8c47bfa9478543e1a7dab0ef29fb8c45/thumbnails/3e1ec374cde3450995673eaf4ecffb42/3c0ff7a96a204a3f98be3b71f0689319.jpeg"
+      },
+      {
+        "uid": "64d93b0f44924fb0a2524700a42533b1",
+        "width": 64,
+        "height": 36,
+        "size": 1124,
+        "url": "https://media.sketchfab.com/models/8c47bfa9478543e1a7dab0ef29fb8c45/thumbnails/3e1ec374cde3450995673eaf4ecffb42/df7ca5af26c54e2d94b48102588d4329.jpeg"
+      }
+    ]
+  },
+  "uid": "8c47bfa9478543e1a7dab0ef29fb8c45",
+  "uri": "https://api.sketchfab.com/v3/models/8c47bfa9478543e1a7dab0ef29fb8c45",
+  "user": {
+    "uid": "865d9c65d53e45888750fcd635085593",
+    "username": "66md66",
+    "displayName": "66md66",
+    "account": "basic",
+    "profileUrl": "https://sketchfab.com/66md66",
+    "avatar": {
+      "uid": "51af6a870cce449eb75b0345feebaebb",
+      "uri": "https://api.sketchfab.com/v3/avatars/51af6a870cce449eb75b0345feebaebb",
+      "images": [
+        {
+          "width": 90,
+          "height": 90,
+          "size": 5719,
+          "url": "https://media.sketchfab.com/avatars/51af6a870cce449eb75b0345feebaebb/2ef0f894055b4bb69123b2a27fa2d379.jpeg"
+        },
+        {
+          "width": 100,
+          "height": 100,
+          "size": 6496,
+          "url": "https://media.sketchfab.com/avatars/51af6a870cce449eb75b0345feebaebb/ab11eedf96374486acb544f71a23b165.jpeg"
+        },
+        {
+          "width": 32,
+          "height": 32,
+          "size": 1359,
+          "url": "https://media.sketchfab.com/avatars/51af6a870cce449eb75b0345feebaebb/35f6f9b6c9a14a548ce472582d8a9bb5.jpeg"
+        },
+        {
+          "width": 48,
+          "height": 48,
+          "size": 2584,
+          "url": "https://media.sketchfab.com/avatars/51af6a870cce449eb75b0345feebaebb/a8072a51447c4d41ab177b357111b420.jpeg"
+        }
+      ]
+    },
+    "uri": "https://api.sketchfab.com/v3/users/865d9c65d53e45888750fcd635085593"
+  },
+  "vertexCount": 25002,
+  "viewCount": 3314,
+  "viewerUrl": "https://sketchfab.com/3d-models/severed-mutated-human-arm-8c47bfa9478543e1a7dab0ef29fb8c45",
+  "isDownloadable": true,
+  "isProtected": false,
+  "description": "A nice Halloween prop asset for your projects!\r\nPlease enjoy:)",
+  "price": null,
+  "downloadCount": 726,
+  "editorUrl": "https://sketchfab.com/models/8c47bfa9478543e1a7dab0ef29fb8c45/edit",
+  "status": {
+    "warning": {},
+    "processing": "SUCCEEDED"
+  },
+  "source": "unknown",
+  "hasCommentsDisabled": false,
+  "updatedAt": "2024-10-12T11:26:57.624615",
+  "pbrType": null,
+  "textureCount": 1,
+  "materialCount": 1
+}

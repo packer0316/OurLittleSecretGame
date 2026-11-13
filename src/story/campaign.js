@@ -22,7 +22,7 @@ export const ENDINGS = {
 };
 
 export function newState() {
-  return { version: 1, scene: 'temple', home: {step:0,notes:[]}, chapter: 1, evidence: ['photo'], flags: {}, answers: 0, deaths: 0, elapsed: 0, ending: null, position: null };
+  return { version: 1, scene: 'temple', home: {step:0,notes:[]}, road: {step:0,notes:[]}, chapter: 1, evidence: ['photo'], flags: {}, answers: 0, deaths: 0, elapsed: 0, ending: null, position: null };
 }
 export function validateSave(raw) {
   if (!raw || raw.version !== 1 || !Array.isArray(raw.evidence) || !raw.flags || typeof raw.flags !== 'object' || Array.isArray(raw.flags)) return null;
@@ -30,6 +30,8 @@ export function validateSave(raw) {
   s.scene = ['home','road','temple'].includes(raw.scene) ? raw.scene : 'temple';
   s.home.step = Number.isInteger(raw.home?.step) ? Math.max(0,Math.min(6,raw.home.step)) : 0;
   s.home.notes = Array.isArray(raw.home?.notes) ? [...new Set(raw.home.notes.filter(n=>['calendar','message','window'].includes(n)))] : [];
+  s.road.step = Number.isInteger(raw.road?.step) ? Math.max(0,Math.min(5,raw.road.step)) : 0;
+  s.road.notes = Array.isArray(raw.road?.notes) ? [...new Set(raw.road.notes.filter(n=>['car','kiln'].includes(n)))] : [];
   s.evidence = [...new Set(['photo', ...raw.evidence.filter(id => typeof id==='string'&&Object.hasOwn(EVIDENCE,id))])];
   for (const key of ['incense','stage','loopSolved','key','underground','ritualReady','sealed','sent','prologueComplete']) s.flags[key] = raw.flags[key] === true;
   if(s.flags.key) s.flags.loopSolved=true;
@@ -39,6 +41,7 @@ export function validateSave(raw) {
   const p = raw.position;
   if (Array.isArray(p) && p.length === 5 && p.every(Number.isFinite) && p[0] >= -84 && p[0] <= 67 && p[1] >= -7.2 && p[1] <= 30 && p[2] >= -47 && p[2] <= 54) s.position = p;
   if(s.scene==='home'&&s.position&&(Math.abs(p[0])>3.7||Math.abs(p[2])>3.7||Math.abs(p[1])>.2))s.position=null;
+  if(s.scene==='road'&&s.position&&(Math.abs(p[0])>16||p[2]<-42||p[2]>39||p[1]<-.2||p[1]>1))s.position=null;
   return s;
 }
 export function collect(s, id) {

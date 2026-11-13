@@ -2,6 +2,7 @@ import { Game } from './core/Game.js';
 import { MAPS } from './maps/registry.js';
 import { Story, readSave } from './story/Story.js';
 import { HomeStory } from './story/HomeStory.js';
+import { RoadStory } from './story/RoadStory.js';
 
 const $ = (id) => document.getElementById(id);
 const canvas = $('game');
@@ -77,7 +78,7 @@ async function enterMap(def, resume = false) {
     return;
   }
   zoneName = '';
-  const Controller=def.id==='home'?HomeStory:Story;
+  const Controller=def.id==='home'?HomeStory:def.id==='road'?RoadStory:Story;
   game.story = new Controller(game, { resume, onLobby: returnToLobby, onTravel:id=>enterMap(MAPS.find(m=>m.id===id),true), onResume: () => {
     if (AUTO) return;
     canvas.requestPointerLock().catch(() => { game.stop(); game.audio.stop(); setState('paused'); });

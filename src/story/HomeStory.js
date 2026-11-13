@@ -68,9 +68,9 @@ export class HomeStory extends Story {
     ]:[['門外的聲音','我知道你在家。'],['電話裡很遠的童聲','先看留下的東西。不要只聽聲音。'],['我','通話中斷了。螢幕上卻顯示，通話時間是零。']],()=>this.toast('門縫底下出現一張紙。走到玄關，低頭調查。'),'三下敲門之後');
   }
   travel(){
-    this.transitioning=true;this.state.home.step=6;this.state.flags.prologueComplete=true;this.state.scene='temple';this.state.position=null;
+    this.transitioning=true;this.state.home.step=6;this.state.flags.prologueComplete=true;this.state.scene='road';this.state.position=null;
     try{localStorage.setItem(SAVE_KEY,JSON.stringify(this.state));}catch{this.transitioning=false;this.toast('無法保存出發進度，請先釋出瀏覽器儲存空間。');return;}
-    this.onTravel('temple');
+    this.onTravel('road');
   }
   journal(){const h=this.state.home;this.show({eyebrow:'出發之前・住處筆記',title:'還沒離開家，事情已經開始了',body:`<p>目前：${goals[Math.min(h.step,5)][1]}</p><p>23:42　信封沒有郵戳。<br>${h.step>=2?'23:47　阿哲來電；吸氣聲重複。<br>':''}${h.step>=4?'23:51　門外字條知道我在家。':''}</p><p>已調查：${h.notes.map(n=>({calendar:'月曆',window:'窗外雨聲',message:'未送出的語音'})[n]).join('、')||'尚無額外筆記'}</p><aside class="deduction">燈光照得見的證據，與聲音所說的，不一定相同。</aside>`,dismiss:true});}
   update(dt){
