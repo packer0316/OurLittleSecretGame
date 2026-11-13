@@ -1,0 +1,177 @@
+{
+  "animationCount": 0,
+  "categories": [
+    {
+      "uid": "2d643ff5ed03405b9c34ecdffff9d8d8",
+      "name": "Characters & Creatures",
+      "slug": "characters-creatures",
+      "uri": "https://api.sketchfab.com/v3/categories/2d643ff5ed03405b9c34ecdffff9d8d8",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/f778c3dbe6efa00a06c257762c0e27ef-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/2d643ff5ed03405b9c34ecdffff9d8d8/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/2d643ff5ed03405b9c34ecdffff9d8d8/800x450.png"
+        }
+      ]
+    }
+  ],
+  "commentCount": 3,
+  "createdAt": "2022-03-31T23:41:53.960164",
+  "embedUrl": "https://sketchfab.com/models/014938ce127944cb8bc15dab853db72d/embed",
+  "faceCount": 51172,
+  "isAgeRestricted": false,
+  "license": {
+    "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+    "label": "CC Attribution",
+    "fullName": "Creative Commons Attribution",
+    "requirements": "Author must be credited. Commercial use is allowed.",
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "slug": "by"
+  },
+  "likeCount": 155,
+  "name": "Ghost Girl",
+  "publishedAt": "2022-03-31T23:49:52.008193",
+  "soundCount": 0,
+  "staffpickedAt": null,
+  "tags": [
+    {
+      "name": "sinister",
+      "slug": "sinister",
+      "uri": "https://api.sketchfab.com/v3/tags/sinister"
+    },
+    {
+      "name": "animegirl",
+      "slug": "animegirl",
+      "uri": "https://api.sketchfab.com/v3/tags/animegirl"
+    },
+    {
+      "name": "femalecharacter",
+      "slug": "femalecharacter",
+      "uri": "https://api.sketchfab.com/v3/tags/femalecharacter"
+    },
+    {
+      "name": "ghostgirl",
+      "slug": "ghostgirl",
+      "uri": "https://api.sketchfab.com/v3/tags/ghostgirl"
+    },
+    {
+      "name": "anime-character",
+      "slug": "anime-character",
+      "uri": "https://api.sketchfab.com/v3/tags/anime-character"
+    },
+    {
+      "name": "japanese",
+      "slug": "japanese",
+      "uri": "https://api.sketchfab.com/v3/tags/japanese"
+    },
+    {
+      "name": "japanesegirl",
+      "slug": "japanesegirl",
+      "uri": "https://api.sketchfab.com/v3/tags/japanesegirl"
+    }
+  ],
+  "thumbnails": {
+    "images": [
+      {
+        "uid": "4664776cdc9a4ca39e1b94908e1adc00",
+        "width": 1920,
+        "height": 1080,
+        "size": 54776,
+        "url": "https://media.sketchfab.com/models/014938ce127944cb8bc15dab853db72d/thumbnails/b7b38887072549bbbe5b89ed2a7e69ff/f5e74ebff7f34b2a98531dc7a26162b9.jpeg"
+      },
+      {
+        "uid": "a17623b5ea2b4bdb85293d4bb6a9ead1",
+        "width": 1024,
+        "height": 576,
+        "size": 17926,
+        "url": "https://media.sketchfab.com/models/014938ce127944cb8bc15dab853db72d/thumbnails/b7b38887072549bbbe5b89ed2a7e69ff/451140d2199e4c428f425d41cb70c1bd.jpeg"
+      },
+      {
+        "uid": "ad734dd8d9974208ad93925a4b5261ce",
+        "width": 720,
+        "height": 405,
+        "size": 10452,
+        "url": "https://media.sketchfab.com/models/014938ce127944cb8bc15dab853db72d/thumbnails/b7b38887072549bbbe5b89ed2a7e69ff/c4a8ec3d08264bb690b661f8c967263f.jpeg"
+      },
+      {
+        "uid": "74fdf9b2301144619236c82f77060dc1",
+        "width": 256,
+        "height": 144,
+        "size": 2592,
+        "url": "https://media.sketchfab.com/models/014938ce127944cb8bc15dab853db72d/thumbnails/b7b38887072549bbbe5b89ed2a7e69ff/a8ee846b84e543b5a0ab178264225e63.jpeg"
+      },
+      {
+        "uid": "aa97c27c52b04913ae371a042445ca55",
+        "width": 64,
+        "height": 36,
+        "size": 899,
+        "url": "https://media.sketchfab.com/models/014938ce127944cb8bc15dab853db72d/thumbnails/b7b38887072549bbbe5b89ed2a7e69ff/41ddd3ceb6014d38a0904ee1f8e6cf55.jpeg"
+      }
+    ]
+  },
+  "uid": "014938ce127944cb8bc15dab853db72d",
+  "uri": "https://api.sketchfab.com/v3/models/014938ce127944cb8bc15dab853db72d",
+  "user": {
+    "uid": "b39a2c68f2014826962e6d7ee4e36bf8",
+    "username": "Chaeyoung992",
+    "displayName": "Chaeyoung992",
+    "account": "basic",
+    "profileUrl": "https://sketchfab.com/Chaeyoung992",
+    "avatar": {
+      "uid": "304642b424154b62b118e436091ddf0e",
+      "uri": "https://api.sketchfab.com/v3/avatars/304642b424154b62b118e436091ddf0e",
+      "images": [
+        {
+          "width": 32,
+          "height": 32,
+          "size": 1019,
+          "url": "https://media.sketchfab.com/avatars/304642b424154b62b118e436091ddf0e/fc53a423e794426eb372311edd8d1a94.jpeg"
+        },
+        {
+          "width": 48,
+          "height": 48,
+          "size": 1379,
+          "url": "https://media.sketchfab.com/avatars/304642b424154b62b118e436091ddf0e/2bfd01ad46324802b50d80ca8e36ba02.jpeg"
+        },
+        {
+          "width": 90,
+          "height": 90,
+          "size": 3121,
+          "url": "https://media.sketchfab.com/avatars/304642b424154b62b118e436091ddf0e/68f6e25cfa784b5988f2293b9ee39e68.jpeg"
+        },
+        {
+          "width": 100,
+          "height": 100,
+          "size": 3573,
+          "url": "https://media.sketchfab.com/avatars/304642b424154b62b118e436091ddf0e/84d21630b98f435c93706fdb3320ce88.jpeg"
+        }
+      ]
+    },
+    "uri": "https://api.sketchfab.com/v3/users/b39a2c68f2014826962e6d7ee4e36bf8"
+  },
+  "vertexCount": 25895,
+  "viewCount": 13623,
+  "viewerUrl": "https://sketchfab.com/3d-models/ghost-girl-014938ce127944cb8bc15dab853db72d",
+  "isDownloadable": true,
+  "isProtected": false,
+  "description": "This content contains a ghost girl character with a basic dress and hair. No rig",
+  "price": null,
+  "downloadCount": 2961,
+  "editorUrl": "https://sketchfab.com/models/014938ce127944cb8bc15dab853db72d/edit",
+  "status": {
+    "warning": {},
+    "processing": "SUCCEEDED"
+  },
+  "source": "website",
+  "hasCommentsDisabled": false,
+  "updatedAt": "2022-07-21T14:58:27.25036",
+  "pbrType": null,
+  "textureCount": 0,
+  "materialCount": 4
+}

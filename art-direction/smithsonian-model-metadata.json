@@ -1,0 +1,2595 @@
+{
+  "asset": {
+    "type": "application/si-dpo-3d.document+json",
+    "version": "1.0",
+    "generator": "Voyager",
+    "copyright": "(c) Smithsonian Institution. All rights reserved."
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "units": "cm",
+      "name": "Scene",
+      "nodes": [
+        0,
+        1,
+        6
+      ],
+      "meta": 1,
+      "setup": 0
+    }
+  ],
+  "nodes": [
+    {
+      "translation": [
+        22.7072848,
+        35.1615473,
+        190.3915367
+      ],
+      "rotation": [
+        -0.0893306,
+        0.0582364,
+        0.0052322,
+        0.9942843
+      ],
+      "name": "Camera",
+      "camera": 0
+    },
+    {
+      "scale": [
+        4.7174324,
+        4.7174324,
+        4.7174324
+      ],
+      "name": "Lights",
+      "children": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "translation": [
+        0,
+        0,
+        2
+      ],
+      "rotation": [
+        0.4829741,
+        -0.1070728,
+        0.1880998,
+        0.8484633
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "name": "Key",
+      "light": 0
+    },
+    {
+      "rotation": [
+        0.3546969,
+        0.163893,
+        -0.3861077,
+        0.8356136
+      ],
+      "name": "Fill #1",
+      "light": 1
+    },
+    {
+      "translation": [
+        0,
+        0,
+        1
+      ],
+      "rotation": [
+        0.9374013,
+        -0.3018693,
+        0.0532277,
+        0.1652891
+      ],
+      "name": "Fill #2",
+      "light": 2
+    },
+    {
+      "translation": [
+        1,
+        0,
+        -1
+      ],
+      "rotation": [
+        0.373256,
+        0.6426073,
+        -0.5786063,
+        0.3360813
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "name": "Rim",
+      "light": 3
+    },
+    {
+      "name": "cosmic-buddha-laser-scan",
+      "model": 0,
+      "meta": 0
+    }
+  ],
+  "cameras": [
+    {
+      "type": "perspective",
+      "perspective": {
+        "yfov": 52,
+        "znear": 0.7797527,
+        "zfar": 779.7527037
+      }
+    }
+  ],
+  "lights": [
+    {
+      "color": [
+        1,
+        0.95,
+        0.9
+      ],
+      "intensity": 0.6375,
+      "type": "directional",
+      "shadowEnabled": true
+    },
+    {
+      "color": [
+        0.9,
+        0.95,
+        1
+      ],
+      "intensity": 0.3875,
+      "type": "directional",
+      "shadowEnabled": true
+    },
+    {
+      "color": [
+        0.8,
+        0.85,
+        1
+      ],
+      "intensity": 1.2375,
+      "type": "directional"
+    },
+    {
+      "color": [
+        0.85,
+        0.9078313,
+        1
+      ],
+      "intensity": 1.8375,
+      "type": "directional"
+    }
+  ],
+  "models": [
+    {
+      "units": "mm",
+      "translation": [
+        446.6046485,
+        -602.9945374,
+        594.5824963
+      ],
+      "rotation": [
+        0,
+        0.9454587,
+        0,
+        -0.3257419
+      ],
+      "boundingBox": {
+        "min": [
+          -324.2521057,
+          -154.3598022,
+          489.9143982
+        ],
+        "max": [
+          265.3406067,
+          1360.348877,
+          1034.0186768
+        ]
+      },
+      "derivatives": [
+        {
+          "usage": "Web3D",
+          "quality": "Thumb",
+          "assets": [
+            {
+              "uri": "cosmic-buddha-laser-scan-20k-512-thumb.glb",
+              "type": "Model",
+              "byteSize": 89532,
+              "numFaces": 20000,
+              "imageSize": 512
+            }
+          ]
+        },
+        {
+          "usage": "Web3D",
+          "quality": "Low",
+          "assets": [
+            {
+              "uri": "cosmic-buddha-laser-scan-150k-1024-low.glb",
+              "type": "Model",
+              "byteSize": 907128,
+              "numFaces": 150000,
+              "imageSize": 1024
+            }
+          ]
+        },
+        {
+          "usage": "Web3D",
+          "quality": "Medium",
+          "assets": [
+            {
+              "uri": "cosmic-buddha-laser-scan-150k-2048-medium.glb",
+              "type": "Model",
+              "byteSize": 2297364,
+              "numFaces": 150000,
+              "imageSize": 2048
+            }
+          ]
+        },
+        {
+          "usage": "Web3D",
+          "quality": "High",
+          "assets": [
+            {
+              "uri": "cosmic-buddha-laser-scan-150k-4096-high.glb",
+              "type": "Model",
+              "byteSize": 6729976,
+              "numFaces": 150000,
+              "imageSize": 4096
+            }
+          ]
+        },
+        {
+          "usage": "Web3D",
+          "quality": "AR",
+          "assets": [
+            {
+              "uri": "cosmic-buddha-150k-100k-2048-ar.glb",
+              "type": "Model",
+              "byteSize": 927000,
+              "numFaces": 100000,
+              "imageSize": 2048
+            }
+          ]
+        },
+        {
+          "usage": "App3D",
+          "quality": "AR",
+          "assets": [
+            {
+              "uri": "cosmic-buddha-100k-2048_std_draco.glb",
+              "type": "Model",
+              "byteSize": 1414000,
+              "numFaces": 100000,
+              "imageSize": 2048
+            }
+          ]
+        },
+        {
+          "usage": "iOSApp3D",
+          "quality": "AR",
+          "assets": [
+            {
+              "uri": "cosmic-buddha-laser-scan-150k-150k.usdz",
+              "type": "Model",
+              "byteSize": 5157000,
+              "numFaces": 100000,
+              "imageSize": 2048
+            }
+          ]
+        },
+        {
+          "usage": "Image2D",
+          "quality": "Low",
+          "assets": [
+            {
+              "uri": "scene-image-low.jpg",
+              "type": "Image",
+              "mimeType": "image/jpeg",
+              "byteSize": 46095,
+              "imageSize": 640
+            }
+          ]
+        },
+        {
+          "usage": "Image2D",
+          "quality": "Thumb",
+          "assets": [
+            {
+              "uri": "scene-image-thumb.jpg",
+              "type": "Image",
+              "mimeType": "image/jpeg",
+              "byteSize": 13257,
+              "imageSize": 320
+            }
+          ]
+        },
+        {
+          "usage": "Image2D",
+          "quality": "Medium",
+          "assets": [
+            {
+              "uri": "scene-image-medium.jpg",
+              "type": "Image",
+              "mimeType": "image/jpeg",
+              "byteSize": 172359,
+              "imageSize": 1280
+            }
+          ]
+        },
+        {
+          "usage": "Image2D",
+          "quality": "High",
+          "assets": [
+            {
+              "uri": "scene-image-high.jpg",
+              "type": "Image",
+              "mimeType": "image/jpeg",
+              "byteSize": 642648,
+              "imageSize": 2560
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "1NPUEpQ0hhWG",
+          "title": "Missing right mudra",
+          "lead": "Like most other free standing sculptures of Vairochana, the right hand has broken off. We can use other references from the time period to try and learn how the hand might have been posed.",
+          "marker": "1",
+          "articleId": "PcmBwgHYoxqM",
+          "style": "Circle",
+          "position": [
+            -271.6303106,
+            405.5130822,
+            87.3457333
+          ],
+          "direction": [
+            0.1700748,
+            0.2175375,
+            0.9611202
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "TFxOHUTIFsPC",
+          "title": "Fossil fragments",
+          "lead": "Some fossil fragments are evident in the weathered surface of the Buddha.",
+          "marker": "2",
+          "articleId": "RorUMlRllhnY",
+          "style": "Circle",
+          "position": [
+            144.0199928,
+            -716.3722856,
+            47.2578114
+          ],
+          "direction": [
+            0.1766854,
+            0.9776591,
+            0.1138639
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "qZBSEGVZqgpw",
+          "title": "Base of the Cosmic Buddha",
+          "lead": "The Cosmic Buddha was set into a concrete base in 1971 to secure the heavy sculpture (over 800 pounds) for exhibition.",
+          "marker": "3",
+          "articleId": "a2RmP4H56ufC",
+          "style": "Circle",
+          "position": [
+            -163.363781,
+            -715.8225418,
+            77.6858646
+          ],
+          "direction": [
+            -0.1134172,
+            0.9894672,
+            0.0899516
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "me5fEdoOLzud",
+          "title": "Lion Spirit King",
+          "lead": "Lion Spirit King (shizi shenwang), one of the ten Spirit Kings",
+          "marker": "4",
+          "style": "Circle",
+          "position": [
+            -21.4168217,
+            -330.7052675,
+            72.0050387
+          ],
+          "direction": [
+            0.1684798,
+            -0.0666083,
+            0.983452
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "JFHtVtru2L04",
+          "title": "Dragon Spirit King",
+          "lead": "Dragon Spirit King (long shenwang), one of the ten Spirit Kings",
+          "marker": "5",
+          "style": "Circle",
+          "position": [
+            44.002342,
+            -333.553404,
+            75.1531075
+          ],
+          "direction": [
+            -0.2150884,
+            -0.0743033,
+            0.9737638
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "yqRUgy0lyyk5",
+          "title": "Pearl Spirit King",
+          "lead": "Pearl Spirit King (zhu shenwang), one of the ten Spirit Kings",
+          "marker": "6",
+          "style": "Circle",
+          "position": [
+            168.9045778,
+            -341.4083572,
+            52.2154615
+          ],
+          "direction": [
+            0.5623692,
+            -0.090451,
+            0.8219243
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "X10MGFGYlwa6",
+          "title": "Fire Spirit King",
+          "lead": "Fire Spirit King (huo shenwang), one of the ten Spirit Kings",
+          "marker": "7",
+          "style": "Circle",
+          "position": [
+            109.5034938,
+            -333.054208,
+            77.7484531
+          ],
+          "direction": [
+            0.2078272,
+            -0.058819,
+            0.9763955
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "MN5ZUpUaJe8E",
+          "title": "Wind Spirit King",
+          "lead": "Wind Spirit King (feng shenwang), one of the ten Spirit Kings",
+          "marker": "8",
+          "style": "Circle",
+          "position": [
+            -84.8304261,
+            -329.5566396,
+            76.6884914
+          ],
+          "direction": [
+            -0.1291162,
+            -0.0586892,
+            0.9898912
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "o4rEd0UrDJGA",
+          "title": "Fish Spirit King",
+          "lead": "Fish Spirit King (yu shenwang), one of the ten Spirit Kings",
+          "marker": "9",
+          "style": "Circle",
+          "position": [
+            -151.7669516,
+            -332.74122,
+            53.8814708
+          ],
+          "direction": [
+            -0.512678,
+            -0.0508764,
+            0.8570723
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "ELDyp7AvKp8A",
+          "title": "Evidence of recarving",
+          "lead": "This area exemplifies a recarved surface of the Cosmic Buddha. On the opposite side of the figure the hotspot \"Weathering of the carved surface\" provides a clear comparison between the original and recarved stone.",
+          "marker": "10",
+          "articleId": "7wO1bn2Rv1sv",
+          "style": "Circle",
+          "position": [
+            -275.5768782,
+            78.6457415,
+            -24.1351144
+          ],
+          "direction": [
+            -0.9852081,
+            -0.058877,
+            0.1609304
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "gqqIikqWqwFW",
+          "title": "Low relief carving",
+          "lead": "Scene on front waist where edges of the low relief carving are less sharp and more polished due to damage caused largely by the rubbing process previously used to document the Cosmic Buddha over its many years.",
+          "marker": "11",
+          "articleId": "whdS0frOzoj7",
+          "style": "Circle",
+          "position": [
+            -2.6480884,
+            75.1580333,
+            101.5650342
+          ],
+          "direction": [
+            -0.0352524,
+            -0.1292588,
+            0.9909841
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "ipY7KqBh9Rlz",
+          "title": "Weathering of the carved surface",
+          "lead": "Natural weathering, which occurred after the sculpture was carved, has softened the details of the carving.",
+          "marker": "12",
+          "articleId": "3ElXEChj8IFz",
+          "style": "Circle",
+          "position": [
+            271.8943481,
+            -172.2424207,
+            -11.4253697
+          ],
+          "direction": [
+            0.9986954,
+            -0.0509139,
+            -0.0039165
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "Y1KN8HQHKaxT",
+          "title": "Missing left mudra",
+          "lead": "Though the original pendant hand of this sculpture is missing, we can use clues from similar sculptures of the time to guess how it might have have looked.",
+          "marker": "13",
+          "articleId": "HooiFeovVYg1",
+          "style": "Circle",
+          "position": [
+            282.5158062,
+            255.2101155,
+            70.5285414
+          ],
+          "direction": [
+            -0.1854783,
+            0.0039463,
+            0.9826404
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "hb510v7LTxBi",
+          "title": "Petrographic analysis",
+          "lead": "Samples were taken from the Cosmic Buddha to study using thin section petrography.",
+          "marker": "14",
+          "articleId": "ZFHDEFPcpBHj",
+          "style": "Circle",
+          "position": [
+            79.4969784,
+            -741.1712966,
+            -114.3575563
+          ],
+          "direction": [
+            0.332776,
+            -0.1683455,
+            -0.9278577
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "vrOVWjMAX4sd",
+          "title": "Paint remains",
+          "lead": "Beige clay-based paint over a ground layer on the back of the Cosmic Buddha",
+          "marker": "15",
+          "articleId": "CmsXVszD1Smd",
+          "style": "Circle",
+          "position": [
+            142.7865108,
+            -455.704696,
+            -110.7506995
+          ],
+          "direction": [
+            0.0820695,
+            -0.0117242,
+            -0.9965576
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "HmyOWZC6hF5c",
+          "title": "Weathering of the stone surface",
+          "lead": "The Buddha’s surface is substantially weathered, which would be expected for a sculpture exposed to the natural elements or buried in soil for centuries.",
+          "marker": "16",
+          "articleId": "uG2HCyupM3x2",
+          "style": "Circle",
+          "position": [
+            -23.3037848,
+            432.8531994,
+            -155.2274631
+          ],
+          "direction": [
+            -0.0039165,
+            -0.0509142,
+            -0.9986954
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "vsAZ6rgBXZFM",
+          "title": "Summit of Sumeru",
+          "lead": "Sumeru, “wonderful [mount] Meru”",
+          "marker": "17",
+          "style": "Circle",
+          "position": [
+            18.0369965,
+            498.1543179,
+            70.0208282
+          ],
+          "direction": [
+            0.0196027,
+            0.0117616,
+            0.9997387
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "vYePIXOm7wTe",
+          "title": "Devas of Trayashrimsha",
+          "lead": "The 8 figures to the left and right of the Historical Buddha Shakyamuni are Devas of Trayashrimsha",
+          "marker": "18",
+          "style": "Circle",
+          "position": [
+            -66.1226299,
+            572.513358,
+            58.8939073
+          ],
+          "direction": [
+            -0.1692612,
+            0.1613886,
+            0.9722676
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "Y681KKIP5toK",
+          "title": "Historical Buddha Shakyamuni",
+          "lead": "The Historical Buddha Shakyamunihe is depicted seated on a lotus, his right hand is raised in a gesture of teaching (vitarka mudra) while his left hand rests in his lap with the palm upwards.",
+          "marker": "19",
+          "style": "Circle",
+          "position": [
+            11.1796876,
+            617.6072141,
+            55.0197393
+          ],
+          "direction": [
+            0.0274911,
+            0.2709843,
+            0.9621911
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "QVCuzRnYj1fR",
+          "title": "Apsaras",
+          "lead": "The four figures surrounding the scene on the summit of Sumeru are Apsaras.",
+          "marker": "20",
+          "style": "Circle",
+          "position": [
+            120.3874966,
+            694.3813764,
+            4.7987299
+          ],
+          "direction": [
+            0.2151016,
+            0.4966891,
+            0.8408515
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        },
+        {
+          "id": "3gqC9GgNFFSu",
+          "title": "The Six Realms of Existence in Buddhist cosmology",
+          "lead": "The scenes on the front of the sculpture depict units of the Realm of Desire (Kamadhatu), one of three Buddhist worlds. The Realm of Desire ranges from the underworld to heaven.",
+          "marker": "21",
+          "articleId": "HHbxRH8bGgbz",
+          "style": "Circle",
+          "position": [
+            -11.0630998,
+            696.8314343,
+            18.1154525
+          ],
+          "direction": [
+            -0.0195727,
+            0.6067524,
+            0.7946499
+          ],
+          "scale": 10,
+          "color": [
+            0,
+            0.61,
+            0.87
+          ]
+        }
+      ]
+    }
+  ],
+  "metas": [
+    {
+      "images": [
+        {
+          "uri": "scene-image-low.jpg",
+          "quality": "Low",
+          "byteSize": 46095,
+          "width": 640,
+          "height": 640
+        },
+        {
+          "uri": "scene-image-thumb.jpg",
+          "quality": "Thumb",
+          "byteSize": 13257,
+          "width": 320,
+          "height": 320
+        },
+        {
+          "uri": "scene-image-medium.jpg",
+          "quality": "Medium",
+          "byteSize": 172359,
+          "width": 1280,
+          "height": 1280
+        },
+        {
+          "uri": "scene-image-high.jpg",
+          "quality": "High",
+          "byteSize": 642648,
+          "width": 2560,
+          "height": 2560
+        }
+      ],
+      "articles": [
+        {
+          "id": "PcmBwgHYoxqM",
+          "uri": "articles/article-00.html",
+          "title": "Identifying missing mudras: Proper right hand"
+        },
+        {
+          "id": "RorUMlRllhnY",
+          "uri": "articles/article-01.html",
+          "title": "Stone material of the Cosmic Buddha"
+        },
+        {
+          "id": "a2RmP4H56ufC",
+          "uri": "articles/article-02.html",
+          "title": "Conservation treatment history at the Freer Gallery of Art"
+        },
+        {
+          "id": "7wO1bn2Rv1sv",
+          "uri": "articles/article-03.html",
+          "title": "Evidence of recarving"
+        },
+        {
+          "id": "whdS0frOzoj7",
+          "uri": "articles/article-04.html",
+          "title": "Carving of the narrative scenes"
+        },
+        {
+          "id": "3ElXEChj8IFz",
+          "uri": "articles/article-05.html",
+          "title": "Weathering of the carved surface"
+        },
+        {
+          "id": "HooiFeovVYg1",
+          "uri": "articles/article-06.html",
+          "title": "Identifying missing mudras: Proper left hand"
+        },
+        {
+          "id": "ZFHDEFPcpBHj",
+          "uri": "articles/article-07.html",
+          "title": "Characterizing the Cosmic Buddha's limestone using petrographic analysis"
+        },
+        {
+          "id": "CmsXVszD1Smd",
+          "uri": "articles/article-08.html",
+          "title": "Looking for paint remains"
+        },
+        {
+          "id": "uG2HCyupM3x2",
+          "uri": "articles/article-09.html",
+          "title": "Weathering of the stone surface"
+        },
+        {
+          "id": "HHbxRH8bGgbz",
+          "uri": "articles/article-10.html",
+          "title": "The Six Realms of Existence in Buddhist cosmology"
+        }
+      ]
+    },
+    {
+      "collection": {
+        "edanRecordId": "edanmdm:fsg_F1923.15",
+        "edanEntry": "{\"id\":\"edanmdm-fsg_F1923.15\",\"title\":\"Buddha draped in robes portraying the Realms of Existence\",\"unitCode\":\"FSG\",\"linkedId\":\"0\",\"type\":\"edanmdm\",\"url\":\"edanmdm:fsg_F1923.15\",\"content\":{\"descriptiveNonRepeating\":{\"record_ID\":\"fsg_F1923.15\",\"online_media\":{\"mediaCount\":4,\"media\":[{\"thumbnail\":\"http://ids.si.edu/ids/deliveryService?id=FS-F1923.15_001\",\"idsId\":\"FS-F1923.15_001\",\"usage\":{\"access\":\"CC0\"},\"guid\":\"http://n2t.net/ark:/65665/jy5e171b987-23d1-42db-a159-58ba261e638d\",\"type\":\"Images\",\"content\":\"http://ids.si.edu/ids/deliveryService?id=FS-F1923.15_001\"},{\"thumbnail\":\"http://ids.si.edu/ids/deliveryService?id=FS-F1923.15_002\",\"idsId\":\"FS-F1923.15_002\",\"usage\":{\"access\":\"CC0\"},\"guid\":\"http://n2t.net/ark:/65665/jy52462f1f1-8a20-4dff-a020-68f962a53e40\",\"type\":\"Images\",\"content\":\"http://ids.si.edu/ids/deliveryService?id=FS-F1923.15_002\"},{\"thumbnail\":\"http://ids.si.edu/ids/deliveryService?id=FS-F1923.15_003\",\"idsId\":\"FS-F1923.15_003\",\"usage\":{\"access\":\"CC0\"},\"guid\":\"http://n2t.net/ark:/65665/jy5ad5ef71b-9e27-422d-a83e-a4ee90b2e364\",\"type\":\"Images\",\"content\":\"http://ids.si.edu/ids/deliveryService?id=FS-F1923.15_003\"},{\"thumbnail\":\"http://ids.si.edu/ids/deliveryService?id=FS-F1923.15_004\",\"idsId\":\"FS-F1923.15_004\",\"usage\":{\"access\":\"CC0\"},\"guid\":\"http://n2t.net/ark:/65665/jy52f2ba29c-da43-4496-9764-c3acf772b378\",\"type\":\"Images\",\"content\":\"http://ids.si.edu/ids/deliveryService?id=FS-F1923.15_004\"}]},\"unit_code\":\"FSG\",\"title_sort\":\"BUDDHA DRAPED IN ROBES PORTRAYING THE REALMS OF EXISTENCE\",\"guid\":\"http://n2t.net/ark:/65665/ye3d128549e-c5d1-425d-83f3-5b2de9bb0f63\",\"record_link\":\"https://www.freersackler.si.edu/object/F1923.15/\",\"title\":{\"label\":\"Title\",\"content\":\"Buddha draped in robes portraying the Realms of Existence\"},\"metadata_usage\":{\"access\":\"CC0\"},\"data_source\":\"Freer Gallery of Art and Arthur M. Sackler Gallery\"},\"indexedStructured\":{\"date\":[\"500s\"],\"exhibition\":[{\"exhibitionTitle\":\"Freer Gallery 17: Promise of Paradise: Ancient Chinese Buddhist Sculpture\",\"building\":\"Freer\",\"room\":\"Gallery 17\"}],\"object_type\":[\"Sculpture (visual work)\",\"Stone (rock)\"],\"geoLocation\":[{\"L1\":{\"type\":\"Continent\",\"content\":\" Asia\"},\"L2\":{\"type\":\"Country\",\"content\":\"China\"}}],\"culture\":[\"Buddhists\",\"Naga (South Asian people)\",\"Chinese\"],\"name\":[\"buddha\",\"Taku, Shanfang\"],\"onPhysicalExhibit\":[\"Yes\"],\"topic\":[\"Vairocana Buddha\",\"Sui dynasty (581 - 618)\",\"Heaven\",\"Mount Meru\",\"Art\",\"Chinese Art\",\"Lotus Sutra\",\"Hell\"],\"place\":[\"China\",\"Henan province\"],\"online_media_type\":[\"Images\"]},\"freetext\":{\"setName\":[{\"label\":\"Related Online Resources\",\"content\":\"Google Cultural Institute\"},{\"label\":\"See more items in\",\"content\":\"Freer Gallery of Art and Arthur M. Sackler Gallery Collection\"},{\"label\":\"On View\",\"content\":\"Freer Gallery 17: Promise of Paradise: Ancient Chinese Buddhist Sculpture\"}],\"date\":[{\"label\":\"Date\",\"content\":\"550-577\"},{\"label\":\"Period\",\"content\":\"Northern Qi dynasty\"}],\"identifier\":[{\"label\":\"Accession Number\",\"content\":\"F1923.15\"}],\"notes\":[{\"label\":\"Previous custodian or owner\",\"content\":\"Taku Shanfang\"},{\"label\":\"Provenance\",\"content\":\"To 1923\"},{\"label\":\"Provenance\",\"content\":\"Taku Shanfang, Beijing to 1923 [1]\"},{\"label\":\"Provenance\",\"content\":\"From 1923\"},{\"label\":\"Provenance\",\"content\":\"Freer Gallery of Art, purchased from Taku Shanfang, Beijing by Carl Whiting Bishop on December 24, 1923 [2]\"},{\"label\":\"Provenance\",\"content\":\"Notes:\"},{\"label\":\"Provenance\",\"content\":\"[1] Object file, folder sheet note #1.\"},{\"label\":\"Provenance\",\"content\":\"[2] See note 1. Also see Original Bishop List, No. S-9, Freer Gallery of Art and Arthur M. Sackler Gallery Archives.\"}],\"creditLine\":[{\"label\":\"Credit Line\",\"content\":\"Purchase — Charles Lang Freer Endowment\"}],\"topic\":[{\"label\":\"Topic\",\"content\":\"Buddhism\"},{\"label\":\"Topic\",\"content\":\"Buddha\"},{\"label\":\"Topic\",\"content\":\"Sui dynasty (581 - 618)\"},{\"label\":\"Topic\",\"content\":\"naga\"},{\"label\":\"Topic\",\"content\":\"hell\"},{\"label\":\"Topic\",\"content\":\"heaven\"},{\"label\":\"Topic\",\"content\":\"China\"},{\"label\":\"Topic\",\"content\":\"Vairocana Buddha\"},{\"label\":\"Topic\",\"content\":\"Mount Meru\"},{\"label\":\"Topic\",\"content\":\"Lotus Sutra\"},{\"label\":\"Topic\",\"content\":\"Chinese Art\"}],\"place\":[{\"label\":\"Origin\",\"content\":\"probably Henan province, China\"}],\"physicalDescription\":[{\"label\":\"Medium\",\"content\":\"Limestone\"},{\"label\":\"Dimensions\",\"content\":\"H x W x D: 151.3 x 62.9 x 31.3 cm (59 9/16 x 24 3/4 x 12 5/16 in)\"},{\"label\":\"Dimensions\",\"content\":\"Weight (without concrete base): 818.5 pounds\"}],\"dataSource\":[{\"label\":\"Data Source\",\"content\":\"Freer Gallery of Art and Arthur M. Sackler Gallery\"}],\"objectRights\":[{\"label\":\"Restrictions & Rights\",\"content\":\"Copyright with museum\"}],\"objectType\":[{\"label\":\"Type\",\"content\":\"Sculpture\"},{\"label\":\"Type\",\"content\":\"Stone\"}]}},\"hash\":\"3175ee6dc33c7dfe820af925e511242b7dadb529\",\"docSignature\":\"0987dbab63a0eae78c1a714bdd2381881c183540_28cbbfd86089ce8d8c5efc6675c3c1cf\",\"timestamp\":\"1579943504\",\"lastTimeUpdated\":\"1579943486\",\"status\":0,\"version\":\"\",\"publicSearch\":true,\"linkedContent\":{}}",
+        "title": "Buddha draped in robes portraying the Realms of Existence",
+        "titles": {
+          "EN": "Buddha draped in robes portraying the Realms of Existence"
+        }
+      },
+      "articles": [
+        {
+          "id": "uFOESOA9g7nz",
+          "uri": "articles/article-11.html",
+          "title": "Buddhas"
+        },
+        {
+          "id": "TX9D2DGfuv5V",
+          "uri": "articles/article-12.html",
+          "title": "Buddha Dipankara"
+        },
+        {
+          "id": "gVnfh6WixOgH",
+          "uri": "articles/article-13.html",
+          "title": "Shakyamuni and Ashoka"
+        },
+        {
+          "id": "2J8nbhLp6jZX",
+          "uri": "articles/article-14.html",
+          "title": "Shakyamuni in the Amra Gardens"
+        },
+        {
+          "id": "8qdgRWLjdh7V",
+          "uri": "articles/article-15.html",
+          "title": "Shakyamuni in Trayastrimsha Heaven"
+        },
+        {
+          "id": "HXohJeA8sRb1",
+          "uri": "articles/article-16.html",
+          "title": "Bodhisattva Maitreya, Buddha of the Future, in Tushita Heaven"
+        },
+        {
+          "id": "Wv3r6LAkXTsI",
+          "uri": "articles/article-17.html",
+          "title": "Christmas Eve 1923"
+        },
+        {
+          "id": "9hdxl2Ap1Epg",
+          "uri": "articles/article-18.html",
+          "title": "Carl Whiting Bishop"
+        },
+        {
+          "id": "ar4fyVjhFC4p",
+          "uri": "articles/article-19.html",
+          "title": "Chinese Buddhist Sculpture in the Opening Installation at the Freer Gallery of Art in May 1923"
+        },
+        {
+          "id": "3RA3uraYjbcl",
+          "uri": "articles/article-20.html",
+          "title": "Metal Rod Added at the Neck"
+        },
+        {
+          "id": "5ZzcBHRUdcwi",
+          "uri": "articles/article-21.html",
+          "title": "Ink Stains"
+        },
+        {
+          "id": "e82WzRHxXjkY",
+          "uri": "articles/article-22.html",
+          "title": "Ink Stains"
+        },
+        {
+          "id": "nyFQzb0vLyZ3",
+          "uri": "articles/article-23.html",
+          "title": "Base Extension"
+        },
+        {
+          "id": "mTGo0okDKlwW",
+          "uri": "articles/article-24.html",
+          "title": "Vimalakirti Nirdesha Sutra"
+        },
+        {
+          "id": "6HyCtIGyd9Ga",
+          "uri": "articles/article-25.html",
+          "title": "Shakyamuni, the Historical Buddha, and His Visit to Vaishali to See Vimalakirti"
+        },
+        {
+          "id": "konuIWuS32fp",
+          "uri": "articles/article-26.html",
+          "title": "Vimalakirti and the Bodhisattva Manjushri"
+        },
+        {
+          "id": "fIdAfst9Skqa",
+          "uri": "articles/article-27.html",
+          "title": "Shariputra and the Goddess"
+        },
+        {
+          "id": "STYnmrdanbbu",
+          "uri": "articles/article-28.html",
+          "title": "Serving Fragrant Rice"
+        },
+        {
+          "id": "zxqXwPMRA59r",
+          "uri": "articles/article-29.html",
+          "title": "Vairochana, the Cosmic Buddha "
+        },
+        {
+          "id": "HooiFeovVYg1",
+          "uri": "articles/article-06.html",
+          "title": "Identifying missing mudras: Proper left hand"
+        },
+        {
+          "id": "PcmBwgHYoxqM",
+          "uri": "articles/article-00.html",
+          "title": "Identifying missing mudras: Proper right hand"
+        },
+        {
+          "id": "zxqXwPMRA59r",
+          "uri": "articles/article-29.html",
+          "title": "Vairochana, the Cosmic Buddha "
+        },
+        {
+          "id": "a2RmP4H56ufC",
+          "uri": "articles/article-02.html",
+          "title": "Conservation treatment history at the Freer Gallery of Art"
+        },
+        {
+          "id": "cmFrmZk1sWcR",
+          "uri": "articles/article-30.html",
+          "title": "Effect of Traditional Chinese Ink Rubbing on Sculpture"
+        },
+        {
+          "id": "zxqXwPMRA59r",
+          "uri": "articles/article-29.html",
+          "title": "Vairochana, the Cosmic Buddha "
+        },
+        {
+          "id": "whdS0frOzoj7",
+          "uri": "articles/article-04.html",
+          "title": "Carving of the narrative scenes"
+        },
+        {
+          "id": "z66j8p1wm4gR",
+          "uri": "articles/article-31.html",
+          "title": "Evidence of tools used to carve the Cosmic Buddha's scenes"
+        },
+        {
+          "id": "3ElXEChj8IFz",
+          "uri": "articles/article-05.html",
+          "title": "Weathering of the carved surface"
+        },
+        {
+          "id": "CmsXVszD1Smd",
+          "uri": "articles/article-08.html",
+          "title": "Looking for paint remains"
+        },
+        {
+          "id": "zxqXwPMRA59r",
+          "uri": "articles/article-29.html",
+          "title": "Vairochana, the Cosmic Buddha "
+        },
+        {
+          "id": "RorUMlRllhnY",
+          "uri": "articles/article-01.html",
+          "title": "Stone material of the Cosmic Buddha"
+        },
+        {
+          "id": "ZFHDEFPcpBHj",
+          "uri": "articles/article-07.html",
+          "title": "Characterizing the Cosmic Buddha's limestone using petrographic analysis"
+        },
+        {
+          "id": "uG2HCyupM3x2",
+          "uri": "articles/article-09.html",
+          "title": "Weathering of the stone surface"
+        },
+        {
+          "id": "ohfiMqC08Pu7",
+          "uri": "articles/article-32.html",
+          "title": "Is the Cosmic Buddha's stone similar to other Buddhist sculpture?"
+        },
+        {
+          "id": "rZ3OlR1zijUH",
+          "uri": "articles/article-33.html",
+          "title": "Where did the stone come from, and where was it carved?"
+        },
+        {
+          "id": "g21JkXcfmiUs",
+          "uri": "articles/setting-the-scene.html",
+          "title": "Setting the Scene"
+        },
+        {
+          "id": "Ffk05mPpUX1M",
+          "uri": "articles/early-chinese-illustrations-of-stories.html",
+          "title": "Early Chinese Illustrations of Stories"
+        },
+        {
+          "id": "D1FshG1Y9zpt",
+          "uri": "articles/missing-head-and-hands.html",
+          "title": "Missing Head and Hands",
+          "lead": "Why are the head and hands of this sculpture missing?"
+        },
+        {
+          "id": "1FtUeM7jfpgm",
+          "uri": "articles/traditional-chinese-methods-of-repair.html",
+          "title": "Traditional Chinese methods of repair"
+        }
+      ]
+    }
+  ],
+  "setups": [
+    {
+      "interface": {
+        "visible": true,
+        "logo": true,
+        "menu": true,
+        "tools": true
+      },
+      "reader": {
+        "enabled": false,
+        "position": "Right"
+      },
+      "viewer": {
+        "shader": "Default",
+        "exposure": 1.5612865,
+        "gamma": 2
+      },
+      "navigation": {
+        "enabled": true,
+        "autoZoom": true,
+        "autoRotation": false,
+        "lightsFollowCamera": false,
+        "type": "Orbit",
+        "orbit": {
+          "orbit": [
+            -10.2678076,
+            6.7041015,
+            0
+          ],
+          "offset": [
+            1.8E-06,
+            0.0846913,
+            182.41571
+          ],
+          "minOrbit": [
+            -90,
+            null,
+            null
+          ],
+          "maxOrbit": [
+            90,
+            null,
+            null
+          ],
+          "minOffset": [
+            null,
+            null,
+            0.1
+          ],
+          "maxOffset": [
+            null,
+            null,
+            10000
+          ]
+        }
+      },
+      "background": {
+        "style": "RadialGradient",
+        "color0": [
+          0.2,
+          0.25,
+          0.3
+        ],
+        "color1": [
+          0.01,
+          0.03,
+          0.05
+        ]
+      },
+      "floor": {
+        "visible": false,
+        "position": [
+          0,
+          -25,
+          0
+        ],
+        "size": 50,
+        "color": [
+          0.6,
+          0.75,
+          0.8
+        ],
+        "opacity": 0.5,
+        "receiveShadow": false
+      },
+      "grid": {
+        "visible": false,
+        "color": [
+          0.5,
+          0.7,
+          0.8
+        ]
+      },
+      "tape": {
+        "enabled": false,
+        "startPosition": [
+          0,
+          0,
+          0
+        ],
+        "startDirection": [
+          0,
+          0,
+          0
+        ],
+        "endPosition": [
+          0,
+          0,
+          0
+        ],
+        "endDirection": [
+          0,
+          0,
+          0
+        ]
+      },
+      "slicer": {
+        "enabled": false,
+        "axis": "X",
+        "position": 0.5,
+        "inverted": false
+      },
+      "tours": [
+        {
+          "steps": [
+            {
+              "id": "Y2yxmq",
+              "titles": {
+                "EN": "Buddhas"
+              }
+            },
+            {
+              "id": "E0bG4g",
+              "titles": {
+                "EN": "Buddha Dipankara"
+              }
+            },
+            {
+              "id": "VNnQQC",
+              "titles": {
+                "EN": "Shakyamuni and Ashoka"
+              }
+            },
+            {
+              "id": "6UsyJa",
+              "titles": {
+                "EN": " Shakyamuni in the Amra Gardens"
+              }
+            },
+            {
+              "id": "yZ0yR1",
+              "titles": {
+                "EN": "Shakyamuni in Trayastrimsha Heaven"
+              }
+            },
+            {
+              "id": "P2EZMC",
+              "titles": {
+                "EN": "Bodhisattva Maitreya, Buddha of the Future, in Tushita Heaven"
+              }
+            }
+          ],
+          "title": "Buddhas on the Buddha",
+          "lead": "Among the hundreds of figures carved on the Cosmic Buddha are depictions of Dipankara (Buddha of the Distant Past), Shakyamuni (the Historical Buddha), and the bodhisattva Maitreya, the Buddha of the Future. They are often called “Buddhas of the Three Eras” in Chinese Buddhism."
+        },
+        {
+          "steps": [
+            {
+              "id": "J1PIkG",
+              "titles": {
+                "EN": "Christmas Eve 1923"
+              }
+            },
+            {
+              "id": "UpuXpe",
+              "titles": {
+                "EN": "Carl Whiting Bishop"
+              }
+            },
+            {
+              "id": "kH217v",
+              "titles": {
+                "EN": "Chinese Buddhist Sculpture in the Opening Installation at the Freer Gallery of Art in May 1923"
+              }
+            },
+            {
+              "id": "QmB84D",
+              "titles": {
+                "EN": "Metal Rod Added at the Neck"
+              }
+            },
+            {
+              "id": "K4MTgY",
+              "titles": {
+                "EN": "Ink Stains"
+              }
+            },
+            {
+              "id": "TE6u88",
+              "titles": {
+                "EN": "Ink Stains"
+              }
+            },
+            {
+              "id": "iyOoAZ",
+              "titles": {
+                "EN": "Base Extension"
+              }
+            }
+          ],
+          "title": "1923",
+          "lead": "This tour shares archival photographs taken in 1923 to discuss the purchase of the sculpture in Beijing, the condition of its surface when it arrived in Washington, and its place in the Freer Gallery’s collection."
+        },
+        {
+          "steps": [
+            {
+              "id": "NtPTKU",
+              "titles": {
+                "EN": "Vimalakirti Nirdesha Sutra"
+              }
+            },
+            {
+              "id": "v5IVL4",
+              "titles": {
+                "EN": "Setting the Scene"
+              }
+            },
+            {
+              "id": "oM5MIT",
+              "titles": {
+                "EN": "Shakyamuni, the Historical Buddha, and His Visit to Vaishali to See Vimalakirti"
+              }
+            },
+            {
+              "id": "g0Jjfw",
+              "titles": {
+                "EN": "Vimalakirti and the Bodhisattva Manjushri"
+              }
+            },
+            {
+              "id": "RXMTpK",
+              "titles": {
+                "EN": "Shariputra and the Goddess"
+              }
+            },
+            {
+              "id": "qmTkFy",
+              "titles": {
+                "EN": "Serving Fragrant Rice"
+              }
+            },
+            {
+              "id": "8FSLSJ",
+              "titles": {
+                "EN": "Conclusion"
+              }
+            }
+          ],
+          "title": "Vimalakirti Nirdesha",
+          "lead": "One of the most complex narrative scenes on the surface of the Cosmic Buddha illustrates the popular Vimalakirti Nirdesha sutra which recounts a meeting between Manjushri, the bodhisattva of wisdom, and the Buddhist layman Vimalakirti."
+        },
+        {
+          "steps": [
+            {
+              "id": "mYHGtV",
+              "titles": {
+                "EN": "Missing Appendages"
+              }
+            },
+            {
+              "id": "2CrA3G",
+              "titles": {
+                "EN": "Vairochana, The Cosmic Buddha"
+              }
+            },
+            {
+              "id": "P5urob",
+              "titles": {
+                "EN": "Traditional Methods of Repair"
+              }
+            },
+            {
+              "id": "TwqKvz",
+              "titles": {
+                "EN": "Missing left hand"
+              }
+            },
+            {
+              "id": "fo4G7M",
+              "titles": {
+                "EN": "Missing right hand"
+              }
+            }
+          ],
+          "title": "Missing features and absent mudras",
+          "lead": "This sculpture was damaged sometime in the past 1500 years resulting in the loss of its original head and hands. Now, it is only possible to suggest its original symbolic hand gestures (known as mudras in Sanskrit) through comparisons with other sculptures."
+        },
+        {
+          "steps": [
+            {
+              "id": "KX9a8M",
+              "titles": {
+                "EN": "Introduction"
+              }
+            },
+            {
+              "id": "1oOq0P",
+              "titles": {
+                "EN": "Conservation treatment history"
+              }
+            },
+            {
+              "id": "njfk9c",
+              "titles": {
+                "EN": "Detail in 3D"
+              }
+            }
+          ],
+          "title": "Conservation of the Cosmic Buddha",
+          "lead": "A look into conservation of the Cosmic Buddha "
+        },
+        {
+          "steps": [
+            {
+              "id": "cJasNt",
+              "titles": {
+                "EN": "Introduction"
+              }
+            },
+            {
+              "id": "JV5IbY",
+              "titles": {
+                "EN": "Carving of the narrative scenes"
+              }
+            },
+            {
+              "id": "ws86G0",
+              "titles": {
+                "EN": "Evidence of tools used to carve the Cosmic Buddha’s scenes"
+              }
+            },
+            {
+              "id": "BOdIy5",
+              "titles": {
+                "EN": "Weathering of the carved surface"
+              }
+            },
+            {
+              "id": "JHJNry",
+              "titles": {
+                "EN": "Recarving"
+              }
+            },
+            {
+              "id": "u1qmGO",
+              "titles": {
+                "EN": "Recarved Surface"
+              }
+            },
+            {
+              "id": "TZGKP9",
+              "titles": {
+                "EN": "Looking for paint remains"
+              }
+            }
+          ],
+          "title": "Carving and painting the Cosmic Buddha",
+          "lead": "Look into the carved narritive of the Cosmic Budda with a conservation scientist's eye"
+        },
+        {
+          "steps": [
+            {
+              "id": "12K41C",
+              "titles": {
+                "EN": "Introduction"
+              }
+            },
+            {
+              "id": "kzNAN2",
+              "titles": {
+                "EN": "Stone material of the Cosmic Buddha"
+              }
+            },
+            {
+              "id": "ayKGtb",
+              "titles": {
+                "EN": "Characterizing the Cosmic Buddha’s limestone"
+              }
+            },
+            {
+              "id": "WFz2eF",
+              "titles": {
+                "EN": "Weathering of the stone surface"
+              }
+            },
+            {
+              "id": "wQ2ApL",
+              "titles": {
+                "EN": "Is the Cosmic Buddha’s stone similar to other Buddhist sculpture?"
+              }
+            },
+            {
+              "id": "rawWAc",
+              "titles": {
+                "EN": "Where did the stone come from, and where was it carved?"
+              }
+            }
+          ],
+          "title": "The stone of the Cosmic Buddha",
+          "lead": "An investigation into the fossiliferous limestone from which the Cosmic Buddha was carved."
+        }
+      ],
+      "snapshots": {
+        "features": [
+          "reader",
+          "viewer",
+          "navigation"
+        ],
+        "targets": [
+          "scenes/0/setup/reader/enabled",
+          "scenes/0/setup/reader/articleId",
+          "scenes/0/setup/navigation/orbit",
+          "scenes/0/setup/navigation/offset",
+          "scenes/0/setup/viewer/annotationsVisible",
+          "scenes/0/setup/viewer/activeAnnotation",
+          "scenes/0/setup/viewer/activeTags",
+          "scenes/0/setup/viewer/shader",
+          "scenes/0/setup/viewer/exposure"
+        ],
+        "states": [
+          {
+            "id": "Y2yxmq",
+            "values": [
+              true,
+              "uFOESOA9g7nz",
+              [
+                -4.2437867,
+                5.6052686,
+                0
+              ],
+              [
+                0,
+                1.1690819,
+                223.9544538
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "E0bG4g",
+            "values": [
+              true,
+              "TX9D2DGfuv5V",
+              [
+                -5.5780042,
+                -90.5777388,
+                0
+              ],
+              [
+                0,
+                26.0884723,
+                69.6285664
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "VNnQQC",
+            "values": [
+              true,
+              "gVnfh6WixOgH",
+              [
+                -11.413548,
+                -102.2488263,
+                0
+              ],
+              [
+                0,
+                48.002789,
+                82.6301932
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "6UsyJa",
+            "values": [
+              true,
+              "2J8nbhLp6jZX",
+              [
+                4.3026224,
+                -184.206913,
+                0
+              ],
+              [
+                -1.0370822,
+                10.3242599,
+                65.1633287
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "yZ0yR1",
+            "values": [
+              true,
+              "8qdgRWLjdh7V",
+              [
+                -8.5049821,
+                -0.2496074,
+                0
+              ],
+              [
+                -0.4005025,
+                54.7962308,
+                46.4636643
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "P2EZMC",
+            "values": [
+              true,
+              "HXohJeA8sRb1",
+              [
+                3.9990233,
+                -177.7041116,
+                0
+              ],
+              [
+                7.1623426,
+                40.9906312,
+                56.2542328
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "J1PIkG",
+            "values": [
+              true,
+              "Wv3r6LAkXTsI",
+              [
+                -15.2748241,
+                -1.0902631,
+                0
+              ],
+              [
+                0,
+                0,
+                168.2099161
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "UpuXpe",
+            "values": [
+              true,
+              "9hdxl2Ap1Epg",
+              [
+                -12.0634806,
+                22.8924849,
+                0
+              ],
+              [
+                0,
+                0,
+                193.7846692
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "kH217v",
+            "values": [
+              true,
+              "ar4fyVjhFC4p",
+              [
+                -21.1503506,
+                -40.4231828,
+                0
+              ],
+              [
+                0,
+                0,
+                179.1497836
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "QmB84D",
+            "values": [
+              true,
+              "3RA3uraYjbcl",
+              [
+                -28.8654775,
+                -3.8775284,
+                0
+              ],
+              [
+                -2.834431,
+                47.4133863,
+                73.4997279
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "K4MTgY",
+            "values": [
+              true,
+              "5ZzcBHRUdcwi",
+              [
+                -2.4857856,
+                -5.4704046,
+                0
+              ],
+              [
+                0,
+                15.6530834,
+                65.3987643
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "TE6u88",
+            "values": [
+              true,
+              "e82WzRHxXjkY",
+              [
+                -2.2562958,
+                -180.847318,
+                0
+              ],
+              [
+                -2.5828795,
+                48.1476526,
+                77.6930155
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "iyOoAZ",
+            "values": [
+              true,
+              "nyFQzb0vLyZ3",
+              [
+                -4.0965751,
+                -179.5663743,
+                0
+              ],
+              [
+                -1.5453123,
+                -43.0365342,
+                89.3903745
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "NtPTKU",
+            "values": [
+              true,
+              "mTGo0okDKlwW",
+              [
+                -9.5186088,
+                -177.0590591,
+                0
+              ],
+              [
+                4.8150102,
+                -1.2209763,
+                175.6942863
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "oM5MIT",
+            "values": [
+              true,
+              "6HyCtIGyd9Ga",
+              [
+                -4.0353853,
+                -180.6194791,
+                0
+              ],
+              [
+                -1.5796141,
+                5.6735868,
+                51.0220275
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "g0Jjfw",
+            "values": [
+              true,
+              "konuIWuS32fp",
+              [
+                1.2990399,
+                -186.1091136,
+                0
+              ],
+              [
+                -0.1563608,
+                -14.0605622,
+                51.9602179
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "RXMTpK",
+            "values": [
+              true,
+              "fIdAfst9Skqa",
+              [
+                -0.4856028,
+                -173.7946019,
+                0
+              ],
+              [
+                -3.1306167,
+                -20.8707778,
+                45.6725866
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 3,
+            "threshold": 0
+          },
+          {
+            "id": "qmTkFy",
+            "values": [
+              true,
+              "STYnmrdanbbu",
+              [
+                -7.723737,
+                -180.3923924,
+                0
+              ],
+              [
+                1.0435389,
+                -20.8707778,
+                31.8291515
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 3,
+            "threshold": 0
+          },
+          {
+            "id": "mYHGtV",
+            "values": [
+              true,
+              "D1FshG1Y9zpt",
+              [
+                -33.0050227,
+                28.3453903,
+                0
+              ],
+              [
+                0,
+                1.1690819,
+                187.5585849
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "2CrA3G",
+            "values": [
+              true,
+              "zxqXwPMRA59r",
+              [
+                -19.1169638,
+                6.3808911,
+                0
+              ],
+              [
+                0,
+                1.1690819,
+                174.4294839
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 3,
+            "threshold": 0
+          },
+          {
+            "id": "TwqKvz",
+            "values": [
+              true,
+              "HooiFeovVYg1",
+              [
+                3.1302276,
+                90.5785624,
+                0
+              ],
+              [
+                10.4353889,
+                25.0449334,
+                81.3568578
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 3,
+            "threshold": 0
+          },
+          {
+            "id": "fo4G7M",
+            "values": [
+              true,
+              "PcmBwgHYoxqM",
+              [
+                -21.32666,
+                -46.5278226,
+                0
+              ],
+              [
+                -12.5224667,
+                28.1755501,
+                85.9278115
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 3,
+            "threshold": 0
+          },
+          {
+            "id": "KX9a8M",
+            "values": [
+              true,
+              "zxqXwPMRA59r",
+              [
+                -18.9825507,
+                -4.9393437,
+                0
+              ],
+              [
+                0,
+                1.1690819,
+                248.9273357
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 3,
+            "threshold": 0
+          },
+          {
+            "id": "1oOq0P",
+            "values": [
+              true,
+              "a2RmP4H56ufC",
+              [
+                -6.7008055,
+                -4.0889712,
+                0
+              ],
+              [
+                21.3571031,
+                -4.7691676,
+                191.0391515
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 3,
+            "threshold": 0
+          },
+          {
+            "id": "njfk9c",
+            "values": [
+              true,
+              "cmFrmZk1sWcR",
+              [
+                -14.0669032,
+                -5.6952042,
+                0
+              ],
+              [
+                2.4441139,
+                3.2744206,
+                159.8960443
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 3,
+            "threshold": 0
+          },
+          {
+            "id": "cJasNt",
+            "values": [
+              true,
+              "zxqXwPMRA59r",
+              [
+                -6.906708,
+                -6.7082191,
+                0
+              ],
+              [
+                20.9507803,
+                -0.9736115,
+                169.5108585
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "JV5IbY",
+            "values": [
+              true,
+              "whdS0frOzoj7",
+              [
+                -6.0783552,
+                3.0775208,
+                0
+              ],
+              [
+                -2.8836764,
+                7.5139554,
+                40.1578643
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "ws86G0",
+            "values": [
+              true,
+              "z66j8p1wm4gR",
+              [
+                -4.4512335,
+                42.2434902,
+                0
+              ],
+              [
+                -2.7239524,
+                -2.0429643,
+                170.7010202
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "BOdIy5",
+            "values": [
+              true,
+              "3ElXEChj8IFz",
+              [
+                0.886155,
+                97.5510843,
+                0
+              ],
+              [
+                -0.7891796,
+                -13.70598,
+                52.6303859
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "TZGKP9",
+            "values": [
+              true,
+              "CmsXVszD1Smd",
+              [
+                3.9584002,
+                -187.2430463,
+                0
+              ],
+              [
+                -9.2913048,
+                -42.9122151,
+                47.7972913
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "12K41C",
+            "values": [
+              true,
+              "zxqXwPMRA59r",
+              [
+                -10.7179363,
+                0.4377036,
+                0
+              ],
+              [
+                0,
+                1.1690819,
+                262.9130691
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "kzNAN2",
+            "values": [
+              true,
+              "RorUMlRllhnY",
+              [
+                -34.0610378,
+                56.050932,
+                0
+              ],
+              [
+                0.9837097,
+                -63.7040696,
+                2.6584934
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "ayKGtb",
+            "values": [
+              true,
+              "ZFHDEFPcpBHj",
+              [
+                7.02284,
+                -175.2530808,
+                0
+              ],
+              [
+                -2.1533194,
+                -64.0426256,
+                49.7025499
+              ],
+              true,
+              "hb510v7LTxBi",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "WFz2eF",
+            "values": [
+              true,
+              "uG2HCyupM3x2",
+              [
+                -5.3982901,
+                -170.8465165,
+                0
+              ],
+              [
+                0.7824986,
+                34.90539,
+                51.3366051
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "wQ2ApL",
+            "values": [
+              true,
+              "ohfiMqC08Pu7",
+              [
+                -16.291392,
+                -22.8935846,
+                0
+              ],
+              [
+                0,
+                1.1690819,
+                169.9084802
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "rawWAc",
+            "values": [
+              true,
+              "rZ3OlR1zijUH",
+              [
+                -13.465022,
+                91.3536754,
+                0
+              ],
+              [
+                0,
+                1.1690819,
+                217.5852516
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutSine",
+            "duration": 5,
+            "threshold": 0
+          },
+          {
+            "id": "v5IVL4",
+            "values": [
+              true,
+              "g21JkXcfmiUs",
+              [
+                0.8100873,
+                -181.092747,
+                0
+              ],
+              [
+                -4.0007131,
+                -3.2234414,
+                73.5449777
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutQuad",
+            "duration": 5
+          },
+          {
+            "id": "8FSLSJ",
+            "values": [
+              true,
+              "Ffk05mPpUX1M",
+              [
+                -12.8584244,
+                13.4055044,
+                0
+              ],
+              [
+                0,
+                0,
+                206.1539034
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutQuad",
+            "duration": 5
+          },
+          {
+            "id": "P5urob",
+            "values": [
+              true,
+              "1FtUeM7jfpgm",
+              [
+                -4.0258211,
+                47.5289906,
+                0
+              ],
+              [
+                10.3026975,
+                15.4343554,
+                67.9044486
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutQuad",
+            "duration": 5
+          },
+          {
+            "id": "JHJNry",
+            "values": [
+              true,
+              "7wO1bn2Rv1sv",
+              [
+                4.9818997,
+                94.7504627,
+                0
+              ],
+              [
+                -0.6469447,
+                11.6979798,
+                54.6790159
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutQuad",
+            "duration": 3
+          },
+          {
+            "id": "u1qmGO",
+            "values": [
+              true,
+              "7wO1bn2Rv1sv",
+              [
+                -8.9225947,
+                -90.0248182,
+                0
+              ],
+              [
+                -3.9197773,
+                0.3639793,
+                54.6790159
+              ],
+              false,
+              "",
+              "",
+              0,
+              1
+            ],
+            "curve": "EaseOutQuad",
+            "duration": 5
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "animationCount": 1,
+  "categories": [
+    {
+      "uid": "2d643ff5ed03405b9c34ecdffff9d8d8",
+      "name": "Characters & Creatures",
+      "slug": "characters-creatures",
+      "uri": "https://api.sketchfab.com/v3/categories/2d643ff5ed03405b9c34ecdffff9d8d8",
+      "icon": "https://static.sketchfab.com/static/builds/web/dist/static/assets/images/icons/categories/f778c3dbe6efa00a06c257762c0e27ef-v2.svg",
+      "thumbnails": [
+        {
+          "width": "512",
+          "height": "288",
+          "url": "https://static.sketchfab.com/categories/2d643ff5ed03405b9c34ecdffff9d8d8/512x288.png"
+        },
+        {
+          "width": "800",
+          "height": "450",
+          "url": "https://static.sketchfab.com/categories/2d643ff5ed03405b9c34ecdffff9d8d8/800x450.png"
+        }
+      ]
+    }
+  ],
+  "commentCount": 8,
+  "createdAt": "2021-05-23T18:23:07.065767",
+  "embedUrl": "https://sketchfab.com/models/1091b3ee172f4951aaeafa2581f9de1d/embed",
+  "faceCount": 128026,
+  "isAgeRestricted": false,
+  "license": {
+    "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+    "label": "CC Attribution",
+    "fullName": "Creative Commons Attribution",
+    "requirements": "Author must be credited. Commercial use is allowed.",
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "slug": "by"
+  },
+  "likeCount": 417,
+  "name": "Ghost Girl Animated",
+  "publishedAt": "2021-05-23T19:15:57.672096",
+  "soundCount": 0,
+  "staffpickedAt": null,
+  "tags": [
+    {
+      "name": "samara",
+      "slug": "samara",
+      "uri": "https://api.sketchfab.com/v3/tags/samara"
+    },
+    {
+      "name": "ghostgirl",
+      "slug": "ghostgirl",
+      "uri": "https://api.sketchfab.com/v3/tags/ghostgirl"
+    },
+    {
+      "name": "rigged-character",
+      "slug": "rigged-character",
+      "uri": "https://api.sketchfab.com/v3/tags/rigged-character"
+    },
+    {
+      "name": "character",
+      "slug": "character",
+      "uri": "https://api.sketchfab.com/v3/tags/character"
+    },
+    {
+      "name": "girl",
+      "slug": "girl",
+      "uri": "https://api.sketchfab.com/v3/tags/girl"
+    },
+    {
+      "name": "creature",
+      "slug": "creature",
+      "uri": "https://api.sketchfab.com/v3/tags/creature"
+    },
+    {
+      "name": "animated",
+      "slug": "animated",
+      "uri": "https://api.sketchfab.com/v3/tags/animated"
+    },
+    {
+      "name": "ghost",
+      "slug": "ghost",
+      "uri": "https://api.sketchfab.com/v3/tags/ghost"
+    },
+    {
+      "name": "rigged",
+      "slug": "rigged",
+      "uri": "https://api.sketchfab.com/v3/tags/rigged"
+    },
+    {
+      "name": "horror",
+      "slug": "horror",
+      "uri": "https://api.sketchfab.com/v3/tags/horror"
+    },
+    {
+      "name": "sombie",
+      "slug": "sombie",
+      "uri": "https://api.sketchfab.com/v3/tags/sombie"
+    }
+  ],
+  "thumbnails": {
+    "images": [
+      {
+        "uid": "22480e7e2a784d47a352490ccb480828",
+        "width": 1920,
+        "height": 1080,
+        "size": 118100,
+        "url": "https://media.sketchfab.com/models/1091b3ee172f4951aaeafa2581f9de1d/thumbnails/f5ec15c997124e3d980c1e08e720d3d2/3e0b60637f18427b8200c6e5db6de93b.jpeg"
+      },
+      {
+        "uid": "11b14d4355d14c3aaefeb3ecb479bf15",
+        "width": 1024,
+        "height": 576,
+        "size": 26803,
+        "url": "https://media.sketchfab.com/models/1091b3ee172f4951aaeafa2581f9de1d/thumbnails/f5ec15c997124e3d980c1e08e720d3d2/27b140ea1b82440285d801abf35608f0.jpeg"
+      },
+      {
+        "uid": "fb19ad65627b4d5eabe5bfcfac82d1bf",
+        "width": 720,
+        "height": 405,
+        "size": 13663,
+        "url": "https://media.sketchfab.com/models/1091b3ee172f4951aaeafa2581f9de1d/thumbnails/f5ec15c997124e3d980c1e08e720d3d2/847a0fb6820544f29c9131b845544194.jpeg"
+      },
+      {
+        "uid": "18a22b58ebd043f2940668d9f25571f5",
+        "width": 256,
+        "height": 144,
+        "size": 2671,
+        "url": "https://media.sketchfab.com/models/1091b3ee172f4951aaeafa2581f9de1d/thumbnails/f5ec15c997124e3d980c1e08e720d3d2/aed216963faa42fdab3c487e42285261.jpeg"
+      },
+      {
+        "uid": "2533068d5dc74875ae4afe4653635a05",
+        "width": 64,
+        "height": 36,
+        "size": 603,
+        "url": "https://media.sketchfab.com/models/1091b3ee172f4951aaeafa2581f9de1d/thumbnails/f5ec15c997124e3d980c1e08e720d3d2/4f4c81a235e54abe83893230c031ef9e.jpeg"
+      }
+    ]
+  },
+  "uid": "1091b3ee172f4951aaeafa2581f9de1d",
+  "uri": "https://api.sketchfab.com/v3/models/1091b3ee172f4951aaeafa2581f9de1d",
+  "user": {
+    "uid": "1c75a3771dae4e769ac9bbce4e5f71a2",
+    "username": "shabaninteractive",
+    "displayName": "Shaban Hafizsalim",
+    "account": "basic",
+    "profileUrl": "https://sketchfab.com/shabaninteractive",
+    "avatar": {
+      "uid": "47e7dcfa797b4551894d59ea3be9e9cf",
+      "uri": "https://api.sketchfab.com/v3/avatars/47e7dcfa797b4551894d59ea3be9e9cf",
+      "images": [
+        {
+          "width": 32,
+          "height": 32,
+          "size": 1042,
+          "url": "https://media.sketchfab.com/avatars/47e7dcfa797b4551894d59ea3be9e9cf/fafcaa3ac70e4c3aa3979f540e5beed8.jpeg"
+        },
+        {
+          "width": 48,
+          "height": 48,
+          "size": 1375,
+          "url": "https://media.sketchfab.com/avatars/47e7dcfa797b4551894d59ea3be9e9cf/b4ab0c173deb4b4999b7e1b567569628.jpeg"
+        },
+        {
+          "width": 90,
+          "height": 90,
+          "size": 2577,
+          "url": "https://media.sketchfab.com/avatars/47e7dcfa797b4551894d59ea3be9e9cf/07502ea7fa1945bc9767f413ccfe418d.jpeg"
+        },
+        {
+          "width": 100,
+          "height": 100,
+          "size": 2894,
+          "url": "https://media.sketchfab.com/avatars/47e7dcfa797b4551894d59ea3be9e9cf/98a70aa2ee4f46498e89f88ae1e47937.jpeg"
+        }
+      ]
+    },
+    "uri": "https://api.sketchfab.com/v3/users/1c75a3771dae4e769ac9bbce4e5f71a2"
+  },
+  "vertexCount": 91615,
+  "viewCount": 37939,
+  "viewerUrl": "https://sketchfab.com/3d-models/ghost-girl-animated-1091b3ee172f4951aaeafa2581f9de1d",
+  "isDownloadable": true,
+  "isProtected": false,
+  "description": "Ghost girl testing.",
+  "price": null,
+  "downloadCount": 8041,
+  "editorUrl": "https://sketchfab.com/models/1091b3ee172f4951aaeafa2581f9de1d/edit",
+  "status": {
+    "warning": {},
+    "processing": "SUCCEEDED"
+  },
+  "source": "website",
+  "hasCommentsDisabled": false,
+  "updatedAt": "2022-07-21T08:35:24.196797",
+  "pbrType": null,
+  "textureCount": 8,
+  "materialCount": 6
+}

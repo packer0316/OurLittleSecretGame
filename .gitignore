@@ -1,0 +1,13 @@
+node_modules/
+dist/
+shots/
+*.log
+artifacts/
+backups/
+art-direction/research-models/
+art-direction/objaverse-paths.json.gz
+art-direction/*preview*.jpg
+art-direction/*-gltf.json
+.env
+.env.*
+!.env.example

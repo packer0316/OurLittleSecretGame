@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>說好不說 — We Promised Not to Tell</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 fill=%22%23050506%22/><rect x=%224%22 y=%2212%22 width=%2224%22 height=%228%22 fill=%22%238f1712%22/></svg>" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <!-- 大廳 -->
+    <section id="lobby" class="screen">
+      <div class="lobby-bg"></div>
+      <div class="lobby-topline"><span>一九九八年的約定</span><span>慈雲寺 · 02:47 AM</span></div>
+      <header class="lobby-head">
+        <p class="eyebrow">WE PROMISED NOT TO TELL</p>
+        <h1>說好<span>不說</span></h1>
+        <p class="tagline">有些名字，<br>不是被遺忘。是被所有人一起藏了起來。</p>
+      </header>
+      <main class="lobby-main">
+        <div class="section-title"><span>那扇門，還在等你。</span></div>
+        <div id="map-list" class="map-list"></div>
+      </main>
+      <footer class="lobby-foot">
+        <div class="settings">
+          <label>滑鼠靈敏度 <input id="set-sens" type="range" min="0.3" max="2.5" step="0.05" value="1" /></label>
+          <label>音量 <input id="set-vol" type="range" min="0" max="1" step="0.05" value="0.8" /></label>
+          <label>畫質
+            <select id="set-quality">
+              <option value="low">低</option>
+              <option value="medium" selected>中</option>
+              <option value="high">高</option>
+            </select>
+          </label>
+        </div>
+        <div class="keys">
+          <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移動</span>
+          <span><kbd>Shift</kbd> 奔跑</span>
+          <span><kbd>Ctrl</kbd> 蹲下</span>
+          <span><kbd>F</kbd> 手電筒</span>
+          <span><kbd>E</kbd> 調查</span>
+          <span><kbd>J</kbd> 筆記</span>
+          <span><kbd>Esc</kbd> 暫停</span>
+        </div>
+        <p class="notice">台灣民俗懸疑 · 第一人稱故事　／　建議使用耳機・字幕敘事版　／　<a href="./assets/CREDITS.html" target="_blank" rel="noopener">素材與製作名單</a></p>
+      </footer>
+    </section>
+
+    <!-- 載入中 -->
+    <section id="loading" class="screen hidden">
+      <div class="loading-box">
+        <p id="loading-title" class="loading-title">慈雲寺</p>
+        <div class="bar"><div id="loading-bar"></div></div>
+        <p id="loading-label" class="loading-label">載入中…</p>
+        <p class="loading-tip">如果有人叫你的名字，別急著回答。</p>
+      </div>
+    </section>
+
+    <!-- 點擊開始 / 暫停 -->
+    <section id="overlay" class="screen hidden">
+      <div class="overlay-box">
+        <h2 id="overlay-title">點擊畫面開始</h2>
+        <p id="overlay-sub">滑鼠將被鎖定以控制視角</p>
+        <div class="overlay-actions">
+          <button id="btn-resume" class="btn primary">進入</button>
+          <button id="btn-lobby" class="btn">返回大廳</button>
+        </div>
+        <p class="pause-help">E 調查 · J 筆記 · F 手電筒<br>探索進度自動保存於本機瀏覽器</p>
+        <div class="overlay-keys">
+          <span><kbd>L</kbd> 全亮（驗證地圖用）</span>
+          <span><kbd>V</kbd> 飛行穿牆</span>
+          <span><kbd>P</kbd> 座標資訊</span>
+          <span><kbd>1</kbd>–<kbd>7</kbd> 傳送到各區域</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 遊戲中 HUD -->
+    <div id="hud" class="hidden">
+      <div class="crosshair"></div>
+      <div id="zone" class="zone"></div>
+      <div id="intro" class="intro"></div>
+      <div id="hint" class="hint"></div>
+      <pre id="debug" class="debug hidden"></pre>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

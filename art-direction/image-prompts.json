@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "created": "2026-11-13",
+  "assets": [
+    {
+      "file": "public/assets/story/temple-keyart.png",
+      "prompt": "Use case: stylized-concept. Asset type: cinematic title artwork for a photorealistic Taiwanese folk horror first-person game, landscape 16:9.\nPrimary request: terrifying abandoned Taiwanese mountain temple interior after 28 years of abandonment, enormous ancient seated Buddha centered deep in the hall, eyes completely covered by a weathered crimson cloth tied around the head; two smaller Buddhas also blindfolded in red. Monumental heavy timber columns, carved dark wood altar, peeling red lacquer, heavy torn crimson curtains hanging from ceiling beams, layers of melted red wax, three freshly burning incense sticks amid thick ash, dirty damp stone slabs and subtle puddles. Tiny dust suspended in cold moonlight from broken roof, narrow shafts of light, dying amber candles. Forensic tactile photorealistic aged materials, cracked oxidized gold leaf and bronze patina, woven cloth fibers, wet wood grain. Deep desaturated teal black shadows and dark oxblood red. Low wide architectural camera, 28 mm lens at human eye level, central altar occupies right half, left third stays dark enough for title typography to be added later. Dread, suspense, solemn isolation. No visible people, no skull face, no gore, no text, no letters, no logos, no watermark. Rich fine surface detail, believable lighting, high-end horror game art."
+    },
+    {
+      "file": "public/assets/story/children-1998.png",
+      "prompt": "Use case: photorealistic-natural. Asset type: ordinary fictional family album photograph for use as a game prop. Landscape 4:3 composition. Exactly six Taiwanese schoolchildren, four boys and two girls, around ten years old, stand shoulder to shoulder smiling for a casual group photograph in front of the entrance of a Taiwanese countryside temple in summer 1998. The girl on the far right wears a modest white summer dress and holds a little red fabric rabbit toy. All six children are clearly visible with natural anatomy, everyday clothing and friendly expressions. The old photograph itself fills the canvas including thin aged cream paper edges, shot straight on. Faded color film, yellowing paper, a single crease on the left corner, fine film grain and soft flash. Documentary family snapshot style, normal daylight, no horror, no injuries, no redactions, no writing, no watermark."
+    },
+    {
+      "file": "public/assets/story/apparition.png",
+      "prompt": "Use case: stylized-concept. Asset type: photorealistic character apparition cutout for a Taiwanese horror game. One adult female ghost, full body head to toe, isolated on a genuinely transparent background. She stands motionless, facing camera, bare feet, arms hanging at her sides with long natural fingers. A weathered long ivory cotton dress from the 1990s, plain and modest, subtly stained with damp soil and soot at the frayed hem. Long straight disheveled black hair hangs forward to conceal almost all of her pale face; only part of a sunken cheek is visible. A thin red cloth ribbon tied around her left wrist. The figure is frightening through uncanny posture and stillness, with slightly tilted head. Physically convincing fabric folds, stray individual hairs, highly detailed skin and textile. Soft low-key cool diffuse light, realistic human anatomy, photographic horror production character reference, absolutely no cartoon or stylization, no violence, no wounds, no gore, no props, no background, no writing, no watermark. Entire silhouette contained within frame with margin.",
+      "transparent_background": true
+    }
+  ]
+}

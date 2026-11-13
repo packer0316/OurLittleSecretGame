@@ -1,0 +1,23 @@
+{
+  "name": "our-little-secret-game",
+  "private": true,
+  "version": "0.2.0",
+  "description": "說好不說：四章台灣民俗懸疑恐怖遊戲 (Three.js)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "assets": "node scripts/fetch-assets.mjs",
+    "test": "node --test scripts/story-state.test.mjs",
+    "test:story": "node scripts/story-smoke.mjs && node scripts/story-branches.mjs && node scripts/story-ui.mjs",
+    "test:walk": "node scripts/walktest.mjs"
+  },
+  "dependencies": {
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.0",
+    "vite": "^8.3.8"
+  }
+}
