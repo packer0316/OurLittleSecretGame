@@ -35,6 +35,7 @@ export class HomeStory extends Story {
     }
     if(id==='phone'){
       if(h.step>2){this.show({title:'通話紀錄',body:'<p>張明哲　23:47　通話 00:00。</p><p>我明明和他說了話。錄音裡卻只有雨聲，還有一口被重複了兩次的吸氣。</p>',options:[{text:'重播那口呼吸',action:()=>this.game.audio.breathCue()},{text:'放下手機',action:()=>{}}]});return true;}
+      this.world.answerPhone();
       this.game.audio.breathCue();this.dialogue([
         ['電話裡的男人','以安。先不要說話。你收到照片了嗎？'],
         ['我','阿哲？你換號碼了？白天怎麼一直聯絡不上你？'],

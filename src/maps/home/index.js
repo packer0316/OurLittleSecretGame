@@ -5,6 +5,7 @@ import { World } from '../../core/World.js';
 import { boxGeo, mulberry32 } from '../../core/utils.js';
 import { loadHandwriting, handwrittenPaper } from '../../core/handwriting.js';
 import { photoMarkLocal } from '../../story/photoLayout.js';
+import { createPhoneScreen } from './phoneScreen.js';
 
 export const ASSETS={textures:['dark_wood','weathered_brown_planks','worn_mossy_plasterwall','velour_velvet'],images:['children-1998']};
 
@@ -77,8 +78,7 @@ export async function create(game){
   mark.name='PhotoFaceDefacement';mark.position.set(layout.x,layout.y,.0004);photo.add(mark);
   // Telephone body, bezel, screen, speaker grill and charging wire.
   box(.13,.02,.255,.82,.854,-2.48,black,true);
-  const screenMat=printed(['23:42','','無新訊息'],.115,.21,'#101819','#7c9d8e');screenMat.emissive.setHex(0x334f4c);screenMat.emissiveMap=screenMat.map;screenMat.emissiveIntensity=.3;
-  flat(screenMat,.115,.21,.82,.866,-2.48);rod([.79,.868,-2.595],[.85,.868,-2.595],.003,black);
+  const phone=createPhoneScreen(scene,{anisotropy:game.assets.aniso});rod([.79,.868,-2.595],[.85,.868,-2.595],.003,black);
   const cablePoints=[[.82,.85,-2.35],[.85,.83,-2.05],[1.4,.1,-1.95],[1.8,.02,-2.7],[3.7,.04,-3.4]].map(p=>new THREE.Vector3(...p));mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(cablePoints),32,.007,6,false),black);
   // Cup with dark tea, handle and coffee-ring stain.
   cyl(.065,.058,.12,-.45,.91,-2.79,ceramic);cyl(.056,.056,.002,-.45,.967,-2.79,mat(0x241b10,{roughness:.1}));const handle=mesh(new THREE.TorusGeometry(.041,.009,8,22),ceramic,-.37,.92,-2.79);handle.rotation.y=Math.PI/2;
@@ -112,13 +112,15 @@ export async function create(game){
   const dustData=[];for(let i=0;i<100;i++)dustData.push(-1+rand()*2,.9+rand()*1.2,-3+rand()*1.6);
   const dustG=new THREE.BufferGeometry();dustG.setAttribute('position',new THREE.Float32BufferAttribute(dustData,3));const dust=new THREE.Points(dustG,new THREE.PointsMaterial({size:.006,color:0xddc2a1,transparent:true,opacity:.18,depthWrite:false}));scene.add(dust);
   const targets=[['letter','拆開未署名的信',[-.08,.9,-2.37]],['photo','端詳舊合照',[.38,.91,-2.42]],['phone','查看手機',[.82,.91,-2.48]],['calendar','查看牆上月曆',[-2.4,1.65,-3.87]],['window','聽窗外的雨',[.75,1.8,-3.82]],['message','聽尚未送出的語音',[-.65,.89,-2.28]],['slip','撿起門縫下的字條',[1.6,.08,3.52]],['kit','拿起手電筒與鑰匙',[2.95,.55,2.7]],['door','查看門外',[1.65,1.3,3.75]]].map(([id,label,p])=>({id,label,position:new THREE.Vector3(...p)}));
-  let step=0,doorEvent=null,photoPlacement=null;
+  let step=0,doorEvent=null,photoPlacement=null,phoneAnswered=false;
   const photoHome=new THREE.Vector3(.38,.852,-2.42),letterHome=new THREE.Vector3(-.08,.85,-2.37),letterAside=new THREE.Vector3(-.35,.85,-2.49);
   const photoTarget=targets.find(t=>t.id==='photo'),letterTarget=targets.find(t=>t.id==='letter');
   const syncDeskTargets=()=>{photoTarget.position.copy(photo.position).y+=.045;letterTarget.position.copy(letter.position).y+=.045;};
   game.audio.profile='home';game.audio.released=false;
   game.film.uniforms.grain.value=.026;game.film.uniforms.aberration.value=.0012;
   const storyWorld={targets,
+    phone,
+    answerPhone(){phoneAnswered=true;phone.setMode('connected');targets.find(t=>t.id==='phone').label='通話中的手機';},
     get photoPlacementActive(){return !!photoPlacement;},
     get photoPlacementTime(){return photoPlacement?.time??null;},
     placePhoto(done){
@@ -131,7 +133,9 @@ export async function create(game){
     startDoorEvent(){doorEvent={time:0,knocks:0,slideTime:null};slip.visible=false;slip.position.z=3.92;slip.rotation.z=-.06;},
     setState(s){step=s.home?.step||0;if(!doorEvent){slip.visible=step>=3;slip.position.z=3.52;slip.rotation.z=.15;}kit.visible=step<5;
       if(!photoPlacement){photo.visible=step>=1;photo.position.copy(photoHome);photo.rotation.z=-.12;letter.position.copy(step>=1?letterAside:letterHome);syncDeskTargets();}
-      mark.visible=!s.flags.sent;screenMat.emissiveIntensity=step===2?1.3:.3;
+      mark.visible=!s.flags.sent;
+      phone.setMode(step===2?(phoneAnswered?'connected':'incoming'):step>2?'ended':'idle');
+      targets.find(t=>t.id==='phone').label=phone.mode==='incoming'?'接聽阿哲來電':phone.mode==='connected'?'通話中的手機':step>2?'查看通話紀錄':'查看手機';
     }
   };
   return {id:'home',scene,world,storyWorld,spawn:{x:0,z:-.5,yaw:0,pitch:-.35},flashOn:false,flashAvailable:false,
@@ -139,6 +143,7 @@ export async function create(game){
     setQuality(q){lamp.shadow.mapSize.set(Math.min(2048,q.shadow),Math.min(2048,q.shadow));game.film.uniforms.grain.value=.026;game.film.uniforms.aberration.value=.0012;},
     update(dt,t){
       rain.position.y=-((t*.07)% .16);dust.position.y=Math.sin(t*.1)*.05;lamp.intensity=1.7*(step>=3?1-.012*Math.sin(t*17):1);if(step<5)game.player.flashOn=false;
+      phone.update(t);
       if(photoPlacement&&game.running&&!game.story?.modal){
         const a=photoPlacement;a.time+=dt;const u=Math.min(1,a.time/1.15),ease=u*u*(3-2*u);
         photo.position.lerpVectors(letterHome,photoHome,ease);photo.position.y=.852+Math.sin(u*Math.PI)*.065;
@@ -157,6 +162,6 @@ export async function create(game){
         if(e.slideTime>=2.5){doorEvent=null;slip.position.z=3.52;slip.rotation.z=.15;hallSpill.intensity=12;game.story?.toast('敲門聲停了。紙從門縫滑進來，正好停在你腳前。');}
       }
     },
-    dispose(){game.audio.profile=null;game.film.uniforms.grain.value=.03;game.film.uniforms.aberration.value=.0012;scene.traverse(o=>{o.geometry?.dispose();o.shadow?.map?.dispose();});materials.forEach(m=>m.dispose());rain.material.dispose();dust.material.dispose();textures.forEach(t=>t.dispose());},
+    dispose(){game.audio.profile=null;game.film.uniforms.grain.value=.03;game.film.uniforms.aberration.value=.0012;scene.traverse(o=>{o.geometry?.dispose();o.shadow?.map?.dispose();});materials.forEach(m=>m.dispose());rain.material.dispose();dust.material.dispose();textures.forEach(t=>t.dispose());phone.dispose();},
   };
 }

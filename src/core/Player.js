@@ -4,6 +4,10 @@ import { clamp } from './utils.js';
 const RADIUS = 0.34;
 const EYE = 1.66;
 const EYE_CROUCH = 1.0;
+// Ignore cursor warps at lock/focus boundaries; never replay excess motion later.
+const LOOK_SETTLE_MS = 120;
+const MAX_MOUSE_EVENT = 900;
+const MAX_LOOK_PER_FRAME = Math.PI / 2;
 
 /** 第一人稱控制：行走、奔跑、蹲下、手電筒、多樓層碰撞 */
 export class Player {
@@ -56,16 +60,59 @@ export class Player {
     };
     this._onKeyUp = (e) => { this.keys[e.code] = false; };
     this._onMouse = (e) => {
-      if (!this.enabled) return;
-      const k = 0.0021 * this.sensitivity;
-      this.yaw -= e.movementX * k;
-      this.pitch = clamp(this.pitch - e.movementY * k, -1.48, 1.48);
+      const now = performance.now();
+      if (!this._canLook() || now < this._lookResumeAt) return;
+      const { movementX: dx, movementY: dy } = e;
+      if (!Number.isFinite(dx) || !Number.isFinite(dy) || Math.max(Math.abs(dx), Math.abs(dy)) > MAX_MOUSE_EVENT) {
+        this._resetLook();
+        return;
+      }
+      this._lookX += dx;
+      this._lookY += dy;
+      this._lookLastEvent = now;
     };
-    this._onBlur = () => { this.keys = Object.create(null); };
+    this._onFocusChange = () => {
+      this._resetLook(LOOK_SETTLE_MS);
+      this.keys = Object.create(null);
+      this.vel.set(0, 0, 0);
+    };
+    this._onLockChange = () => this._resetLook(LOOK_SETTLE_MS);
     window.addEventListener('keydown', this._onKeyDown);
     window.addEventListener('keyup', this._onKeyUp);
-    window.addEventListener('blur', this._onBlur);
+    window.addEventListener('blur', this._onFocusChange);
+    window.addEventListener('focus', this._onFocusChange);
+    document.addEventListener('visibilitychange', this._onFocusChange);
+    document.addEventListener('pointerlockchange', this._onLockChange);
     document.addEventListener('mousemove', this._onMouse);
+  }
+
+  get enabled() { return this._enabled; }
+  set enabled(value) {
+    if (this._enabled === value) return;
+    this._enabled = value;
+    this._resetLook(LOOK_SETTLE_MS);
+  }
+
+  _canLook() {
+    return this.enabled && document.pointerLockElement === this.dom && document.hasFocus() && document.visibilityState === 'visible';
+  }
+
+  _resetLook(settle = 0) {
+    this._lookX = this._lookY = 0;
+    this._lookLastEvent = 0;
+    this._lookResumeAt = performance.now() + settle;
+  }
+
+  _applyLook() {
+    const now = performance.now(), dx = this._lookX, dy = this._lookY;
+    this._lookX = this._lookY = 0;
+    if (!this._canLook() || now < this._lookResumeAt || now - this._lookLastEvent > 250 || (!dx && !dy)) return;
+    const k = 0.0021 * this.sensitivity;
+    const length = Math.hypot(dx, dy) * k;
+    const scale = k * Math.min(1, MAX_LOOK_PER_FRAME / length);
+    const yaw = this.yaw - dx * scale;
+    this.yaw = Math.atan2(Math.sin(yaw), Math.cos(yaw));
+    this.pitch = clamp(this.pitch - dy * scale, -1.48, 1.48);
   }
 
   toggleFlash() {
@@ -75,6 +122,7 @@ export class Player {
   }
 
   teleport(x, y, z, yaw = this.yaw, pitch = 0) {
+    this._resetLook();
     this.pos.set(x, y, z);
     this.vel.set(0, 0, 0);
     this.vy = 0;
@@ -85,6 +133,7 @@ export class Player {
   }
 
   update(dt, world) {
+    this._applyLook();
     this.time += dt;
     const k = this.keys;
     const f = (k.KeyW || k.ArrowUp ? 1 : 0) - (k.KeyS || k.ArrowDown ? 1 : 0);
@@ -203,7 +252,10 @@ export class Player {
   dispose() {
     window.removeEventListener('keydown', this._onKeyDown);
     window.removeEventListener('keyup', this._onKeyUp);
-    window.removeEventListener('blur', this._onBlur);
+    window.removeEventListener('blur', this._onFocusChange);
+    window.removeEventListener('focus', this._onFocusChange);
+    document.removeEventListener('visibilitychange', this._onFocusChange);
+    document.removeEventListener('pointerlockchange', this._onLockChange);
     document.removeEventListener('mousemove', this._onMouse);
   }
 }
