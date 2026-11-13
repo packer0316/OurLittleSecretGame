@@ -1,0 +1,9 @@
+{
+  "family": "Chenyuluoyan 2.0 Thin",
+  "author": "Written by Liu, Wei-Chen; created by Wang, Li-Yu",
+  "source": "https://github.com/Chenyu-otf/chenyuluoyan_thin",
+  "commit": "6e36815b0bec9f4f948298698d00b27a5f0b65c1",
+  "license": "SIL Open Font License 1.1",
+  "modifications": "None. Original TTF embedded locally. Per-letter layout variation is applied on canvas, not to the font.",
+  "sha256": "1289e42a6d1ec995d0cb23aee89efc69fc95749fbd54a610057a3e992dc453db"
+}

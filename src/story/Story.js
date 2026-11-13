@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { SAVE_KEY, CHAPTERS, EVIDENCE, ENDINGS, newState, validateSave, collect, trueEndingReady, missingEvidence, objectives } from './campaign.js';
 import { preludeRecords } from './preludeRecords.js';
+import { PHOTO_MARK_STYLE } from './photoLayout.js';
 
 const $=id=>document.getElementById(id);
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -17,7 +18,7 @@ export class Story {
     if(resume&&this.state.position){game.player.teleport(...this.state.position);}
     if(this.state.ending)this.state.ending=null; // continue from last safe play state, never lock the session in an ending
     this.onKey=e=>{
-      if(!game.running||e.repeat)return;
+      if(!game.running||e.repeat||this.busy)return;
       if(this.modal){
         const i=Number(e.key)-1;
         if(i>=0&&i<this.modal.options.length){e.preventDefault();this.choose(i);}
@@ -51,7 +52,7 @@ export class Story {
   }
   show({eyebrow='慈雲寺・調查紀錄',title,body='',image=null,redacted=false,options=[{text:'收起',action:()=>{}}],dismiss=false,kind=''}){
     this.modal={options,dismiss};this.game.player.enabled=false;this.game.player.keys=Object.create(null);this.game.player.vel.set(0,0,0);
-    const photo=image?`<figure class="story-figure ${redacted?'redacted':''}"><img src="${ART+image}" alt="${escape(title)}">${redacted?'<i class="photo-scribble" aria-label="女孩的臉被紅筆塗去"></i>':''}</figure>`:'';
+    const photo=image?`<figure class="story-figure ${redacted?'redacted':''}" style="${PHOTO_MARK_STYLE}"><img src="${ART+image}" alt="${escape(title)}">${redacted?'<i class="photo-scribble" aria-label="女孩的臉被紅筆塗去"></i>':''}</figure>`:'';
     $('story-layer').className=`story-layer ${kind}`;
     $('story-layer').innerHTML=`<article class="story-card"><p class="story-eyebrow">${escape(eyebrow)}</p><h2 id="story-title">${escape(title)}</h2><div class="story-content ${image?'with-image':''}">${photo}<div class="story-copy">${body}</div></div><nav class="story-choices">${options.map((o,i)=>`<button data-choice="${i}" ${o.disabled?'disabled':''}><span>${i+1<10?i+1:'·'}</span>${escape(o.text)}</button>`).join('')}</nav><small class="story-instruction">${options.length===1?'E / Enter 繼續':'點擊選項，或按數字鍵選擇'} · 閱讀時停止移動與計時</small></article>`;
     $('story-layer').querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>this.choose(+b.dataset.choice)));
@@ -60,7 +61,7 @@ export class Story {
   }
   choose(i){const opt=this.modal?.options[i];if(!opt||opt.disabled)return;
     this.modal=null;$('story-layer').classList.add('hidden');opt.action?.();
-    if(!this.modal&&!this.state.ending&&!this.transitioning&&this.game.map&&this.game.story===this){this.game.player.keys=Object.create(null);this.game.player.enabled=true;this.onResume();}
+    if(!this.modal&&!this.busy&&!this.state.ending&&!this.transitioning&&this.game.map&&this.game.story===this){this.game.player.keys=Object.create(null);this.game.player.enabled=true;this.onResume();}
   }
   dialogue(lines,done=()=>{},title='聽見的聲音',i=0){const [speaker,text]=lines[i];this.show({eyebrow:title,title:speaker,body:`<p class="dialogue-line">${escape(text)}</p>`,kind:'dialogue',options:[{text:i===lines.length-1?'繼續調查':'繼續',action:()=>i+1<lines.length?this.dialogue(lines,done,title,i+1):done()}]});}
   document(id,done=()=>{}){const e=EVIDENCE[id];this.show({eyebrow:`證物 ${String(Object.keys(EVIDENCE).indexOf(id)+1).padStart(2,'0')} / 11　${e.place}`,title:e.title,image:e.image,redacted:e.redacted&&!this.state.flags.sent,body:`<p class="document-date">${escape(e.date)}</p>${paragraphs(e.text)}<aside class="deduction">${escape(e.inference)}</aside>`,dismiss:true,options:[{text:'收進筆記，繼續調查',action:done}]});}

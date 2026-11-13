@@ -18,7 +18,7 @@ export class HomeStory extends Story {
     if(h.step<5){this.game.player.flashOn=false;this.game.player.flashPower=0;}
   }
   advance(step){this.state.home.step=Math.max(step,this.state.home.step);this.sync();this.save();}
-  active(id){const n=this.state.home?.step||0;if(id==='slip'&&this.world.doorEventActive)return false;return id===goals[Math.min(n,5)][0]||['calendar','window','message','door'].includes(id)||id==='letter'&&n>0||id==='photo'&&n>1||id==='phone'&&n>2;}
+  active(id){if(this.busy)return false;const n=this.state.home?.step||0;if(id==='slip'&&this.world.doorEventActive)return false;return id===goals[Math.min(n,5)][0]||['calendar','window','message','door'].includes(id)||id==='letter'&&n>0||id==='photo'&&n>1||id==='phone'&&n>2;}
   focused(){
     // Small desk props require a tighter view cone so the letter cannot steal the photo's focus.
     const target=super.focused();if(!target)return null;
@@ -28,7 +28,7 @@ export class HomeStory extends Story {
   }
   interact(id){if(this.modal||!this.active(id)||this.transitioning)return false;const h=this.state.home;
     if(id==='letter'){
-      this.show({eyebrow:'11 月 12 日・23:42　住處',title:'沒有寄件人的信',body:'<p>信封沒有郵戳，也沒有膠水。封口繞著一根細紅線，像從衣服上拆下來的。</p><p>地址寫得很新，收件人卻是我小學時的名字筆跡。</p><p>「你們答應過我，不會把我留在那裡。」</p><p>紙張聞起來像雨水和燒過的頭髮。信封裡滑出一張合照。</p>',options:[{text:'把照片放到檯燈下',action:()=>{this.advance(1);this.toast('合照落在信封右邊。先看看照片。');}}]});return true;
+      this.show({eyebrow:'11 月 12 日・23:42　住處',title:'沒有寄件人的信',body:'<p>信封沒有郵戳，也沒有膠水。封口繞著一根細紅線，像從衣服上拆下來的。</p><p>地址寫得很新，收件人卻是我小學時的名字筆跡。</p><p>「你們答應過我，不會把我留在那裡。」</p><p>紙張聞起來像雨水和燒過的頭髮。信封裡滑出一張合照。</p>',options:[{text:h.step===0?'把照片放到檯燈下':'端詳燈下的照片',action:()=>h.step===0?this.placePhoto():this.interact('photo')}]});return true;
     }
     if(id==='photo'){
       this.document('photo',()=>{if(h.step<2){this.advance(2);this.game.audio.phoneRing();this.toast('手機螢幕亮起。阿哲打來了。');}});return true;
@@ -62,6 +62,10 @@ export class HomeStory extends Story {
     }[id];
     if(optional){if(!h.notes.includes(id)){h.notes.push(id);this.sync();this.save();}this.show({eyebrow:'住處・可回看的筆記',title:optional[0],body:optional[1].split('\n').map(t=>`<p>${t}</p>`).join('')});return true;}return false;
   }
+  placePhoto(){
+    this.advance(1);this.busy=true;this.game.player.enabled=false;this.game.player.keys=Object.create(null);this.game.player.vel.set(0,0,0);
+    this.toast('把照片移到燈下……');this.world.placePhoto(()=>{if(this.game.story!==this)return;this.busy=false;this.interact('photo');});
+  }
   afterCall(answered){
     this.advance(3);this.dialogue(answered?[
       ['門外，自己的聲音','誰在外面？'],['我','它把我的話原樣說了一次。連停頓都一樣。'],['電話裡很遠的童聲','不要讓它再學會一句。'],
@@ -74,7 +78,7 @@ export class HomeStory extends Story {
   }
   journal(){const h=this.state.home;this.show({eyebrow:'出發之前・住處筆記',title:'還沒離開家，事情已經開始了',body:`<p>目前：${goals[Math.min(h.step,5)][1]}</p><p>23:42　信封沒有郵戳。<br>${h.step>=2?'23:47　阿哲來電；吸氣聲重複。<br>':''}${h.step>=4?'23:51　門外字條知道我在家。':''}</p><p>已調查：${h.notes.map(n=>({calendar:'月曆',window:'窗外雨聲',message:'未送出的語音'})[n]).join('、')||'尚無額外筆記'}</p><aside class="deduction">燈光照得見的證據，與聲音所說的，不一定相同。</aside>`,dismiss:true});}
   update(dt){
-    if(this.modal||this.transitioning){$('interact-prompt').textContent='';return;}
+    if(this.modal||this.transitioning||this.busy){$('interact-prompt').textContent='';return;}
     this.state.elapsed+=dt;this.tick+=dt;this.ringClock+=dt;
     if(this.state.home.step===2&&this.ringClock>5){this.ringClock=0;this.game.audio.phoneRing();}
     if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0)$('story-toast').classList.remove('show');}

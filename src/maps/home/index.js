@@ -3,11 +3,14 @@ import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.j
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import { World } from '../../core/World.js';
 import { boxGeo, mulberry32 } from '../../core/utils.js';
+import { loadHandwriting, handwrittenPaper } from '../../core/handwriting.js';
+import { photoMarkLocal } from '../../story/photoLayout.js';
 
 export const ASSETS={textures:['dark_wood','weathered_brown_planks','worn_mossy_plasterwall','velour_velvet'],images:['children-1998']};
 
 /** A lived-in apartment, metres at human scale. Only the desk lamp is switched on. */
-export function create(game){
+export async function create(game){
+  await loadHandwriting();
   if(!THREE.UniformsLib.LTC_FLOAT_1)RectAreaLightUniformsLib.init();
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x030509);scene.fog=new THREE.FogExp2(0x080b10,.018);
   const world=new World();world.bounds={x1:-3.64,x2:3.64,z1:-3.64,z2:3.64};world.floor(-4,-4,4,4,0);
@@ -32,6 +35,7 @@ export function create(game){
     const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;textures.push(t);return mat(0xffffff,{map:t,roughness:.95});
   };
   const flat=(m,w,h,x,y,z,angle=0)=>{const o=mesh(new THREE.PlaneGeometry(w,h),m,x,y,z);o.rotation.set(-Math.PI/2,0,angle);o.castShadow=false;return o;};
+  const handwritten=(lines,w,h,seed)=>{const map=handwrittenPaper(lines,{aspect:w/h,seed});map.anisotropy=game.assets.aniso;textures.push(map);return mat(0xffffff,{map,roughness:.95});};
   box(8,.16,8,0,-.08,0,floor);box(8,.16,8,0,3.12,0,plaster);
   // North wall has an actual window aperture, not a luminous rectangle on a wall.
   box(8,1.12,.18,0,.56,-4,plaster);box(8,.55,.18,0,2.845,-4,plaster);
@@ -63,11 +67,14 @@ export function create(game){
   const bounce=new THREE.PointLight(0xffcb83,.75,5,2);bounce.position.set(-.4,1.65,-1.9);scene.add(bounce);
   // Grounded paper layers, handwritten address, folded envelope flap and photo.
   for(let i=0;i<4;i++)flat(paper,.3,.4,-.65+i*.01,.842+i*.002,-2.28+i*.015,-.17);
-  const letter=flat(printed(['陳以安　收','','你還記得那扇門嗎？','慈雲寺・子夜以後'],.42,.29),.42,.29,-.08,.85,-2.37,.12);
-  const flap=flat(printed(['沒有寄件人'],.42,.14),.42,.14,-.08,.851,-2.6,-.08);
+  const letter=flat(handwritten(['陳以安　收','你還記得那扇門嗎？','你們答應過我。','慈雲寺，子夜以後。'],.42,.29,247),.42,.29,-.08,.85,-2.37,.12);letter.name='HomeHandwrittenLetter';
+  const flap=flat(printed([],.42,.14),.42,.14,-.08,.849,-2.6,-.08);
   const photo=flat(mat(0xffffff,{map:game.assets.images['children-1998'],roughness:.65}),.38,.285,.38,.852,-2.42,-.12);
-  const markTexture=new THREE.TextureLoader().load(import.meta.env.BASE_URL+'assets/story/photo-defacement.svg');textures.push(markTexture);
-  const mark=flat(mat(0x4c090a,{map:markTexture,transparent:true,depthWrite:false}),.0798,.0969,.498,.854,-2.435,-.12);
+  photo.name='HomeEvidencePhoto';
+  const markTexture=await new THREE.TextureLoader().loadAsync(import.meta.env.BASE_URL+'assets/story/photo-defacement.svg');markTexture.colorSpace=THREE.SRGBColorSpace;markTexture.anisotropy=game.assets.aniso;textures.push(markTexture);
+  const layout=photoMarkLocal(.38,.285);
+  const mark=new THREE.Mesh(new THREE.PlaneGeometry(layout.width,layout.height),mat(0xffffff,{map:markTexture,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1}));
+  mark.name='PhotoFaceDefacement';mark.position.set(layout.x,layout.y,.0004);photo.add(mark);
   // Telephone body, bezel, screen, speaker grill and charging wire.
   box(.13,.02,.255,.82,.854,-2.48,black,true);
   const screenMat=printed(['23:42','','無新訊息'],.115,.21,'#101819','#7c9d8e');screenMat.emissive.setHex(0x334f4c);screenMat.emissiveMap=screenMat.map;screenMat.emissiveIntensity=.3;
@@ -99,27 +106,47 @@ export function create(game){
   const peep=cyl(.018,.018,.035,1.65,1.57,3.794,brass);peep.rotation.x=Math.PI/2;
   rod([2.04,1.02,3.79],[2.04,.92,3.79],.026,brass);box(.35,.055,.018,1.65,.38,3.799,brass);
   for(let i=0;i<14;i++){const c=mesh(new THREE.TorusGeometry(.012,.003,6,10),brass,1.14+i*.013,1.44-Math.sin(i/13*Math.PI)*.035,3.78);c.rotation.y=i%2*Math.PI/2;}
-  const slip=flat(printed(['你在家。','','這次不要假裝沒聽見。'],.32,.22),.32,.22,1.6,.006,3.52,.15);slip.visible=false;
+  const slip=flat(handwritten(['你在家。','','這次不要假裝沒聽見。'],.32,.22,448),.32,.22,1.6,.006,3.52,.15);slip.visible=false;
   const shoe=mat(0x272321);for(let i=0;i<2;i++)box(.11,.08,.26,1.0+i*.17,.04,3.35,shoe,true);
   // Fine dust suspended in the lamp cone, without screen-space noise cards.
   const dustData=[];for(let i=0;i<100;i++)dustData.push(-1+rand()*2,.9+rand()*1.2,-3+rand()*1.6);
   const dustG=new THREE.BufferGeometry();dustG.setAttribute('position',new THREE.Float32BufferAttribute(dustData,3));const dust=new THREE.Points(dustG,new THREE.PointsMaterial({size:.006,color:0xddc2a1,transparent:true,opacity:.18,depthWrite:false}));scene.add(dust);
   const targets=[['letter','拆開未署名的信',[-.08,.9,-2.37]],['photo','端詳舊合照',[.38,.91,-2.42]],['phone','查看手機',[.82,.91,-2.48]],['calendar','查看牆上月曆',[-2.4,1.65,-3.87]],['window','聽窗外的雨',[.75,1.8,-3.82]],['message','聽尚未送出的語音',[-.65,.89,-2.28]],['slip','撿起門縫下的字條',[1.6,.08,3.52]],['kit','拿起手電筒與鑰匙',[2.95,.55,2.7]],['door','查看門外',[1.65,1.3,3.75]]].map(([id,label,p])=>({id,label,position:new THREE.Vector3(...p)}));
-  let step=0,doorEvent=null;
+  let step=0,doorEvent=null,photoPlacement=null;
+  const photoHome=new THREE.Vector3(.38,.852,-2.42),letterHome=new THREE.Vector3(-.08,.85,-2.37),letterAside=new THREE.Vector3(-.35,.85,-2.49);
+  const photoTarget=targets.find(t=>t.id==='photo'),letterTarget=targets.find(t=>t.id==='letter');
+  const syncDeskTargets=()=>{photoTarget.position.copy(photo.position).y+=.045;letterTarget.position.copy(letter.position).y+=.045;};
   game.audio.profile='home';game.audio.released=false;
   game.film.uniforms.grain.value=.026;game.film.uniforms.aberration.value=.0012;
   const storyWorld={targets,
+    get photoPlacementActive(){return !!photoPlacement;},
+    get photoPlacementTime(){return photoPlacement?.time??null;},
+    placePhoto(done){
+      photoPlacement={time:0,done,yaw:game.player.yaw,pitch:game.player.pitch};photo.visible=true;
+      photo.position.copy(letterHome);photo.position.y=.857;photo.rotation.z=.12;letter.position.copy(letterHome);syncDeskTargets();
+    },
     get doorEventActive(){return !!doorEvent;},
     get doorEventTime(){return doorEvent?.time??null;},
     get slipPosition(){return slip.position;},
     startDoorEvent(){doorEvent={time:0,knocks:0,slideTime:null};slip.visible=false;slip.position.z=3.92;slip.rotation.z=-.06;},
-    setState(s){step=s.home?.step||0;if(!doorEvent){slip.visible=step>=3;slip.position.z=3.52;slip.rotation.z=.15;}kit.visible=step<5;photo.visible=step>=1;mark.visible=step>=1;screenMat.emissiveIntensity=step===2?1.3:.3;}
+    setState(s){step=s.home?.step||0;if(!doorEvent){slip.visible=step>=3;slip.position.z=3.52;slip.rotation.z=.15;}kit.visible=step<5;
+      if(!photoPlacement){photo.visible=step>=1;photo.position.copy(photoHome);photo.rotation.z=-.12;letter.position.copy(step>=1?letterAside:letterHome);syncDeskTargets();}
+      mark.visible=!s.flags.sent;screenMat.emissiveIntensity=step===2?1.3:.3;
+    }
   };
   return {id:'home',scene,world,storyWorld,spawn:{x:0,z:-.5,yaw:0,pitch:-.35},flashOn:false,flashAvailable:false,
     zoneName:p=>p.z>1.7?'住處・玄關':'住處・深夜的書桌',indoorAt:()=>true,surfaceAt:()=> 'wood',
     setQuality(q){lamp.shadow.mapSize.set(Math.min(2048,q.shadow),Math.min(2048,q.shadow));game.film.uniforms.grain.value=.026;game.film.uniforms.aberration.value=.0012;},
     update(dt,t){
       rain.position.y=-((t*.07)% .16);dust.position.y=Math.sin(t*.1)*.05;lamp.intensity=1.7*(step>=3?1-.012*Math.sin(t*17):1);if(step<5)game.player.flashOn=false;
+      if(photoPlacement&&game.running&&!game.story?.modal){
+        const a=photoPlacement;a.time+=dt;const u=Math.min(1,a.time/1.15),ease=u*u*(3-2*u);
+        photo.position.lerpVectors(letterHome,photoHome,ease);photo.position.y=.852+Math.sin(u*Math.PI)*.065;
+        photo.rotation.z=.12-.24*ease;letter.position.lerpVectors(letterHome,letterAside,ease);syncDeskTargets();
+        const p=game.player,dx=photoHome.x-p.pos.x,dz=photoHome.z-p.pos.z,dy=photoHome.y-p.pos.y-p.eye,yaw=Math.atan2(-dx,-dz);
+        p.yaw=a.yaw+Math.atan2(Math.sin(yaw-a.yaw),Math.cos(yaw-a.yaw))*ease;p.pitch=THREE.MathUtils.lerp(a.pitch,Math.atan2(dy,Math.hypot(dx,dz)),ease);p._syncCamera(0);
+        if(u===1){photoPlacement=null;photo.position.copy(photoHome);letter.position.copy(letterAside);syncDeskTargets();a.done?.();}
+      }
       if(doorEvent&&game.running&&!game.story?.modal){
         const e=doorEvent;e.time+=dt;
         hallSpill.intensity=e.time>1.8&&e.time<2.5?2:12;

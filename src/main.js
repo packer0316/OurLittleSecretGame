@@ -94,7 +94,7 @@ function beginPlay(first) {
   game.audio.start();
   game.start();
   game.story?.start();
-  game.player.enabled = !game.story?.modal;
+  game.player.enabled = !game.story?.modal && !game.story?.busy;
   if (first) {
     ui.intro.textContent = (currentMap.intro || []).join('\n');
     ui.intro.classList.add('show');
@@ -118,7 +118,7 @@ async function lockAndPlay() {
 document.addEventListener('pointerlockchange', () => {
   const locked = document.pointerLockElement === canvas;
   if (locked && (state === 'ready' || state === 'paused')) { beginPlay(firstEntry); firstEntry = false; }
-  else if (!locked && state === 'playing' && !AUTO && !game.story?.modal) {
+  else if (!locked && state === 'playing' && !AUTO && !game.story?.modal && !game.story?.busy) {
     if (!game.story?.chase && !game.story?.ritual) game.story?.save();
     game.stop();
     game.audio.stop();
