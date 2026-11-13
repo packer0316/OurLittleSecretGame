@@ -32,6 +32,7 @@ export function validateSave(raw) {
   s.home.notes = Array.isArray(raw.home?.notes) ? [...new Set(raw.home.notes.filter(n=>['calendar','message','window'].includes(n)))] : [];
   s.road.step = Number.isInteger(raw.road?.step) ? Math.max(0,Math.min(5,raw.road.step)) : 0;
   s.road.notes = Array.isArray(raw.road?.notes) ? [...new Set(raw.road.notes.filter(n=>['car','kiln'].includes(n)))] : [];
+  s.road.peishan = ['trust','question','silence'].includes(raw.road?.peishan) ? raw.road.peishan : null;
   s.evidence = [...new Set(['photo', ...raw.evidence.filter(id => typeof id==='string'&&Object.hasOwn(EVIDENCE,id))])];
   for (const key of ['incense','stage','loopSolved','key','underground','ritualReady','sealed','sent','prologueComplete']) s.flags[key] = raw.flags[key] === true;
   if(s.flags.key) s.flags.loopSolved=true;

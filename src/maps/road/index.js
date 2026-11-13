@@ -95,8 +95,8 @@ export function create(game){
   game.audio.profile='road';game.audio.released=false;game.film.uniforms.grain.value=.032;game.film.uniforms.aberration.value=.0018;
   return {id:'road',scene,world,storyWorld:{targets,setState(){}},cloth,remains,spawn:{x:-1.2,z:33.2,yaw:0,pitch:-.03},
     zoneName:p=>p.z>14?'舊山路・停駛的站牌':p.z>7?'石橋・下方沒有水聲':p.x>4.8&&p.z<-14&&p.z>-23?'廢村・榮昌紙紮行':p.z<-30?'慈雲寺・舊參道':'慈雲里・無人的街',
-    indoorAt:p=>p.x>5&&p.z<-14&&p.z>-23,surfaceAt:()=> 'stone',setQuality(q){moon.shadow.mapSize.set(q.shadow,q.shadow);},
+    indoorAt:p=>p.x>5&&p.z<-14&&p.z>-23,surfaceAt:()=> 'stone',setQuality(q){moon.shadow.mapSize.set(q.shadow,q.shadow);game.film.uniforms.grain.value=.032;game.film.uniforms.aberration.value=.0018;},
     update(dt,t){cloth.update(t,game.camera);remains.update(t);furnace.intensity=4.5*(1+.08*Math.sin(t*2.1));for(const f of fog){f.o.quaternion.copy(game.camera.quaternion);f.o.position.x=f.x+Math.sin(t*.08+f.phase)*2;}},
-    dispose(){game.audio.profile=null;game.film.uniforms.grain.value=.055;game.film.uniforms.aberration.value=.0035;scene.traverse(o=>{o.geometry?.dispose();o.shadow?.map?.dispose();});materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());remains.dispose();},
+    dispose(){game.audio.profile=null;game.film.uniforms.grain.value=.03;game.film.uniforms.aberration.value=.0012;scene.traverse(o=>{o.geometry?.dispose();o.shadow?.map?.dispose();});materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());remains.dispose();},
   };
 }

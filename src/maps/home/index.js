@@ -107,8 +107,8 @@ export function create(game){
   const storyWorld={targets,setState(s){step=s.home?.step||0;slip.visible=step>=3;kit.visible=step<5;photo.visible=step>=1;mark.visible=step>=1;screenMat.emissiveIntensity=step===2?1.3:.3;}};
   return {id:'home',scene,world,storyWorld,spawn:{x:0,z:-.5,yaw:0,pitch:-.35},flashOn:false,flashAvailable:false,
     zoneName:p=>p.z>1.7?'住處・玄關':'住處・深夜的書桌',indoorAt:()=>true,surfaceAt:()=> 'wood',
-    setQuality(q){lamp.shadow.mapSize.set(Math.min(2048,q.shadow),Math.min(2048,q.shadow));},
+    setQuality(q){lamp.shadow.mapSize.set(Math.min(2048,q.shadow),Math.min(2048,q.shadow));game.film.uniforms.grain.value=.026;game.film.uniforms.aberration.value=.0012;},
     update(dt,t){rain.position.y=-((t*.07)% .16);dust.position.y=Math.sin(t*.1)*.05;lamp.intensity=1.7*(step>=3?1-.012*Math.sin(t*17):1);if(step<5)game.player.flashOn=false;},
-    dispose(){game.audio.profile=null;game.film.uniforms.grain.value=.055;game.film.uniforms.aberration.value=.0035;scene.traverse(o=>{o.geometry?.dispose();o.shadow?.map?.dispose();});materials.forEach(m=>m.dispose());rain.material.dispose();dust.material.dispose();textures.forEach(t=>t.dispose());},
+    dispose(){game.audio.profile=null;game.film.uniforms.grain.value=.03;game.film.uniforms.aberration.value=.0012;scene.traverse(o=>{o.geometry?.dispose();o.shadow?.map?.dispose();});materials.forEach(m=>m.dispose());rain.material.dispose();dust.material.dispose();textures.forEach(t=>t.dispose());},
   };
 }

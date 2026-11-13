@@ -3,7 +3,7 @@ import { SAVE_KEY } from './campaign.js';
 const $=id=>document.getElementById(id);
 const goals=[['bus','查看路旁的停駛站牌','停車處前方・候車亭'],['notice','穿過石橋，尋找村裡的消息','街道右側・遷離公告'],['remains','找出焦味的來源','右前方・榮昌紙紮行'],['ledger','查明作坊曾經做過什麼','作坊右側・登記簿'],['gate','帶著查證過的事實進寺','村落盡頭・舊參道']];
 export class RoadStory extends Story {
-  constructor(game,options={}){super(game,options);this.state.scene='road';this.state.road??={step:0,notes:[]};this.onTravel=options.onTravel;this.bridgeCue=false;this.sync();}
+  constructor(game,options={}){super(game,options);this.state.scene='road';this.state.road??={step:0,notes:[]};this.onTravel=options.onTravel;this.bridgeCue=false;this.callNotified=false;this.sync();this.onRadio=e=>{if(e.code==='KeyR'&&!e.repeat&&game.running&&!this.modal&&this.state.road.step>=4&&!this.state.road.peishan)this.peishanCall();};window.addEventListener('keydown',this.onRadio);}
   start(){if(this.started)return;this.started=true;this.save();this.toast('山路被落石堵住，只能把車停在這裡。先查看路旁站牌。');}
   sync(){this.world.setState(this.state);$('chapter-label').textContent='序章之二 / 沒有人等車';$('clue-count').textContent=`山村紀錄 ${Math.min(this.state.road?.step||0,4)} / 4`;}
   advance(n){this.state.road.step=Math.max(this.state.road.step,n);this.sync();this.save();}
@@ -31,13 +31,26 @@ export class RoadStory extends Story {
     }return false;
   }
   travel(){this.transitioning=true;this.state.road.step=5;this.state.scene='temple';this.state.flags.prologueComplete=true;this.state.position=null;try{localStorage.setItem(SAVE_KEY,JSON.stringify(this.state));}catch{this.transitioning=false;this.toast('無法保存進寺進度，請先釋出儲存空間。');return;}this.onTravel('temple');}
+  peishanCall(){
+    this.show({eyebrow:'02:39・訊號恢復',title:'周佩珊回電',body:'<p>「你的訊息剛剛才到。以安，你真的回去了？」</p><p>這一次，電話裡有汽車經過的聲音，還有她把窗戶關上的響動。她沒有催我報出姓名。</p>',options:[
+      {text:'「我找到紙紮行。這裡有人做過什麼。」',action:()=>this.peishanReply('trust')},
+      {text:'「先告訴我，照片裡有幾個孩子？」',action:()=>this.peishanReply('question')},
+      {text:'先不說話，聽她把話說完',action:()=>this.peishanReply('silence')},
+    ]});
+  }
+  peishanReply(choice){
+    const first=choice==='question'?['佩珊','你不要讓我替你數。把照片放大，一個一個看。以前我們就是聽別人說只有五個。']:choice==='silence'?['佩珊','你可以不回答。我只想讓你知道，有人在等你回來。']:['佩珊','把你看見的留下來。照片、日期、每個人的名字。別再只有我們口頭說過。'];
+    this.dialogue([first,['我','我記不得照片右邊那個女孩。可是看到她，我就不敢把門關上。'],['佩珊','你以前也這樣說。後來你說不記得，我就跟著裝不知道。'],['我','如果裡面有什麼叫我呢？'],['佩珊','先看東西，不要只聽話。她如果真的留下什麼，你會認得。'],['佩珊','錄影傳給我。我不替你保密了，也不替自己保密。']],()=>{this.state.road.peishan=choice;this.save();this.toast('佩珊的回電已留在筆記。沿村尾舊參道進寺。');},'有人在山外等你');
+  }
   journal(){const r=this.state.road;this.show({title:'進寺以前，查到的事',eyebrow:'山村紀錄',body:`<p>目前：${goals[Math.min(r.step,4)][1]}</p><p>${r.step>=1?'候車亭：路線已停駛。<br>':''}${r.step>=2?'撤離公告：私人祭儀仍有人偷偷進行。<br>':''}${r.step>=3?'作坊：成年工匠的肢體，與模仿呼吸的血肉。<br>':''}${r.step>=4?'登記簿：聲音需要身體，也需要活人的應允。':''}</p><aside class="deduction">舊山路 → 石橋 → 慈雲里告示 → 右側紙紮行 → 村尾舊參道。<br>這些紀錄保存在筆記，不改動寺內十一件主線證物的取得條件。</aside>`,dismiss:true});}
   update(dt){
     if(this.modal||this.transitioning){$('interact-prompt').textContent='';return;}this.state.elapsed+=dt;this.tick+=dt;
     if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0)$('story-toast').classList.remove('show');}
     const p=this.game.player.pos;
+    if(!this.callNotified&&this.state.road.step>=4&&!this.state.road.peishan&&p.z>-14){this.callNotified=true;this.game.audio.phoneRing();this.toast('手機恢復訊號。佩珊回電了。按 R 接聽，或先沿路前進。');}
     if(!this.bridgeCue&&p.z<11&&p.z>7){this.bridgeCue=true;this.game.audio.breathCue();this.toast('橋下傳來自己的咳嗽聲。你還沒有咳嗽。');}
     if(this.tick<.12)return;this.tick=0;const target=this.focused();$('interact-prompt').innerHTML=target?`<kbd>E</kbd><span>${target.label}</span>`:'';
-    const goal=goals[Math.min(this.state.road.step,4)],t=this.world.targets.find(t=>t.id===goal[0]);$('objective-title').textContent=goal[1];$('objective-place').textContent=goal[2];$('objective-distance').textContent=`${Math.round(p.distanceTo(t.position))} m`;$('waypoint').classList.add('hidden');
+    const goal=goals[Math.min(this.state.road.step,4)],t=this.world.targets.find(t=>t.id===goal[0]);$('objective-title').textContent=goal[1];$('objective-place').textContent=goal[2]+(this.callNotified&&!this.state.road.peishan?' · R 接聽佩珊回電':'');$('objective-distance').textContent=`${Math.round(p.distanceTo(t.position))} m`;$('waypoint').classList.add('hidden');
   }
+  dispose(){window.removeEventListener('keydown',this.onRadio);super.dispose();}
 }

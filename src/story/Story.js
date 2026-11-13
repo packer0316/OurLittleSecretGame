@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { SAVE_KEY, CHAPTERS, EVIDENCE, ENDINGS, newState, validateSave, collect, trueEndingReady, missingEvidence, objectives } from './campaign.js';
+import { preludeRecords } from './preludeRecords.js';
 
 const $=id=>document.getElementById(id);
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -37,7 +38,7 @@ export class Story {
     const layer=document.createElement('section');layer.id='story-layer';layer.className='story-layer hidden';layer.setAttribute('role','dialog');layer.setAttribute('aria-modal','true');layer.setAttribute('aria-labelledby','story-title');document.body.appendChild(layer);
   }
   start(){if(this.started)return;this.started=true;
-    if(this.state.flags.prologueComplete){this.toast('02:47。照片與來電都指向慈雲寺。沿參道進入正殿。');return;}
+    if(this.state.flags.prologueComplete&&!this.state.flags.incense){this.toast('02:47。照片與來電都指向慈雲寺。沿參道進入正殿。');return;}
     if(this.state.flags.incense||this.state.elapsed>5){this.toast('已繼續上次的調查。J 開啟筆記。');return;}
     this.game.audio.breathCue?.();
     this.document('photo',()=>this.dialogue([
@@ -70,6 +71,7 @@ export class Story {
     try{localStorage.setItem(key,JSON.stringify(s));this.state.position=s.position;return true;}catch{this.toast('瀏覽器無法儲存進度；本次仍可繼續遊玩。');return false;}
   }
   toast(text){$('story-toast').textContent=text;$('story-toast').classList.add('show');this.toastTime=5;}
+  preludeJournal(){const records=preludeRecords(this.state);this.show({eyebrow:'出發以前・山村調查',title:'我親眼確認過的事',body:records.length?records.map(([title,text])=>`<section class="archive-record"><h3>${escape(title)}</h3><p>${escape(text)}</p></section>`).join(''):'<p>目前還沒有序章調查紀錄。</p>',kind:'journal',dismiss:true,options:[{text:'返回目前筆記',action:()=>this.journal()}]});}
   active(id){const s=this.state,f=s.flags;
     if(id.startsWith('rite'))return !!this.ritual;
     if(this.ritual)return false;
@@ -160,11 +162,13 @@ export class Story {
   finish(ending){this.state.ending=ending;this.chase=null;this.ritual=null;this.game.player.enabled=false;this.world.ghost.root.visible=false;
     if(ending==='B'){for(const statue of this.world.statues||[]){if(statue.userData.head)statue.userData.head.rotation.y=.65;}this.game.player.teleport(55,-5,-26,Math.PI,0);this.world.sealedBuddha.visible=false;}
     const e=ENDINGS[ending];try{const unlocked=JSON.parse(localStorage.getItem('ols-endings')||'[]');localStorage.setItem('ols-endings',JSON.stringify([...new Set([...unlocked,ending])]));}catch{}
-    this.show({eyebrow:e.subtitle,title:e.name,body:paragraphs(e.text)+`<p class="ending-final">${escape(e.final)}</p><div class="ending-stats"><span>證據 ${this.state.evidence.length}/11</span><span>回應 ${this.state.answers} 次</span><span>調查 ${Math.max(1,Math.round(this.state.elapsed/60))} 分鐘</span></div>`,kind:'ending',options:[{text:'回到最後抉擇',action:()=>{const s=readSave(SAVE_KEY+'-decision');if(s){this.state=s;this.state.ending=null;this.world.sealedBuddha.visible=true;this.game.player.teleport(55,-7,-18,0,0);this.sync();this.save();}}},{text:'返回標題畫面',action:()=>this.onLobby()}]});
+    const reply=ending==='C'&&this.state.road?.peishan?'<aside class="deduction">天亮後，佩珊傳來訊息：「六個名字，我都看見了。這次，一個都不刪。」</aside>':'';
+    this.show({eyebrow:e.subtitle,title:e.name,body:paragraphs(e.text)+reply+`<p class="ending-final">${escape(e.final)}</p><div class="ending-stats"><span>證據 ${this.state.evidence.length}/11</span><span>回應 ${this.state.answers} 次</span><span>調查 ${Math.max(1,Math.round(this.state.elapsed/60))} 分鐘</span></div>`,kind:'ending',options:[{text:'回到最後抉擇',action:()=>{const s=readSave(SAVE_KEY+'-decision');if(s){this.state=s;this.state.ending=null;this.world.sealedBuddha.visible=true;this.game.player.teleport(55,-7,-18,0,0);this.sync();this.save();}}},{text:'返回標題畫面',action:()=>this.onLobby()}]});
     this.game.audio.storyCue?.(ending==='C'?'release':'threat');
   }
   journal(){const s=this.state;const list=objectives(s);this.show({eyebrow:`調查筆記　${s.evidence.length}/11`,title:'那些被留下的名字',body:`<div class="journal-goal"><small>目前線索</small>${list.map(o=>`<p>${escape(o.title)}<br><span>${escape(o.location)}</span></p>`).join('')}</div><div class="route-note">路線：山門 → 廟埕 → 一樓正殿。<br>西北樓梯上二樓；二樓東側上三樓；三樓北側上四樓。<br>古戲台在廟埕東側，亂葬崗由西牆缺口進入。<br>地下入口在四樓神壇東側，地下南側石階可返回。</div><div class="journal-grid">${Object.entries(EVIDENCE).map(([id,e])=>`<button data-evidence="${id}" ${s.evidence.includes(id)?'':'disabled'}><small>${s.evidence.includes(id)?'已取得':'尚未取得'}</small><strong>${escape(e.title)}</strong><span>${escape(e.place)}</span></button>`).join('')}</div><aside class="deduction">規則：聞呼名勿應。問路，不報自己的姓名。送魂：喚名 → 歸物 → 見證。</aside>`,dismiss:true,kind:'journal',options:[{text:'收起筆記',action:()=>{}}]});
     $('story-layer').querySelectorAll('[data-evidence]').forEach(b=>b.addEventListener('click',()=>this.document(b.dataset.evidence,()=>this.journal())));
+    if(preludeRecords(s).length){const b=document.createElement('button');b.className='prelude-link';b.textContent='回看住處、山村與佩珊的紀錄';b.onclick=()=>this.preludeJournal();$('story-layer').querySelector('.route-note').before(b);}
   }
   update(dt){if(this.modal||this.state.ending){$('interact-prompt').textContent='';return;}
     this.state.elapsed+=dt;this.tick+=dt;if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0)$('story-toast').classList.remove('show');}

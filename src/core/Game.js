@@ -11,7 +11,7 @@ import { flashlightCookie } from './canvasTex.js';
 
 /** 最終後製：暗角、底片顆粒、輕微色散與冷色調 */
 const FilmShader = {
-  uniforms: { tDiffuse: { value: null }, time: { value: 0 }, grain: { value: 0.055 }, vignette: { value: 1.0 }, aberration: { value: 0.0035 } },
+  uniforms: { tDiffuse: { value: null }, time: { value: 0 }, grain: { value: 0.03 }, vignette: { value: 0.9 }, aberration: { value: 0.0012 } },
   vertexShader: /* glsl */ `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
   fragmentShader: /* glsl */ `
     uniform sampler2D tDiffuse; uniform float time, grain, vignette, aberration; varying vec2 vUv;

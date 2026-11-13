@@ -12,6 +12,7 @@ export function buildRitualProps(scene,{x=8,y=.94,z=-19,handModel=null}={}){
   const skin=new THREE.MeshStandardMaterial({color:0x6d5c4b,map:tex,bumpMap:tex,bumpScale:.003,roughness:.62});
   const burned=new THREE.MeshStandardMaterial({color:0x27100a,map:tex,bumpMap:tex,bumpScale:.014,roughness:.96});
   const flesh=new THREE.MeshStandardMaterial({color:0x87342b,map:tex,bumpMap:tex,bumpScale:.008,roughness:.66});
+  const blood=new THREE.MeshStandardMaterial({color:0x240605,map:tex,roughness:.46,transparent:true,opacity:.84,depthWrite:false});
   const bone=new THREE.MeshStandardMaterial({color:0x665943,roughness:.96});
   const nail=new THREE.MeshStandardMaterial({color:0x4a3a28,roughness:.4});
   const add=(g,m,p,parent=root)=>{const o=new THREE.Mesh(g,m);o.position.set(...p);o.castShadow=true;o.receiveShadow=true;parent.add(o);return o;};
@@ -55,7 +56,7 @@ export function buildRitualProps(scene,{x=8,y=.94,z=-19,handModel=null}={}){
   for(let i=0;i<7;i++){const points=[[rng()*.15-.08,.016,rng()*.1],[rng()*.2-.1,.025,rng()*.2],[rng()*.25-.12,.004,.21]].map(p=>new THREE.Vector3(...p));add(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points),20,.0025,7,false),flesh,[0,0,0],tissue);}
   const pools=[];
   for(const [px,pz,s]of [[-.42,.16,.3],[.38,.08,.37],[.06,.32,.24]]){
-    const shape=new THREE.Shape();for(let i=0;i<=44;i++){const a=i/44*Math.PI*2,r=s*(.7+rng()*.3),xx=Math.cos(a)*r,zz=Math.sin(a)*r*.6;if(i===0)shape.moveTo(xx,zz);else shape.lineTo(xx,zz);}const p=add(new THREE.ShapeGeometry(shape),flesh,[px,-.002,pz]);p.rotation.x=-Math.PI/2;pools.push(p);
+    const phase=rng()*6.28,shape=new THREE.Shape();for(let i=0;i<=96;i++){const a=i/96*Math.PI*2,r=s*(.78+.1*Math.sin(a*3+phase)+.06*Math.sin(a*7-phase)),xx=Math.cos(a)*r,zz=Math.sin(a)*r*.6;if(i===0)shape.moveTo(xx,zz);else shape.lineTo(xx,zz);}const p=add(new THREE.ShapeGeometry(shape),blood,[px,-.002,pz]);p.rotation.x=-Math.PI/2;pools.push(p);
   }
-  return {root,update(t){tissue.scale.y=1+Math.sin(t*.85)*.035;},dispose(){tex.dispose();[skin,burned,flesh,bone,nail].forEach(m=>m.dispose());}};
+  return {root,update(t){tissue.scale.y=1+Math.sin(t*.85)*.035;},dispose(){tex.dispose();[skin,burned,flesh,blood,bone,nail].forEach(m=>m.dispose());handModel?.traverse(o=>{if(o.isMesh)o.material.dispose();});}};
 }

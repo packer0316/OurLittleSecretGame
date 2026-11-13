@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {newState,collect,validateSave,EVIDENCE,trueEndingReady,missingEvidence,objectives} from '../src/story/campaign.js';
+import {preludeRecords} from '../src/story/preludeRecords.js';
 
 test('main route progresses regardless of the first three evidence order',()=>{
   for(const order of [['diary','newspaper','tape'],['tape','newspaper','diary'],['newspaper','diary','tape']]){
@@ -35,4 +36,12 @@ test('old temple saves and all three scene checkpoints remain compatible',()=>{
   }
   const bad=validateSave({...newState(),scene:'home',position:[55,-7,-18,0,0],home:{step:900,notes:['__proto__','window','window']},road:{step:-7,notes:null}});
   assert.equal(bad.position,null);assert.equal(bad.home.step,6);assert.deepEqual(bad.home.notes,['window']);assert.equal(bad.road.step,0);
+});
+test('archived records reveal only encountered clues and retain the outside witness',()=>{
+  const s=newState();assert.deepEqual(preludeRecords(s),[]);
+  s.home.step=3;s.home.notes=['window'];s.road.step=2;
+  let text=preludeRecords(s).flat().join(' ');assert.match(text,/23:47/);assert.doesNotMatch(text,/郭建成|借聲登記簿|佩珊/);
+  s.road.step=4;s.road.peishan='question';s.flags.prologueComplete=true;
+  const loaded=validateSave(s);assert.equal(loaded.road.peishan,'question');text=preludeRecords(loaded).flat().join(' ');assert.match(text,/郭建成/);assert.match(text,/佩珊/);
+  assert.equal(validateSave({...s,road:{...s.road,peishan:'__proto__'}}).road.peishan,null);
 });
