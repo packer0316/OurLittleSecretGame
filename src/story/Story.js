@@ -39,17 +39,15 @@ export class Story {
     const layer=document.createElement('section');layer.id='story-layer';layer.className='story-layer hidden';layer.setAttribute('role','dialog');layer.setAttribute('aria-modal','true');layer.setAttribute('aria-labelledby','story-title');document.body.appendChild(layer);
   }
   start(){if(this.started)return;this.started=true;
-    if(this.state.flags.prologueComplete&&!this.state.flags.incense){this.toast('02:47。照片與來電都指向慈雲寺。沿參道進入正殿。');return;}
+    if(this.state.flags.prologueComplete&&!this.state.flags.incense){this.toast('02:47。阿哲的設備箱在正殿西桌。先走向亮著的供桌。');return;}
     if(this.state.flags.incense||this.state.elapsed>5){this.toast('已繼續上次的調查。J 開啟筆記。');return;}
     this.game.audio.breathCue?.();
     this.document('photo',()=>this.dialogue([
-      ['我','沒有寄件人。照片裡六個孩子……穿黃衣的是我。'],
-      ['電話裡的男人','以安。你還記得……那扇門怎麼開嗎？'],
-      ['我','阿哲？你在哪裡？'],
-      ['電話裡的女孩','你終於要回來接我了嗎？'],
-      ['我','2026 年 11 月 13 日，02:47。慈雲寺山門外。這次，我要知道發生過什麼。'],
-    ],()=>{this.save();this.toast('沿參道進入慈雲寺，調查一樓正殿的香。');},'沒有寄件人的信'));
+      ['我','阿哲說後面的門打不開，接著電話就斷了。'],
+      ['我','他的攝影機把設備箱拍在正殿。我得先找到那個箱子。'],
+    ],()=>{this.save();this.toast('走進正殿，先檢查仍亮著的供桌。');},'02:47・慈雲寺'));
   }
+
   show({eyebrow='慈雲寺・調查紀錄',title,body='',image=null,redacted=false,options=[{text:'收起',action:()=>{}}],dismiss=false,kind=''}){
     this.modal={options,dismiss};this.game.player.enabled=false;this.game.player.keys=Object.create(null);this.game.player.vel.set(0,0,0);
     const photo=image?`<figure class="story-figure ${redacted?'redacted':''}" style="${PHOTO_MARK_STYLE}"><img src="${ART+image}" alt="${escape(title)}">${redacted?'<i class="photo-scribble" aria-label="女孩的臉被紅筆塗去"></i>':''}</figure>`:'';
@@ -64,7 +62,7 @@ export class Story {
     if(!this.modal&&!this.busy&&!this.state.ending&&!this.transitioning&&this.game.map&&this.game.story===this){this.game.player.keys=Object.create(null);this.game.player.enabled=true;this.onResume();}
   }
   dialogue(lines,done=()=>{},title='聽見的聲音',i=0){const [speaker,text]=lines[i];this.show({eyebrow:title,title:speaker,body:`<p class="dialogue-line">${escape(text)}</p>`,kind:'dialogue',options:[{text:i===lines.length-1?'繼續調查':'繼續',action:()=>i+1<lines.length?this.dialogue(lines,done,title,i+1):done()}]});}
-  document(id,done=()=>{}){const e=EVIDENCE[id];this.show({eyebrow:`證物 ${String(Object.keys(EVIDENCE).indexOf(id)+1).padStart(2,'0')} / 11　${e.place}`,title:e.title,image:e.image,redacted:e.redacted&&!this.state.flags.sent,body:`<p class="document-date">${escape(e.date)}</p>${paragraphs(e.text)}<aside class="deduction">${escape(e.inference)}</aside>`,dismiss:true,options:[{text:'收進筆記，繼續調查',action:done}]});}
+  document(id,done=()=>{}){const e=EVIDENCE[id];this.show({eyebrow:e.place,title:e.title,image:e.image,redacted:e.redacted&&!this.state.flags.sent,body:`<p class="document-date">${escape(e.date)}</p>${paragraphs(e.text)}<aside class="deduction">${escape(e.inference)}</aside>`,dismiss:true,options:[{text:'收進筆記，繼續調查',action:done}]});}
   collect(id){const isNew=collect(this.state,id);if(isNew){this.game.audio.storyCue?.('clue');this.sync();this.save();}return isNew;}
   sync(){this.world.setState(this.state);const audio=this.game.audio;const released=!!this.state.flags.sent;if(audio.released!==released&&audio.ctx)audio.droneGain.gain.setTargetAtTime(released ? 0.012 : 0.07,audio.ctx.currentTime,1);audio.released=released;$('chapter-label').textContent=`第${['','一','二','三','四'][this.state.chapter]}章 / ${CHAPTERS[this.state.chapter]}`;$('clue-count').textContent=`證據 ${this.state.evidence.length} / 11`;}
   save(key=SAVE_KEY){
@@ -72,7 +70,7 @@ export class Story {
     try{localStorage.setItem(key,JSON.stringify(s));this.state.position=s.position;return true;}catch{this.toast('瀏覽器無法儲存進度；本次仍可繼續遊玩。');return false;}
   }
   toast(text){$('story-toast').textContent=text;$('story-toast').classList.add('show');this.toastTime=5;}
-  preludeJournal(){const records=preludeRecords(this.state);this.show({eyebrow:'出發以前・山村調查',title:'我親眼確認過的事',body:records.length?records.map(([title,text])=>`<section class="archive-record"><h3>${escape(title)}</h3><p>${escape(text)}</p></section>`).join(''):'<p>目前還沒有序章調查紀錄。</p>',kind:'journal',dismiss:true,options:[{text:'返回目前筆記',action:()=>this.journal()}]});}
+  preludeJournal(){const records=preludeRecords(this.state);this.show({eyebrow:'出發以前・山村調查',title:'我親眼確認過的事',body:records.length?records.map(([title,text])=>`<section class="archive-record"><h3>${escape(title)}</h3><p>${escape(text)}</p></section>`).join(''):'<p>目前還沒有序章調查紀錄。</p>',kind:'journal',dismiss:true,options:this.state.scene==='temple'?[{text:'返回目前筆記',action:()=>this.journal()}]:[{text:'收起紀錄',action:()=>{}}]});}
   active(id){const s=this.state,f=s.flags;
     if(id.startsWith('rite'))return !!this.ritual;
     if(this.ritual)return false;
@@ -82,7 +80,7 @@ export class Story {
     if(id==='loopmark')return !!f.stage&&!f.loopSolved;
     if(id==='divination')return !!f.stage&&!!f.loopSolved&&!f.key;
     if(id==='altar')return s.evidence.includes('names')&&s.evidence.includes('confession')&&!f.sealed&&!f.sent;
-    if(EVIDENCE[id]){if(s.evidence.includes(id))return false;if(id==='relic')return s.evidence.includes('births');if(id==='death')return !!f.key;if(['names','confession'].includes(id))return !!f.underground;return !!f.incense;}
+    if(EVIDENCE[id]){if(s.evidence.includes(id))return false;if(id==='relic')return s.evidence.includes('births');if(id==='death')return !!f.key;if(id==='births')return s.evidence.includes('death');if(['names','confession'].includes(id))return !!f.underground;return !!f.incense;}
     return false;
   }
   focused(){if(this.chase||this.modal)return null;const cam=this.game.camera;cam.getWorldDirection(this.look);let best=null,score=0;
@@ -91,47 +89,51 @@ export class Story {
   }
   interact(id){if(this.modal||this.chase||!this.active(id))return false;const s=this.state,f=s.flags;
     if(id.startsWith('rite')){this.ritualAction(id);return true;}
-    if(id==='rules'){this.show({title:'山門告示',body:paragraphs('子夜過後，勿入後殿。\n聞親人呼名，勿應。\n不問其名，不許其近。\n見紅布鬆脫，退回燈下，勿代為整理。'),dismiss:true});return true;}
-    if(id==='incense'){f.incense=true;s.chapter=2;this.sync();this.game.audio.storyCue?.('gate');this.save();this.dialogue([['我','灰這麼厚……這三炷香是誰點的？旁邊連腳印都沒有。'],['門後的童聲','進來了，就不要走了。'],['較遠的童聲','別答應。'],['我','剛剛是兩個人？山門……關起來了。']],()=>this.toast('第二章：調查一樓東西側桌面，以及二樓樓梯旁的錄音機。'),'沒有人拜的廟');return true;}
+    if(id==='rules'){this.show({title:'山門告示',body:paragraphs('清點工作進行中。\n設備請留原位。\n正殿供桌西側留有工作器材。\n下山前，請確認所有人已離開。'),dismiss:true});return true;}
+    if(id==='incense'){f.incense=true;s.chapter=2;this.sync();this.game.audio.storyCue?.('gate');this.save();this.dialogue([
+      ['我','香還在燒。阿哲的工具箱就在旁邊。'],
+      ['山門方向','砰。'],
+      ['我','風停了，門卻關上了。西桌上的計數器，還有東桌的門框……他清點到這裡。'],
+    ],()=>{this.world.triggerScare('gate');this.toast('檢查一樓東西側的物件，再上西北樓梯找錄音機。');},'設備還在，人去了哪裡');return true;}
     if(id==='stage'){this.stage();return true;}
-    if(id==='loopmark'){this.loopPass=(this.loopPass||0)+1;this.world.loopProps.visible=true;
-      if(this.loopPass<3){this.game.player.teleport(-13,6.9,-16,-Math.PI/2,0);this.dialogue(this.loopPass===1?[['我','這扇門……剛才走過了。供果怎麼變成彈珠？']]:[['走廊裡的男孩聲','一、二、三、四、五。一、二、三、四、五。'],['我','你漏了一個。']],()=>this.toast('回廊又回到原處。查看紅線旁留下的記號。'),'重複的回廊');}
-      else{f.loopSolved=true;this.sync();this.save();this.dialogue([['較遠的童聲','不要跟著我的聲音。看我留下的東西。'],['我','補過的兔耳……照片裡也是這樣。這個記號，指向真正的供桌。']],()=>this.afterStage());}return true;}
+    if(id==='loopmark'){this.loopPass=(this.loopPass||0)+1;this.world.setLoopPass(this.loopPass);
+      if(this.loopPass<3){this.game.player.teleport(-13,6.9,-16,-Math.PI/2,0);this.dialogue(this.loopPass===1?[['我','紅線又在這裡。但剛才地上只有五顆彈珠。']]:[['走廊裡的男孩聲','一、二、三、四、五。一、二、三、四、五。'],['我','你漏了一個。']],()=>this.toast('回廊又回到原處。查看紅線旁留下的記號。'),'重複的回廊');}
+      else{f.loopSolved=true;this.sync();this.save();this.dialogue([['牆後很輕的聲音','第三顆，別踩到。'],['我','紅線的結一直朝向供桌。繞著聲音走，就會回到這裡。這次沿著實物走。']],()=>this.afterStage());}return true;}
     if(id==='divination'){this.divination();return true;}
     if(id==='descent'){
-      if(!f.key||!s.evidence.includes('death')){this.show({title:'封住的暗道',body:paragraphs(!f.key?'銅鎖已經生鏽。必須先找到能開鎖的鑰匙。':'鑰匙吻合，但阿哲留下的紀錄還沒有找到。先到三樓東北納骨櫃確認來電者的身分。')});return true;}
-      f.underground=true;this.game.player.teleport(55,-7,-13.5,0,0);this.sync();this.save();this.dialogue([['我','往下的石階，比廟本身更舊。'],['門內的聲音','再轉一次，就能把以前的事改掉。']],()=>this.toast('地下封印室：調查西牆名字與地上的舊鎖。'),'神明不在神桌上');return true;
+      if(!f.key||!s.evidence.includes('death')){this.show({title:'封住的暗道',body:paragraphs(!f.key?'銅鎖已經生鏽。必須先找到能開鎖的鑰匙。':'鎖孔裡塞著一截充電線，和三樓東北桌上的設備接頭相同。先確認阿哲留下的手機。')});return true;}
+      f.underground=true;this.game.player.teleport(55,-7,-13.5,0,0);this.sync();this.save();this.dialogue([['我','往下的石階，比廟本身更舊。'],['門內的聲音','再轉一次，就能把以前的事改掉。']],()=>this.toast('地下封印室：調查西牆名字與地上的舊鎖。'),'把最後一句說完');return true;
     }
     if(id==='return'){this.game.player.teleport(5.3,16.9,-20.5,Math.PI,0);this.save();this.toast('已返回四樓。可沿樓梯回頭尋找遺漏的證物。');return true;}
     if(id==='altar'){this.finalChoice();return true;}
     if(id==='exit'){this.finish(f.sent?'C':'A');return true;}
     if(EVIDENCE[id]){
       this.collect(id);this.document(id,()=>{
-        if(id==='tape'){this.game.audio.breathCue?.();this.dialogue([['我','機器已經停了……為什麼房間裡還有那口呼吸？']],()=>this.nextClue());}
-        else if(id==='death')this.dialogue([['我','十月二十九……昨天打給我的，不可能是你。'],['像阿哲的聲音','你現在知道了，還會來救我嗎？']],()=>this.toast('可調查三樓西北的生辰簿，或前往四樓暗道。'));
-        else if(id==='births')this.dialogue([['我','林小雨。她的母親說害怕，不是要他們把她送回去。'],['我','紅布兔，左耳補縫……在西牆外的無名小墳。']],()=>this.toast('遺物線索已加入筆記：亂葬崗西牆缺口外。'));
-        else if(id==='relic')this.dialogue([['我','左耳補過。和照片上一樣。'],['女孩的聲音','它只會說你想聽的。你不要再答應它了。'],['我','這次，我會把妳的名字帶出去。']]);
-        else if(id==='confession')this.dialogue([['童年阿哲','以安，快鎖。大人說天亮就能開。'],['小雨，門內','我不是要你開門。我只是……不要你走。'],['年幼的我','我會回來。'],['我','我知道她在裡面。不是我不記得，是我一直不肯記得。']],()=>{this.save(SAVE_KEY+'-decision');this.toast('最後的抉擇已保存。仍可返回地上補齊證據。');});
+        if(id==='tape'){this.world.triggerScare('tape');this.game.audio.presence(.7);this.nextClue();}
+        else if(id==='death')this.dialogue([['我','十月二十九日的錄音，十二日卻打進了我家。'],['我','它剪掉了阿哲最後的警告。我得把整段帶出去。']],()=>{this.world.triggerScare('phone');this.game.audio.presence(-.6);this.toast('西北木尺架留著另一組名字，也可以先帶鑰匙到四樓。');});
+        else if(id==='births')this.dialogue([['我','林小雨。原來右邊那一個，叫這個名字。']],()=>this.toast('木框背面的箭頭朝向西牆缺口。去老樹下找布兔。'));
+        else if(id==='relic')this.dialogue([['我','名字對得上，左耳的縫線也一樣。'],['很輕的聲音','輪到你數了。']],()=>{this.world.triggerScare('relic');this.toast('布兔已收好。從西牆缺口回廟裡，還有最後一段錄音。');});
+        else if(id==='confession')this.dialogue([['童年阿哲','先扣上。大人等一下就來。'],['門內的孩子','我的鞋找不到了。等我一下。'],['年幼的我','都出來了。'],['我','這就是被留下的那句話。']],()=>{this.save(SAVE_KEY+'-decision');this.toast('到地下神壇決定如何處理錄音。也可以先回地上補齊線索。');});
         else this.nextClue();
       });return true;
     }return false;
   }
-  nextClue(){if(this.state.chapter===3&&!this.state.flags.stage){this.game.audio.woodenFish?.(3);this.toast('廟埕東側傳來開演的木魚聲。去古戲台看看。');}else this.toast('證據已收進筆記。按 J 重看紀錄與目的地。');}
+  nextClue(){if(this.state.chapter===3&&!this.state.flags.stage){this.game.audio.woodenFish?.(3);this.toast('廟埕東側傳來開演的木魚聲。去古戲台看看。');}else{const next=objectives(this.state)[0];this.toast(next.title+'。'+next.location+'。');}}
   stage(){this.world.silhouettes.visible=true;this.world.stageLight.color.setHex(0xf26426);this.world.stageLight.intensity=24;
-    this.dialogue([['童年阿哲','都來了？數一下。'],['童年柏翰','一、二、三、四、五……'],['小雨','還有我。'],['年幼的我','妳站我旁邊。'],['小雨','我們六個，長大以後還會在一起嗎？'],['壇後的男人','小雨。妳願不願意留下來陪我？'],['我','六道腳步走出山門……小雨又被帶了回來。'],['童年阿哲','以安，拿著。快鎖。']],()=>{
+    this.dialogue([['錄音裡的男人','都出來了？'],['台上的孩子','一、二、三、四、五。'],['幕布後','叩。叩。叩。'],['我','第六張椅子剛才還朝著後面。'],['台上的孩子','都出來了。'],['我','穿黃衣的孩子把手藏起來。我知道那是我。']],()=>{
       this.collect('stage');this.state.flags.stage=true;this.sync();this.save();this.voiceTrap('stage');
-    },'戲台上的火災記憶');
+    },'沒有記進錄音的座位');
   }
-  voiceTrap(source){this.game.audio.breathCue?.();this.show({eyebrow:'聲音正在等你的回答',title:'「以安，你回我一句。」',image:'apparition.png',body:paragraphs('像阿哲的聲音從幕布後傳來。\n「你回我一句，我就知道你還在。」'),kind:'voice-trap',options:[
-    {text:'保持沉默，退回燈下',action:()=>this.dialogue([['像母親的聲音','不回答，很沒禮貌。'],['較遠的童聲','走。']],()=>{if(source==='stage')this.afterStage();else this.toast('重新調查木筊，記住日記裡的規則。');})},
+  voiceTrap(source){this.game.audio.breathCue?.();this.show({eyebrow:'聲音正在等你的回答',title:'「以安，你回我一句。」',body:paragraphs('幕布後傳來阿哲的聲音，位置卻比剛才低，像有人趴在地上。\n「你回我一句，我就知道你還在。」'),kind:'voice-trap',options:[
+    {text:'保持沉默，退回燈下',action:()=>this.dialogue([['像母親的聲音','不回答，很沒禮貌。'],['牆後很輕的聲音','走。']],()=>{if(source==='stage'){this.world.triggerScare('stage');this.game.audio.presence(.7);this.afterStage();}else this.toast('回去查看木筊。計數器底座提醒過：問路，勿報姓名。');})},
     {text:'「阿哲，是你嗎？」',action:()=>{this.state.answers++;this.beginChase(source);}},
-    {text:'留意聲音，不出聲',action:()=>this.show({title:'一模一樣的吸氣',body:paragraphs('這口吸氣，與電話裡完全一樣。\n它不是在自然地說話。'),options:[{text:'保持沉默',action:()=>{if(source==='stage')this.afterStage();}},{text:'還是回答它',action:()=>{this.state.answers++;this.beginChase(source);}}]})},
+    {text:'留意聲音，不出聲',action:()=>this.show({title:'一模一樣的吸氣',body:paragraphs('這口吸氣，與電話裡完全一樣。\n它不是在自然地說話。'),options:[{text:'保持沉默',action:()=>{if(source==='stage'){this.world.triggerScare('stage');this.game.audio.presence(.7);this.afterStage();}}},{text:'還是回答它',action:()=>{this.state.answers++;this.beginChase(source);}}]})},
     ]});}
-  afterStage(){this.toast(this.state.flags.loopSolved?'到二樓中央供桌擲筊。日記寫著：問路，不報姓名。':'回到二樓西側回廊，尋找留下的補線記號。');this.save();}
-  divination(){this.show({eyebrow:'二樓・問神',title:'有問必答，以名為引',body:paragraphs('兩片木筊躺在積灰的供桌上。\n日記說：問路可以，不要報自己的名字。'),options:[
-    {text:'「通往後殿的路在哪裡？」',action:()=>{this.state.flags.key=true;this.state.chapter=4;this.sync();this.save();this.game.audio.storyCue?.('clue');this.dialogue([['我','一平一凸。抽屜裡有一把銅鑰匙。'],['門後的聲音','你以前會，現在也會。'],['我','先去三樓，找到阿哲留下的紀錄。']],()=>this.toast('第四章：前往三樓東北納骨櫃。'));}},
+  afterStage(){this.toast(this.state.flags.loopSolved?'到二樓中央供桌擲筊。計數器底座刻著：問路，不報姓名。':'回到二樓西側回廊，尋找留下的補線記號。');this.save();}
+  divination(){this.show({eyebrow:'二樓・問神',title:'有問必答，以名為引',body:paragraphs('兩片木筊躺在積灰的供桌上。\n底座的木片刻著：問路可以，不要報自己的名字。'),options:[
+    {text:'「通往後殿的路在哪裡？」',action:()=>{this.state.flags.key=true;this.state.chapter=4;this.sync();this.save();this.game.audio.storyCue?.('clue');this.dialogue([['我','一平一凸。抽屜裡有一把銅鑰匙。'],['門後的聲音','你以前會，現在也會。'],['我','抽屜內側有阿哲的藍色貼紙。上面標了三樓東北桌。']],()=>this.toast('前往三樓東北收存桌，找阿哲的手機。'));}},
     {text:'「我是陳以安，你認得我嗎？」',action:()=>{this.state.answers++;this.beginChase('divination');}},
-    {text:'「林小雨，妳在這裡嗎？」',action:()=>this.voiceTrap('divination')},
+    {text:'「後面有人嗎？」',action:()=>this.voiceTrap('divination')},
   ]});}
   beginChase(source){const p=this.game.player;const upstairs=p.pos.y>5;const safe=upstairs?this.world.safeZones[1]:this.world.safeZones[0];
     this.chase={source,time:0,safe:safe.clone(),checkpoint:[p.pos.x,p.pos.y,p.pos.z,p.yaw,p.pitch]};p.storyChase=true;
@@ -142,7 +144,7 @@ export class Story {
     if(caught){this.state.deaths++;this.game.player.teleport(...c.checkpoint);this.show({eyebrow:'聲音又靠近了一點',title:'你回答了',body:paragraphs('紅布遮住了你的視線。你的呼吸，從別人的喉嚨裡傳回來。\n已取得的證據仍然保留。'),options:[{text:'回到這次呼名之前',action:()=>this.voiceTrap(c.source)}]});}
     else{this.save();if(c.source==='stage')this.afterStage();else this.toast('聲音退去了。可以重新擲筊。');}
   }
-  finalChoice(){this.save(SAVE_KEY+'-decision');this.show({eyebrow:'最後的抉擇',title:'你要救她，還是讓自己無罪？',body:paragraphs('「把布解開，就當那扇門從來沒有關過。」\n「你只是想聽她說，那不是你的錯。」\n\n紅繩繫在神壇上。這一次，決定仍在你的手裡。'),options:[
+  finalChoice(){this.save(SAVE_KEY+'-decision');this.show({eyebrow:'最後的抉擇',title:'門裡只剩你的聲音',body:paragraphs('門裡反覆播著「都出來了」。接著是我的聲音，說我沒有做錯。\n紅繩把那扇門繫在神壇後。阿哲的手機就在我手上，完整錄音還沒有傳出去。\n我可以再次封住這裡，也可以照聲音說的解開它。送行盤提供了第三種做法。'),options:[
     {text:'重新繫緊紅繩，封住聲音',action:()=>{this.state.flags.sealed=true;this.sync();this.save();this.dialogue([['我','到這裡就好。'],['門內的女孩聲','這一次，你還是不帶我走。']],()=>this.toast('山門已開。返回四樓，下樓後沿參道離開。'));}},
     {text:'解開覆眼紅布，接受聲音的承諾',action:()=>this.dialogue([['我','我不會再把妳關起來。'],['女孩聲','我知道。你答應了。'],['自己的聲音','原來，有自己的聲音是這樣。']],()=>this.finish('B'))},
     {text:'留下她的名字，開始送魂',action:()=>this.prepareRitual()},
@@ -167,7 +169,7 @@ export class Story {
     this.show({eyebrow:e.subtitle,title:e.name,body:paragraphs(e.text)+reply+`<p class="ending-final">${escape(e.final)}</p><div class="ending-stats"><span>證據 ${this.state.evidence.length}/11</span><span>回應 ${this.state.answers} 次</span><span>調查 ${Math.max(1,Math.round(this.state.elapsed/60))} 分鐘</span></div>`,kind:'ending',options:[{text:'回到最後抉擇',action:()=>{const s=readSave(SAVE_KEY+'-decision');if(s){this.state=s;this.state.ending=null;this.world.sealedBuddha.visible=true;this.game.player.teleport(55,-7,-18,0,0);this.sync();this.save();}}},{text:'返回標題畫面',action:()=>this.onLobby()}]});
     this.game.audio.storyCue?.(ending==='C'?'release':'threat');
   }
-  journal(){const s=this.state;const list=objectives(s);this.show({eyebrow:`調查筆記　${s.evidence.length}/11`,title:'那些被留下的名字',body:`<div class="journal-goal"><small>目前線索</small>${list.map(o=>`<p>${escape(o.title)}<br><span>${escape(o.location)}</span></p>`).join('')}</div><div class="route-note">路線：山門 → 廟埕 → 一樓正殿。<br>西北樓梯上二樓；二樓東側上三樓；三樓北側上四樓。<br>古戲台在廟埕東側，亂葬崗由西牆缺口進入。<br>地下入口在四樓神壇東側，地下南側石階可返回。</div><div class="journal-grid">${Object.entries(EVIDENCE).map(([id,e])=>`<button data-evidence="${id}" ${s.evidence.includes(id)?'':'disabled'}><small>${s.evidence.includes(id)?'已取得':'尚未取得'}</small><strong>${escape(e.title)}</strong><span>${escape(e.place)}</span></button>`).join('')}</div><aside class="deduction">規則：聞呼名勿應。問路，不報自己的姓名。送魂：喚名 → 歸物 → 見證。</aside>`,dismiss:true,kind:'journal',options:[{text:'收起筆記',action:()=>{}}]});
+  journal(){const s=this.state;const list=objectives(s);this.show({eyebrow:`調查筆記　${s.evidence.length}/11`,title:'目前查到的事',body:`<div class="journal-goal"><small>目前線索</small>${list.map(o=>`<p>${escape(o.title)}<br><span>${escape(o.location)}</span></p>`).join('')}</div><div class="route-note">路線：山門 → 廟埕 → 一樓正殿。<br>西北樓梯上二樓；二樓東側上三樓；三樓北側上四樓。<br>古戲台在廟埕東側，亂葬崗由西牆缺口進入。<br>地下入口在四樓神壇東側，地下南側石階可返回。</div><div class="journal-grid">${Object.entries(EVIDENCE).map(([id,e])=>`<button data-evidence="${id}" ${s.evidence.includes(id)?'':'disabled'}><small>${s.evidence.includes(id)?'已取得':'尚未取得'}</small><strong>${s.evidence.includes(id)?escape(e.title):'尚未確認的線索'}</strong><span>${s.evidence.includes(id)?escape(e.place):''}</span></button>`).join('')}</div><aside class="deduction">${s.evidence.includes("confession")?"我知道誰關了門，也知道錄音刪掉了什麼。":s.evidence.includes("death")?"來電用的是較早的錄音，阿哲最後的警告被剪掉了。":s.flags.stage?"我出現在那次點名裡。回廊的紅線記號通往供桌。":s.flags.incense?"阿哲清點的東西仍在。先把物件與錄音的時間對起來。":"先找阿哲留在正殿的設備。"}${s.evidence.includes("diary")?" 問路，勿報姓名。":""}${s.evidence.includes("ritual")?" 送行盤的順序是喚名、歸物、見證。":""}</aside>`,dismiss:true,kind:'journal',options:[{text:'收起筆記',action:()=>{}}]});
     $('story-layer').querySelectorAll('[data-evidence]').forEach(b=>b.addEventListener('click',()=>this.document(b.dataset.evidence,()=>this.journal())));
     if(preludeRecords(s).length){const b=document.createElement('button');b.className='prelude-link';b.textContent='回看住處、山村與佩珊的紀錄';b.onclick=()=>this.preludeJournal();$('story-layer').querySelector('.route-note').before(b);}
   }

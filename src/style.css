@@ -113,7 +113,12 @@ kbd {
 :root { --ink:#e5ddcb; --dim:#a99d8a; --blood:#8b3229; --gold:#baa178; }
 button:focus-visible,select:focus-visible,input:focus-visible { outline:2px solid #d6b780; outline-offset:5px; }
 #lobby { padding:34px 5.8vw 24px; grid-template-rows:auto auto 1fr auto; }
-.lobby-bg { background:linear-gradient(90deg,rgba(4,8,9,.96) 0%,rgba(5,9,10,.83) 23%,rgba(6,9,10,.35) 52%,rgba(4,8,9,.05) 78%),linear-gradient(0deg,#040909 0%,transparent 31%,rgba(4,8,9,.1) 80%),url('/assets/story/temple-keyart.png') center/cover; }
+.lobby-bg {
+  background:
+    linear-gradient(90deg, rgba(4, 8, 9, .62), transparent 72%),
+    linear-gradient(0deg, #040909, transparent 27%),
+    url('/assets/story/temple-blindfold-menu.png') 84% center / cover no-repeat;
+}
 .lobby-bg::after { opacity:.035; }
 .lobby-topline { display:flex;justify-content:space-between;color:#b8aa91;font:11px var(--sans);letter-spacing:.26em;opacity:.75; }
 .lobby-head { text-align:left;padding:8vh 0 0; }

@@ -5,9 +5,10 @@ import { boxGeo,mulberry32 } from '../../core/utils.js';
 import { plaqueTexture,smokeTexture,sootTexture } from '../../core/canvasTex.js';
 import { makeTreeGeometry } from '../temple/trees.js';
 import { createClothSystem } from '../temple/cloth.js';
+import { createGhost } from '../temple/ghost.js';
 import { buildRitualProps } from './ritualProps.js';
 
-export const ASSETS={textures:['forest_ground_04','mossy_cobblestone','worn_mossy_plasterwall','weathered_brown_planks','wood_peeling_paint_weathered','mossy_rock','bark_brown_02','velour_velvet'],scans:['ritual_hand']};
+export const ASSETS={textures:['forest_ground_04','mossy_cobblestone','worn_mossy_plasterwall','weathered_brown_planks','wood_peeling_paint_weathered','mossy_rock','bark_brown_02','velour_velvet'],scans:['ritual_hand','ghost_woman']};
 export function create(game){
   const scene=new THREE.Scene();scene.background=new THREE.Color(0x080e13);scene.fog=new THREE.FogExp2(0x111a20,.028);
   const world=new World();world.bounds={x1:-16,x2:16,z1:-42,z2:39};world.floor(-16,-42,16,39,0);
@@ -57,21 +58,23 @@ export function create(game){
   house(-8,-1,6,6,3.7,12);house(8,0,6,5,4.4,15);house(-9,-16,7,7,3.5,21);house(-8,-31,6,6,4.2,27);
   // Noticeboard positioned in the street, with a physical roof and legs.
   for(const x of [3.3,4.7])box(.09,2.3,.09,x,1.15,5,wood);box(1.65,1.08,.12,4,1.65,5,wood);box(1.9,.1,.5,4,2.27,5,rock);
-  sign('住戶遷離公告',1.4,.3,4,1.95,5.066);sign('夜間勿回應門外呼名',1.4,.3,4,1.5,5.067);
+  sign('住戶遷離公告',1.4,.3,4,1.95,5.066);sign('鑰匙寄放 榮昌紙紮行',1.4,.3,4,1.5,5.067);
   // The workshop is an accessible room with a wide front opening and collision-correct bench.
   box(7,.13,8,8.5,.06,-18.5,rock);world.floor(5,-22.5,12,-14.5,.12);
   box(.22,3.8,8,5,1.9,-18.5,wall);box(.22,3.8,8,12,1.9,-18.5,wall);box(7,3.8,.22,8.5,1.9,-22.5,wall);
   world.box(4.89,-22.5,5.11,-14.5,0,3.8);world.box(11.89,-22.5,12.11,-14.5,0,3.8);world.box(5,-22.61,12,-22.39,0,3.8);
   box(2,3.8,.22,6,1.9,-14.5,wall);box(2,3.8,.22,11,1.9,-14.5,wall);world.box(5,-14.61,7,-14.39,0,3.8);world.box(10,-14.61,12,-14.39,0,3.8);
-  box(3,.8,.22,8.5,3.4,-14.5,wood);box(7.7,.18,8.6,8.5,3.85,-18.5,wood);propLabel('榮昌 紙紮行',2.6,.5,8.5,2.95,-14.32);
+  box(3,.8,.22,8.5,3.4,-14.5,wood);box(7.7,.18,8.6,8.5,3.85,-18.5,wood);propLabel('榮昌 紙紮行',2.6,.5,8.5,3.25,-14.32);
   box(2.3,.09,1.2,8.3,.91,-19,wood);for(const x of [7.3,9.3])for(const z of [-19.5,-18.5])box(.1,.75,.1,x,.49,z,wood);world.box(7.15,-19.6,9.45,-18.4,.12,.96);
   const remains=buildRitualProps(scene,{x:8.3,y:.965,z:-19,handModel:game.assets.model('ritual_hand')});
   const badge=sign('郭建成 46歲',.25,.09,8.95,.969,-18.55);badge.rotation.x=-Math.PI/2;
   const ring=mesh(new THREE.TorusGeometry(.012,.0028,10,26),mat(0x82704b,{metalness:.65,roughness:.5}),[8.86,.971,-18.61]);ring.rotation.x=Math.PI/2;
   // A paper-making rack and ledger, logically separated from the bodily evidence.
   box(1.1,.08,.7,10.8,.82,-19,wood);for(const x of [10.35,11.25])box(.07,.7,.58,x,.43,-19,wood);world.box(10.25,-19.35,11.35,-18.65,.12,.87);
-  const ledger=box(.38,.035,.48,10.8,.885,-19,paper);ledger.rotation.y=.12;
-  for(let i=0;i<7;i++)box(.28,.003,.003,10.8,.905,-19.16+i*.045,dark);
+  box(.38,.065,.28,10.8,.9,-19,iron,true);
+  box(.26,.12,.16,10.8,.99,-19,dark,true);
+  const lens=cyl(.045,.045,.08,10.8,1,-18.89,iron);lens.rotation.x=Math.PI/2;
+  box(.08,.008,.1,10.66,.936,-19.04,mat(0x3e7896));
   for(const x of [5.5,11.5]){box(.08,2.7,.08,x,1.47,-21.9,wood);for(let i=0;i<4;i++)box(.8,.06,.3,x, .6+i*.55,-21.9,wood);}
   // Furnace: open mouth, ash tray, charred beams, cooled coals and a few surviving embers.
   for(const x of [6,7.3])box(.28,1.6,1.1,x,.92,-21.7,rock);box(1.6,.25,1.2,6.65,1.83,-21.7,rock);box(1.1,1.35,.15,6.65,.9,-22.2,dark);box(1.6,.12,1.4,6.65,.19,-21.6,rock);
@@ -87,16 +90,40 @@ export function create(game){
   for(let i=0;i<8;i++){const p=box(.32,.015,.44,5.4+rand()*6,.145,-15-rand()*7,paper);p.rotation.y=rand()*6.28;}
   cyl(.26,.2,.5,11,.37,-15.4,iron);cyl(.24,.24,.014,11,.625,-15.4,dark);
   // Path-end gate physically marks the transition. No automatic teleport on passing a coordinate.
-  for(const x of [-2.3,2.3]){box(.28,3.1,.28,x,1.55,-36,rock);world.box(x-.14,-36.14,x+.14,-35.86,0,3.1);}box(5.2,.2,.5,0,3,-36,wood);propLabel('慈雲寺 舊參道',2.6,.45,0,2.62,-35.7);
+  for(const x of [-2.3,2.3]){box(.28,3.1,.28,x,1.55,-36,rock);world.box(x-.14,-36.14,x+.14,-35.86,0,3.1);}box(5.2,.2,.5,0,3,-36,wood);propLabel('慈雲寺 舊參道',2.6,.45,0,2.82,-35.73);
   for(let i=0;i<5;i++){box(3.8,.12,.7,0,.055,-37-i*.85,rock);}
   const fogTex=smokeTexture();textures.push(fogTex);const fog=[];
   for(let i=0;i<12;i++){const m=new THREE.MeshBasicMaterial({map:fogTex,color:0x758a90,transparent:true,opacity:.08,depthWrite:false});materials.push(m);const o=mesh(new THREE.PlaneGeometry(12,2.6),m,[(rand()-.5)*10,.9,rand()*75-38]);o.castShadow=false;fog.push({o,x:o.position.x,phase:rand()*6});}
-  const targets=[['bus','查看停駛時刻表',[-3.15,1.6,21.5]],['notice','調查遷離公告',[4,1.5,5.12]],['remains','檢查作坊桌上的殘留物',[8.3,1.09,-18.85]],['ledger','翻閱焚紙作坊登記簿',[10.8,1,-19]],['gate','沿舊參道前往慈雲寺',[0,1.6,-35.7]],['car','查看車內手機',[-3.6,1.15,32]],['kiln','查看仍有餘溫的焚化爐',[6.65,.85,-20.95]]].map(([id,label,p])=>({id,label,position:new THREE.Vector3(...p)}));
+  const targets=[['bus','查看停駛時刻表',[-3.15,1.6,21.5]],['notice','調查遷離公告',[4,1.5,5.12]],['remains','檢查作坊桌上的殘留物',[8.3,1.09,-18.85]],['ledger','檢查相機與充電座',[10.8,1,-19]],['gate','沿舊參道前往慈雲寺',[0,1.6,-35.7]],['car','查看車內手機',[-3.6,1.15,32]],['kiln','查看仍有餘溫的焚化爐',[6.65,.85,-20.95]]].map(([id,label,p])=>({id,label,position:new THREE.Vector3(...p)}));
   game.audio.profile='road';game.audio.released=false;game.film.uniforms.grain.value=.032;game.film.uniforms.aberration.value=.0018;
-  return {id:'road',scene,world,storyWorld:{targets,setState(){}},cloth,remains,spawn:{x:-1.2,z:33.2,yaw:0,pitch:-.03},
+  const watcher=createGhost(game.assets);scene.add(watcher.root);
+  watcher.root.traverse(o=>{if(o.isMesh&&!materials.includes(o.material))materials.push(o.material);});
+  const played=new Set();let encounter=null;
+  const storyWorld={
+    targets,setState(){},
+    triggerScare(kind){
+      if(played.has(kind))return;played.add(kind);
+      encounter={kind,time:0,seen:false,sounded:false};
+      watcher.root.position.set(kind==='bridge'?-2.3:8.5,0,kind==='bridge'?7.3:-14.1);
+      watcher.root.visible=true;
+    },
+    get scareActive(){return !!encounter;},
+  };
+  return {id:'road',scene,world,storyWorld,cloth,remains,spawn:{x:-1.2,z:33.2,yaw:0,pitch:-.03},
     zoneName:p=>p.z>14?'舊山路・停駛的站牌':p.z>7?'石橋・下方沒有水聲':p.x>4.8&&p.z<-14&&p.z>-23?'廢村・榮昌紙紮行':p.z<-30?'慈雲寺・舊參道':'慈雲里・無人的街',
     indoorAt:p=>p.x>5&&p.z<-14&&p.z>-23,surfaceAt:()=> 'stone',setQuality(q){moon.shadow.mapSize.set(q.shadow,q.shadow);game.film.uniforms.grain.value=.032;game.film.uniforms.aberration.value=.0018;},
-    update(dt,t){cloth.update(t,game.camera);remains.update(t);furnace.intensity=4.5*(1+.08*Math.sin(t*2.1));for(const f of fog){f.o.quaternion.copy(game.camera.quaternion);f.o.position.x=f.x+Math.sin(t*.08+f.phase)*2;}},
+    update(dt,t){
+      if(encounter&&game.running&&!game.story?.modal){
+        encounter.time+=dt;
+        const p=game.player,dx=watcher.root.position.x-p.pos.x,dz=watcher.root.position.z-p.pos.z,d=Math.hypot(dx,dz);
+        const facing=(dx*-Math.sin(p.yaw)+dz*-Math.cos(p.yaw))/Math.max(.01,d);
+        if(facing>.7)encounter.seen=true;
+        watcher.root.rotation.y=Math.atan2(-dx,-dz);
+        if(!encounter.sounded&&encounter.time>.6){game.audio.presence?.(encounter.kind==='bridge'?-.7:.7);encounter.sounded=true;}
+        if(encounter.time>10||(encounter.seen&&encounter.time>2&&facing<.2)||d<1.3){watcher.root.visible=false;encounter=null;}
+      }
+      watcher.update(t);
+      cloth.update(t,game.camera);remains.update(t);furnace.intensity=4.5*(1+.08*Math.sin(t*2.1));for(const f of fog){f.o.quaternion.copy(game.camera.quaternion);f.o.position.x=f.x+Math.sin(t*.08+f.phase)*2;}},
     dispose(){game.audio.profile=null;game.film.uniforms.grain.value=.03;game.film.uniforms.aberration.value=.0012;scene.traverse(o=>{o.geometry?.dispose();o.shadow?.map?.dispose();});materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());remains.dispose();},
   };
 }

@@ -9,11 +9,11 @@ if errorlevel 1 (
   exit /b 1
 )
 
-if not exist "node_modules\" (
-  echo [1/2] First run: installing packages...
-  call npm install
+if not exist "node_modules\.bin\vite.cmd" (
+  echo [1/2] Installing required packages...
+  call npm ci --include=dev
   if errorlevel 1 (
-    echo [ERROR] npm install failed.
+    echo [ERROR] npm ci failed.
     pause
     exit /b 1
   )

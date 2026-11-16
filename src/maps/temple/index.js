@@ -284,7 +284,7 @@ export async function create(game, onProgress) {
       if (on) { bloomWas = game.bloom.enabled; game.bloom.enabled = false; } else if (bloomWas !== null) game.bloom.enabled = bloomWas;
     },
     update(dt, t, player) {
-      storyWorld.update(t, player);
+      storyWorld.update(t, player, game.running&&!game.story?.modal ? dt : 0);
       const released = !!game.story?.state.flags.sent;
       const pos = player.pos;
       // 月光陰影跟隨玩家（以 4m 為單位移動，避免陰影閃爍）

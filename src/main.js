@@ -37,8 +37,8 @@ function setState(s) {
 function buildLobby() {
   ui.list.innerHTML = '';
   const saved=readSave();
-  const saveLabel=!saved?'尚無調查紀錄':saved.scene==='home'?'序章・住處，未署名的信':saved.scene==='road'?'序章・舊山路與慈雲里':`第 ${saved.chapter} 章 · 已收集 ${saved.evidence.length} 份證據`;
-  ui.list.innerHTML=`<button class="menu-entry primary-entry" id="start-story"><span class="menu-number">01</span><span>那封未署名的信<small>從深夜住處開始新的故事</small></span><span class="menu-arrow">↗</span></button><button class="menu-entry" id="continue-story" ${saved?'':'disabled'}><span class="menu-number">02</span><span>續寫未完的約定<small>${saveLabel}</small></span><span class="menu-arrow">↗</span></button><div class="menu-meta"><span>住處・山村・寺廟</span><i></i><span>三種結局</span><i></i><span>繁體中文</span></div>`;
+  const saveLabel=!saved?'尚無調查紀錄':saved.scene==='home'?'序章・住處，未播完的錄音':saved.scene==='road'?'序章・舊山路與慈雲里':`第 ${saved.chapter} 章 · 已收集 ${saved.evidence.length} 份證據`;
+  ui.list.innerHTML=`<button class="menu-entry primary-entry" id="start-story"><span class="menu-number">01</span><span>未播完的錄音<small>從深夜住處開始新的故事</small></span><span class="menu-arrow">↗</span></button><button class="menu-entry" id="continue-story" ${saved?'':'disabled'}><span class="menu-number">02</span><span>續寫未完的約定<small>${saveLabel}</small></span><span class="menu-arrow">↗</span></button><div class="menu-meta"><span>住處・山村・寺廟</span><i></i><span>三種結局</span><i></i><span>繁體中文</span></div>`;
   $('start-story').onclick=()=>{
     if(saved&&!confirm('開始新故事會取代目前的自動存檔。確定重新開始？'))return;
     enterMap(MAPS[0],false);

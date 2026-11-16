@@ -13,7 +13,7 @@ const POSITIONS = {
   riteName:[51,-5.85,-22], riteRelic:[55,-5.85,-23], riteWitness:[59,-5.85,-22], exit:[0,1.2,26],
   loopmark:[-10.8,8,-16],
 };
-const LABELS={rules:'山門告示',incense:'三炷未熄的香',diary:'阿哲的日記',newspaper:'火災剪報',tape:'舊錄音機',ritual:'送魂殘頁',stage:'戲台上的空相框',divination:'擲筊問路',death:'阿哲的死亡通知',births:'六人生辰簿',descent:'封印暗道',names:'刻滿名字的牆',confession:'神壇前的舊鎖',altar:'最後的抉擇',return:'返回四樓',relic:'無名小墳裡的布包',riteName:'空白牌位・喚名',riteRelic:'供盤・歸物',riteWitness:'錄音機・見證',exit:'山門外',loopmark:'兔耳上的補線記號'};
+const LABELS={rules:'山門告示',incense:'三炷未熄的香',diary:'卡住的計數器',newspaper:'燒損的門閂',tape:'舊錄音機',ritual:'三槽木盤',stage:'戲台上的空相框',divination:'擲筊問路',death:'裂開的手機',births:'門框上的身高刻痕',descent:'封印暗道',names:'刻滿名字的牆',confession:'神壇前的舊鎖',altar:'最後的抉擇',return:'返回四樓',relic:'老樹石座上的布包',riteName:'空白牌位・喚名',riteRelic:'供盤・歸物',riteWitness:'錄音機・見證',exit:'山門外',loopmark:'紅線旁的彈珠'};
 
 export function buildStoryWorld(ctx) {
   const {root,mats,world,batch,rng,assets}=ctx;
@@ -21,25 +21,59 @@ export function buildStoryWorld(ctx) {
   const targets=[];
   const paperMat=new THREE.MeshStandardMaterial({map:grimeTexture('#c6b48d',{seed:29,dark:'55,40,22',amount:0.5}),roughness:1});
   const mesh=(geo,mat,p,parent=storyRoot)=>{const o=new THREE.Mesh(geo,mat);if(p)o.position.set(...p);o.castShadow=true;o.receiveShadow=true;parent.add(o);return o;};
-  const sign=(text,w,h,p,ry=0)=>{const m=mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshStandardMaterial({map:plaqueTexture(text,{w:1024,h:Math.round(1024*h/w),seed:22}),roughness:0.9,side:THREE.DoubleSide}),p);m.rotation.y=ry;return m;};
+  const sign=(text,w,h,p,ry=0)=>{
+    const plate=new THREE.Group();plate.name='MountedSign';plate.position.set(...p);plate.rotation.y=ry;storyRoot.add(plate);
+    mesh(new THREE.BoxGeometry(w+.06,h+.06,.045),mats.woodDark,[0,0,-.024],plate);
+    const face=mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshStandardMaterial({map:plaqueTexture(text,{w:1024,h:Math.round(1024*h/w),seed:22}),roughness:.9}),[0,0,0],plate);
+    return face;
+  };
   const desk=(x,y,z,w=1.8)=>{mesh(boxGeo(w,0.08,0.8),mats.woodDark,[x,y+0.9,z]);for(const a of [-1,1])for(const b of [-1,1])mesh(boxGeo(0.07,0.9,0.07),mats.woodDark,[x+a*(w/2-0.1),y+0.45,z+b*0.3]);world.box(x-w/2,z-0.4,x+w/2,z+0.4,y,y+0.96);};
   function target(id,p,kind='paper'){
     const obj=new THREE.Group();obj.name=`Evidence_${id}`;obj.position.set(...p);storyRoot.add(obj);
-    if(kind==='paper'){const page=mesh(new THREE.BoxGeometry(0.33,0.014,0.44),paperMat,[0,0,0],obj);page.rotation.set(0.12,0.17,0);for(let n=0;n<7;n++)mesh(new THREE.BoxGeometry(0.23,0.002,0.003),mats.woodDark,[0,0.012,-0.14+n*0.04],obj);}
+    if(kind==='counter'){
+      mesh(new THREE.BoxGeometry(.3,.14,.21),mats.bronze,[0,.02,0],obj);
+      mesh(new THREE.CylinderGeometry(.045,.045,.025,18),mats.brass,[0,.10,0],obj);
+      mesh(new THREE.PlaneGeometry(.23,.075),new THREE.MeshStandardMaterial({map:plaqueTexture('0006',{w:512,h:160}),roughness:.8}),[0,.035,.107],obj);
+    }
+    if(kind==='latch'){
+      mesh(new THREE.BoxGeometry(.65,.055,.26),mats.woodDark,[0,.02,0],obj);
+      const burn=mesh(new THREE.PlaneGeometry(.6,.24),new THREE.MeshStandardMaterial({map:sootTexture(),transparent:true,depthWrite:false,roughness:1}),[0,.049,0],obj);burn.rotation.x=-Math.PI/2;
+      for(let i=0;i<4;i++)mesh(new THREE.BoxGeometry(.09,.004,.003),paperMat,[-.22+i*.017,.052,.055+i*.013],obj);
+      mesh(new THREE.BoxGeometry(.44,.06,.065),mats.bronze,[.02,.075,0],obj);
+      for(const x of [-.2,.2])mesh(new THREE.BoxGeometry(.04,.09,.13),mats.black,[x,.075,0],obj);
+    }
+    if(kind==='tray'){
+      mesh(new THREE.CylinderGeometry(.27,.27,.035,40),mats.woodDark,[0,0,0],obj);
+      for(const x of [-.16,0,.16])mesh(new THREE.TorusGeometry(.055,.008,8,20).rotateX(Math.PI/2),mats.brass,[x,.02,0],obj);
+    }
+    if(kind==='phone'){
+      mesh(new THREE.BoxGeometry(.18,.04,.32),mats.black,[0,-.13,0],obj);
+      const screen=mesh(new THREE.PlaneGeometry(.15,.27),new THREE.MeshStandardMaterial({color:0x738e91,emissive:0x294649,emissiveIntensity:.3}),[0,-.108,0],obj);screen.rotation.x=-Math.PI/2;
+      mesh(cylinderBetween(V(-.06,-.105,-.12),V(.04,-.105,.09),.002,.002,5),mats.black,null,obj);
+    }
+    if(kind==='height'){
+      mesh(new THREE.BoxGeometry(.7,.12,.32),mats.woodDark,[0,-.1,0],obj);
+      mesh(new THREE.BoxGeometry(.65,.8,.065),mats.planks,[0,.24,-.08],obj);
+      for(let i=0;i<6;i++)mesh(new THREE.BoxGeometry(.12,.012,.008),mats.brass,[-.24+i*.095,.08+i*.065,-.042],obj);
+    }
     if(kind==='recorder'){mesh(new THREE.BoxGeometry(0.35,0.12,0.22),mats.bronze,[0,0,0],obj);for(const x of [-0.08,0.08])mesh(new THREE.TorusGeometry(0.038,0.008,6,16).rotateX(Math.PI/2),mats.brass,[x,0.063,0],obj);}
     const glint=mesh(new THREE.OctahedronGeometry(0.035),new THREE.MeshBasicMaterial({color:0xd7c090,transparent:true,opacity:0.85,depthTest:true}),[0,0.18,0],obj);glint.castShadow=false;
     targets.push({id,label:LABELS[id],position:V(...p),object:obj,glint});return obj;
   }
   for(const [id,p] of Object.entries(POSITIONS)){
     const noProp=['rules','incense','stage','descent','names','altar','return','exit','riteName','riteRelic','riteWitness','confession','divination','loopmark'].includes(id);
-    target(id,p,noProp?'none':id==='tape'?'recorder':'paper');
+    target(id,p,noProp?'none':({diary:'counter',newspaper:'latch',tape:'recorder',ritual:'tray',death:'phone',births:'height'}[id]));
   }
   // Actual readable placards, evidence stations and a distinctive six-child altar.
-  sign('聞呼名 勿應',0.72,1.0,[-2.28,1.7,20.68]);
+  sign('清點中 請留原位',.72,1,[-2.28,1.7,20.68]);
+  for(const x of [-2.52,-2.04]){
+    mesh(new THREE.BoxGeometry(.065,1.45,.065),mats.woodDark,[x,.725,20.64]);
+    mesh(new THREE.BoxGeometry(.2,.06,.45),mats.woodDark,[x,.03,20.64]);
+  }
   for(const [x,y,z] of [[-9,0.9,-20.1],[9,0.9,-20.1],[-9,6.9,-18.4],[-8.3,6.9,-26.3],[5,11.9,-27.1],[-10,11.9,-26.5]]){
     desk(x,y,z);ctx.candle(x-0.6,y+0.94,z,{lit:true,h:0.18});
   }
-  sign('留下名字',1.1,0.3,[5.3,18.1,-23.5]);
+
   mesh(new THREE.TorusGeometry(0.14,0.025,10,28),mats.bronze,[55,-5.98,-16]);
   mesh(new THREE.BoxGeometry(0.32,0.21,0.12),mats.bronze,[55,-6.13,-16]);
   batch.box(mats.rock,.85,.74,.85,55,-6.63,-16);world.box(54.575,-16.425,55.425,-15.575,-7,-6.26);
@@ -49,7 +83,8 @@ export function buildStoryWorld(ctx) {
   for(const s of [-1,1]){const b=mesh(moonBlock,mats.woodRed,[s*.22,7.87,-23.2]);b.rotation.set(-Math.PI/2,0,s*.4);}
   const loopProps=new THREE.Group();loopProps.visible=false;root.add(loopProps);
   for(let i=0;i<6;i++){const marble=mesh(new THREE.SphereGeometry(.06,14,10),mats.brass,[-11.2+i*.18,6.98,-16.05],loopProps);marble.name='MemoryMarble';}
-  sign('補過的耳朵',.85,.3,[-10.8,8,-16.2]);
+  mesh(new THREE.BoxGeometry(.7,.44,.4),mats.woodDark,[-10.8,7.12,-16.2]);
+  mesh(new THREE.TorusGeometry(.11,.012,8,24).rotateX(Math.PI/2),mats.thread,[-10.8,7.35,-16.2]);
   const hatch=mesh(new THREE.BoxGeometry(1.6,0.12,1.8),mats.woodDark,[5.3,17.02,-22]);
   mesh(new THREE.TorusGeometry(0.12,0.018,8,24).rotateX(Math.PI/2),mats.brass,[5.3,17.11,-21.5]);
   // Dynamic locked gate, separate from existing open leaves.
@@ -79,7 +114,7 @@ export function buildStoryWorld(ctx) {
   mesh(new THREE.BoxGeometry(.59,.39,.018),frameBacking,[0,0,-.018],frame);
   mesh(new THREE.BoxGeometry(.67,.025,.25),mats.woodDark,[23,1.22,-2.52]);
   mesh(cylinderBetween(V(23,1.62,-2.43),V(23,1.23,-2.72),.018,.018,7),mats.woodDark);
-  batch.box(mats.woodDark,1.25,.25,.035,23,1.04,-2.10);sign('六人到齊　才能開演',1.16,.18,[23,1.04,-2.08]);
+  batch.box(mats.woodDark,1.25,.25,.035,23,1.04,-2.10);sign('點名後請留座',1.16,.18,[23,1.04,-2.08]);
   ctx.candle(22.32,1.21,-2.52,{lit:true,h:.16});ctx.candle(23.68,1.21,-2.52,{lit:false,h:.09});
   const stageLight=ctx.addLight({p:[22.25,2.1,-2.2],color:0xc8693a,intensity:10,distance:12,flicker:.8});
   // Abandoned percussion and a crooked prop trunk stay outside the center escape lane.
@@ -114,7 +149,9 @@ export function buildStoryWorld(ctx) {
   for(const [p,s] of [[[0,0.12,0],[0.16,0.2,0.1]],[[0,0.37,0],[0.14,0.12,0.09]],[[-0.065,0.54,0],[0.04,0.17,0.035]],[[0.07,0.53,0],[0.04,0.13,0.035]]]){mesh(new THREE.SphereGeometry(1,20,16),mats.clothDark,p,rabbit).scale.set(...s);}
   for(const x of [-0.055,0.055])mesh(new THREE.SphereGeometry(0.016,8,6),mats.black,[x,0.38,0.085],rabbit);
   for(let i=0;i<7;i++)mesh(new THREE.BoxGeometry(0.022,0.003,0.004),paperMat,[-0.06,0.46+i*0.012,0.035],rabbit);
-  sign('無 名',0.5,0.8,[-39,gy+0.4,-5.4]);
+  mesh(new THREE.BoxGeometry(.65,.9,.2),mats.rock,[-39,gy+.45,-5.45]);
+  sign('無 名',.5,.8,[-39,gy+.45,-5.344]);
+  mesh(new THREE.BoxGeometry(.7,.62,.65),mats.rock,[-39,gy+.31,-5]);
   // Additional room is isolated under the terrain; traversal uses an authored stair transition.
   world.bounds={...world.bounds,x2:67};const ground=world.terrain;world.terrain=(x,z)=>x>45?-7:ground(x,z);
   batch.span(mats.stoneFloor,47,-7.3,-29,63,-7,-11);
@@ -137,9 +174,10 @@ export function buildStoryWorld(ctx) {
   batch.span(mats.rock,53,-7,-27.5,57,-6.3,-24.8);world.box(53,-27.5,57,-24.8,-7,-3);
   const sealedBuddha=ctx.buddha.make({scale:1.6,style:'bronze',halo:true});sealedBuddha.position.set(55,-6.3,-26);root.add(sealedBuddha);
   for(const [i,x,z] of [[0,51,-22],[1,55,-23],[2,59,-22]]){
-    desk(x,-7,z,1.2);sign(['一・喚名','二・歸物','三・見證'][i],0.95,0.32,[x,-5.5,z-0.2]);ctx.candle(x-0.3,-6.05,z,{lit:true});
+    desk(x,-7,z,1.2);sign(['姓名','遺物','錄音'][i],.95,.2,[x,-6.22,z+.405]);ctx.candle(x-0.3,-6.05,z,{lit:true});
   }
   mesh(new THREE.BoxGeometry(.24,.52,.07),mats.woodDark,[51,-5.82,-22]);
+  mesh(new THREE.BoxGeometry(.34,.05,.2),mats.woodDark,[51,-6.075,-22]);
   mesh(new THREE.CylinderGeometry(.22,.15,.035,36),mats.brass,[55,-6.02,-23]);
   mesh(new THREE.BoxGeometry(.35,.12,.22),mats.bronze,[59,-5.98,-22]);
   for(const x of [-.08,.08])mesh(new THREE.TorusGeometry(.038,.008,6,18).rotateX(Math.PI/2),mats.brass,[59+x,-5.915,-22]);
@@ -165,12 +203,37 @@ export function buildStoryWorld(ctx) {
   const farewell=silhouettes.children[5].clone(true);farewell.name='XiaoyuMemory';farewell.position.set(55,-7,-24.2);farewell.visible=false;root.add(farewell);
   const memoryMat=new THREE.MeshStandardMaterial({color:0x9eaaa2,emissive:0x4b665a,emissiveIntensity:.35,transparent:true,opacity:.55,depthWrite:false,roughness:1});farewell.traverse(o=>{if(o.isMesh)o.material=memoryMat;});
   const returnedRabbit=rabbit.clone(true);returnedRabbit.position.set(.06,.52,.19);returnedRabbit.scale.setScalar(.5);farewell.add(returnedRabbit);
-  const temp=new THREE.Vector3();let state=null,releaseTime=null;
+  const temp=new THREE.Vector3();let state=null,releaseTime=null,scare=null;
   return {targets,ghost,safeZones,rabbit,hatch,sealedBuddha,stageLight,silhouettes,loopProps,statues:ctx.statues,
-    setState(s){state=s;gate.visible=!!s.flags.incense&&!s.flags.sealed&&!s.flags.sent;gateCollision.disabled=!gate.visible;offerings.visible=s.chapter>=3;silhouettes.visible=!!s.flags.stage&&!s.flags.key;rabbit.visible=!s.evidence.includes('relic');hatch.rotation.z=s.flags.underground?0.07:0;farewell.visible=!!s.flags.sent;if(!s.flags.sent)releaseTime=null;
-      for(const t of targets){const taken=s.evidence.includes(t.id);t.glint.visible=!taken;t.object.visible=!taken||['names','confession'].includes(t.id);}
+    triggerScare(kind){
+      const places={gate:[0,.9,-14],tape:[-6,6.9,-18.4],phone:[5,11.9,-21],stage:[23,.58,.8],loop:[-7,6.9,-16],relic:[-34,terrainHeight(-34,-5),-5]};
+      const p=places[kind];if(!p)return;
+      scare={kind,time:0,seen:false};ghost.root.position.set(...p);ghost.root.visible=true;
+      if(kind==='stage')silhouettes.children[5].position.set(23,.58,-.5);
     },
-    update(t,player){ghost.update(t,!!player.storyChase);smoke.material.opacity=0.11+Math.sin(t*.7)*.025;
+    get scareActive(){return !!scare;},
+    setLoopPass(pass){
+      loopProps.visible=true;
+      loopProps.children.forEach((o,i)=>{o.visible=i<(pass===1?5:6);});
+      if(pass===2)this.triggerScare('loop');
+      if(pass===3){scare=null;ghost.root.visible=false;}
+    },
+    setState(s){state=s;gate.visible=!!s.flags.incense&&!s.flags.sealed&&!s.flags.sent;gateCollision.disabled=!gate.visible;offerings.visible=s.chapter>=3;silhouettes.visible=!!s.flags.stage&&!s.flags.key;rabbit.visible=!s.evidence.includes('relic');hatch.rotation.z=s.flags.underground?0.07:0;farewell.visible=!!s.flags.sent;if(!s.flags.sent)releaseTime=null;
+      for(const t of targets){const taken=s.evidence.includes(t.id);t.glint.visible=!taken;t.object.visible=true;}
+    },
+    update(t,player,dt=0){
+      if(player.storyChase)scare=null;
+      if(scare&&dt>0){
+        scare.time+=dt;
+        const d=ghost.root.position.distanceTo(player.pos);
+        temp.copy(ghost.root.position).sub(player.pos).normalize();
+        const facing=temp.x*(-Math.sin(player.yaw))+temp.z*(-Math.cos(player.yaw));
+        if(facing>.8)scare.seen=true;
+        ghost.root.rotation.y=Math.atan2(player.pos.x-ghost.root.position.x,player.pos.z-ghost.root.position.z);
+        if(scare.kind==='stage'&&scare.time<3)ghost.root.position.z+=dt*.5;
+        if(scare.time>9||(scare.time>1.8&&scare.seen&&facing<.15)||d<1.5){ghost.root.visible=false;scare=null;}
+      }
+      ghost.update(t,!!player.storyChase);smoke.material.opacity=0.11+Math.sin(t*.7)*.025;
       if(state?.flags.sent){releaseTime??=t;const fade=Math.max(0,1-(t-releaseTime)/24);memoryMat.opacity=fade*.55;farewell.visible=fade>0;returnedRabbit.visible=fade>.12;}
       for(const o of targets){const d=o.position.distanceTo(player.pos);o.glint.visible=d<10&&(!state?.evidence.includes(o.id));o.glint.rotation.y=t;o.glint.material.opacity=0.45+Math.sin(t*2)*0.25;}
       if(state?.chapter>=2){for(const statue of ctx.statues||[]){if(!statue.userData.head||statue===sealedBuddha)continue;statue.getWorldPosition(temp);const dy=Math.abs(temp.y-player.pos.y);if(dy>5)continue;const angle=Math.atan2(player.pos.x-temp.x,player.pos.z-temp.z)-statue.rotation.y;const to=V(temp.x-player.pos.x,0,temp.z-player.pos.z).normalize();const look=V(-Math.sin(player.yaw),0,-Math.cos(player.yaw));if(to.dot(look)<0.1){statue.userData.head.rotation.y=THREE.MathUtils.clamp(angle,-0.7,0.7);}}}

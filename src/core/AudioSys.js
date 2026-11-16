@@ -40,16 +40,16 @@ export class AudioSys {
     // 風聲（低沉）
     const wind = this._loop(this.brown);
     const windLP = ctx.createBiquadFilter(); windLP.type = 'lowpass'; windLP.frequency.value = 420;
-    this.windGain = ctx.createGain(); this.windGain.gain.value = 0.5;
+    this.windGain = ctx.createGain(); this.windGain.gain.value = this.profile === 'home' ? 0.09 : 0.5;
     wind.connect(windLP).connect(this.windGain).connect(this.master);
     // 風嘯（穿過門窗的尖細聲）
     const howl = this._loop(this.white);
-    this.howlBP = ctx.createBiquadFilter(); this.howlBP.type = 'bandpass'; this.howlBP.frequency.value = 780; this.howlBP.Q.value = 14;
+    this.howlBP = ctx.createBiquadFilter(); this.howlBP.type = 'bandpass'; this.howlBP.frequency.value = 780; this.howlBP.Q.value = 4;
     this.howlGain = ctx.createGain(); this.howlGain.gain.value = 0.0;
     howl.connect(this.howlBP).connect(this.howlGain).connect(this.master);
 
     // 低頻嗡鳴
-    this.droneGain = ctx.createGain(); this.droneGain.gain.value = 0.07;
+    this.droneGain = ctx.createGain(); this.droneGain.gain.value = this.profile === 'home' ? 0 : 0.07;
     for (const f of [41, 61.7, 43.2]) {
       const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f; o.start();
       o.connect(this.droneGain);
@@ -57,13 +57,14 @@ export class AudioSys {
     this.droneGain.connect(this.master);
 
     // 蟲鳴
-    const cr = ctx.createOscillator(); cr.type = 'sine'; cr.frequency.value = 4350; cr.start();
+    const cr = this._loop(this.white);
+    const cricketBP = ctx.createBiquadFilter(); cricketBP.type = 'bandpass'; cricketBP.frequency.value = 1900; cricketBP.Q.value = 1.4;
     const am = ctx.createGain(); am.gain.value = 0.5;
-    const lfo = ctx.createOscillator(); lfo.type = 'square'; lfo.frequency.value = 23; lfo.start();
+    const lfo = ctx.createOscillator(); lfo.type = 'sine'; lfo.frequency.value = 16; lfo.start();
     const lfoGain = ctx.createGain(); lfoGain.gain.value = 0.5;
     lfo.connect(lfoGain).connect(am.gain);
     this.cricketGate = ctx.createGain(); this.cricketGate.gain.value = 0;
-    cr.connect(am).connect(this.cricketGate).connect(this.master);
+    cr.connect(cricketBP).connect(am).connect(this.cricketGate).connect(this.master);
   }
 
   _loop(buffer) {
@@ -98,14 +99,14 @@ export class AudioSys {
     const out = 1 - this.indoor;
     if(this.profile==='home'){
       this.windGain.gain.setTargetAtTime(.09,now,.8);this.howlGain.gain.setTargetAtTime(0,now,.5);
-      this.cricketGate.gain.setTargetAtTime(0,now,.2);this.droneGain.gain.setTargetAtTime(.018,now,1);return;
+      this.cricketGate.gain.setTargetAtTime(0,now,.2);this.droneGain.gain.setTargetAtTime(0,now,.3);return;
     }
     if(this.released){this.howlGain.gain.setTargetAtTime(0,now,1.5);this.droneGain.gain.setTargetAtTime(.012,now,1.5);this.windGain.gain.setTargetAtTime(.12,now,1.5);this.cricketGate.gain.setTargetAtTime(0,now,.5);return;}
     if (this._t > this._nextGust) {
       this._nextGust = this._t + 3 + Math.random() * 6;
       const gust = 0.25 + Math.random() * 0.75;
       this.windGain.gain.setTargetAtTime((0.25 + gust * 0.55) * (0.45 + 0.55 * out), now, 1.8);
-      this.howlGain.gain.setTargetAtTime(gust > 0.6 ? 0.012 + 0.03 * this.indoor : 0.003, now, 2.2);
+      this.howlGain.gain.setTargetAtTime(gust > 0.6 ? 0.006 + 0.012 * this.indoor : 0.0015, now, 2.2);
       this.howlBP.frequency.setTargetAtTime(520 + Math.random() * 700, now, 2.5);
     }
     if (this._t > this._nextChirp) {
@@ -245,11 +246,22 @@ export class AudioSys {
   phoneRing() {
     if(!this.ctx||!this.running)return;
     const t=this.ctx.currentTime;
-    for(const start of [0,.22,.65,.87])for(const frequency of [640,800]){
+    for(const start of [0,.22])for(const frequency of [640,800]){
       const o=this.ctx.createOscillator(),g=this.ctx.createGain();o.frequency.value=frequency;
-      g.gain.setValueAtTime(0,t+start);g.gain.linearRampToValueAtTime(.018,t+start+.008);g.gain.exponentialRampToValueAtTime(.0001,t+start+.16);
+      g.gain.setValueAtTime(0,t+start);g.gain.linearRampToValueAtTime(.009,t+start+.008);g.gain.exponentialRampToValueAtTime(.0001,t+start+.16);
       o.connect(g).connect(this.master);o.start(t+start);o.stop(t+start+.18);
     }
+  }
+
+  // A brief, low-passed scrape beside the listener. It has no looping tone.
+  presence(side=0) {
+    if(!this.ctx||!this.running)return;
+    const ctx=this.ctx,now=ctx.currentTime;
+    const source=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain(),pan=ctx.createStereoPanner();
+    source.buffer=this.brown;filter.type='lowpass';filter.frequency.value=650;pan.pan.value=side;
+    gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(.28,now+.09);gain.gain.exponentialRampToValueAtTime(.0001,now+.85);
+    source.connect(filter).connect(gain).connect(pan).connect(this.master);source.start(now,.2,.9);
+    source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();pan.disconnect();};
   }
 
   doorKnock(strength=1) {

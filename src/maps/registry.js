@@ -1,6 +1,6 @@
 /** 可探索的地圖清單（大廳會依此產生選單） */
 export const MAPS = [
-  {id:'home',name:'未署名的信',subtitle:'住處・雨夜',available:true,intro:['2026 年 11 月 12 日・23:42','住處，書桌前'],load:()=>import('./home/index.js')},
+  {id:'home',name:'未播完的錄音',subtitle:'住處・雨夜',available:true,intro:['2026 年 11 月 12 日・23:42','住處，書桌前'],load:()=>import('./home/index.js')},
   {id:'road',name:'沒有人等車',subtitle:'舊山路・慈雲里',available:true,intro:['2026 年 11 月 13 日・02:16','慈雲里舊山道'],load:()=>import('./road/index.js')},
   {
     id: 'temple',
