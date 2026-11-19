@@ -24,7 +24,13 @@ export function createNightSky({ moonDir, fogColor }) {
       uniform vec3 fogColor;
       uniform float time;
       float hash13(vec3 p) { p = fract(p * 0.1031); p += dot(p, p.zyx + 31.32); return fract((p.x + p.y) * p.z); }
-      float hash12(vec2 p) { vec3 p3 = fract(vec3(p.xyx) * 0.1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }
+      // 整數雜湊：浮點版在部分顯示卡（ANGLE / D3D11）上，同一個格點從相鄰兩格算出來的值不一致，
+      // 雲層會沿著格線裂出一條筆直的邊。整數運算每次結果都相同。
+      float hash12(vec2 p) {
+        uvec2 q = uvec2(ivec2(floor(p))) * uvec2(1597334673u, 3812015801u);
+        uint n = (q.x ^ q.y) * 1597334673u;
+        return float(n >> 8) * (1.0 / 16777215.0);
+      }
       float vnoise(vec2 p) {
         vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
         return mix(mix(hash12(i), hash12(i + vec2(1, 0)), f.x), mix(hash12(i + vec2(0, 1)), hash12(i + vec2(1, 1)), f.x), f.y);

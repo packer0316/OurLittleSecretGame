@@ -116,7 +116,7 @@ export function doorLeaf(ctx, { x, z, y, w, h, angle, side, tilt = 0, studs = tr
     for (let i = 0; i < nx; i++) {
       for (let j = 0; j < ny; j++) {
         for (const f of [-1, 1]) {
-          const s = new THREE.SphereGeometry(0.04, 6, 4);
+          const s = new THREE.SphereGeometry(0.04, 5, 3);
           s.translate(sgn * (0.25 + (i * (w - 0.5)) / (nx - 1)), 0.5 + (j * (h - 1)) / (ny - 1), f * 0.05);
           batch.add(mats.brass, xf(s, tr));
         }

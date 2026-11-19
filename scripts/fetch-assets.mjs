@@ -14,6 +14,9 @@ const TEXTURES = [
   'worn_mossy_plasterwall', 'red_plaster_weathered', 'clay_roof_tiles_02',
   'dark_wood', 'wood_peeling_paint_weathered', 'weathered_brown_planks',
   'mossy_rock', 'mossy_stone_wall', 'velour_velvet', 'bark_brown_02',
+  // 山村與住處（2026-11 場景美術）：舊柏油路、紅磚抹灰牆、鏽鐵皮、鏽鐵捲門、磨損水泥地、室內粉刷牆
+  'asphalt_02', 'red_brick_plaster_patch_02', 'rusty_corrugated_iron', 'rusted_shutter',
+  'concrete_floor_worn_001', 'painted_plaster_wall',
 ];
 // 注意：pine_tree_01 (913MB)、wooden_candlestick / root_cluster_01 (20萬面以上) 太重，不使用
 const MODELS = [

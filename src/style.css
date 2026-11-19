@@ -117,7 +117,7 @@ button:focus-visible,select:focus-visible,input:focus-visible { outline:2px soli
   background:
     linear-gradient(90deg, rgba(4, 8, 9, .62), transparent 72%),
     linear-gradient(0deg, #040909, transparent 27%),
-    url('/assets/story/temple-blindfold-menu.png') 84% center / cover no-repeat;
+    url('/assets/story/temple-blindfold-menu.webp') 84% center / cover no-repeat; /* perf：同一張圖的 WebP（1.7 MB → 90 KB），由 scripts/perf-images.py 產生 */
 }
 .lobby-bg::after { opacity:.035; }
 .lobby-topline { display:flex;justify-content:space-between;color:#b8aa91;font:11px var(--sans);letter-spacing:.26em;opacity:.75; }
@@ -195,3 +195,20 @@ button:focus-visible,select:focus-visible,input:focus-visible { outline:2px soli
 @media(max-width:900px) { .keys { position:static; }.lobby-head { padding-top:6vh; }.lobby-foot { gap:12px; }.story-content.with-image { grid-template-columns:1fr; }.story-figure img { max-height:30vh; }.photo-scribble { display:none; }.redacted:after { content:'最右側女孩的臉，被紅筆塗去。';font-size:10px;color:#b78c76; }.journal-grid { grid-template-columns:repeat(2,1fr); }.objective { left:18px;top:18px;max-width:230px; }.journal-hint { right:15px;bottom:20px; } }
 @media(prefers-reduced-motion:reduce) { * { animation:none!important;transition:none!important; } }
 @media(max-width:900px) { .story-figure.redacted { width:min(100%,40vh); }.redacted .photo-scribble { display:block; }.redacted:after { content:none; } }
+/* story：筆記裡「順手讀過的東西」清單（可選的可讀物，不計入證據），以及結局頁的多行後記 */
+.journal-notes { margin:16px 0 4px; }.journal-notes small { display:block;color:#bf9f72;font:10px var(--sans);letter-spacing:.08em;margin-bottom:8px; }
+.note-link { display:block;width:100%;text-align:left;padding:10px 15px;margin:6px 0;border:1px solid #8b765b44;background:#15181488;color:#cbbd9f;font:12px/1.6 var(--sans);letter-spacing:.04em;cursor:pointer; }.note-link:hover { border-color:#bc9675; }
+.ending .deduction { text-align:left; }.ending-stats { flex-wrap:wrap; }
+
+/* ── horror（恐怖導演）：被抓到那一刻的衝臉與紅布。蓋在閱讀視窗之上、暫停選單之下，不攔截滑鼠。
+   光敏安全：整段只有一次由暗到亮再到暗的過渡，沒有重複閃爍。 ── */
+#horror-rush { position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden;opacity:0;visibility:hidden;background:#000; }
+#horror-rush canvas { position:absolute;left:50%;top:50%;width:max(118vw,118vh);height:max(118vw,118vh);transform:translate(-50%,-46%) scale(.55);filter:contrast(1.35) brightness(.82) saturate(.55);will-change:transform,opacity; }
+#horror-rush i { position:absolute;inset:-12% -6%;background:radial-gradient(120% 90% at 50% 40%,#0000 30%,#000c 100%),repeating-linear-gradient(93deg,#2c0504 0,#4d0a07 46px,#39060500 92px,#250403 150px,#44080600 205px,#2c0504 260px),linear-gradient(178deg,#4a0906,#300504 60%,#1c0302);box-shadow:inset 0 0 260px 90px #000;transform:translateY(-112%);will-change:transform; }
+#horror-rush.go { visibility:visible;animation:horror-rush-fade 1.6s linear both; }
+#horror-rush.go canvas { animation:horror-rush-face .5s cubic-bezier(.2,.9,.3,1) both; }
+#horror-rush.go i { animation:horror-rush-cloth 1.6s cubic-bezier(.6,0,.3,1) both; }
+@keyframes horror-rush-fade { 0% { opacity:0; } 4% { opacity:1; } 62% { opacity:1; } 100% { opacity:0; } }
+@keyframes horror-rush-face { 0% { transform:translate(-50%,-46%) scale(.55);opacity:.2; } 55% { opacity:1; } 100% { transform:translate(-50%,-30%) scale(1.75) rotate(-2.5deg);opacity:1; } }
+@keyframes horror-rush-cloth { 0%,22% { transform:translateY(-112%); } 44%,100% { transform:translateY(0); } }
+@media (prefers-reduced-motion: reduce) { #horror-rush.go canvas { animation-duration:.01s; } }

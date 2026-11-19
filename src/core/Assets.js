@@ -2,8 +2,12 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
 import { clone as cloneSkeleton } from 'three/addons/utils/SkeletonUtils.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
 const BASE = import.meta.env.BASE_URL + 'assets/';
+// 已轉成 WebP 的劇情圖片（由 scripts/perf-images.py 從同名 PNG 產生，體積約為十分之一）。
+// children-1998：文件視窗的 <img>（campaign.js 的 image 欄位）也讀同一個 .webp，共用一次下載。
+const IMAGE_EXT = { apparition: 'webp', 'children-1998': 'webp' };
 
 /** 素材載入與快取（Poly Haven CC0 材質 / 模型 / HDRI） */
 export class Assets {
@@ -11,6 +15,7 @@ export class Assets {
     this.renderer = renderer;
     this.texLoader = new THREE.TextureLoader();
     this.gltfLoader = new GLTFLoader();
+    this.gltfLoader.setMeshoptDecoder(MeshoptDecoder); // 允許 EXT_meshopt_compression 壓縮過的 GLB
     this.hdrLoader = new HDRLoader();
     this.aniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
     this.pbr = {};
@@ -35,7 +40,7 @@ export class Assets {
     const tick = () => { done++; onProgress?.(done / jobs.length); };
     for (const id of images) {
       if (this.images[id]) continue;
-      jobs.push(this.texLoader.loadAsync(`${BASE}story/${id}.png`).then(t => {
+      jobs.push(this.texLoader.loadAsync(`${BASE}story/${id}.${IMAGE_EXT[id] || 'png'}`).then(t => {
         t.colorSpace = THREE.SRGBColorSpace; this.images[id] = t; tick();
       }));
     }
@@ -88,6 +93,22 @@ export class Assets {
       })());
     }
     await Promise.all(jobs);
+  }
+
+  /** 快取持有的所有貼圖（卸載地圖時保留，不隨場景釋放） */
+  cachedTextures() {
+    const out = new Set();
+    const add = (t) => { if (t && t.isTexture) out.add(t); };
+    for (const p of Object.values(this.pbr)) for (const t of Object.values(p)) add(t);
+    for (const t of Object.values(this.images)) add(t);
+    for (const t of Object.values(this.env)) add(t);
+    for (const m of Object.values(this.models)) {
+      m.traverse((o) => {
+        if (!o.material) return;
+        for (const mat of Array.isArray(o.material) ? o.material : [o.material]) for (const k in mat) add(mat[k]);
+      });
+    }
+    return out;
   }
 
   /** 以 PBR 貼圖組建立材質 */

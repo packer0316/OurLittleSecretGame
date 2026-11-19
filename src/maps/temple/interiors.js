@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { FLOORS, WALL_T as T } from './layout.js';
 import { COLS } from './building.js';
-import { boxGeo, xf, matrixOf, cylinderBetween, merge } from '../../core/utils.js';
+import { boxGeo, xf, matrixOf, cylinderBetween, merge, mulberry32 } from '../../core/utils.js';
 import { plaqueTexture, wallWritingTexture, sutraTexture, tabletAtlas } from '../../core/canvasTex.js';
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
@@ -370,15 +370,29 @@ function floor4(ctx) {
   const main = place(ctx, buddha.make({ scale: 1.45, style: 'gold', halo: true, headPitch: 0.16 }), cx, y + 0.5, cz, 0);
   // 纏繞的紅繩與貼滿的符咒
   {
-    const pts = [];
-    const turns = 6;
-    for (let i = 0; i <= turns * 28; i++) {
-      const t = i / (turns * 28), th = t * turns * Math.PI * 2;
-      const wob = 1 + 0.025 * Math.sin(th * 3.3);
-      pts.push(V(Math.sin(th) * 0.66 * wob, 0.84 + t * 0.4 + 0.035 * Math.sin(th * 1.7), 0.04 + Math.cos(th) * 0.35 * wob));
+    // 一圈一圈各自綁上去的舊繩：每圈高度、傾斜、鬆緊都不同，貼著佛身的外形，有幾圈已經鬆垮下滑
+    const lr = mulberry32(417);
+    const loop = (y0, tiltX, tiltZ, slack, r) => {
+      const pts = [];
+      const n = 36, ph = lr() * 6.28;
+      for (let i = 0; i < n; i++) {
+        const th = (i / n) * Math.PI * 2, sx = Math.sin(th), cz2 = Math.cos(th);
+        const yy = y0 + sx * tiltZ + cz2 * tiltX - slack * Math.max(0, cz2) * Math.abs(cz2);
+        const pr = buddha.profile(Math.max(0.05, Math.min(1.5, yy)));
+        // 介於橢圓與方角之間的截面，避免繩子切進手臂與膝蓋
+        const k = 1.1 + 0.05 * Math.sin(th * 5 + ph) + 0.12 * Math.pow(Math.abs(sx * cz2), 0.7);
+        pts.push(V(sx * (pr.rx + 0.012) * k, yy + 0.008 * Math.sin(th * 7 + ph), pr.cz + cz2 * (pr.rz + 0.012) * k));
+      }
+      const rope = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts, true), 54, r, 5, true);
+      batch.add(mats.cloth, xf(rope, { s: 1.45, p: [cx, y + 0.5, cz] }));
+    };
+    for (let i = 0; i < 9; i++) loop(0.62 + i * 0.085 + (lr() - 0.5) * 0.05, (lr() - 0.5) * 0.09, (lr() - 0.5) * 0.12, i % 4 === 1 ? 0.09 + lr() * 0.06 : lr() * 0.02, 0.0085 + lr() * 0.003);
+    // 斷掉後垂下的兩截繩頭
+    for (const sx of [-1, 1]) {
+      const pr = buddha.profile(0.9), x0 = sx * pr.rx * 0.8, z0 = pr.cz + pr.rz * 0.75;
+      const pts = [V(x0, 0.94, z0), V(x0 + sx * 0.05, 0.8, z0 + 0.06), V(x0 + sx * 0.07, 0.55, z0 + 0.09), V(x0 + sx * 0.06, 0.34, z0 + 0.1)];
+      batch.add(mats.cloth, xf(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 14, 0.009, 5), { s: 1.45, p: [cx, y + 0.5, cz] }));
     }
-    const rope = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), turns * 40, 0.014, 5);
-    batch.add(mats.cloth, xf(rope, { s: 1.45, p: [cx, y + 0.5, cz] }));
   }
   for (let k = 0; k < 7; k++) {
     const a = -1.2 + rng() * 2.4;
@@ -435,6 +449,7 @@ function floor4(ctx) {
 
 export function buildInteriors(ctx, groups) {
   const base = ctx.root;
+  ctx.floorGroups = groups; // 給 dressing.js 把各樓層專屬的陳設放進對應群組
   [floor1, floor2, floor3, floor4].forEach((build, i) => {
     ctx.root = groups ? groups[i] : base; // 各樓層的物件放進自己的群組，方便依樓層顯示
     build(ctx);

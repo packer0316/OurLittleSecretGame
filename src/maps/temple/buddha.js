@@ -1,6 +1,7 @@
 import * as THREE from 'three';
-import { xf, capsuleBetween, merge, mulberry32 } from '../../core/utils.js';
-import { grimeTexture } from '../../core/canvasTex.js';
+import { xf, capsuleBetween, cylinderBetween, merge, mulberry32 } from '../../core/utils.js';
+import { grimeTexture, blindfoldTexture } from '../../core/canvasTex.js';
+import { weather } from '../../core/weathering.js';
 
 /**
  * 程序化佛像：蓮花座、結跏趺坐、禪定印、螺髮肉髻，
@@ -17,61 +18,61 @@ function buildGeometries() {
   // ── 蓮花座 ──
   const lotus = [];
   const basePts = [[0, 0], [0.8, 0], [0.84, 0.05], [0.72, 0.11], [0.64, 0.15], [0.7, 0.22], [0.76, 0.29], [0.6, 0.31], [0, 0.31]].map(([r, y]) => new THREE.Vector2(r, y));
-  lotus.push(new THREE.LatheGeometry(basePts, 32));
+  lotus.push(new THREE.LatheGeometry(basePts, 20));
   for (let i = 0; i < 18; i++) {
     const a = (i / 18) * Math.PI * 2;
-    const up = xf(new THREE.SphereGeometry(0.16, 10, 8), { s: [1, 1.3, 0.3] });
+    const up = xf(new THREE.SphereGeometry(0.16, 6, 4), { s: [1, 1.3, 0.3] });
     xf(up, { r: [-0.45, 0, 0], p: [0, 0.22, 0.7] });
     lotus.push(xf(up, { r: [0, a, 0] }));
-    const dn = xf(new THREE.SphereGeometry(0.15, 10, 8), { s: [1, 1.1, 0.3] });
+    const dn = xf(new THREE.SphereGeometry(0.15, 6, 4), { s: [1, 1.1, 0.3] });
     xf(dn, { r: [0.7, 0, 0], p: [0, 0.07, 0.76] });
     lotus.push(xf(dn, { r: [0, a + Math.PI / 18, 0] }));
   }
 
   // ── 身軀 ──
   const body = [];
-  body.push(xf(new THREE.SphereGeometry(1, 30, 16), { p: [0, 0.47, 0.06], s: [0.76, 0.2, 0.5] })); // 盤腿
+  body.push(xf(new THREE.SphereGeometry(1, 18, 10), { p: [0, 0.47, 0.06], s: [0.76, 0.2, 0.5] })); // 盤腿
   for (const sx of [-1, 1]) {
-    body.push(xf(new THREE.SphereGeometry(0.2, 16, 12), { p: [sx * 0.5, 0.47, 0.14], s: [1.25, 0.85, 1.15] })); // 膝
-    body.push(xf(new THREE.SphereGeometry(0.15, 14, 10), { p: [sx * 0.41, 1.17, 0], s: [1, 0.9, 0.9] })); // 肩
-    body.push(capsuleBetween(V(sx * 0.44, 1.14, 0), V(sx * 0.52, 0.78, 0.1), 0.105));
-    body.push(capsuleBetween(V(sx * 0.52, 0.78, 0.1), V(sx * 0.13, 0.6, 0.4), 0.085));
+    body.push(xf(new THREE.SphereGeometry(0.2, 10, 8), { p: [sx * 0.5, 0.47, 0.14], s: [1.25, 0.85, 1.15] })); // 膝
+    body.push(xf(new THREE.SphereGeometry(0.15, 8, 6), { p: [sx * 0.41, 1.17, 0], s: [1, 0.9, 0.9] })); // 肩
+    body.push(capsuleBetween(V(sx * 0.44, 1.14, 0), V(sx * 0.52, 0.78, 0.1), 0.105, 7));
+    body.push(capsuleBetween(V(sx * 0.52, 0.78, 0.1), V(sx * 0.13, 0.6, 0.4), 0.085, 7));
   }
   const torsoPts = [[0, 0.4], [0.37, 0.42], [0.41, 0.6], [0.38, 0.8], [0.385, 0.98], [0.43, 1.13], [0.4, 1.22], [0.3, 1.29], [0.13, 1.34], [0.115, 1.43]].map(([r, y]) => new THREE.Vector2(r, y));
-  body.push(xf(new THREE.LatheGeometry(torsoPts, 30), { s: [1, 1, 0.7] }));
-  body.push(xf(new THREE.SphereGeometry(0.13, 14, 10), { p: [0, 0.6, 0.42], s: [1.5, 0.5, 0.9] })); // 禪定印的雙手
+  body.push(xf(new THREE.LatheGeometry(torsoPts, 18), { s: [1, 1, 0.7] }));
+  body.push(xf(new THREE.SphereGeometry(0.13, 10, 6), { p: [0, 0.6, 0.42], s: [1.5, 0.5, 0.9] })); // 禪定印的雙手
   // 袈裟：自左肩斜披至右脅的衣緣，以及披在左肩上的衣褶
   const sash = [[0.36, 1.33, 0], [0.26, 1.2, 0.25], [0.1, 1.02, 0.29], [-0.1, 0.88, 0.29], [-0.28, 0.74, 0.225], [-0.415, 0.64, 0],
     [-0.28, 0.74, -0.225], [-0.1, 0.9, -0.285], [0.1, 1.05, -0.285], [0.26, 1.22, -0.25]].map(([x, y, z]) => V(x, y, z));
-  body.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sash, true), 64, 0.024, 6, true));
+  body.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(sash, true), 40, 0.024, 5, true));
   for (const [dx, r] of [[0.07, 0.02], [0.14, 0.017]]) {
     const fold = sash.slice(0, 4).map((p, i) => V(p.x + dx * (1 - i * 0.1), p.y - 0.01 * i, p.z + 0.004));
     fold.unshift(V(0.36 + dx, 1.3, -0.12));
-    body.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(fold), 24, r, 5));
+    body.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(fold), 14, r, 4));
   }
   // 頸部三道紋與胸前的起伏
-  for (const [yy, rr] of [[1.365, 0.122], [1.395, 0.117]]) body.push(xf(new THREE.TorusGeometry(rr, 0.008, 5, 24), { r: [Math.PI / 2, 0, 0], p: [0, yy, 0] }));
-  for (const sx of [-1, 1]) body.push(xf(new THREE.SphereGeometry(0.16, 14, 10), { p: [sx * 0.17, 1.06, 0.17], s: [1, 0.8, 0.55] }));
+  for (const [yy, rr] of [[1.365, 0.122], [1.395, 0.117]]) body.push(xf(new THREE.TorusGeometry(rr, 0.008, 4, 14), { r: [Math.PI / 2, 0, 0], p: [0, yy, 0] }));
+  body.push(xf(new THREE.SphereGeometry(0.2, 10, 6), { p: [0, 1.04, 0.15], s: [1.5, 0.82, 0.5] }));
   // 盤腿上的衣襬
-  body.push(xf(new THREE.TorusGeometry(0.55, 0.02, 5, 40, Math.PI), { r: [Math.PI / 2 - 0.12, 0, 0], p: [0, 0.5, 0.2], s: [1.25, 1, 0.75] }));
+  body.push(xf(new THREE.TorusGeometry(0.55, 0.02, 4, 24, Math.PI), { r: [Math.PI / 2 - 0.12, 0, 0], p: [0, 0.5, 0.2], s: [1.25, 1, 0.75] }));
 
   // ── 頭部（以頸部為原點，便於轉頭）──
   const head = [];
-  head.push(xf(new THREE.SphereGeometry(0.25, 28, 20), { p: [0, 0.24, 0], s: [0.9, 1.1, 0.96] }));
-  head.push(xf(new THREE.SphereGeometry(0.03, 8, 8), { p: [0, 0.2, 0.238], s: [0.75, 1.7, 1] })); // 鼻
-  head.push(xf(new THREE.SphereGeometry(1, 10, 8), { p: [0, 0.115, 0.222], s: [0.062, 0.014, 0.03] })); // 唇
-  for (const sx of [-1, 1]) head.push(xf(new THREE.CapsuleGeometry(0.03, 0.14, 4, 8), { p: [sx * 0.228, 0.19, -0.01], s: [0.6, 1, 1.2] })); // 長耳
+  head.push(xf(new THREE.SphereGeometry(0.25, 18, 12), { p: [0, 0.24, 0], s: [0.9, 1.1, 0.96] }));
+  head.push(xf(new THREE.SphereGeometry(0.03, 6, 5), { p: [0, 0.2, 0.238], s: [0.75, 1.7, 1] })); // 鼻
+  head.push(xf(new THREE.SphereGeometry(1, 8, 4), { p: [0, 0.115, 0.222], s: [0.062, 0.014, 0.03] })); // 唇
+  for (const sx of [-1, 1]) head.push(xf(new THREE.CapsuleGeometry(0.03, 0.14, 2, 6), { p: [sx * 0.228, 0.19, -0.01], s: [0.6, 1, 1.2] })); // 長耳
 
   const hair = [];
-  hair.push(xf(new THREE.SphereGeometry(0.262, 26, 12, 0, Math.PI * 2, 0, 1.28), { p: [0, 0.25, -0.012], s: [0.92, 1.1, 0.98] }));
-  for (let i = 0; i < 84; i++) {
+  hair.push(xf(new THREE.SphereGeometry(0.262, 16, 7, 0, Math.PI * 2, 0, 1.28), { p: [0, 0.25, -0.012], s: [0.92, 1.1, 0.98] }));
+  for (let i = 0; i < 60; i++) {
     const th = Math.acos(1 - rng() * 0.7), ph = rng() * Math.PI * 2;
     const r = 0.268;
-    hair.push(xf(new THREE.SphereGeometry(0.034, 6, 5), {
+    hair.push(xf(new THREE.SphereGeometry(0.036, 5, 3), {
       p: [Math.sin(th) * Math.cos(ph) * r * 0.92, 0.25 + Math.cos(th) * r * 1.1, -0.012 + Math.sin(th) * Math.sin(ph) * r * 0.98],
     }));
   }
-  hair.push(xf(new THREE.SphereGeometry(0.1, 14, 10), { p: [0, 0.535, -0.02], s: [1, 0.82, 1] })); // 肉髻
+  hair.push(xf(new THREE.SphereGeometry(0.1, 10, 6), { p: [0, 0.535, -0.02], s: [1, 0.82, 1] })); // 肉髻
 
   // ── 矇眼紅布 ──
   const band = new THREE.CylinderGeometry(0.262, 0.262, 0.125, 40, 4, true);
@@ -85,6 +86,7 @@ function buildGeometries() {
       if (y < -0.06) ny += Math.sin(a * 13) * 0.012 - 0.004; // 下緣不規則
       p.setXYZ(i, x * wr, ny, z * wr);
     }
+    band.rotateY(Math.PI);
     band.computeVertexNormals();
     xf(band, { p: [0, 0.262, 0], s: [0.935, 1, 0.995] });
   }
@@ -121,23 +123,23 @@ function buildGeometries() {
 
   // ── 低面數小佛（萬佛殿用，可大量實例化）──
   const tiny = [
-    new THREE.LatheGeometry([[0, 0], [0.56, 0], [0.58, 0.07], [0.5, 0.13], [0.54, 0.2], [0, 0.2]].map(([r, y]) => new THREE.Vector2(r, y)), 12),
-    xf(new THREE.SphereGeometry(1, 12, 6), { p: [0, 0.31, 0.05], s: [0.54, 0.14, 0.36] }), // 盤腿
-    xf(new THREE.LatheGeometry([[0, 0.28], [0.26, 0.3], [0.27, 0.5], [0.25, 0.68], [0.3, 0.82], [0.27, 0.9], [0.1, 0.96], [0.085, 1.02]].map(([r, y]) => new THREE.Vector2(r, y)), 12), { s: [1, 1, 0.68] }),
-    xf(new THREE.SphereGeometry(0.19, 12, 10), { p: [0, 1.18, 0], s: [0.9, 1.1, 0.96] }), // 頭
-    xf(new THREE.SphereGeometry(0.2, 12, 6, 0, Math.PI * 2, 0, 1.2), { p: [0, 1.19, -0.01], s: [0.92, 1.1, 0.98] }), // 髮
-    xf(new THREE.SphereGeometry(0.075, 8, 6), { p: [0, 1.41, -0.015], s: [1, 0.8, 1] }), // 肉髻
-    xf(new THREE.SphereGeometry(0.09, 8, 6), { p: [0, 0.42, 0.29], s: [1.5, 0.5, 0.9] }), // 手
+    new THREE.LatheGeometry([[0, 0], [0.56, 0], [0.58, 0.07], [0.5, 0.13], [0.54, 0.2], [0, 0.2]].map(([r, y]) => new THREE.Vector2(r, y)), 9),
+    xf(new THREE.SphereGeometry(1, 8, 4), { p: [0, 0.31, 0.05], s: [0.54, 0.14, 0.36] }), // 盤腿
+    xf(new THREE.LatheGeometry([[0, 0.28], [0.26, 0.3], [0.27, 0.5], [0.25, 0.68], [0.3, 0.82], [0.27, 0.9], [0.1, 0.96], [0.085, 1.02]].map(([r, y]) => new THREE.Vector2(r, y)), 9), { s: [1, 1, 0.68] }),
+    xf(new THREE.SphereGeometry(0.19, 9, 7), { p: [0, 1.18, 0], s: [0.9, 1.1, 0.96] }), // 頭
+    xf(new THREE.SphereGeometry(0.2, 9, 4, 0, Math.PI * 2, 0, 1.2), { p: [0, 1.19, -0.01], s: [0.92, 1.1, 0.98] }), // 髮
+    xf(new THREE.SphereGeometry(0.075, 6, 4), { p: [0, 1.41, -0.015], s: [1, 0.8, 1] }), // 肉髻
+    xf(new THREE.SphereGeometry(0.09, 6, 4), { p: [0, 0.42, 0.29], s: [1.5, 0.5, 0.9] }), // 手
   ];
   for (const sx of [-1, 1]) {
-    tiny.push(xf(new THREE.SphereGeometry(0.15, 8, 6), { p: [sx * 0.36, 0.32, 0.11], s: [1.2, 0.8, 1.1] })); // 膝
-    tiny.push(xf(new THREE.SphereGeometry(0.11, 8, 6), { p: [sx * 0.29, 0.83, 0] })); // 肩
-    tiny.push(capsuleBetween(V(sx * 0.31, 0.8, 0), V(sx * 0.36, 0.55, 0.07), 0.075, 6));
-    tiny.push(capsuleBetween(V(sx * 0.36, 0.55, 0.07), V(sx * 0.1, 0.42, 0.27), 0.06, 6));
-    tiny.push(xf(new THREE.SphereGeometry(0.03, 6, 4), { p: [sx * 0.175, 1.15, -0.01], s: [0.6, 2.4, 1.2] })); // 耳
+    tiny.push(xf(new THREE.SphereGeometry(0.15, 6, 4), { p: [sx * 0.36, 0.32, 0.11], s: [1.2, 0.8, 1.1] })); // 膝
+    tiny.push(xf(new THREE.SphereGeometry(0.11, 6, 4), { p: [sx * 0.29, 0.83, 0] })); // 肩
+    tiny.push(cylinderBetween(V(sx * 0.31, 0.82, 0), V(sx * 0.36, 0.53, 0.07), 0.075, 0.07, 6));
+    tiny.push(cylinderBetween(V(sx * 0.36, 0.55, 0.07), V(sx * 0.1, 0.42, 0.27), 0.062, 0.055, 6));
+    tiny.push(xf(new THREE.SphereGeometry(0.03, 4, 3), { p: [sx * 0.175, 1.15, -0.01], s: [0.6, 2.4, 1.2] })); // 耳
   }
   const tinyBody = merge(tiny);
-  const tinyBand = xf(new THREE.CylinderGeometry(0.2, 0.2, 0.1, 14, 1, true), { p: [0, 1.2, 0], s: [0.93, 1, 0.99] });
+  const tinyBand = xf(new THREE.CylinderGeometry(0.2, 0.2, 0.1, 14, 1, true).rotateY(Math.PI), { p: [0, 1.2, 0], s: [0.93, 1, 0.99] });
 
   return {
     lotus: merge(lotus), body: merge(body), head: merge(head), hair: merge(hair),
@@ -158,10 +160,20 @@ export function createBuddhaFactory(ctx) {
       body: new THREE.MeshStandardMaterial({ map: grimeTexture('#4a3a22', { seed: 9, dark: '10,8,4', patina: '50,95,80', amount: 1.3 }), metalness: 0.8, roughness: 0.55 }),
       hair: null,
     },
-    wood: { body: assets.mat('dark_wood', { color: 0xb09078, roughness: 0.9 }), hair: null },
+    wood: { body: assets.mat('wood_peeling_paint_weathered', { color: 0x8c6e5a, roughness: 0.92 }), hair: null },
     stone: { body: mats.rock, hair: null },
   };
   for (const s of Object.values(styles)) if (!s.hair) s.hair = s.body;
+  // 佛像本身的陳舊感：朝上的面（頭頂、肩、膝、掌心）積了一層灰，凹處發黑，身上有雨水滲下的痕跡。
+  // 尺度用佛像的大小（一公尺上下），和牆面的大尺度髒污分開。
+  const aged = (m, o = {}) => weather(m, { levels: [-9999], blotch: 0.7, streak: 0.55, damp: 0, dust: 0.5, dustTint: 0x77705f, scale: 1.1, fine: 0.3, streakW: 0.22, streakL: 2.2, ...o });
+  aged(styles.gold.body, { dust: 0.42, blotch: 0.55 });
+  aged(styles.bronze.body, { dust: 0.45, dustTint: 0x6f7466 });
+  aged(styles.wood.body, { dust: 0.55, blotch: 0.85 });
+  // 矇眼紅布：平織、褪色，雙眼的位置有往下滲開的深色水痕
+  const bandMap = blindfoldTexture(7, [0.452, 0.548]);
+  const blindfold = (mats.blindfold = new THREE.MeshStandardMaterial({ map: bandMap, bumpMap: bandMap, bumpScale: 1.2, roughness: 0.97, side: THREE.DoubleSide }));
+  mats.cloth.color.setHex(0xa8322a); // 原本的亮紅在手電筒下會過曝成螢光色
   const cloth = mats.cloth;
   function clothTails(seed) {
     const group=new THREE.Group();group.name='TornBlindfoldTails';
@@ -193,17 +205,29 @@ export function createBuddhaFactory(ctx) {
     });
     const hc=headBox.getCenter(new THREE.Vector3()),hs=headBox.getSize(new THREE.Vector3());
     scanned={body:merge(bodies),head:merge(heads).translate(0,-1.54,0),material,hc,hs};
+    // 依高度切片的外形（半寬與前後範圍），給纏繞的紅繩貼著身體用
+    const bins=Array.from({length:40},()=>({x:0,zf:-9,zb:9}));const bp=scanned.body.attributes.position;
+    for(let i=0;i<bp.count;i++){const k=Math.min(39,Math.max(0,Math.floor(bp.getY(i)/1.54*40)));const b=bins[k];b.x=Math.max(b.x,Math.abs(bp.getX(i)));b.zf=Math.max(b.zf,bp.getZ(i));b.zb=Math.min(b.zb,bp.getZ(i));}
+    scanned.bins=bins;
+  }
+  /** 佛像在高度 y（單位尺寸，0..1.54）的外形：{ rx, rz, cz } */
+  function profile(y) {
+    if (!scanned) return { rx: 0.5, rz: 0.3, cz: 0.04 };
+    const k = Math.min(39, Math.max(0, Math.floor((y / 1.54) * 40)));
+    let rx = 0, zf = -9, zb = 9;
+    for (let j = Math.max(0, k - 1); j <= Math.min(39, k + 1); j++) { const b = scanned.bins[j]; rx = Math.max(rx, b.x); zf = Math.max(zf, b.zf); zb = Math.min(zb, b.zb); }
+    return { rx, rz: (zf - zb) / 2, cz: (zf + zb) / 2 };
   }
   function makeScanned(scale,style,halo,headYaw,headPitch,headRoll) {
     const g=new THREE.Group();g.name='BlindfoldedAmoghasiddhi';const st=scanned;
-    const material=st.material.clone();if(style==='bronze')material.color.setHex(0x646655);
+    const material=st.material.clone();if(style==='bronze')material.color.setHex(0x646655);aged(material,{dust:0.46,blotch:0.5,streak:0.5});
     const add=(geo,mat,parent=g)=>{const m=new THREE.Mesh(geo,mat);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;};
     add(st.body,material);
     const head=new THREE.Group();head.position.y=1.54;head.rotation.set(headPitch,headYaw,headRoll,'YXZ');g.add(head);add(st.head,material,head);
     const rx=st.hs.x*0.49,rz=st.hs.z*0.46;
-    const band=new THREE.CylinderGeometry(1,1,0.13,64,6,true);const pos=band.attributes.position;
+    const band=new THREE.CylinderGeometry(1,1,0.13,64,6,true).rotateY(Math.PI);const pos=band.attributes.position;
     for(let i=0;i<pos.count;i++){const a=Math.atan2(pos.getZ(i),pos.getX(i)),y=pos.getY(i);const crease=1+Math.sin(a*13+y*42)*.018;pos.setXYZ(i,pos.getX(i)*rx*crease+st.hc.x,y+0.125+Math.sin(a*7)*.006,pos.getZ(i)*rz*crease+st.hc.z);}
-    band.computeVertexNormals();add(band,cloth,head);
+    band.computeVertexNormals();add(band,blindfold,head);
     const tails=clothTails(376+(ctx.statues?.length||0)*117);head.add(tails);tails.position.set(st.hc.x+rx*.75,.125,st.hc.z-rz);tails.rotation.y=.7;
     if(halo){const haloGroup=new THREE.Group();g.add(haloGroup);for(const r of [.43,.51,.56]){const m=add(new THREE.TorusGeometry(r,.012,7,72),mats.bronze,haloGroup);m.position.set(st.hc.x,1.62,-.27);}for(let i=0;i<24;i++){const a=i/24*Math.PI*2;const leaf=add(new THREE.SphereGeometry(.055,8,6),mats.bronze,haloGroup);leaf.scale.set(.4,1.8,.18);leaf.rotation.z=-a;leaf.position.set(Math.sin(a)*.55,1.62+Math.cos(a)*.55,-.27);}}
     g.scale.setScalar(scale);g.userData.head=head;g.userData.tails=tails;g.userData.source='Minneapolis Institute of Art / CC0';
@@ -231,7 +255,7 @@ export function createBuddhaFactory(ctx) {
     g.add(head);
     add(geo.head, st.body, head);
     add(geo.hair, st.hair, head);
-    add(geo.cloth, cloth, head);
+    add(geo.cloth, blindfold, head);
     const tails = clothTails(985+(ctx.statues?.length||0)*117);head.add(tails);
     tails.position.set(0.13, 0.25, -0.26);
     tails.rotation.x = -0.1;
@@ -247,11 +271,11 @@ export function createBuddhaFactory(ctx) {
   function makeTiny(matrices, style = 'gold') {
     const group = new THREE.Group();
     const a = new THREE.InstancedMesh(geo.tinyBody, styles[style].body, matrices.length);
-    const b = new THREE.InstancedMesh(geo.tinyBand, cloth, matrices.length);
+    const b = new THREE.InstancedMesh(geo.tinyBand, blindfold, matrices.length);
     matrices.forEach((m, i) => { a.setMatrixAt(i, m); b.setMatrixAt(i, m); });
     for (const m of [a, b]) { m.castShadow = true; m.receiveShadow = true; m.computeBoundingSphere(); group.add(m); }
     return group;
   }
 
-  return { make, makeTiny, styles };
+  return { make, makeTiny, styles, profile };
 }

@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { clamp } from './utils.js';
+import { OPT } from './perf.js';
 
 const RADIUS = 0.34;
 const EYE = 1.66;
@@ -8,6 +9,10 @@ const EYE_CROUCH = 1.0;
 const LOOK_SETTLE_MS = 120;
 const MAX_MOUSE_EVENT = 900;
 const MAX_LOOK_PER_FRAME = Math.PI / 2;
+// perf：手電筒陰影只算到這個距離。光源就在眼睛旁邊，更遠的遮蔽物投下的陰影幾乎完全被遮蔽物自己擋住，
+// 畫面上看不出差別，陰影 pass 要重畫的幾何卻少很多。
+const FLASH_SHADOW_FAR = 34;
+const FLASH_SHADOW_OPT = OPT('shadow');
 
 /** 第一人稱控制：行走、奔跑、蹲下、手電筒、多樓層碰撞 */
 export class Player {
@@ -31,11 +36,15 @@ export class Player {
     this.time = 0;
     this.onGround = true;
     this.onFootstep = null;
+    this.groundSpeed = 0; // 實際的水平移動速度（公尺／秒），撞牆時趨近 0
+    /** 瞬間傳送時呼叫（參數是移動的距離，公尺）；Game 用它做眨眼轉場 */
+    this.onTeleport = null;
 
     // 手電筒
     this.flashOn = true;
     this.flashAvailable = true;
-    this.flash = new THREE.SpotLight(0xfff1dc, 0, 50, 0.62, 0.6, 1.1);
+    // 氣氛組：暖白色的老式手電筒，整體比原本亮約 1.6 倍；衰減維持平緩，貼近物體時才不會過曝
+    this.flash = new THREE.SpotLight(0xffecd2, 0, 55, 0.6, 0.65, 1.1);
     this.flash.castShadow = true;
     this.flash.shadow.mapSize.set(1024, 1024);
     this.flash.shadow.camera.near = 0.25;
@@ -43,11 +52,32 @@ export class Player {
     this.flash.shadow.bias = -0.0015;
     this.flash.shadow.normalBias = 0.02;
     if (cookie) this.flash.map = cookie;
+    if (FLASH_SHADOW_OPT) {
+      // perf：陰影改成手動更新——手電筒關著時完全不畫；光源幾乎沒動時每 50 ms 才重畫一次。
+      // 不重畫的那幾幀連投影矩陣也凍結（_hold），陰影圖與取樣矩陣永遠對得上。
+      const shadow = this.flash.shadow;
+      shadow.autoUpdate = false;
+      shadow.needsUpdate = true;
+      shadow.updateMatrices = function (light) {
+        if (this._hold) return;
+        const cam = this.camera;
+        const fov = THREE.MathUtils.RAD2DEG * 2 * light.angle * this.focus;
+        const aspect = (this.mapSize.width / this.mapSize.height) * this.aspect;
+        const far = Math.min(light.distance || cam.far, FLASH_SHADOW_FAR);
+        if (fov !== cam.fov || aspect !== cam.aspect || far !== cam.far) { cam.fov = fov; cam.aspect = aspect; cam.far = far; cam.updateProjectionMatrix(); }
+        THREE.LightShadow.prototype.updateMatrices.call(this, light);
+      };
+    }
+    this._shadowPos = new THREE.Vector3(1e9, 0, 0);
+    this._shadowDir = new THREE.Vector3(0, 0, -1);
+    this._shadowTime = -1;
+    this._shadowForce = true;
     this.flashQuat = new THREE.Quaternion();
     this.flashPower = 0;
-    this.flashBase = 38;
+    this.flashBase = 60;
     // 極微弱的近身光（模擬眼睛適應黑暗）
     this.aura = new THREE.PointLight(0x7f95c0, 0.22, 5.5, 1.6);
+    this.aura.userData.noPool = true; // 永遠最近的一盞，不進點光源池
 
     this.rig = new THREE.Group();
     this.rig.add(this.flash, this.flash.target, this.aura);
@@ -122,6 +152,7 @@ export class Player {
   }
 
   teleport(x, y, z, yaw = this.yaw, pitch = 0) {
+    const jump = Math.hypot(x - this.pos.x, y - this.pos.y, z - this.pos.z);
     this._resetLook();
     this.pos.set(x, y, z);
     this.vel.set(0, 0, 0);
@@ -130,6 +161,8 @@ export class Player {
     this.pitch = pitch;
     this._syncCamera(0);
     this.flashQuat.copy(this.camera.quaternion);
+    this._shadowForce = true;
+    this.onTeleport?.(jump);
   }
 
   update(dt, world) {
@@ -158,8 +191,12 @@ export class Player {
       this.pos.y += ((k.Space ? 1 : 0) - (k.ControlLeft || k.KeyC ? 1 : 0)) * speed * dt;
       this.vy = 0;
     } else {
+      const ox = this.pos.x, oz = this.pos.z;
       this._move(this.vel.x * dt, 0, world);
       this._move(0, this.vel.z * dt, world);
+      // 實際走出去的速度（撞牆時趨近 0）。移動本身仍照 vel 推進，沿牆角滑行的手感不變；
+      // 這個值只用來決定晃動與腳步聲，貼著牆時才不會原地踏步。
+      if (dt > 1e-6) this.groundSpeed += (Math.hypot(this.pos.x - ox, this.pos.z - oz) / dt - this.groundSpeed) * Math.min(1, dt * 14);
       // 垂直：貼地 / 墜落
       const { g } = world.probe(this.pos.x, this.pos.z, this.pos.y);
       if (this.pos.y > g + 0.03) {
@@ -181,8 +218,10 @@ export class Player {
 
     // 視線高度與步伐晃動
     const targetEye = crouch ? EYE_CROUCH : EYE;
-    this.eye += (targetEye - this.eye) * Math.min(1, dt * 9);
-    const hs = Math.hypot(this.vel.x, this.vel.z);
+    // 指數趨近，但限制最高速度：蹲下的第一幀原本會一次掉 10 公分，看起來像被往下拽
+    const eyeMax = 2.8 * dt;
+    this.eye += clamp((targetEye - this.eye) * Math.min(1, dt * 9), -eyeMax, eyeMax);
+    const hs = this.fly ? Math.hypot(this.vel.x, this.vel.z) : Math.min(Math.hypot(this.vel.x, this.vel.z), this.groundSpeed);
     const moving = hs > 0.35 && this.onGround && !this.fly;
     const stride = sprint ? 1.05 : crouch ? 0.55 : 0.76;
     if (moving) this.bobPhase += (hs * dt * Math.PI) / stride;
@@ -234,7 +273,14 @@ export class Player {
   _updateFlash(dt) {
     const cam = this.camera;
     // 手電筒方向略為延遲跟隨視角，產生手持晃動感
-    this.flashQuat.slerp(cam.quaternion, 1 - Math.exp(-dt * 13));
+    // （氣氛組）手不會完全穩：加上呼吸的緩慢飄移與走路時的上下點動，再讓光束慢半拍跟上
+    const t0 = this.time, bob = this.bobAmt;
+    _e.set(
+      0.007 * Math.sin(t0 * 1.3 + 2) + 0.004 * Math.sin(t0 * 3.1) - 0.016 * bob * Math.abs(Math.sin(this.bobPhase)),
+      0.009 * Math.sin(t0 * 0.9) + 0.005 * Math.sin(t0 * 2.3 + 1) + 0.012 * bob * Math.cos(this.bobPhase),
+      0, 'YXZ');
+    _q.setFromEuler(_e).premultiply(cam.quaternion);
+    this.flashQuat.slerp(_q, 1 - Math.exp(-dt * 10));
     const off = _v1.set(0.2, -0.2, 0.05).applyQuaternion(cam.quaternion);
     this.flash.position.copy(cam.position).add(off);
     const dir = _v2.set(0, 0, -1).applyQuaternion(this.flashQuat);
@@ -247,6 +293,23 @@ export class Player {
     const t = this.time;
     const flick = 1 - 0.035 * Math.sin(t * 37.0) * Math.sin(t * 11.3) - (Math.sin(t * 0.73) * Math.sin(t * 1.9) > 0.93 ? 0.25 * Math.abs(Math.sin(t * 61)) : 0);
     this.flash.intensity = this.flashBase * this.flashPower * flick;
+    if (FLASH_SHADOW_OPT) this._scheduleShadow();
+  }
+
+  /** 決定這一幀要不要重畫手電筒的陰影圖 */
+  _scheduleShadow() {
+    const flash = this.flash, shadow = flash.shadow;
+    const lit = flash.intensity > 0.01;
+    const dir = _v1.copy(flash.target.position).sub(flash.position).normalize();
+    const moved = flash.position.distanceToSquared(this._shadowPos) > 4e-6 || dir.dot(this._shadowDir) < 0.999998;
+    const draw = lit && (moved || this._shadowForce || !shadow.map || Math.abs(this.time - this._shadowTime) > 0.05);
+    shadow._hold = lit && !draw;
+    if (!draw) return;
+    shadow.needsUpdate = true;
+    this._shadowForce = false;
+    this._shadowPos.copy(flash.position);
+    this._shadowDir.copy(dir);
+    this._shadowTime = this.time;
   }
 
   dispose() {
@@ -260,3 +323,4 @@ export class Player {
   }
 }
 const _v1 = new THREE.Vector3(), _v2 = new THREE.Vector3();
+const _e = new THREE.Euler(), _q = new THREE.Quaternion();

@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {newState,collect,validateSave,EVIDENCE,trueEndingReady,missingEvidence,objectives} from '../src/story/campaign.js';
+import {newState,collect,validateSave,EVIDENCE,NOTES,readNote,trueEndingReady,missingEvidence,objectives} from '../src/story/campaign.js';
 import {preludeRecords} from '../src/story/preludeRecords.js';
 
 test('main route progresses regardless of the first three evidence order',()=>{
@@ -44,4 +44,20 @@ test('archived records reveal only encountered clues and retain the outside witn
   s.road.step=4;s.road.peishan='question';s.flags.prologueComplete=true;
   const loaded=validateSave(s);assert.equal(loaded.road.peishan,'question');text=preludeRecords(loaded).flat().join(' ');assert.match(text,/郭建成/);assert.match(text,/佩珊/);
   assert.equal(validateSave({...s,road:{...s.road,peishan:'__proto__'}}).road.peishan,null);
+});
+test('optional readables are whitelisted, never count as evidence and survive old saves',()=>{
+  const s=newState();assert.deepEqual(s.notes,[]);
+  for(const id of Object.keys(NOTES)){assert.equal(Object.hasOwn(EVIDENCE,id),false);assert.equal(readNote(s,id),true);assert.equal(readNote(s,id),false);}
+  assert.equal(readNote(s,'__proto__'),false);assert.equal(s.evidence.length,1);assert.equal(trueEndingReady(s),false);
+  const saved=validateSave(JSON.parse(JSON.stringify({...s,notes:[...s.notes,'log','bad','toString',null],home:{step:3,notes:[],answered:true}})));
+  assert.deepEqual(saved.notes,Object.keys(NOTES));assert.equal(saved.home.answered,true);
+  const old=JSON.parse(JSON.stringify(newState()));delete old.notes;delete old.home.answered;
+  const restored=validateSave(old);assert.deepEqual(restored.notes,[]);assert.equal(restored.home.answered,false);
+  assert.equal(validateSave({...newState(),notes:'log',home:{step:1,notes:[],answered:'yes'}}).notes.length,0);
+});
+test('objectives and missing-evidence hints never leak the title of an undiscovered clue',()=>{
+  const s=newState();s.flags.incense=true;s.chapter=2;
+  for(const o of objectives(s))assert.equal(Object.values(EVIDENCE).some(e=>o.title.includes(e.title)),false,o.title);
+  Object.assign(s.flags,{stage:true,loopSolved:true,key:true,underground:true});for(const id of ['diary','newspaper','tape','stage','death'])collect(s,id);
+  for(const o of objectives(s))assert.equal(Object.values(EVIDENCE).some(e=>o.title.includes(e.title)),false,o.title);
 });

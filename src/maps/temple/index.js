@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { World } from '../../core/World.js';
 import { Batch, mulberry32, matrixOf, xf } from '../../core/utils.js';
 import { createNightSky } from '../../core/sky.js';
+import { createAirDust, createSmoke } from '../../core/air.js';
 import { talismanTexture, flameTexture, grimeTexture } from '../../core/canvasTex.js';
 import { FLOORS, PLINTH, COMPOUND, GRAVEYARD, BOUNDS, SPAWN, MOON_DIR, FOG_COLOR, STAIRS, stairRect } from './layout.js';
 import { buildTerrain, terrainHeight } from './terrain.js';
@@ -25,11 +26,14 @@ export const ASSETS = {
     'wooden_lantern_01', 'ceramic_vase_03', 'wooden_bucket_01', 'chinese_stool',
   ],
   hdr: ['satara_night_no_lamps'],
-  images: ['temple-keyart', 'children-1998', 'apparition'],
+  images: ['children-1998', 'apparition'], // perf：temple-keyart（2.4 MB）場景裡沒有任何地方使用，不再預載
   scans: ['amoghasiddhi', 'ghost_woman'],
 };
 
 const inRect = (x, z, r, m = 0) => x > r.x1 - m && x < r.x2 + m && z > r.z1 - m && z < r.z2 + m;
+// 一維平滑雜訊（燭火用）：不規則但連續，不像幾個正弦波相加那樣有規律
+const hash1 = (k) => { const v = Math.sin(k * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
+const noise1 = (x) => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return hash1(i) * (1 - u) + hash1(i + 1) * u; };
 const tick = () => new Promise((r) => setTimeout(r, 0));
 
 function floorIndex(y) {
@@ -92,6 +96,7 @@ export async function create(game, onProgress) {
   // ── 共用建構工具 ──
   const batch = new Batch();
   const sway = [], wisps = [], lights = [], flames = [];
+  const smokeSpots = []; // 點著的香（氣氛組：上方加一縷煙）
   const cloth = createClothSystem();
   const talismanLists = [[], [], [], [], []];
   const flameTex = flameTexture();
@@ -155,6 +160,7 @@ export async function create(game, onProgress) {
       batch.add(mats.redGlow, new THREE.CylinderGeometry(0.04, 0.035, 0.09, 10).translate(x, y + 0.075, z));
     },
     incense(x, y, z, lit = false, count = 3) {
+      if (lit) smokeSpots.push([x, y + 0.24, z]);
       for (let i = 0; i < count; i++) {
         const a = rng() * 6.28, lean = rng() * (count > 3 ? 0.35 : 0.12), len = 0.2 + rng() * 0.14;
         const g = new THREE.CylinderGeometry(0.004, 0.004, len, 4).translate(0, len / 2, 0);
@@ -235,7 +241,21 @@ export async function create(game, onProgress) {
   const sky = createNightSky({ moonDir, fogColor: FOG_COLOR });
   sky.mesh.scale.setScalar(1);
   scene.add(sky.mesh);
+  // 空氣感（氣氛組）：手電筒光束裡的浮塵（到了地下室變成落灰）、點著的香上方的煙。各一個 draw call。
+  const dust = createAirDust(game.player);
+  scene.add(dust.points);
+  const smokes = [];
+  for (let f = 0; f < FLOORS.length; f++) {
+    const spots = smokeSpots.filter((s) => floorIndex(s[1]) === f);
+    if (!spots.length) continue;
+    const smoke = createSmoke(spots);
+    floorGroups[f].add(smoke.mesh);
+    smokes.push(smoke);
+  }
+  let fogBase = 0.019;
 
+  // 恐怖導演的接縫：導演只寫這個物件，地圖的 update 負責套用（每盞燈另可設 L.mul）。
+  const fx = { lightMul: 1, fogAdd: 0, ambientMul: 1 };
   let indoorMix = 0;
   let fullBright = false;
   let lastTx = 1e9, lastTz = 1e9, shadowDirty = true;
@@ -251,12 +271,14 @@ export async function create(game, onProgress) {
 
   return {
     scene, world, storyWorld, cloth,
+    fx, lights, flames, floorGroups, floorIndex, hemi, moon, statues: ctx.statues,
     spawn: SPAWN,
     indoorAt,
     surfaceAt(pos) {
+      if (pos.x > 45 && pos.y < 0) return 'stone'; // 地下封印室
       if (inRect(pos.x, pos.z, FLOORS[0]) && pos.y > 1.2) return pos.y > 16.4 ? 'stone' : 'wood';
       if (inRect(pos.x, pos.z, COMPOUND)) return 'stone';
-      return 'dirt';
+      return inRect(pos.x, pos.z, GRAVEYARD, 1) ? 'grass' : 'dirt'; // 亂葬崗是雜草與落葉
     },
     zoneName(pos) {
       if (pos.x > 45 && pos.y < 0) return '地下・封印室';
@@ -299,7 +321,16 @@ export async function create(game, onProgress) {
 
       // 室內外環境光
       indoorMix += ((indoorAt(pos) ? 1 : 0) - indoorMix) * Math.min(1, dt * 1.6);
-      hemi.intensity = released ? 1.2 - 0.7 * indoorMix : 0.9 - 0.72 * indoorMix;
+      hemi.intensity = (released ? 1.2 - 0.7 * indoorMix : 0.9 - 0.72 * indoorMix) * fx.ambientMul;
+      // 各區的霧（氣氛組）：亂葬崗最濃、地下室次之、室內最薄；導演的 fx.fogAdd 照舊疊加在上面
+      const crypt = pos.x > 45 && pos.y < 0, grave = !crypt && indoorMix < 0.5 && inRect(pos.x, pos.z, GRAVEYARD, 3);
+      fogBase += ((crypt ? 0.027 : grave ? (released ? 0.021 : 0.031) : 0.019 - 0.006 * indoorMix) - fogBase) * Math.min(1, dt * 0.7);
+      if (!fullBright) scene.fog.density = fogBase + fx.fogAdd;
+      game.audio.zone = crypt ? 'crypt' : grave ? 'grave' : null; // 聲學空間；其餘由室內外推斷
+      dust.fall = crypt ? 0.09 : 0;
+      dust.strength = 0.4 + 0.6 * indoorMix;
+      dust.ambient.setRGB(crypt ? 0.05 : 0, crypt ? 0.028 : 0, crypt ? 0.022 : 0);
+      for (const s of smokes) s.update(t);
       moon.intensity = released ? 1.6 : 1.05;
       moon.color.setHex(released ? 0xd8c6aa : 0x8fa8dc);
       scene.environmentIntensity = fullBright ? 2.2 : released ? 0.4 - 0.24 * indoorMix : 0.22 - 0.14 * indoorMix;
@@ -313,19 +344,23 @@ export async function create(game, onProgress) {
         if (!vis && inBuilding && Math.abs(f - pf) === 1) vis = inRect(pos.x, pos.z, stairRect(STAIRS[Math.min(f, pf)]), 6);
         floorGroups[f].visible = vis || fullBright;
       }
+      const draft = 0.6 + 0.4 * Math.sin(t * 0.23) * Math.sin(t * 0.071 + 2);
       for (const L of lights) {
         const want = L.floor === -1 || L.floor === pf ? 1 : 0;
         L.gate += (want - L.gate) * Math.min(1, dt * 2.5);
         let f = 1;
         if (L.flicker) {
-          const p = t * 9 + L.phase;
-          f = 1 + L.flicker * (0.1 * Math.sin(p) + 0.07 * Math.sin(p * 2.7 + 1.3) + 0.05 * Math.sin(p * 6.1));
+          // 燭火：大多時候只是緩慢呼吸，偶爾被風擾動才急促抖動並暗下去
+          const ph = L.phase, stir = Math.pow(noise1(t * 0.31 + ph * 1.7), 3) * (0.5 + draft);
+          f = 1 + L.flicker * (0.13 * (noise1(t * 0.9 + ph) - 0.5) + stir * (0.28 * Math.sin(t * 23 + ph * 3) * Math.sin(t * 37.1 + ph) - 0.2));
         }
-        L.light.intensity = L.base * L.gate * f;
+        L.light.intensity = L.base * L.gate * f * fx.lightMul * (L.mul ?? 1);
       }
       for (const f of flames) {
-        const p = t * 11 + f.phase;
-        f.sp.scale.set(0.07 * (1 + 0.12 * Math.sin(p * 1.7)), 0.15 * (1 + 0.14 * Math.sin(p) + 0.08 * Math.sin(p * 3.3)), 1);
+        const ph = f.phase, stir = Math.pow(noise1(t * 0.31 + ph * 1.7), 3) * (0.5 + draft), w = Math.sin(t * 23 + ph * 3) * Math.sin(t * 37.1 + ph);
+        const calm = noise1(t * 1.3 + ph) - 0.5;
+        f.sp.scale.set(0.07 * (1 + 0.1 * calm + 0.3 * stir * w), 0.15 * (1 + 0.18 * calm - 0.28 * stir + 0.22 * stir * w), 1);
+        f.sp.material.rotation = (noise1(t * 0.7 + ph * 2.3) - 0.5) * 0.22;
       }
       // 風吹擺動
       const gust = 0.6 + 0.4 * Math.sin(t * 0.23) * Math.sin(t * 0.071 + 2);
@@ -347,7 +382,7 @@ export async function create(game, onProgress) {
         p.m.quaternion.copy(q);
         p.m.position.x = p.x + Math.sin(t * p.drift * 0.2 + p.phase) * p.span;
         const d = Math.hypot(p.m.position.x - cam.x, p.m.position.z - cam.z);
-        p.m.material.opacity = 0.3 * Math.min(1, Math.max(0, (d - 5) / 12));
+        p.m.material.opacity = (p.x < -31 ? 0.44 : 0.3) * Math.min(1, Math.max(0, (d - 5) / 12)); // 亂葬崗的低霧較厚
       }
       sky.update(t);
     },

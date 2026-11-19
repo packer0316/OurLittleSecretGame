@@ -3,6 +3,7 @@ import { MAPS } from './maps/registry.js';
 import { Story, readSave } from './story/Story.js';
 import { HomeStory } from './story/HomeStory.js';
 import { RoadStory } from './story/RoadStory.js';
+import { loadHandwriting } from './core/handwriting.js';
 
 const $ = (id) => document.getElementById(id);
 const canvas = $('game');
@@ -10,6 +11,9 @@ const game = new Game(canvas);
 const params = new URLSearchParams(location.search);
 const AUTO = params.has('auto'); // 自動化測試 / 截圖用：不鎖定滑鼠直接開始
 const DEV = params.has('dev');
+// 自動化測試不做轉場淡入淡出，也不自動調整解析度（截圖才會穩定、清楚）；要量動態解析度時加 &drs
+game.transitions = !AUTO;
+if (AUTO && !params.has('drs')) game.perf.drs.enabled = false;
 
 const ui = {
   lobby: $('lobby'), loading: $('loading'), overlay: $('overlay'), hud: $('hud'),
@@ -48,24 +52,38 @@ function buildLobby() {
 
 let settings = {};
 try { settings = JSON.parse(localStorage.getItem('ols-settings') || '{}') || {}; } catch {}
+// 玩家還沒親手選過畫質時，畫質可以由遊戲依實際順暢度自動調低一次
+let qualityAuto = !['low','medium','high'].includes(settings.quality) || settings.autoQuality === true;
 function applySettings() {
   const s = { sensitivity: +$('set-sens').value, volume: +$('set-vol').value, quality: $('set-quality').value };
-  try { localStorage.setItem('ols-settings', JSON.stringify(s)); } catch {}
+  try { localStorage.setItem('ols-settings', JSON.stringify({ ...s, autoQuality: qualityAuto })); } catch {}
   game.applySettings(s);
 }
 if (settings.sensitivity) $('set-sens').value = settings.sensitivity;
 if (settings.volume != null) $('set-vol').value = settings.volume;
 if (['low','medium','high'].includes(settings.quality)) $('set-quality').value = settings.quality;
+$('set-quality').addEventListener('change', () => { qualityAuto = false; });
 for (const id of ['set-sens', 'set-vol', 'set-quality']) $(id).addEventListener('change', applySettings);
 applySettings();
+game.onQualityHint = (q) => {
+  if (AUTO || !qualityAuto || state !== 'playing' || game.settings.quality === q) return;
+  $('set-quality').value = q;
+  applySettings();
+  flash('畫面不夠順，已自動改用「低」畫質。可以在大廳的畫質選單改回來。');
+};
 
 // ───── 載入地圖 ─────
+let entering = false;
 async function enterMap(def, resume = false) {
-  if (state === 'loading') return;
+  if (state === 'loading' || entering) return;
+  entering = true;
+  const travelling = state === 'playing';
   currentMap = def;
   game.audio.init(); // 在使用者點擊時建立音訊
+  if (travelling) await game.fade(1, 280); // 換場：畫面先暗下來，再出現讀取畫面
   ui.loadTitle.textContent = def.name;
   ui.bar.style.width = '0%';
+  ui.label.textContent = '載入中…';
   setState('loading');
   try {
     await game.loadMap(def, (p, label) => {
@@ -75,9 +93,13 @@ async function enterMap(def, resume = false) {
   } catch (err) {
     console.error(err);
     ui.label.textContent = `載入失敗：${err.message}`;
+    game.fade(0, 0);
+    entering = false;
     setTimeout(() => setState('lobby'), 2500);
     return;
   }
+  game.fade(0, 0);
+  entering = false;
   zoneName = '';
   const Controller=def.id==='home'?HomeStory:def.id==='road'?RoadStory:Story;
   game.story = new Controller(game, { resume, onLobby: returnToLobby, onTravel:id=>enterMap(MAPS.find(m=>m.id===id),true), onResume: () => {
@@ -96,6 +118,7 @@ function beginPlay(first) {
   game.story?.start();
   game.player.enabled = !game.story?.modal && !game.story?.busy;
   if (first) {
+    game.blink(700); // 從黑畫面淡入
     ui.intro.textContent = (currentMap.intro || []).join('\n');
     ui.intro.classList.add('show');
     setTimeout(() => ui.intro.classList.remove('show'), 6000);
@@ -106,13 +129,18 @@ function beginPlay(first) {
 }
 
 let firstEntry = true;
+let lockRetry = 0;
 async function lockAndPlay() {
+  clearTimeout(lockRetry);
   try {
     await canvas.requestPointerLock();
   } catch (err) {
-    // 瀏覽器在剛按下 Esc 後短時間內會拒絕再次鎖定，請使用者再點一次
-    ui.ovSub.textContent = '請再點擊一次';
-    return;
+    // 瀏覽器在剛按下 Esc 後約一秒內會拒絕再次鎖定：自動再試一次，玩家不必重點
+    ui.ovSub.textContent = '正在鎖定滑鼠…';
+    lockRetry = setTimeout(async () => {
+      if (state !== 'ready' && state !== 'paused') return;
+      try { await canvas.requestPointerLock(); } catch { ui.ovSub.textContent = '請再點擊一次'; }
+    }, 1100);
   }
 }
 document.addEventListener('pointerlockchange', () => {
@@ -186,12 +214,19 @@ game.onFrame = (dt) => {
       `位置 x ${p.x.toFixed(1)}  y ${p.y.toFixed(1)}  z ${p.z.toFixed(1)}\n` +
       `方向 ${((game.player.yaw * 180) / Math.PI).toFixed(0)}°\n` +
       `區域 ${z}\n` +
-      `繪製 ${info.render.calls} calls / ${(info.render.triangles / 1000).toFixed(0)}k tris`;
+      `繪製 ${info.render.calls} calls / ${(info.render.triangles / 1000).toFixed(0)}k tris
+` +
+      `GPU  ${game.perf.gpuMs.toFixed(1)} ms　影格 ${game.perf.frameMs.toFixed(1)} ms　內部解析度 ${Math.round(game.perf.drs.scale * 100)}%`;
   }
 };
 
 buildLobby();
 setState('lobby');
+// 手寫字型有 9.5 MB，住處場景的信紙要等它才能畫。趁玩家還在大廳時先在背景下載，按下開始後就不必再等。
+if (!AUTO) {
+  const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 800));
+  idle(() => { const s = readSave(); if (!s || s.scene === 'home') loadHandwriting().catch(() => {}); });
+}
 window.__game = game; // 除錯 / 自動化測試用
 window.__enter = (id) => enterMap(MAPS.find((m) => m.id === id));
 if (DEV) document.querySelector('.overlay-keys').classList.add('dev-visible');

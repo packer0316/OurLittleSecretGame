@@ -7,6 +7,8 @@ import { doorLeaf } from './building.js';
 import { incenseBurnerGeo, urnGeo } from './interiors.js';
 import { makeTreeGeometry } from './trees.js';
 import { plaqueTexture, tombTextTexture, paperMoneyTexture, smokeTexture, glowTexture } from '../../core/canvasTex.js';
+import { buildDressing } from './dressing.js';
+import { decimate, lite } from './lod.js';
 
 /** 石燈籠 */
 function stoneLantern(ctx, x, z, ry = 0) {
@@ -136,9 +138,9 @@ export function buildCompound(ctx) {
   urns.castShadow = true; urns.receiveShadow = true; urns.computeBoundingSphere(); root.add(urns);
 
   // 雜物
-  ctx.model('tree_stump_01', { p: [22, 0.12, -1], s: 1.3 });
+  lite(ctx.model('tree_stump_01', { p: [22, 0.12, -1], s: 1.3 }), 26);
   world.circle(22, -1, 0.8, 0, 1.2);
-  ctx.model('dead_tree_trunk_02', { p: [-22, 0.3, 17], r: [0, 0.5, 0], s: 1.5 });
+  lite(ctx.model('dead_tree_trunk_02', { p: [-22, 0.3, 17], r: [0, 0.5, 0], s: 1.5 }), 44);
   world.line(-24.6, 18.5, -19.4, 15.6, 0.55, 0, 1.5);
 
   // ── 缺口外的小土地公祠（裡面的神像同樣被矇眼）──
@@ -307,6 +309,16 @@ export function buildNature(ctx) {
   };
   // 草叢
   const grassV = modelVariants(assets.model('grass_medium_01')).slice(0, 12);
+  // 三種「large」草叢各有五、六千個三角形，佔了全部草的七成：改用放大的「mid」草叢頂替（變體數量不變，亂數序列不受影響）
+  {
+    const tris = (v) => (v.geometry.index ? v.geometry.index.count : v.geometry.attributes.position.count) / 3;
+    const mids = grassV.filter((v) => tris(v) > 1000 && tris(v) < 3000);
+    if (mids.length) grassV.forEach((v, i) => {
+      if (tris(v) < 4000) return;
+      const m = mids[i % mids.length];
+      grassV[i] = { geometry: m.geometry, material: m.material, local: m.local.clone().premultiply(new THREE.Matrix4().makeScale(1.45, 1, 1.45)) };
+    });
+  }
   const grass = [];
   const addGrass = (x, z, s) => grass.push({ x, z, v: Math.floor(rng() * grassV.length), m: matrixOf(x, ctx.groundAt(x, z) - 0.03, z, 0, rng() * 6.28, 0, s, s * (0.8 + rng() * 0.6), s) });
   for (let k = 0; k < 200; k++) {
@@ -328,6 +340,12 @@ export function buildNature(ctx) {
 
   // 蕨類
   const fernV = modelVariants(assets.model('fern_02'));
+  // 原始貼圖是盛夏的鮮綠，手電筒一照像塑膠盆栽；壓成入冬、缺光的暗綠褐色
+  const fernMats = new Map();
+  for (const v of fernV) {
+    if (!fernMats.has(v.material)) { const m = v.material.clone(); m.color.setRGB(0.42, 0.4, 0.3); m.roughness = 0.95; fernMats.set(v.material, m); }
+    v.material = fernMats.get(v.material);
+  }
   const ferns = [];
   for (let k = 0; k < 90; k++) {
     const [x, z] = outdoorSpot();
@@ -338,6 +356,7 @@ export function buildNature(ctx) {
 
   // 長滿青苔的石塊
   const rockV = modelVariants(assets.model('rock_moss_set_01'));
+  for (const v of rockV) v.geometry = decimate(v.geometry, 16); // 每顆一萬面降到一千面上下
   const rocks = [];
   for (let k = 0; k < 30; k++) {
     const [x, z] = outdoorSpot();
@@ -349,16 +368,16 @@ export function buildNature(ctx) {
 
   // 巨石、樹樁、倒木
   for (const [x, z, s, ry] of [[-41, -24, 1.6, 0.4], [9, 31, 1.3, 2]]) {
-    ctx.model('boulder_01', { p: [x, terrainHeight(x, z) - 0.15, z], s, r: [0, ry, 0] });
+    lite(ctx.model('boulder_01', { p: [x, terrainHeight(x, z) - 0.15, z], s, r: [0, ry, 0] }), 34);
     world.circle(x, z, 0.8 * s, -50, 50);
   }
   for (const [x, z] of [[-55, -22], [-7, 33]]) {
-    ctx.model('tree_stump_01', { p: [x, terrainHeight(x, z) + 0.1, z], s: 1.4, r: [0, rng() * 6, 0] });
+    lite(ctx.model('tree_stump_01', { p: [x, terrainHeight(x, z) + 0.1, z], s: 1.4, r: [0, rng() * 6, 0] }), 26);
     world.circle(x, z, 0.85, -50, 50);
   }
   {
     const x = -57, z = 3;
-    ctx.model('dead_tree_trunk_02', { p: [x, terrainHeight(x, z) + 0.3, z], s: 1.5, r: [0, 1.9, 0] });
+    lite(ctx.model('dead_tree_trunk_02', { p: [x, terrainHeight(x, z) + 0.3, z], s: 1.5, r: [0, 1.9, 0] }), 44);
     world.line(x + Math.cos(1.9) * 2.8, z - Math.sin(1.9) * 2.8, x - Math.cos(1.9) * 2.8, z + Math.sin(1.9) * 2.8, 0.55, -50, 50);
   }
   for (let k = 0; k < 10; k++) {
@@ -386,5 +405,8 @@ export function buildFog(ctx) {
     root.add(m);
     puffs.push({ m, x, z, drift: 0.12 + rng() * 0.25, phase: rng() * 6, span: 6 + rng() * 6 });
   }
+  // 場景美術的收尾（風化疊層、火場痕跡、陳設、蛛網、落葉）。放在這裡是因為它排在所有
+  // 會消耗共用亂數的建構步驟之後、batch.build 之前；dressing 自己用獨立的亂數序列。
+  buildDressing(ctx);
   return puffs;
 }

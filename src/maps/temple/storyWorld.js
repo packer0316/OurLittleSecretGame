@@ -12,8 +12,10 @@ const POSITIONS = {
   names:[48.1,-5.5,-22], confession:[55,-5.9,-16.0], altar:[55,-5.6,-24.3], return:[55,-5.5,-12.4],
   riteName:[51,-5.85,-22], riteRelic:[55,-5.85,-23], riteWitness:[59,-5.85,-22], exit:[0,1.2,26],
   loopmark:[-10.8,8,-16],
+  // story：可選的可讀物（不計入十一組證據）。文字在 src/story/campaign.js 的 NOTES。
+  log:[-8.42,1.86,-20.1], rulebook:[-8.42,7.86,-18.4], shoes:[58.39,-6.9,-25.6],
 };
-const LABELS={rules:'山門告示',incense:'三炷未熄的香',diary:'卡住的計數器',newspaper:'燒損的門閂',tape:'舊錄音機',ritual:'三槽木盤',stage:'戲台上的空相框',divination:'擲筊問路',death:'裂開的手機',births:'門框上的身高刻痕',descent:'封印暗道',names:'刻滿名字的牆',confession:'神壇前的舊鎖',altar:'最後的抉擇',return:'返回四樓',relic:'老樹石座上的布包',riteName:'空白牌位・喚名',riteRelic:'供盤・歸物',riteWitness:'錄音機・見證',exit:'山門外',loopmark:'紅線旁的彈珠'};
+const LABELS={rules:'山門告示',incense:'三炷未熄的香',diary:'卡住的計數器',newspaper:'燒損的門閂',tape:'舊錄音機',ritual:'三槽木盤',stage:'戲台上的空相框',divination:'擲筊問路',death:'裂開的手機',births:'門框上的身高刻痕',descent:'封印暗道',names:'刻滿名字的牆',confession:'神壇前的舊鎖',altar:'最後的抉擇',return:'返回四樓',relic:'老樹石座上的布包',riteName:'空白牌位・喚名',riteRelic:'供盤・歸物',riteWitness:'錄音機・見證',exit:'山門外',loopmark:'紅線旁的彈珠',log:'阿哲的清點日誌',rulebook:'線裝的小簿子',shoes:'門前的一雙女鞋'};
 
 export function buildStoryWorld(ctx) {
   const {root,mats,world,batch,rng,assets}=ctx;
@@ -57,11 +59,11 @@ export function buildStoryWorld(ctx) {
       for(let i=0;i<6;i++)mesh(new THREE.BoxGeometry(.12,.012,.008),mats.brass,[-.24+i*.095,.08+i*.065,-.042],obj);
     }
     if(kind==='recorder'){mesh(new THREE.BoxGeometry(0.35,0.12,0.22),mats.bronze,[0,0,0],obj);for(const x of [-0.08,0.08])mesh(new THREE.TorusGeometry(0.038,0.008,6,16).rotateX(Math.PI/2),mats.brass,[x,0.063,0],obj);}
-    const glint=mesh(new THREE.OctahedronGeometry(0.035),new THREE.MeshBasicMaterial({color:0xd7c090,transparent:true,opacity:0.85,depthTest:true}),[0,0.18,0],obj);glint.castShadow=false;
+    const glint=mesh(new THREE.OctahedronGeometry(0.024),new THREE.MeshBasicMaterial({color:0xd7c090,transparent:true,opacity:0.85,depthTest:true}),[0,0.18,0],obj);glint.castShadow=false;
     targets.push({id,label:LABELS[id],position:V(...p),object:obj,glint});return obj;
   }
   for(const [id,p] of Object.entries(POSITIONS)){
-    const noProp=['rules','incense','stage','descent','names','altar','return','exit','riteName','riteRelic','riteWitness','confession','divination','loopmark'].includes(id);
+    const noProp=['rules','incense','stage','descent','names','altar','return','exit','riteName','riteRelic','riteWitness','confession','divination','loopmark','log','rulebook','shoes'].includes(id);
     target(id,p,noProp?'none':({diary:'counter',newspaper:'latch',tape:'recorder',ritual:'tray',death:'phone',births:'height'}[id]));
   }
   // Actual readable placards, evidence stations and a distinctive six-child altar.
@@ -72,6 +74,28 @@ export function buildStoryWorld(ctx) {
   }
   for(const [x,y,z] of [[-9,0.9,-20.1],[9,0.9,-20.1],[-9,6.9,-18.4],[-8.3,6.9,-26.3],[5,11.9,-27.1],[-10,11.9,-26.5]]){
     desk(x,y,z);ctx.candle(x-0.6,y+0.94,z,{lit:true,h:0.18});
+  }
+  // story：劇情小陳設。全部併入 batch（紙張與藍色便條各多一個 draw call），不加燈、不加碰撞。
+  {
+    const blue=new THREE.MeshStandardMaterial({color:0x2c6aa3,roughness:.85});
+    const put=(mat,w,h,d,x,y,z,ry=0)=>batch.add(mat,xf(boxGeo(w,h,d,0,0,0,1),{p:[x,y,z],r:[0,ry,0]}));
+    // 阿哲的清點日誌：一樓西桌，計數器右側的板夾。
+    put(mats.woodDark,.23,.012,.31,-8.42,1.846,-20.1,.22);put(paperMat,.2,.004,.27,-8.42,1.854,-20.1,.22);put(mats.brass,.09,.012,.025,-8.39,1.86,-20.235,.22);
+    // 郭師父的規矩簿：二樓錄音機右側，紅線裝訂的帳本。
+    put(mats.cabinet,.17,.02,.24,-8.42,7.85,-18.4,-.18);put(paperMat,.16,.012,.225,-8.415,7.853,-18.4,-.18);put(mats.cabinet,.17,.004,.24,-8.42,7.862,-18.4,-.18);put(mats.thread,.007,.026,.235,-8.502,7.852,-18.415,-.18);
+    // 阿哲的藍色便條：計數器旁、錄音機旁、送行盤旁；戲台第二張椅子下是他的識別證。
+    for(const [x,y,z,ry] of [[-9.3,1.842,-19.93,.3],[-9.3,7.842,-18.22,-.2],[-7.93,7.842,-26.12,.15]])put(blue,.075,.002,.075,x,y,z,ry);
+    put(blue,.085,.004,.055,20.42,.584,-1.9,.5);put(blue,.012,.003,.3,20.36,.583,-1.76,1.1);
+    // 第三、第四張椅子底下，螢幕朝下的手機：先到的人，用東西佔著位子。
+    put(mats.cabinet,.075,.009,.155,19.12,.586,-3.3,-.4);put(mats.cabinet,.075,.009,.155,25.98,.586,.22,.7);
+    // 地下神壇東側：一雙鞋尖朝門的女鞋，左腳那隻裡面有一截剪斷的紅線。
+    for(const x of [58.3,58.48]){
+      batch.add(mats.cabinet,new THREE.SphereGeometry(1,16,10).scale(.045,.017,.12).translate(x,-6.986,-25.6)); // 鞋底
+      batch.add(mats.cabinet,new THREE.SphereGeometry(1,14,10).scale(.044,.03,.058).translate(x,-6.972,-25.662)); // 鞋頭，朝門
+      batch.add(mats.cabinet,new THREE.SphereGeometry(1,12,8).scale(.041,.027,.02).translate(x,-6.974,-25.495)); // 後跟
+      batch.add(mats.cushion,new THREE.SphereGeometry(1,12,8).scale(.031,.005,.058).translate(x,-6.969,-25.555)); // 鞋墊
+    }
+    batch.add(mats.thread,new THREE.TorusGeometry(.015,.0035,5,12).rotateX(Math.PI/2).translate(58.3,-6.962,-25.55));
   }
 
   mesh(new THREE.TorusGeometry(0.14,0.025,10,28),mats.bronze,[55,-5.98,-16]);
@@ -204,39 +228,72 @@ export function buildStoryWorld(ctx) {
   const memoryMat=new THREE.MeshStandardMaterial({color:0x9eaaa2,emissive:0x4b665a,emissiveIntensity:.35,transparent:true,opacity:.55,depthWrite:false,roughness:1});farewell.traverse(o=>{if(o.isMesh)o.material=memoryMat;});
   const returnedRabbit=rabbit.clone(true);returnedRabbit.position.set(.06,.52,.19);returnedRabbit.scale.setScalar(.5);farewell.add(returnedRabbit);
   const temp=new THREE.Vector3();let state=null,releaseTime=null,scare=null;
-  return {targets,ghost,safeZones,rabbit,hatch,sealedBuddha,stageLight,silhouettes,loopProps,statues:ctx.statues,
+  // ── 固定演出的人影（恐怖導演 horror 的區塊）。這裡只管人影自己的站位、姿勢與消失方式；
+  //    聲音、後製與燈光由 src/horror/reactive.js 輪詢 scare / scareActive 之後疊上去。──
+  const SCARES={gate:{p:[0,.9,-14],pose:'bowed',life:11},tape:{p:[-6,6.9,-18.4],pose:'idle',life:9},phone:{p:[5,11.9,-21],pose:'reach',life:9},stage:{p:[23,.58,.8],pose:'idle',life:9},loop:{p:[-7,6.9,-16],pose:'bowed',life:9},relic:{p:[-34,terrainHeight(-34,-5),-5],pose:'idle',life:10}};
+  const eyePoint=new THREE.Vector3(),stepPoint={x:0,z:0};
+  const statueFx={stare:0}; // stare > 0：佛像在被看著的時候也慢慢轉頭（由恐怖導演的事件設定）
+  const endScare=()=>{ghost.root.visible=false;ghost.setGlitch?.(0);ghost.lookAt?.(null);ghost.setPose?.('idle',true);scare=null;};
+  return {targets,ghost,safeZones,rabbit,hatch,sealedBuddha,stageLight,silhouettes,loopProps,statues:ctx.statues,statueFx,
     triggerScare(kind){
-      const places={gate:[0,.9,-14],tape:[-6,6.9,-18.4],phone:[5,11.9,-21],stage:[23,.58,.8],loop:[-7,6.9,-16],relic:[-34,terrainHeight(-34,-5),-5]};
-      const p=places[kind];if(!p)return;
-      scare={kind,time:0,seen:false};ghost.root.position.set(...p);ghost.root.visible=true;
+      const c=SCARES[kind];if(!c)return;
+      scare={kind,time:0,seen:false,seenTime:0,stepped:false,jerk:0,out:0,life:c.life};
+      ghost.setPose?.(c.pose,true);ghost.setFade?.(1);ghost.setGlitch?.(0);
+      ghost.root.position.set(...c.p);ghost.root.visible=true;
       if(kind==='stage')silhouettes.children[5].position.set(23,.58,-.5);
     },
     get scareActive(){return !!scare;},
+    /** 目前的固定人影（null 或 {kind,time,seen,seenTime}），供恐怖導演輪詢 */
+    get scare(){return scare;},
     setLoopPass(pass){
       loopProps.visible=true;
       loopProps.children.forEach((o,i)=>{o.visible=i<(pass===1?5:6);});
       if(pass===2)this.triggerScare('loop');
-      if(pass===3){scare=null;ghost.root.visible=false;}
+      if(pass===3)endScare();
     },
     setState(s){state=s;gate.visible=!!s.flags.incense&&!s.flags.sealed&&!s.flags.sent;gateCollision.disabled=!gate.visible;offerings.visible=s.chapter>=3;silhouettes.visible=!!s.flags.stage&&!s.flags.key;rabbit.visible=!s.evidence.includes('relic');hatch.rotation.z=s.flags.underground?0.07:0;farewell.visible=!!s.flags.sent;if(!s.flags.sent)releaseTime=null;
       for(const t of targets){const taken=s.evidence.includes(t.id);t.glint.visible=!taken;t.object.visible=true;}
     },
     update(t,player,dt=0){
-      if(player.storyChase)scare=null;
+      if(player.storyChase&&scare){scare=null;ghost.setGlitch?.(0);ghost.lookAt?.(null);ghost.setPose?.('idle');} // 追逐接手同一個模型
       if(scare&&dt>0){
-        scare.time+=dt;
-        const d=ghost.root.position.distanceTo(player.pos);
-        temp.copy(ghost.root.position).sub(player.pos).normalize();
+        const g=ghost.root,sc=scare;sc.time+=dt;
+        const d=g.position.distanceTo(player.pos);
+        temp.copy(g.position).sub(player.pos).normalize();
         const facing=temp.x*(-Math.sin(player.yaw))+temp.z*(-Math.cos(player.yaw));
-        if(facing>.8)scare.seen=true;
-        ghost.root.rotation.y=Math.atan2(player.pos.x-ghost.root.position.x,player.pos.z-ghost.root.position.z);
-        if(scare.kind==='stage'&&scare.time<3)ghost.root.position.z+=dt*.5;
-        if(scare.time>9||(scare.time>1.8&&scare.seen&&facing<.15)||d<1.5){ghost.root.visible=false;scare=null;}
+        if(facing>.8){sc.seen=true;sc.seenTime+=dt;}
+        g.rotation.y=Math.atan2(player.pos.x-g.position.x,player.pos.z-g.position.z);
+        eyePoint.set(player.pos.x,player.pos.y+(player.eye||1.6),player.pos.z);ghost.lookAt?.(eyePoint); // 頭一直跟著你
+        if(sc.kind==='stage'&&sc.time<3)g.position.z+=dt*.5;
+        // 被盯著超過一秒：抽搐著朝你踏近一步（每次演出只有一次）
+        if(!sc.stepped&&sc.seenTime>1&&d>4.2&&sc.kind!=='stage'){
+          sc.stepped=true;sc.jerk=.24;ghost.setGlitch?.(1);
+          stepPoint.x=g.position.x-temp.x*1.1;stepPoint.z=g.position.z-temp.z*1.1;world.resolve(stepPoint,.25,g.position.y);
+          g.position.x=stepPoint.x;g.position.z=stepPoint.z;
+        }
+        if(sc.jerk>0){sc.jerk-=dt;if(sc.jerk<=0)ghost.setGlitch?.(.15);}
+        if(sc.out>0){sc.out+=dt;g.visible=Math.sin(sc.out*60)>-.3;if(sc.out>.16)endScare();} // 在你眼前消失：抽搐兩三幀（明滅不超過兩次）
+        else if(sc.time>1.8&&sc.seen&&facing<.15)endScare(); // 移開視線：回頭已經不在
+        else if(sc.time>sc.life||d<1.5){sc.out=1e-3;ghost.setGlitch?.(1);}
       }
       ghost.update(t,!!player.storyChase);smoke.material.opacity=0.11+Math.sin(t*.7)*.025;
       if(state?.flags.sent){releaseTime??=t;const fade=Math.max(0,1-(t-releaseTime)/24);memoryMat.opacity=fade*.55;farewell.visible=fade>0;returnedRabbit.visible=fade>.12;}
-      for(const o of targets){const d=o.position.distanceTo(player.pos);o.glint.visible=d<10&&(!state?.evidence.includes(o.id));o.glint.rotation.y=t;o.glint.material.opacity=0.45+Math.sin(t*2)*0.25;}
-      if(state?.chapter>=2){for(const statue of ctx.statues||[]){if(!statue.userData.head||statue===sealedBuddha)continue;statue.getWorldPosition(temp);const dy=Math.abs(temp.y-player.pos.y);if(dy>5)continue;const angle=Math.atan2(player.pos.x-temp.x,player.pos.z-temp.z)-statue.rotation.y;const to=V(temp.x-player.pos.x,0,temp.z-player.pos.z).normalize();const look=V(-Math.sin(player.yaw),0,-Math.cos(player.yaw));if(to.dot(look)<0.1){statue.userData.head.rotation.y=THREE.MathUtils.clamp(angle,-0.7,0.7);}}}
+      // story：o.live 由 Story 每 0.12 秒寫入（目前能不能調查）；沒寫入時維持舊行為。兩邊不再互搶 visible，提示光點不會每隔幾幀閃掉。
+      // 調查提示：7 m 內淡淡浮現；走到伸手可及（畫面已有「E 調查」）時隱去，避免貼臉時變成擋在畫面中央的方塊
+      for(const o of targets){const d=o.position.distanceTo(player.pos);const show=(o.live??true)&&d>1.1&&d<7&&(!state?.evidence.includes(o.id));o.glint.visible=show;if(show){o.glint.rotation.y=t;o.glint.material.opacity=Math.min(1,(7-d)/3)*Math.min(1,.25+(d-1.1)/1.5)*(0.32+Math.sin(t*2)*0.14);}}
+      // 佛像：沒被看著的時候把頭轉向你（第二章起）。statueFx.stare > 0 時，被看著也會慢慢轉，而且轉得更過頭。
+      if(state?.chapter>=2&&dt>0){
+        const stare=statueFx.stare,lim=stare>0?1.3:.7,lx=-Math.sin(player.yaw),lz=-Math.cos(player.yaw);
+        for(const statue of ctx.statues||[]){
+          const head=statue.userData.head;if(!head||statue===sealedBuddha)continue;
+          statue.getWorldPosition(temp);if(Math.abs(temp.y-player.pos.y)>5)continue;
+          const dx=temp.x-player.pos.x,dz=temp.z-player.pos.z,dist=Math.hypot(dx,dz)||1;
+          const watched=(dx*lx+dz*lz)/dist>=.1;if(watched&&stare<=0)continue;
+          let a=Math.atan2(-dx,-dz)-statue.rotation.y;a=Math.atan2(Math.sin(a),Math.cos(a));
+          const want=Math.max(-lim,Math.min(lim,a)),diff=want-head.rotation.y,step=dt*(watched?.3*stare:5);
+          head.rotation.y=Math.abs(diff)<=step?want:head.rotation.y+Math.sign(diff)*step;
+        }
+      }
     },
   };
 }

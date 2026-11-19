@@ -8,6 +8,13 @@ Source attribution and change description: public/assets/CREDITS.html.
 import json
 import pathlib
 import struct
+import sys
+
+# 2026-11-19：遊戲用的 ghost_woman.glb 改由 scripts/ghost-optimize.mjs 產生
+# （同一個來源檔，另外移除原作的頭髮與洋裝、轉 WebP、簡化並以 meshopt 壓縮）。
+# 這支舊腳本會把未壓縮的 16 MB 版本寫回同一個位置，所以預設不執行；確定要舊版請加 --legacy。
+if '--legacy' not in sys.argv:
+    sys.exit('請改用 node scripts/ghost-optimize.mjs（要產生舊版未壓縮模型請加 --legacy）')
 
 root = pathlib.Path(__file__).resolve().parents[1]
 target = root / 'public/assets/models/ghost_woman/ghost_woman.glb'
