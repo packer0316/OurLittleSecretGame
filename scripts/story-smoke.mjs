@@ -26,8 +26,32 @@ try{
   await check('underground entrance and truths',async()=>{await interact('descent');await aim('names',[2,0,0]);await page.waitForTimeout(200);await interact('names');await aim('confession');await interact('confession');});
   await page.evaluate(()=>{const g=window.__game;g.player.teleport(55,-7,-14.5,0,0.08);});await page.waitForTimeout(600);await page.screenshot({path:out+'/05-underground.png'});
   await check('true ending requires eleven evidence',async()=>{const n=await page.evaluate(()=>window.__game.story.state.evidence.length);if(n!==11)throw Error('evidence '+n);});
-  await check('ritual wrong order resets, physical stations complete it',async()=>{await page.evaluate(()=>window.__game.story.prepareRitual());await page.evaluate(()=>window.__game.story.choose(0));await page.evaluate(()=>window.__game.story.ritualAction('riteRelic'));if(await page.evaluate(()=>window.__game.story.ritual.step)!==0)throw Error('order');for(const id of ['riteName','riteRelic','riteWitness']){await aim(id);await page.waitForTimeout(200);const focus=await page.evaluate(()=>window.__game.story.focused()?.id);if(focus!==id)throw Error('ritual target inaccessible: '+focus);await page.keyboard.press('e');await dismiss();}if(!await page.evaluate(()=>window.__game.story.state.flags.sent))throw Error('not sent');});
-  await check('C ending completes only after leaving',async()=>{await page.evaluate(()=>window.__game.player.teleport(0,0.02,26,Math.PI,0));await page.waitForFunction(()=>window.__game.story.state.ending==='C',null,{timeout:10000});});
+  // finale：送行是可以玩的演出。三個實體位置仍要用 E 依序操作；每段演出用 debug.run 快轉（不渲染、照正式邏輯走），鑰匙要真的按住 E。
+  const fin=(js,arg)=>page.evaluate(new Function('a',`const s=window.__game.story,f=s.finale,p=window.__game.player; const advance=seconds=>{for(let t=0;t<seconds;t+=1/30){if(s.modal?.visual&&!s.state.ending&&s.modal.options.length===1)s.choose(0);f.debug.run(1/30);}return f.debug.phase;};return (${js})`),arg);
+  const station=async id=>{await aim(id);await page.waitForTimeout(200);const focus=await page.evaluate(()=>window.__game.story.focused()?.id);if(focus!==id)throw Error('ritual target inaccessible: '+focus);await page.keyboard.press('e');};
+  await check('ritual wrong order resets, physical stations complete it',async()=>{
+    await page.evaluate(()=>window.__game.story.prepareRitual());await page.evaluate(()=>window.__game.story.choose(0));
+    await page.evaluate(()=>window.__game.story.ritualAction('riteRelic'));if(await page.evaluate(()=>window.__game.story.ritual.step)!==0)throw Error('order');
+    await station('riteName');if(await fin('f.debug.phase')!=='c-name')throw Error('naming did not start: '+await fin('f.debug.phase'));
+    await fin('advance(14)');if(await fin('f.debug.phase')!=='c-walk')throw Error('walk did not start');
+    await station('riteRelic');if(await fin('f.debug.phase')!=='c-relic')throw Error('relic did not start: '+await fin('f.debug.phase'));
+    await fin('advance(52)');if(await fin('f.debug.phase')!=='c-witness-ready')throw Error('roll call did not finish: '+await fin('f.debug.phase'));
+    if(await fin('s.state.answers')!==0)throw Error('holding out counted as an answer');
+    await station('riteWitness');await fin('advance(15)');if(await fin('f.debug.phase')!=='c-fire')throw Error('fire did not start: '+await fin('f.debug.phase'));
+    await page.keyboard.down('e');await fin('advance(7.5)');await page.keyboard.up('e');
+    if(!['c-unlock','c-girl'].includes(await fin('f.debug.phase')))throw Error('holding the key did not open the door: '+await fin('f.debug.phase'));
+    await fin('advance(75)');
+    if(!await page.evaluate(()=>window.__game.story.state.flags.sent))throw Error('not sent');
+  });
+  await check('C ending completes only after the exit, the gate and the answer',async()=>{
+    if(await fin('s.state.ending'))throw Error('ended too early');
+    if(await fin('f.debug.phase')!=='c-exit')throw Error('not at exit: '+await fin('f.debug.phase'));
+    await fin('(p.teleport(55,-7,-12.6,Math.PI,0),advance(9))');if(await fin('f.debug.phase')!=='c-up')throw Error('stairs did not lead up');
+    await fin('(p.teleport(0,16.9,-17.2,Math.PI,0),advance(8))');if(await fin('f.debug.phase')!=='c-gate')throw Error('terrace did not lead to the gate: '+await fin('f.debug.phase'));
+    await fin('advance(12)');if(await fin('s.state.ending')||await fin('f.debug.phase')!=='c-gate')throw Error('gate answered by itself');
+    await page.keyboard.press('e');await fin('advance(26)');
+    if(await page.evaluate(()=>window.__game.story.state.ending)!=='C')throw Error('C did not finish: '+await fin('f.debug.phase'));
+  });
   await page.screenshot({path:out+'/06-ending-c.png'});
   console.log('RENDER',await page.evaluate(()=>({fps:Math.round(window.__game.fps),calls:window.__game.renderer.info.render.calls,triangles:window.__game.renderer.info.render.triangles})));
 }catch(e){errors.push(e.stack||String(e));}

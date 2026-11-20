@@ -4,22 +4,22 @@ const $=id=>document.getElementById(id);
 const goals=[['bus','查看路旁的停駛站牌','停車處前方・候車亭'],['notice','穿過石橋，尋找村裡的消息','街道右側・遷離公告'],['remains','到代管廟務的作坊找人','右前方・榮昌紙紮行'],['ledger','檢查作坊桌上的充電座','作坊右側・充電座'],['gate','沿阿哲留下的線索進寺','村落盡頭・舊參道']];
 export class RoadStory extends Story {
   constructor(game,options={}){super(game,options);this.state.scene='road';this.state.road??={step:0,notes:[]};this.onTravel=options.onTravel;this.bridgeCue=false;this.callNotified=false;this.sync();this.onRadio=e=>{if(e.code==='KeyR'&&!e.repeat&&game.running&&!this.modal&&this.state.road.step>=4&&!this.state.road.peishan)this.peishanCall();};window.addEventListener('keydown',this.onRadio);}
-  start(){if(this.started)return;this.started=true;this.save();this.toast('山路被落石堵住，只能把車停在這裡。先查看路旁站牌。');}
+  start(){if(this.started)return;this.started=true;this.save();this.toast(this.state.road?.step?'已繼續山村的調查。J 回看紀錄。':'山路被落石堵住，只能把車停在這裡。先查看路旁站牌。');}
   sync(){this.world.setState(this.state);$('chapter-label').textContent='序章之二 / 沒有人等車';$('clue-count').textContent=`山村紀錄 ${Math.min(this.state.road?.step||0,4)} / 4`;}
   advance(n){this.state.road.step=Math.max(this.state.road.step,n);this.sync();this.save();}
   active(id){return !this.transitioning&&(id===goals[Math.min(this.state.road?.step||0,4)][0]||['car','kiln','gate'].includes(id)||['bus','notice','remains','ledger'].indexOf(id)<(this.state.road?.step||0)&&['bus','notice','remains','ledger'].includes(id));}
   interact(id){if(this.modal||this.transitioning||!this.active(id))return false;const r=this.state.road;
     if(id==='bus'){
-      this.show({eyebrow:'02:16・慈雲里候車亭',title:'有人替我留了位子',body:'<p>班次兩年前就停了。整條長椅都是濕的，只有正中央留著一塊乾的，大小剛好坐一個人。</p><p>乾處底下有一個相機電池盒，貼著阿哲工作室的藍色貼紙。盒裡積了雨水，貼紙卻還沒褪色，放在這裡不超過兩個禮拜。</p><p>石橋對面有一面住戶公告。也許上面留著廟方的聯絡方式。</p>',options:[{text:'拍下電池盒，穿過石橋',action:()=>this.advance(1)}]});return true;
+      this.show({eyebrow:'02:16・慈雲里候車亭',title:'有人替我留了位子',visual:'road-bus',body:'<p>班次兩年前就停了。整條長椅都是濕的，只有正中央留著一塊乾的，大小剛好坐一個人。</p><p>乾處底下有一個相機電池盒，貼著阿哲工作室的藍色貼紙。盒裡積了雨水，貼紙卻還沒褪色，放在這裡不超過兩個禮拜。</p><p>石橋對面有一面住戶公告。也許上面留著廟方的聯絡方式。</p>',options:[{text:'拍下電池盒，穿過石橋',action:()=>this.advance(1)}]});return true;
     }
     if(id==='notice'){
-      this.show({eyebrow:'慈雲里・住戶公告',title:'整條街都搬走了',body:'<p>因地層滑動，全里已於 2024 年撤離。慈雲寺年底前封閉，廟內清點由榮昌紙紮行郭建成代管，鑰匙寄放在作坊。</p><p>公告底下還釘著一張發黃的舊紙：「七月初一借聲。外地親友請先至榮昌登記，一聲一尊。門外有人喊名，勿應。」</p><p>聯絡電話撥不出去。玻璃上有一道濕的指痕，從作坊的地址一路劃下來，停在我的鞋尖前面。</p><p>街道右前方，那間店的燈還亮著。</p>',options:[{text:'去作坊找鑰匙和阿哲',action:()=>{this.advance(2);this.toast('街道右前方，榮昌紙紮行的入口亮著燈。');}}]});return true;
+      this.show({eyebrow:'慈雲里・住戶公告',title:'整條街都搬走了',visual:'road-notice',body:'<p>因地層滑動，全里已於 2024 年撤離。慈雲寺年底前封閉，廟內清點由榮昌紙紮行郭建成代管，鑰匙寄放在作坊。</p><p>公告底下還釘著一張發黃的舊紙：「七月初一借聲。外地親友請先至榮昌登記，一聲一尊。門外有人喊名，勿應。」</p><p>聯絡電話撥不出去。玻璃上有一道濕的指痕，從作坊的地址一路劃下來，停在我的鞋尖前面。</p><p>街道右前方，那間店的燈還亮著。</p>',options:[{text:'去作坊找鑰匙和阿哲',action:()=>{this.advance(2);this.toast('街道右前方，榮昌紙紮行的入口亮著燈。');}}]});return true;
     }
     if(id==='remains'){
-      this.show({eyebrow:'榮昌紙紮行・工作桌',title:'還沒完成的手',body:'<p>裁紙桌上擺著一隻手。關節露出來的纖維，像皮，也像泡過水的紙。無名指上的婚戒陷進指根，拔不下來。</p><p>旁邊的工牌寫著「郭建成，46 歲」，就是公告上代管廟務的那個人。我喊了兩聲，店裡沒有人應。</p><p>手底下壓著一本送貨簿。最後一頁只有一行：「借一聲，還一尊。欠到今年，二十八尊。」</p><p>我把手電筒移開，桌面傳來指甲刮木頭的聲音。照回去，那隻手換了位置，食指指著右邊的小桌。</p>',options:[{text:'查看右側充電座',action:()=>{this.advance(3);this.world.triggerScare?.('workshop');this.game.audio.horror?.('scrape',{pan:.4,dist:1.5});}}]});return true;
+      this.show({eyebrow:'榮昌紙紮行・工作桌',title:'還沒完成的手',visual:'road-remains',body:'<p>裁紙桌上擺著一隻手。關節露出來的纖維，像皮，也像泡過水的紙。無名指上的婚戒陷進指根，拔不下來。</p><p>旁邊的工牌寫著「郭建成，46 歲」，就是公告上代管廟務的那個人。我喊了兩聲，店裡沒有人應。</p><p>手底下壓著一本送貨簿。最後一頁只有一行：「借一聲，還一尊。欠到今年，二十八尊。」</p><p>我把手電筒移開，桌面傳來指甲刮木頭的聲音。照回去，那隻手換了位置，食指指著右邊的小桌。</p>',options:[{text:'查看右側充電座',action:()=>{this.advance(3);this.world.triggerScare?.('workshop');this.game.audio.horror?.('scrape',{pan:.4,dist:1.5});}}]});return true;
     }
     if(id==='ledger'){
-      this.show({eyebrow:'作坊・相機充電座',title:'十三秒的空畫面',body:'<p>充電座上接著一台小攝影機，電池貼著同樣的藍色貼紙。裡面只有一個檔案，十月二十七日，十三秒。</p><p>鏡頭對著這張工作桌。阿哲在畫面外說：「郭先生說帶子都在廟裡。我把設備搬上去，三天弄完。」</p><p>第七秒，一隻手從桌子底下慢慢伸上來，搭在桌沿。阿哲在鏡頭後面收線，沒有轉身。</p><p>最後一格拍到設備箱的標籤：「正殿西桌」。</p>',options:[{text:'複製影片，走向村尾舊參道',action:()=>this.advance(4)}]});return true;
+      this.show({eyebrow:'作坊・相機充電座',title:'十三秒的空畫面',visual:'road-camera',body:'<p>充電座上接著一台小攝影機，電池貼著同樣的藍色貼紙。裡面只有一個檔案，十月二十七日，十三秒。</p><p>鏡頭對著這張工作桌。阿哲在畫面外說：「郭先生說帶子都在廟裡。我把設備搬上去，三天弄完。」</p><p>第七秒，一隻手從桌子底下慢慢伸上來，搭在桌沿。阿哲在鏡頭後面收線，沒有轉身。</p><p>最後一格拍到設備箱的標籤：「正殿西桌」。</p>',options:[{text:'複製影片，走向村尾舊參道',action:()=>this.advance(4)}]});return true;
     }
     if(id==='gate'){
       if(r.step<4){this.show({title:'慈雲寺的舊參道',body:'<p>山上沒有訊號。我還不知道阿哲是不是真的進了寺。先查完作坊裡留下的設備。</p>'});return true;}
@@ -27,7 +27,7 @@ export class RoadStory extends Story {
     }
     if(['car','kiln'].includes(id)){
       if(!r.notes.includes(id)){r.notes.push(id);this.save();}
-      this.show(id==='car'?{title:'車上的時鐘',body:'<p>給佩珊的訊息還停在傳送中。手機顯示 02:16，車上的時鐘卻停在 23:47，我接起電話的那一分鐘。</p><p>副駕駛座的安全帶扣著。這一路，我是一個人開上來的。</p>'}:{title:'沒有燒完的東西',body:'<p>爐灰還是溫的。灰裡嵌著一排瓷牙，旁邊是熔成一團的金屬鈕扣。</p><p>紙人不會有牙。</p><p>我關掉手電筒，爐裡的紅點也跟著熄了。再打開，紅點才亮回來，位置比剛才靠近爐口。</p>'});return true;
+      this.show(id==='car'?{title:'車上的時鐘',visual:'road-car',body:'<p>給佩珊的訊息還停在傳送中。手機顯示 02:16，車上的時鐘卻停在 23:47，我接起電話的那一分鐘。</p><p>副駕駛座的安全帶扣著。這一路，我是一個人開上來的。</p>'}:{title:'沒有燒完的東西',visual:'road-kiln',body:'<p>爐灰還是溫的。灰裡嵌著一排瓷牙，旁邊是熔成一團的金屬鈕扣。</p><p>紙人不會有牙。</p><p>我關掉手電筒，爐裡的紅點也跟著熄了。再打開，紅點才亮回來，位置比剛才靠近爐口。</p>'});return true;
     }return false;
   }
   travel(){this.transitioning=true;this.state.road.step=5;this.state.scene='temple';this.state.flags.prologueComplete=true;this.state.position=null;try{localStorage.setItem(SAVE_KEY,JSON.stringify(this.state));}catch{this.transitioning=false;this.toast('無法保存進寺進度，請先釋出儲存空間。');return;}this.onTravel('temple');}

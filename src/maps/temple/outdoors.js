@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { COMPOUND as C, GATE, BREACH, GRAVEYARD as G, PIT, PLINTH as P, BOUNDS as B, SPAWN } from './layout.js';
-import { boxGeo, xf, matrixOf, modelVariants, addInstancedBuckets } from '../../core/utils.js';
+import { boxGeo, xf, matrixOf, modelVariants, addInstancedBuckets, mulberry32 } from '../../core/utils.js';
 import { terrainHeight } from './terrain.js';
 import { gableRoof } from './roofs.js';
 import { doorLeaf } from './building.js';
@@ -26,6 +26,80 @@ function stoneLantern(ctx, x, z, ry = 0) {
   // 火袋的黑洞
   for (const a of [0, Math.PI / 2]) batch.add(mats.black, xf(boxGeo(0.2, 0.24, 0.46, 0, 1.43, 0), { p: [x, y, z], r: [0, ry + a, 0] }));
   world.circle(x, z, 0.38, y - 1, y + 2.2);
+}
+
+// ── court：天公爐爐緣的刻字 ──
+// 借聲的舊規矩刻成一圈（從朝山門的正面「七月初一」開始，繞爐一圈剛好讀完）。
+// 陰刻的字口裡塞滿香灰，所以在發黑的銅上反而是淡灰色的字：手電筒一照才看得清楚。
+const KAI = '"DFKai-SB","BiauKai","KaiTi","標楷體","PMingLiU",serif';
+export const BURNER_RULES = ['七月初一開後殿', '先上戲台點名', '殿內無人', '門自外扣', '問者敲三下', '問', '裡面還有沒有人', '問路可', '勿報己名', '門內喚你名', '勿應', '亡者不叫活人'];
+function burnerRimTexture(phrases, { w = 4096, h = 128, seed = 19980701 } = {}) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const g = c.getContext('2d'), rng = mulberry32(seed);
+  const GAP = 0.62, units = phrases.reduce((n, p) => n + [...p].length + GAP, 0);
+  const pitch = w / units, size = Math.min(h * 0.56, pitch * 0.86), cy = h * 0.53;
+  // 上下兩道刻線：只是兩條發黑的淺溝，偶爾卡著一點灰
+  for (const y of [h * 0.1, h * 0.92]) {
+    g.fillStyle = 'rgba(5,4,3,0.5)'; g.fillRect(0, y - 1.5, w, 3);
+    for (let i = 0; i < 90; i++) { g.fillStyle = `rgba(118,112,102,${0.12 + rng() * 0.3})`; g.fillRect(rng() * w, y - 0.5, 8 + rng() * 60, 1.5); }
+  }
+  g.font = `bold ${Math.round(size)}px ${KAI}`; g.textAlign = 'center'; g.textBaseline = 'middle';
+  // 第一句置中在 u = 0（爐的正面），往右一路刻下去，接回起點
+  let x = -[...phrases[0]].length * pitch / 2 + pitch / 2;
+  const glyph = (ch, gx, gy, fill) => {
+    for (const ox of [0, -w, w]) {
+      const px = gx + ox; if (px < -size || px > w + size) continue;
+      g.globalCompositeOperation = 'source-over'; g.fillStyle = 'rgba(4,3,2,0.72)'; g.fillText(ch, px, gy);
+      g.globalCompositeOperation = 'source-atop'; g.fillStyle = `rgba(126,120,108,${fill})`; g.fillText(ch, px + 1.6, gy + 1.8);
+    }
+  };
+  for (const p of phrases) {
+    for (const ch of p) { glyph(ch, x + (rng() - 0.5) * 2, cy + (rng() - 0.5) * 3, 0.42 + rng() * 0.4); x += pitch; }
+    x += pitch * GAP;
+  }
+  // 風化：字口被磨掉、香灰掉落的缺口（有幾個字幾乎看不出來）
+  g.globalCompositeOperation = 'destination-out';
+  for (let i = 0; i < 900; i++) {
+    const px = rng() * w, py = rng() * h, r = 2 + rng() * (rng() < 0.08 ? 24 : 7);
+    const grad = g.createRadialGradient(px, py, 0, px, py, r);
+    grad.addColorStop(0, `rgba(0,0,0,${0.35 + rng() * 0.55})`); grad.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = grad; g.fillRect(px - r, py - r, r * 2, r * 2);
+  }
+  g.globalCompositeOperation = 'source-over';
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  return t;
+}
+/** 爐腳下一圈落下的香灰：淡灰的粉末、幾點燒黑的紙屑，越靠近爐越厚。 */
+function ashRingTexture(seed = 808) {
+  const S = 512, c = document.createElement('canvas'); c.width = c.height = S;
+  const g = c.getContext('2d'), rng = mulberry32(seed);
+  for (let i = 0; i < 260; i++) {
+    const a = rng() * Math.PI * 2, d = S * (0.17 + Math.pow(rng(), 1.6) * 0.3), x = S / 2 + Math.cos(a) * d, y = S / 2 + Math.sin(a) * d, r = 6 + rng() * 34;
+    const grad = g.createRadialGradient(x, y, 0, x, y, r);
+    grad.addColorStop(0, `rgba(128,122,114,${0.05 + rng() * 0.16})`); grad.addColorStop(1, 'rgba(128,122,114,0)');
+    g.fillStyle = grad; g.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  for (let i = 0; i < 70; i++) {
+    const a = rng() * Math.PI * 2, d = S * (0.18 + rng() * 0.22), x = S / 2 + Math.cos(a) * d, y = S / 2 + Math.sin(a) * d;
+    g.fillStyle = `rgba(14,10,8,${0.25 + rng() * 0.4})`; g.save(); g.translate(x, y); g.rotate(rng() * 6.28); g.fillRect(-1.5 - rng() * 3, -1, 3 + rng() * 6, 2 + rng() * 2); g.restore();
+  }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+function burnerInscription(ctx, x, y, z, s) {
+  // 刻字帶貼著爐肩（incenseBurnerGeo 的輪廓 (0.62,0.8)→(0.6,1.0) 這一段，近乎垂直），
+  // 分段數與車床體相同（24），每一片都平貼在爐身的平面上，不會浮起來。
+  const W = 4096, H = 128, circ = 2 * Math.PI * 1.04, hBand = (H / W) * circ, yc = 0.9 * s;
+  const r = (yl) => (0.62 - 0.1 * (yl - 0.8)) * s + 0.005;
+  const half = hBand / 2 / s;
+  const geo = new THREE.CylinderGeometry(r(0.9 + half), r(0.9 - half), hBand, 24, 1, true);
+  const mat = new THREE.MeshStandardMaterial({ map: burnerRimTexture(BURNER_RULES, { w: W, h: H }), transparent: true, depthWrite: false, roughness: 0.92, metalness: 0.1, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+  const band = new THREE.Mesh(geo, mat);
+  band.name = 'BurnerInscription'; band.position.set(x, y + yc, z); band.receiveShadow = true;
+  ctx.root.add(band);
+  const ash = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 3.6).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ map: ashRingTexture(), transparent: true, depthWrite: false, roughness: 1, polygonOffset: true, polygonOffsetFactor: -3, polygonOffsetUnits: -3 }));
+  ash.name = 'BurnerAsh'; ash.position.set(x, y + 0.03, z); ash.receiveShadow = true;
+  ctx.root.add(ash);
 }
 
 export function buildCompound(ctx) {
@@ -97,10 +171,13 @@ export function buildCompound(ctx) {
   }
   for (const z of [13, 3]) for (const sx of [-1, 1]) stoneLantern(ctx, sx * 3.9, z, 0);
 
-  // 天公爐
+  // 天公爐：廟埕唯一的焦點。爐緣刻著借聲的舊規矩（調查目標 rules）；
+  // 爐裡還在悶燒的香、餘燼與煙在 storyWorld.js（追逐的安全區：它怕還有人在燒香記著的地方）。
   batch.add(mats.bronze, xf(incenseBurnerGeo(1.7), { p: [0, 0.02, 8] }));
   world.circle(0, 8, 1.1, 0, 3);
-  ctx.incense(0, 2.0, 8, false, 14);
+  ctx.incense(0, 2.0, 8, false, 14); // 燒剩的舊香腳
+  batch.add(mats.ridge, new THREE.CircleGeometry(0.79, 24).rotateX(-Math.PI / 2).translate(0, 1.95, 8)); // 積到香腳的爐灰（從四樓露台往下看得到）
+  burnerInscription(ctx, 0, 0.02, 8, 1.7);
 
   // 古井
   {
@@ -137,11 +214,7 @@ export function buildCompound(ctx) {
   urnM.forEach((m, i) => urns.setMatrixAt(i, m));
   urns.castShadow = true; urns.receiveShadow = true; urns.computeBoundingSphere(); root.add(urns);
 
-  // 雜物
-  lite(ctx.model('tree_stump_01', { p: [22, 0.12, -1], s: 1.3 }), 26);
-  world.circle(22, -1, 0.8, 0, 1.2);
-  lite(ctx.model('dead_tree_trunk_02', { p: [-22, 0.3, 17], r: [0, 0.5, 0], s: 1.5 }), 44);
-  world.line(-24.6, 18.5, -19.4, 15.6, 0.55, 0, 1.5);
+  // court：廟埕西南角的倒木，和整個埋在戲台地板底下的樹樁（它的碰撞在台上留了一根看不見的柱子）都拆掉了。
 
   // ── 缺口外的小土地公祠（裡面的神像同樣被矇眼）──
   {
@@ -279,7 +352,9 @@ export function buildGraveyard(ctx) {
     if (r < 0.62) { x = G.x1 + rng() * (G.x2 - G.x1 + 6); z = G.z1 + rng() * (G.z2 - G.z1); }
     else if (r < 0.85) { x = C.x1 + 1 + rng() * (C.x2 - C.x1 - 2); z = P.z2 + 0.5 + rng() * (C.z2 - P.z2 - 1.5); }
     else { x = (rng() - 0.5) * 9; z = C.z2 + 1 + rng() * 28; }
-    paper.push({ x, z, v: 0, m: matrixOf(x, ctx.groundAt(x, z) + 0.012 + rng() * 0.012, z, (rng() - 0.5) * 0.3, rng() * 6.28, (rng() - 0.5) * 0.3) });
+    const y = ctx.groundAt(x, z) + 0.012 + rng() * 0.012, rx = (rng() - 0.5) * 0.3, ry = rng() * 6.28, rz = (rng() - 0.5) * 0.3;
+    if (r >= 0.62 && r < 0.85) continue; // court：廟埕不再散落冥紙（亂數照抽，後面的墓碑、草木配置不變）
+    paper.push({ x, z, v: 0, m: matrixOf(x, y, z, rx, ry, rz) });
   }
   addInstancedBuckets(root, [{ geometry: paperGeo, material: new THREE.MeshStandardMaterial({ map: paperMoneyTexture(), roughness: 0.85, side: THREE.DoubleSide }) }], paper, { cell: 40, cast: false });
 

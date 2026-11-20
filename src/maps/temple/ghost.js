@@ -33,6 +33,15 @@
  *                     'peekR' 上述的鏡像（往 root 的 −X 探頭，抬右手）
  *                     'sit'   坐在約 0.42 m 高的椅凳上：髖部在 root 後方 6 cm、離地約 0.47 m，
  *                             膝蓋在 root 前方約 0.35 m，雙手擱在腿上、垂頭
+ *                     'kneel' （finale 外加）直身跪地：膝蓋在 root 正下方、小腿往 root 後方平貼地面，
+ *                             雙臂往前低低張開，像在等一個小孩走過來
+ *                     'kneelHold'（finale 外加）同樣的跪姿，雙臂往內合攏、低頭，像抱住胸前約 0.3 m 的人
+ *                     'hugKnees'（finale 外加，給 'child'）坐在地上抱膝、頭靠在膝蓋上
+ *                     'hugKneesUp'（finale 外加，給 'child'）抱膝坐著、背挺起來仰頭看人
+ *                     'walkSoft'（finale 外加）慢慢走、兩手微微往前；配合 update(t, true) 的步態
+ *                     'huddle'（dread 外加）抱膝蜷坐在地上、頭埋進膝蓋（依 'child' 的比例：髖部離地約 10 cm）
+ *                     倒掛爬行（dread）：'crawl' 姿勢 + root.rotation 繞自身 Z 軸轉 180°、root 放在天花板高度，
+ *                             並設 root.userData.hairGravity = 世界的 (0,-1,0)，頭髮就會往地面垂（未設定時行為不變）
  *                     不認得的名稱回退 'idle'。root 可見時以約 0.45 秒過渡；
  *                     root 不可見、或 instant = true 時立即切換（建議先 setPose 再讓 root 顯示）。
  *   setFade(a)        0..1 不透明度。用螢幕空間的抖動捨棄（像底片顆粒般溶解），不開半透明、沒有排序問題，
@@ -160,6 +169,63 @@ function mirrorPose(spec) {
   return out;
 }
 POSES.peekR = mirrorPose(POSES.peek);
+// finale（結局）外加的姿勢：只新增名稱，不改既有姿勢。
+POSES.kneel = {
+  hips: [0, -38, -3],
+  rot: { Hips: [4, 0, 0], Spine: [6, 0, 0], Spine1: [5, 0, 1], Spine2: [5, 0, 0], Neck: [14, 0, -3], Head: [16, 2, -5] },
+  dir: {
+    LeftUpLeg: [0.07, -1, 0.06], RightUpLeg: [-0.07, -1, 0.06], LeftLeg: [0.02, -0.08, -1], RightLeg: [-0.02, -0.08, -1], LeftFoot: [0, -0.5, -1], RightFoot: [0, -0.5, -1],
+    LeftArm: [0.42, -0.6, 0.68], LeftForeArm: [0.12, -0.28, 1], LeftHand: [0, -0.3, 1],
+    RightArm: [-0.42, -0.6, 0.68], RightForeArm: [-0.12, -0.28, 1], RightHand: [0, -0.3, 1],
+  },
+  curl: [0.22, 0.22],
+};
+POSES.kneelHold = {
+  hips: [0, -40, -4],
+  rot: { Hips: [6, 0, 0], Spine: [12, 0, 0], Spine1: [9, 0, 0], Spine2: [7, 0, 0], Neck: [22, 0, -4], Head: [26, 3, -8] },
+  dir: {
+    LeftUpLeg: [0.07, -1, 0.08], RightUpLeg: [-0.07, -1, 0.08], LeftLeg: [0.02, -0.08, -1], RightLeg: [-0.02, -0.08, -1], LeftFoot: [0, -0.5, -1], RightFoot: [0, -0.5, -1],
+    LeftArm: [0.3, -0.42, 0.86], LeftForeArm: [-0.78, -0.06, 0.62], LeftHand: [-0.85, 0.05, 0.4],
+    RightArm: [-0.3, -0.42, 0.86], RightForeArm: [0.78, -0.06, 0.62], RightHand: [0.85, 0.05, 0.4],
+  },
+  curl: [0.55, 0.55],
+};
+// 'hugKnees'：坐在地上抱膝、頭靠在膝蓋上（給 'child' 用：小孩的髖部約離地 8 cm）
+POSES.hugKnees = {
+  hips: [0, -55, -6],
+  rot: { Hips: [-8, 0, 0], Spine: [24, 0, 0], Spine1: [20, 0, 0], Spine2: [16, 0, 0], Neck: [24, 0, 0], Head: [26, 0, -6] },
+  dir: {
+    LeftUpLeg: [0.14, 0.72, 0.68], RightUpLeg: [-0.14, 0.72, 0.68], LeftLeg: [0.05, -1, 0.06], RightLeg: [-0.05, -1, 0.06], LeftFoot: [0, -0.25, 1], RightFoot: [0, -0.25, 1],
+    LeftArm: [0.18, -0.42, 0.9], LeftForeArm: [-0.72, -0.25, 0.62], LeftHand: [-0.8, -0.2, 0.3],
+    RightArm: [-0.18, -0.42, 0.9], RightForeArm: [0.72, -0.25, 0.62], RightHand: [0.8, -0.2, 0.3],
+  },
+  curl: [0.6, 0.6],
+};
+// 'hugKneesUp'：同樣抱膝坐著，但背挺起來、仰頭看站在面前的人（給 'child'）
+POSES.hugKneesUp = {
+  hips: [0, -55, -7],
+  rot: { Hips: [-14, 0, 0], Spine: [10, 0, 0], Spine1: [6, 0, 0], Spine2: [2, 0, 0], Neck: [-8, 0, 0], Head: [-16, 0, -4] },
+  dir: POSES.hugKnees.dir,
+  curl: [0.6, 0.6],
+};
+// 'walkSoft'：慢慢走過去，兩手微微往前（配合 update(t, true) 的程序化步態）
+POSES.walkSoft = {
+  rot: { Spine: [3, 0, 0], Spine1: [3, 0, 0], Spine2: [2, 0, 0], Neck: [6, 0, 0], Head: [2, 0, 0] },
+  dir: { LeftArm: [0.16, -1, 0.3], LeftForeArm: [0.04, -0.62, 0.78], RightArm: [-0.16, -1, 0.3], RightForeArm: [-0.04, -0.62, 0.78] },
+  curl: [0.25, 0.25],
+};
+// dread（寺內恐怖段落）外加的姿勢：只新增名稱，不改既有姿勢。
+// 'huddle' 抱膝蜷坐在地上、頭埋進膝蓋（依 'child' 變體的比例調整：髖部離地約 10 cm）
+POSES.huddle = {
+  hips: [0, -51, -5],
+  rot: { Hips: [0, 0, 0], Spine: [26, 0, 2], Spine1: [24, 0, 1], Spine2: [20, 0, 0], Neck: [30, 0, -4], Head: [30, 4, -8] },
+  dir: {
+    LeftUpLeg: [0.14, 0.72, 0.68], RightUpLeg: [-0.14, 0.72, 0.68], LeftLeg: [0.02, -1, -0.12], RightLeg: [-0.02, -1, -0.12], LeftFoot: [0, -0.3, 1], RightFoot: [0, -0.3, 1],
+    LeftArm: [0.16, -0.62, 0.78], LeftForeArm: [-0.86, -0.22, 0.38], LeftHand: [-0.9, -0.2, 0.2],
+    RightArm: [-0.16, -0.62, 0.78], RightForeArm: [0.86, -0.22, 0.38], RightHand: [0.9, -0.2, 0.2],
+  },
+  curl: [0.65, 0.65],
+};
 
 const DIR_CHILD = { Arm: 'ForeArm', ForeArm: 'Hand', Hand: 'HandMiddle1', UpLeg: 'Leg', Leg: 'Foot', Foot: 'ToeBase' };
 const FINGERS = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'];
@@ -979,7 +1045,10 @@ function createHair(spec, shared, bones, rig, kToRoot) {
     if (snap || dt <= 0 || moved > 0.6) vel.set(0, 0, 0);
     else { b.copy(a).sub(lastRoot).transformDirection(rootInv).multiplyScalar(moved / dt); vel.lerp(b, Math.min(1, dt * 6)); }
     lastRoot.copy(a);
-    down.set(0, -1, 0).addScaledVector(vel, -0.09); down.y = Math.min(down.y, -0.5); down.normalize();
+    // dread 外加：root.userData.hairGravity（世界座標的單位向量）存在時，頭髮改往那個方向垂（倒掛在天花板上時往地面垂）；沒有設定時行為不變
+    const grav = root.userData.hairGravity;
+    if (grav) down.copy(grav).transformDirection(rootInv).addScaledVector(vel, -0.09).normalize();
+    else { down.set(0, -1, 0).addScaledVector(vel, -0.09); down.y = Math.min(down.y, -0.5); down.normalize(); }
     // 頭皮罩：跟著頭骨
     for (let i = 0; i < capCount; i++) {
       const o = (capBase + i) * 3;

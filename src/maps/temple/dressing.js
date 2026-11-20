@@ -87,25 +87,42 @@ function backHall(ctx, rng) {
   // 兩扇門（從外側看）：紅漆木門；東扇底部開了一個送口
   batch.add(mats.black, quad(3.04, 3.3, { p: [cx, yF + 1.65, zW + 0.004] }));
   const zL = zW + 0.07, hole = [cx + 0.14, cx + 0.5, 0.26];
-  batch.add(mats.woodRed, boxGeo(1.49, 3.28, 0.07, cx - 0.755, yF + 1.64, zL, 1.5));
-  batch.add(mats.woodRed, boxGeo(hole[0] - cx - 0.01, 3.28, 0.07, (cx + 0.01 + hole[0]) / 2, yF + 1.64, zL, 1.5));
-  batch.add(mats.woodRed, boxGeo(cx + 1.5 - hole[1], 3.28, 0.07, (hole[1] + cx + 1.5) / 2, yF + 1.64, zL + 0.004, 1.5));
-  batch.add(mats.woodRed, boxGeo(hole[1] - hole[0], 3.28 - hole[2], 0.07, (hole[0] + hole[1]) / 2, yF + (hole[2] + 3.28) / 2, zL + 0.004, 1.5));
-  for (const y of [0.52, 1.72, 2.92]) for (const sx of [-1, 1]) batch.add(mats.woodDark, boxGeo(1.4, 0.12, 0.035, cx + sx * 0.76, yF + y, zL + 0.05, 1));
+  // finale：兩扇門不再併進 batch，而是各自掛在門軸上（外觀不變），結局要把它打開。
+  // leaf(0, …) 是西扇、leaf(1, …) 是東扇（有送口的那一扇）。
+  const leafParts = [new Map(), new Map()];
+  const leaf = (k, mat, geo) => { const m = leafParts[k]; if (!m.has(mat)) m.set(mat, []); m.get(mat).push(geo); };
+  leaf(0, mats.woodRed, boxGeo(1.49, 3.28, 0.07, cx - 0.755, yF + 1.64, zL, 1.5));
+  leaf(1, mats.woodRed, boxGeo(hole[0] - cx - 0.01, 3.28, 0.07, (cx + 0.01 + hole[0]) / 2, yF + 1.64, zL, 1.5));
+  leaf(1, mats.woodRed, boxGeo(cx + 1.5 - hole[1], 3.28, 0.07, (hole[1] + cx + 1.5) / 2, yF + 1.64, zL + 0.004, 1.5));
+  leaf(1, mats.woodRed, boxGeo(hole[1] - hole[0], 3.28 - hole[2], 0.07, (hole[0] + hole[1]) / 2, yF + (hole[2] + 3.28) / 2, zL + 0.004, 1.5));
+  for (const y of [0.52, 1.72, 2.92]) for (const sx of [-1, 1]) leaf(sx < 0 ? 0 : 1, mats.woodDark, boxGeo(1.4, 0.12, 0.035, cx + sx * 0.76, yF + y, zL + 0.05, 1));
   // 門環、空掉的閂座、問者留在門環上的那截紅線
   for (const sx of [-1, 1]) {
-    batch.add(mats.brass, xf(new THREE.TorusGeometry(0.085, 0.013, 5, 12), { p: [cx + sx * 0.22, yF + 1.3, zL + 0.06], r: [0.25, 0, 0] }));
-    batch.add(mats.bronze, boxGeo(0.07, 0.07, 0.03, cx + sx * 0.22, yF + 1.4, zL + 0.045));
-    batch.add(mats.bronze, boxGeo(0.06, 0.16, 0.08, cx + sx * 0.72, yF + 1.22, zL + 0.07));
+    const k = sx < 0 ? 0 : 1;
+    leaf(k, mats.brass, xf(new THREE.TorusGeometry(0.085, 0.013, 5, 12), { p: [cx + sx * 0.22, yF + 1.3, zL + 0.06], r: [0.25, 0, 0] }));
+    leaf(k, mats.bronze, boxGeo(0.07, 0.07, 0.03, cx + sx * 0.22, yF + 1.4, zL + 0.045));
+    leaf(k, mats.bronze, boxGeo(0.06, 0.16, 0.08, cx + sx * 0.72, yF + 1.22, zL + 0.07));
   }
-  batch.add(mats.thread, beamBetween(V(cx - 0.22, yF + 1.22, zL + 0.08), V(cx - 0.25, yF + 0.74, zL + 0.085), 0.006, 0.006));
-  batch.add(mats.thread, beamBetween(V(cx - 0.25, yF + 0.74, zL + 0.085), V(cx - 0.21, yF + 0.58, zL + 0.09), 0.005, 0.005));
+  leaf(0, mats.thread, beamBetween(V(cx - 0.22, yF + 1.22, zL + 0.08), V(cx - 0.25, yF + 0.74, zL + 0.085), 0.006, 0.006));
+  leaf(0, mats.thread, beamBetween(V(cx - 0.25, yF + 0.74, zL + 0.085), V(cx - 0.21, yF + 0.58, zL + 0.09), 0.005, 0.005));
 
   // 送口：門底的小口，鐵片掀著；周圍燒成炭，口外是推進去的紙人燒剩的竹骨與灰
   const sx0 = (hole[0] + hole[1]) / 2;
-  batch.add(char, boxGeo(0.44, 0.04, 0.1, sx0, yF + hole[2] + 0.02, zL + 0.02, 0.8));
-  for (const dx of [-0.2, 0.2]) batch.add(char, boxGeo(0.04, hole[2], 0.1, sx0 + dx, yF + hole[2] / 2, zL + 0.02, 0.8));
-  batch.add(mats.bronze, xf(boxGeo(0.34, 0.22, 0.012, 0, -0.11, 0), { p: [sx0, yF + hole[2] + 0.005, zL + 0.05], r: [-0.95, 0, 0.04] }));
+  leaf(1, char, boxGeo(0.44, 0.04, 0.1, sx0, yF + hole[2] + 0.02, zL + 0.02, 0.8));
+  for (const dx of [-0.2, 0.2]) leaf(1, char, boxGeo(0.04, hole[2], 0.1, sx0 + dx, yF + hole[2] / 2, zL + 0.02, 0.8));
+  leaf(1, mats.bronze, xf(boxGeo(0.34, 0.22, 0.012, 0, -0.11, 0), { p: [sx0, yF + hole[2] + 0.005, zL + 0.05], r: [-0.95, 0, 0.04] }));
+  // 門軸：西扇在 x = cx − 1.5、東扇在 x = cx + 1.5。西扇 rotation.y 為正、東扇為負時往殿內（−Z）開。
+  const leaves = leafParts.map((parts, k) => {
+    const hx = k ? cx + 1.5 : cx - 1.5;
+    const pivot = new THREE.Group(); pivot.name = k ? 'BackHallLeafEast' : 'BackHallLeafWest';
+    pivot.position.set(hx, yF, zL);
+    for (const [mat, geos] of parts) {
+      const m = new THREE.Mesh(merge(geos).translate(-hx, -yF, -zL), mat);
+      m.castShadow = true; m.receiveShadow = true; pivot.add(m);
+    }
+    root.add(pivot);
+    return pivot;
+  });
   batch.add(char, xf(new THREE.SphereGeometry(0.34, 10, 5), { p: [sx0 + 0.03, yF + 0.005, zW + 0.42], s: [1, 0.07, 0.8] }));
   for (let i = 0; i < 7; i++) {
     const a = -0.9 + i * 0.3 + (rng() - 0.5) * 0.2, len = 0.25 + rng() * 0.4;
@@ -125,9 +142,12 @@ function backHall(ctx, rng) {
 
   // 煙痕：送口上方、門縫與門楣、門上方的牆、天花、門前的地（合成一個不投影的網格）
   const scorch = new THREE.MeshStandardMaterial({ map: scorchTexture(), transparent: true, depthWrite: false, roughness: 1, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+  // 貼在門板上的兩片煙痕另成一個網格（finale：開門時先收掉，不會留在半空）
+  const doorScorch = new THREE.Mesh(merge([quad(1.7, 2.6, { p: [sx0, yF + 1.3, zL + 0.075] }), quad(3.3, 1.9, { p: [cx, yF + 2.45, zL + 0.078] })]), scorch);
+  doorScorch.name = 'BackHallDoorScorch'; doorScorch.receiveShadow = true;
+  root.add(doorScorch);
+  ctx.backHallDoor = { leaves, scorch: doorScorch, cx, zW, zL, yF, hole };
   const sheets = [
-    quad(1.7, 2.6, { p: [sx0, yF + 1.3, zL + 0.075] }),
-    quad(3.3, 1.9, { p: [cx, yF + 2.45, zL + 0.078] }),
     quad(7.2, 1.3, { p: [cx, yF + 3.95, zW + 0.012] }),
     quad(9, 5.4, { p: [cx, -2.512, zW + 2.7], r: [Math.PI / 2, 0, 0] }),      // 天花：濃的一端貼著門牆
     quad(2.6, 2.2, { p: [sx0, yF + 0.012, zW + 1.1], r: [-Math.PI / 2, 0, Math.PI] }),
@@ -244,7 +264,7 @@ function furnishings(ctx, rng, groups) {
     for (let i = 0; i < 3; i++) batch.add(mats.skin, xf(boxGeo(0.009, 0.003, 0.32, 0, 0, 0, 0.3), { p: [x - 0.17 - i * 0.05, top + 0.004, z + 0.06 + i * 0.03], r: [0, 0.5 + i * 0.5, 0] }));
   }
 
-  // 成疊的金紙：功德箱上、大香爐旁、天公爐前的木箱上
+  // 成疊的金紙：功德箱上、大香爐旁（廟埕天公爐旁的金紙箱已撤掉，見下方）
   {
     const joss = (mats.joss = new THREE.MeshStandardMaterial({ map: jossStackTexture(), roughness: 0.92 }));
     const stack = (x, y, z, n, ry = 0, lean = 0) => {
@@ -256,8 +276,8 @@ function furnishings(ctx, rng, groups) {
     };
     stack(3.32, y1 + 0.85, -15.08, 3, 0.2); stack(3.86, y1 + 0.85, -15.0, 2, -0.3);
     stack(1.05, y1, -25.1, 4, 0.5); stack(1.32, y1, -25.32, 2, 1.2, 0.02); stack(-1.1, y1, -25.0, 3, -0.4);
-    batch.add(mats.planks, boxGeo(0.62, 0.32, 0.44, 1.9, 0.18, 8.3, 0.8));
-    stack(1.78, 0.34, 8.3, 3, 0.1); stack(2.02, 0.34, 8.26, 4, -0.15); stack(1.7, 0.02, 8.75, 2, 0.9, 0.03);
+    // court：天公爐旁的金紙箱與散落的金紙疊撤掉了（廟埕只留爐與香火）。原本九疊各抽四次亂數，照抽，後面的配置不變。
+    for (let i = 0; i < 9 * 4; i++) rng();
     // 地下三張送行桌旁各一疊
     for (const x of [50.3, 59.7]) stack(x, -7, -21.5, 3, x);
   }
@@ -355,20 +375,24 @@ function litter(ctx, rng) {
 // ───────────────────────── 塌落的瓦 ─────────────────────────
 function fallenTiles(ctx, rng) {
   const { batch, mats } = ctx;
-  const tile = (x, y, z, broken) => {
+  // keep=false：亂數照抽、不放瓦（court 撤掉山門內側的落瓦時，後面的配置不受影響）
+  const tile = (x, y, z, broken, keep = true) => {
     const len = broken ? 0.1 + rng() * 0.12 : 0.3;
-    const g = new THREE.CylinderGeometry(0.1, 0.115, len, 5, 1, true, 0, Math.PI * (broken ? 0.55 + rng() * 0.4 : 1));
+    const arc = Math.PI * (broken ? 0.55 + rng() * 0.4 : 1);
+    const tr = { p: [x, y + 0.012 + (rng() < 0.3 ? 0.06 : 0), z], r: [(rng() - 0.5) * 0.25, rng() * 6.28, rng() < 0.3 ? Math.PI + (rng() - 0.5) * 0.4 : (rng() - 0.5) * 0.4] };
+    if (!keep) return;
+    const g = new THREE.CylinderGeometry(0.1, 0.115, len, 5, 1, true, 0, arc);
     g.rotateX(Math.PI / 2);
-    batch.add(mats.roof, xf(g, { p: [x, y + 0.012 + (rng() < 0.3 ? 0.06 : 0), z], r: [(rng() - 0.5) * 0.25, rng() * 6.28, rng() < 0.3 ? Math.PI + (rng() - 0.5) * 0.4 : (rng() - 0.5) * 0.4] }));
+    batch.add(mats.roof, xf(g, tr));
   };
-  const cluster = (cx, cz, n, y = 0.02, spread = 1.1) => {
-    for (let i = 0; i < n; i++) tile(cx + (rng() - 0.5) * spread * 2, y, cz + (rng() - 0.5) * spread, rng() < 0.62);
+  const cluster = (cx, cz, n, y = 0.02, spread = 1.1, keep = true) => {
+    for (let i = 0; i < n; i++) tile(cx + (rng() - 0.5) * spread * 2, y, cz + (rng() - 0.5) * spread, rng() < 0.62, keep);
   };
   // 腰簷滴水線正下方（台基前緣與兩側）、圍牆牆帽掉落處、山門內側
   for (const x of [-19.5, -15, -10.5, 11, 16.5, 20.5]) cluster(x, P.z2 + 0.9, 5 + Math.floor(rng() * 4));
   for (const z of [-30, -22, -13]) { cluster(P.x1 - 0.9, z, 4, 0.02, 0.9); cluster(P.x2 + 0.9, z, 4, 0.02, 0.9); }
   for (const [x, z] of [[-28.3, 14], [-28.3, -12], [28.3, 6], [28.3, -20], [-12, 20.3], [16, 20.3]]) cluster(x, z, 5, 0.02, 0.8);
-  cluster(-3.6, 19.6, 4); cluster(3.9, 19.4, 3);
+  cluster(-3.6, 19.6, 4, 0.02, 1.1, false); cluster(3.9, 19.4, 3, 0.02, 1.1, false); // court：山門內側不再有落瓦，一進門是乾淨的石板
   // 前廊上也有幾片
   cluster(-15, -10.4, 4, FLOORS[0].y, 0.8); cluster(17, -9.6, 3, FLOORS[0].y, 0.8);
 }

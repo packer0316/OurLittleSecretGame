@@ -28,7 +28,7 @@ export class HomeStory extends Story {
   }
   interact(id){if(this.modal||!this.active(id)||this.transitioning)return false;const h=this.state.home;
     if(id==='letter'){
-      this.show({eyebrow:'11 月 12 日・23:42　住處',title:'阿哲寄回的照片',body:'<p>阿哲接了慈雲寺的案子，要在廟封掉以前把舊錄音整理完。十月底他找過我幾次，我都沒有回。</p><p>今天下午他傳訊息，說寄了一張照片要我認人。管理員送上來的信封沒有郵戳，封口沾著潮濕的木屑。</p><p>裡面是我們小時候的合照，和一張字條：「照片先還你。02:47，聽到這裡再停。」</p>',options:[{text:h.step===0?'把照片放到檯燈下':'端詳燈下的照片',action:()=>h.step===0?this.placePhoto():this.interact('photo')}]});return true;
+      this.show({eyebrow:'11 月 12 日・23:42　住處',title:'阿哲寄回的照片',visual:'home-letter',body:'<p>阿哲接了慈雲寺的案子，要在廟封掉以前把舊錄音整理完。十月底他找過我幾次，我都沒有回。</p><p>今天下午他傳訊息，說寄了一張照片要我認人。管理員送上來的信封沒有郵戳，封口沾著潮濕的木屑。</p><p>裡面是我們小時候的合照，和一張字條：「照片先還你。02:47，聽到這裡再停。」</p>',options:[{text:h.step===0?'把照片放到檯燈下':'端詳燈下的照片',action:()=>h.step===0?this.placePhoto():this.interact('photo')}]});return true;
     }
     if(id==='photo'){
       this.document('photo',()=>{if(h.step<2){this.advance(2);this.game.audio.phoneRing();this.toast('手機螢幕亮起。阿哲打來了。');}});return true;
@@ -43,11 +43,11 @@ export class HomeStory extends Story {
         ['我','哪一扇門？你被關在裡面？你先別掛，我找人。'],
         ['電話裡的男人','……以安，照片到了嗎？幫我看背面的時間。'],
       ],()=>{
-        this.game.audio.breathCue();this.show({eyebrow:'對方重複了第一句',title:'電話還沒掛斷',body:'<p>同一句話，同一口吸氣。我把手機拿離耳邊。門外有人敲了三下。</p><p>「管理員。剛才送錯東西了，請開一下門。」</p><p>我住七樓。管理員上來以前都會先按對講機，今晚對講機沒有亮過。</p><p>媽以前教過：夜裡有人敲三下，先不要應。我一直以為那是哄小孩的。</p>',options:[{text:'不出聲，等門外安靜',action:()=>this.afterCall(false)},{text:'隔著門問：「誰在外面？」',action:()=>this.afterCall(true)}]});
+        this.game.audio.breathCue();this.show({eyebrow:'對方重複了第一句',title:'電話還沒掛斷',visual:'beat-home-door',body:'<p>同一句話，同一口吸氣。我把手機拿離耳邊。門外有人敲了三下。</p><p>「管理員。剛才送錯東西了，請開一下門。」</p><p>我住七樓。管理員上來以前都會先按對講機，今晚對講機沒有亮過。</p><p>媽以前教過：夜裡有人敲三下，先不要應。我一直以為那是哄小孩的。</p>',options:[{text:'不出聲，等門外安靜',action:()=>this.afterCall(false)},{text:'隔著門問：「誰在外面？」',action:()=>this.afterCall(true)}]});
       },'23:47・阿哲來電');return true;
     }
     if(id==='slip'){
-      this.show({eyebrow:'玄關・門縫下',title:'退回來的封口',body:`<p>從門下滑進來的，是剛才那個信封的封口。撕口和桌上的信封對得起來。</p><p>上面多了一行字：「照片收到，請回答。」背面寫著我家的樓層，「七樓」寫了兩次，兩次的筆畫一模一樣。</p><p>我按對講機找管理室。那頭是通的，沒有人說話，只聽見話筒垂在半空，一下一下撞著桌腳。</p><p>${h.answered?'我剛才應了它一聲。它現在知道門裡的人是我。':'我一聲都沒有應。它還是知道照片在誰手上。'}</p><aside class="deduction">先拿玄關右側矮櫃上的鑰匙與手電筒。阿哲說門打不開，我得親自去看。</aside>`,options:[{text:'收起封口，準備去找阿哲',action:()=>this.advance(4)}]});return true;
+      this.show({eyebrow:'玄關・門縫下',title:'退回來的封口',visual:'home-slip',body:`<p>從門下滑進來的，是剛才那個信封的封口。撕口和桌上的信封對得起來。</p><p>上面多了一行字：「照片收到，請回答。」背面寫著我家的樓層，「七樓」寫了兩次，兩次的筆畫一模一樣。</p><p>我按對講機找管理室。那頭是通的，沒有人說話，只聽見話筒垂在半空，一下一下撞著桌腳。</p><p>${h.answered?'我剛才應了它一聲。它現在知道門裡的人是我。':'我一聲都沒有應。它還是知道照片在誰手上。'}</p><aside class="deduction">先拿玄關右側矮櫃上的鑰匙與手電筒。阿哲說門打不開，我得親自去看。</aside>`,options:[{text:'收起封口，準備去找阿哲',action:()=>this.advance(4)}]});return true;
     }
     if(id==='kit'){
       this.advance(5);this.game.player.flashOn=true;this.game.audio.click();this.toast('鑰匙與手電筒已拿取。F 可切換；出門後沿舊山路去慈雲寺。');return true;
@@ -61,7 +61,7 @@ export class HomeStory extends Story {
       window:['雨聲裡少了一拍','對面公寓大多熄燈了。隔著雨，我聽見有人拖椅子，像在替誰挪位子。\n我停住，那聲音也停。我往左挪一步，它又拖了一下。\n這裡是七樓。窗外沒有陽台。'],
       message:['沒有送出的語音','草稿匣裡有兩段沒送出的語音，都是錄給阿哲的。\n十月三十日：「你半夜連打三通是怎樣。廟裡的事，我不想再談。」\n今天下午：「照片到了。你說聽不清楚的是哪一段？晚上再打給我。」\n第二段的最後，有椅子拖過地面的聲音。那時候家裡只有我。'],
     }[id];
-    if(optional){if(!h.notes.includes(id)){h.notes.push(id);this.sync();this.save();}this.show({eyebrow:'住處・可回看的筆記',title:optional[0],body:optional[1].split('\n').map(t=>`<p>${t}</p>`).join('')});return true;}return false;
+    if(optional){if(!h.notes.includes(id)){h.notes.push(id);this.sync();this.save();}this.show({eyebrow:'住處・可回看的筆記',title:optional[0],visual:'home-'+id,body:optional[1].split('\n').map(t=>`<p>${t}</p>`).join('')});return true;}return false;
   }
   placePhoto(){
     this.advance(1);this.busy=true;this.game.player.enabled=false;this.game.player.keys=Object.create(null);this.game.player.vel.set(0,0,0);
@@ -79,7 +79,7 @@ export class HomeStory extends Story {
     try{localStorage.setItem(SAVE_KEY,JSON.stringify(this.state));}catch{this.transitioning=false;this.toast('無法保存出發進度，請先釋出瀏覽器儲存空間。');return;}
     this.onTravel('road');
   }
-  journal(){const h=this.state.home;this.show({eyebrow:'出發之前・住處筆記',title:'還沒離開家，事情已經開始了',body:`<p>目前：${goals[Math.min(h.step,5)][1]}</p><p>23:42　阿哲寄回我的那張合照，背面寫著 02:47。<br>${h.step>=3?`23:47　阿哲的來電把第一句重複了一次。門外敲了三下。${h.answered?'我應了。':'我沒有應。'}<br>`:''}${h.step>=4?'23:51　信封的封口從門外滑了回來：「照片收到，請回答。」':''}</p><p>已調查：${h.notes.map(n=>({calendar:'月曆',window:'窗外雨聲',message:'沒送出的語音'})[n]).join('、')||'尚無額外筆記'}</p><aside class="deduction">${h.step>=3?'夜裡有人敲三下，先不要應。':'燈光照得見的東西，和聲音說的，不一定一樣。'}</aside>`,dismiss:true});}
+  journal(){const h=this.state.home;this.show({eyebrow:'出發之前・住處筆記',title:'還沒離開家，事情已經開始了',body:`<p>目前：${goals[Math.min(h.step,5)][1]}</p><p>23:42　阿哲寄回我的那張合照，背面寫著 02:47。<br>${h.step>=3?`23:47　阿哲的來電把第一句重複了一次。門外敲了三下。${h.answered?'我應了。':'我沒有應。'}<br>`:''}${h.step>=4?'23:51　信封的封口從門外滑了回來：「照片收到，請回答。」':''}</p><p>已調查：${h.notes.map(n=>({calendar:'月曆',window:'窗外雨聲',message:'沒送出的語音'})[n]).join('、')||'尚無額外筆記'}</p><aside class="deduction">${h.step>=3?'夜裡有人敲三下，先不要應。':'燈光照得見的東西，和聲音說的，不一定一樣。'}</aside>`,dismiss:true});this.addPictureJournalLink();}
   update(dt){
     if(this.modal||this.transitioning||this.busy){$('interact-prompt').textContent='';return;}
     this.state.elapsed+=dt;this.tick+=dt;

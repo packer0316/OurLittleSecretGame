@@ -175,6 +175,31 @@ button:focus-visible,select:focus-visible,input:focus-visible { outline:2px soli
 .story-content.with-image { display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start; }
 .story-copy { color:#c9c2b2;font:14px/1.9 var(--serif);letter-spacing:.035em; }.story-copy p { margin:0 0 14px; }.story-copy .document-date { font:10px var(--sans);color:#8d887a;margin-bottom:20px;letter-spacing:.15em; }
 .story-figure { margin:0;position:relative; }.story-figure img { display:block;width:100%;height:auto;max-height:48vh;object-fit:contain;filter:saturate(.75); }
+.illustrated .story-card { width:min(1180px,96vw); }
+.story-art img { filter:none;aspect-ratio:3/2;background:#080a09; }
+.story-art figcaption { color:#b9a88c;font:12px/1.8 var(--serif);margin:12px 0 0;padding-left:12px;border-left:2px solid #6f392b; }
+.story-image-open,.story-image-close,.picture-journal-link { color:#dac9aa;border:1px solid #a28b6055;background:#141713;font:12px/1.5 var(--sans);padding:9px 14px;cursor:pointer; }
+.story-image-open { display:block;margin-top:9px; }
+.story-image-open[hidden] { display:none; }
+.story-image-fallback { color:#b9a88c;font-size:12px; }
+.image-unavailable>img { display:none; }
+.cinematic .story-card { width:min(1120px,96vw); }
+.cinematic .story-content.with-image { grid-template-columns:1fr;gap:16px; }
+.cinematic .story-art img { aspect-ratio:16/9;max-height:46dvh; }
+.picture-line { display:flex;gap:14px;align-items:baseline;font-size:17px; }
+.picture-line strong { flex-shrink:0;color:#bb9b73;font:12px/1.8 var(--sans); }
+.picture-journal-link { margin:18px 0 0; }
+.picture-archive { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px; }
+.picture-archive button { padding:0 0 10px;background:#111512;color:#dbcfb9;border:1px solid #a28b6033;cursor:pointer;text-align:left; }
+.picture-archive img { display:block;width:100%;aspect-ratio:3/2;object-fit:contain;background:#050807; }
+.picture-archive span,.picture-archive small { display:block;padding:8px 10px 0; }
+.picture-archive small { font-size:10px;color:#9e8c72; }
+#story-image-viewer { width:min(1500px,96vw);max-height:94dvh;padding:16px;border:1px solid #a28b6066;background:#080b09;color:#d8c9af;overflow:auto; }
+#story-image-viewer::backdrop { background:#000e; }
+#story-image-viewer img { display:block;max-width:100%;max-height:76dvh;object-fit:contain;margin:14px auto; }
+#story-image-viewer p { font:13px/1.5 var(--sans);margin:8px 0; }
+.story-image-open:focus-visible,.story-image-close:focus-visible,.picture-journal-link:focus-visible,.picture-archive button:focus-visible { outline:2px solid #d9b779;outline-offset:3px; }
+@media(max-width:700px) { .illustrated.story-layer { padding:12px; }.illustrated .story-card { max-height:calc(100dvh - 24px);padding:20px; }.picture-archive { grid-template-columns:repeat(2,minmax(0,1fr)); }.picture-line { display:block;font-size:16px; }.picture-line strong { display:block;margin-bottom:4px; }.cinematic .story-art img { max-height:36dvh; } }
 .story-figure.redacted { width:min(100%,64vh);justify-self:center; }.story-figure.redacted img { max-height:none; }
 .photo-scribble { position:absolute;left:var(--photo-mark-left);top:var(--photo-mark-top);width:var(--photo-mark-width);height:var(--photo-mark-height);background:url('/assets/story/photo-defacement.svg') center/100% 100% no-repeat;mix-blend-mode:multiply;pointer-events:none; }
 .deduction { border-left:2px solid #98523e;margin:24px 0 10px;padding:8px 16px;color:#d3b98b;font:12px/1.8 var(--sans);background:#c3914810; }
@@ -199,6 +224,15 @@ button:focus-visible,select:focus-visible,input:focus-visible { outline:2px soli
 .journal-notes { margin:16px 0 4px; }.journal-notes small { display:block;color:#bf9f72;font:10px var(--sans);letter-spacing:.08em;margin-bottom:8px; }
 .note-link { display:block;width:100%;text-align:left;padding:10px 15px;margin:6px 0;border:1px solid #8b765b44;background:#15181488;color:#cbbd9f;font:12px/1.6 var(--sans);letter-spacing:.04em;cursor:pointer; }.note-link:hover { border-color:#bc9675; }
 .ending .deduction { text-align:left; }.ending-stats { flex-wrap:wrap; }
+.cinematic.ending .story-card { max-width:1120px; }
+.cinematic.dialogue { align-items:center;padding-bottom:20px;background:#020607da; }
+.cinematic:not(.ending) .story-card { padding:24px 32px; }
+.cinematic:not(.ending) .story-card:before { margin-bottom:14px; }
+.cinematic:not(.ending) .story-card h2 { margin-bottom:18px; }
+.cinematic:not(.ending) .story-art { width:min(100%,calc(42dvh * 16 / 9));justify-self:center; }
+.cinematic:not(.ending) .story-art img { max-height:42dvh; }
+.cinematic .story-image-open { padding:5px 12px; }
+@media(max-width:700px) { .illustrated.dialogue .story-card { padding:20px; }.illustrated.ending .story-card h2 { font-size:30px;letter-spacing:.12em; } }
 
 /* ── horror（恐怖導演）：被抓到那一刻的衝臉與紅布。蓋在閱讀視窗之上、暫停選單之下，不攔截滑鼠。
    光敏安全：整段只有一次由暗到亮再到暗的過渡，沒有重複閃爍。 ── */

@@ -24,6 +24,13 @@ try{
     await page.click('#btn-lobby');await expect(()=>!document.getElementById('continue-story').disabled,'continue unavailable');await page.click('#continue-story');await page.waitForSelector('#overlay:not(.hidden)',{timeout:180000});await page.click('#btn-resume');
     await expect(()=>window.__game.running,'continue failed');
   });
+  await test('image viewer Escape preserves reading, then E restores pointer lock',async()=>{
+    await page.evaluate(()=>window.__game.story.document('diary'));
+    await page.locator('.story-art img').evaluate(el=>el.decode());await page.click('.story-image-open');
+    await page.keyboard.press('Escape');
+    await expect(()=>!document.getElementById('story-image-viewer').open&&!!window.__game.story.modal&&window.__game.running,'closing image also closed story or paused game');
+    await page.keyboard.press('e');await expect(()=>!window.__game.story.modal&&!!document.pointerLockElement,'reading did not resume play');
+  });
   await test('all runtime assets load locally',async()=>{const external=requests.filter(u=>!u.startsWith('http://127.0.0.1:5178/')&&!u.startsWith('blob:http://127.0.0.1:5178/')&&!u.startsWith('data:'));if(external.length)throw Error(external.join('\n'));});
   await test('small evidence layout preserves red face marking',async()=>{await page.setViewportSize({width:800,height:700});await page.evaluate(()=>window.__game.story.document('photo'));await page.locator('.photo-scribble').waitFor({state:'visible',timeout:5000});await page.screenshot({path:'artifacts/story/11-evidence-small.png'});});
 }catch(e){errors.push(e.stack||String(e));}

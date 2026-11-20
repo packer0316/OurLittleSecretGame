@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {newState,collect,validateSave,EVIDENCE,NOTES,readNote,trueEndingReady,missingEvidence,objectives} from '../src/story/campaign.js';
+import {newState,collect,validateSave,EVIDENCE,NOTES,readNote,noteOpen,trueEndingReady,missingEvidence,objectives} from '../src/story/campaign.js';
 import {preludeRecords} from '../src/story/preludeRecords.js';
 
 test('main route progresses regardless of the first three evidence order',()=>{
@@ -54,6 +54,28 @@ test('optional readables are whitelisted, never count as evidence and survive ol
   const old=JSON.parse(JSON.stringify(newState()));delete old.notes;delete old.home.answered;
   const restored=validateSave(old);assert.deepEqual(restored.notes,[]);assert.equal(restored.home.answered,false);
   assert.equal(validateSave({...newState(),notes:'log',home:{step:1,notes:[],answered:'yes'}}).notes.length,0);
+});
+test('story traces: every readable has an opening time that follows the chapters and never leaks a name early',()=>{
+  // 第二輪新增：朋友們的痕跡、林美蘭的素衣與木牌、郭家的名冊與鐵桶。
+  for(const id of ['robe','flashlight','chalk','tablet','camp','register','bucket'])assert.ok(Object.hasOwn(NOTES,id),id);
+  const s=newState();
+  for(const id of Object.keys(NOTES)){assert.equal(noteOpen(s,id),false,id+' open before the incense');assert.ok(NOTES[id].text.split('\n').length<=5,id+' longer than five paragraphs');}
+  assert.equal(noteOpen(s,'__proto__'),false);assert.equal(noteOpen(s,'toString'),false);
+  s.flags.incense=true;assert.deepEqual(Object.keys(NOTES).filter(id=>noteOpen(s,id)),['log','robe','rulebook','flashlight']);
+  s.flags.stage=true;assert.equal(noteOpen(s,'chalk'),true);assert.equal(noteOpen(s,'camp'),false);
+  s.flags.key=true;for(const id of ['camp','register','bucket'])assert.equal(noteOpen(s,id),true,id);
+  assert.equal(noteOpen(s,'tablet'),false,'the tablet names 小雨 before the height marks do');collect(s,'death');collect(s,'births');assert.equal(noteOpen(s,'tablet'),true);
+  assert.equal(noteOpen(s,'shoes'),false);s.flags.underground=true;assert.equal(noteOpen(s,'shoes'),true);
+  // 開放前看得到的讀物，不能說出還沒查到的名字
+  for(const id of ['robe','flashlight','chalk'])assert.doesNotMatch(NOTES[id].text,/林小雨|小雨|林美蘭/,id);
+  for(const id of ['camp','register','bucket'])assert.doesNotMatch(NOTES[id].text,/小雨/,id);
+  // 讀過新讀物不影響證據、章節與結局門檻
+  const r=newState();for(const id of Object.keys(NOTES))readNote(r,id);assert.equal(r.evidence.length,1);assert.equal(r.chapter,1);assert.equal(trueEndingReady(r),false);
+});
+test('the one-time recorder beat is remembered through a save (contract A)',()=>{
+  const s=newState();s.seen.push('story:camp','dread:hideseek');const r=validateSave(JSON.parse(JSON.stringify(s)));
+  assert.deepEqual(r.seen,['story:camp','dread:hideseek']);
+  assert.deepEqual(validateSave({...newState(),seen:['story:camp','Bad Id',42,'story:camp']}).seen,['story:camp']);
 });
 test('objectives and missing-evidence hints never leak the title of an undiscovered clue',()=>{
   const s=newState();s.flags.incense=true;s.chapter=2;

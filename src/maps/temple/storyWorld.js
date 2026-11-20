@@ -1,12 +1,16 @@
 import * as THREE from 'three';
-import { plaqueTexture, smokeTexture, grimeTexture, witnessWallTexture, sootTexture } from '../../core/canvasTex.js';
-import { boxGeo, xf, cylinderBetween } from '../../core/utils.js';
+import { plaqueTexture, smokeTexture, grimeTexture, witnessWallTexture, sootTexture, glowTexture } from '../../core/canvasTex.js';
+import { boxGeo, xf, cylinderBetween, mulberry32 } from '../../core/utils.js';
+import { createSmoke } from '../../core/air.js';
 import { terrainHeight } from './terrain.js';
 import { createGhost } from './ghost.js';
+import { buildFinaleStage } from './finaleStage.js';
+import { incenseBurnerGeo } from './interiors.js';
+import { buildStoryTraces, TRACE_TARGETS } from './storyTraces.js';
 
 const V=(x,y,z)=>new THREE.Vector3(x,y,z);
 const POSITIONS = {
-  rules:[-2.3,1.65,20.7], incense:[0,2.35,-27.25], diary:[-9,1.85,-20.1], newspaper:[9,1.85,-20.1],
+  rules:[0,1.56,9.07], incense:[0,2.35,-27.25], diary:[-9,1.85,-20.1], newspaper:[9,1.85,-20.1],
   tape:[-9,7.85,-18.4], ritual:[-8.3,7.85,-26.3], stage:[23,1.45,-2.34], divination:[0,8.05,-22.9],
   death:[5,13.0,-27.1], births:[-10,13.0,-26.5], descent:[5.3,17.25,-22],
   names:[48.1,-5.5,-22], confession:[55,-5.9,-16.0], altar:[55,-5.6,-24.3], return:[55,-5.5,-12.4],
@@ -15,7 +19,9 @@ const POSITIONS = {
   // story：可選的可讀物（不計入十一組證據）。文字在 src/story/campaign.js 的 NOTES。
   log:[-8.42,1.86,-20.1], rulebook:[-8.42,7.86,-18.4], shoes:[58.39,-6.9,-25.6],
 };
-const LABELS={rules:'山門告示',incense:'三炷未熄的香',diary:'卡住的計數器',newspaper:'燒損的門閂',tape:'舊錄音機',ritual:'三槽木盤',stage:'戲台上的空相框',divination:'擲筊問路',death:'裂開的手機',births:'門框上的身高刻痕',descent:'封印暗道',names:'刻滿名字的牆',confession:'神壇前的舊鎖',altar:'最後的抉擇',return:'返回四樓',relic:'老樹石座上的布包',riteName:'空白牌位・喚名',riteRelic:'供盤・歸物',riteWitness:'錄音機・見證',exit:'山門外',loopmark:'紅線旁的彈珠',log:'阿哲的清點日誌',rulebook:'線裝的小簿子',shoes:'門前的一雙女鞋'};
+const LABELS={rules:'天公爐上的刻字',incense:'三炷未熄的香',diary:'卡住的計數器',newspaper:'燒損的門閂',tape:'舊錄音機',ritual:'三槽木盤',stage:'戲台上的空相框',divination:'擲筊問路',death:'裂開的手機',births:'門框上的身高刻痕',descent:'封印暗道',names:'刻滿名字的牆',confession:'神壇前的舊鎖',altar:'最後的抉擇',return:'返回四樓',relic:'老樹石座上的布包',riteName:'空白牌位・喚名',riteRelic:'供盤・歸物',riteWitness:'錄音機・見證',exit:'山門外',loopmark:'紅線旁的彈珠',log:'阿哲的清點日誌',rulebook:'線裝的小簿子',shoes:'門前的一雙女鞋'};
+// story（第二輪）：寺內「有人來過」的痕跡（志豪、柏翰、阿哲、林美蘭、郭家）。陳設在 storyTraces.js，文字在 campaign.js 的 NOTES。
+for(const [id,t] of Object.entries(TRACE_TARGETS)){POSITIONS[id]=t.p;LABELS[id]=t.label;}
 
 export function buildStoryWorld(ctx) {
   const {root,mats,world,batch,rng,assets}=ctx;
@@ -66,12 +72,8 @@ export function buildStoryWorld(ctx) {
     const noProp=['rules','incense','stage','descent','names','altar','return','exit','riteName','riteRelic','riteWitness','confession','divination','loopmark','log','rulebook','shoes'].includes(id);
     target(id,p,noProp?'none':({diary:'counter',newspaper:'latch',tape:'recorder',ritual:'tray',death:'phone',births:'height'}[id]));
   }
-  // Actual readable placards, evidence stations and a distinctive six-child altar.
-  sign('清點中 請留原位',.72,1,[-2.28,1.7,20.68]);
-  for(const x of [-2.52,-2.04]){
-    mesh(new THREE.BoxGeometry(.065,1.45,.065),mats.woodDark,[x,.725,20.64]);
-    mesh(new THREE.BoxGeometry(.2,.06,.45),mats.woodDark,[x,.03,20.64]);
-  }
+  // Evidence stations and a distinctive six-child altar.
+  // court：山門內側的「清點中 請留原位」告示拆掉了；借聲的舊規矩改刻在天公爐的爐緣（outdoors.js 的 burnerInscription）。
   for(const [x,y,z] of [[-9,0.9,-20.1],[9,0.9,-20.1],[-9,6.9,-18.4],[-8.3,6.9,-26.3],[5,11.9,-27.1],[-10,11.9,-26.5]]){
     desk(x,y,z);ctx.candle(x-0.6,y+0.94,z,{lit:true,h:0.18});
   }
@@ -97,6 +99,8 @@ export function buildStoryWorld(ctx) {
     }
     batch.add(mats.thread,new THREE.TorusGeometry(.015,.0035,5,12).rotateX(Math.PI/2).translate(58.3,-6.962,-25.55));
   }
+  // story（第二輪）：朋友們來過的現場、林美蘭的素衣與木牌、郭家的名冊與鐵桶（見 storyTraces.js）。
+  buildStoryTraces(ctx);
 
   mesh(new THREE.TorusGeometry(0.14,0.025,10,28),mats.bronze,[55,-5.98,-16]);
   mesh(new THREE.BoxGeometry(0.32,0.21,0.12),mats.bronze,[55,-6.13,-16]);
@@ -153,18 +157,44 @@ export function buildStoryWorld(ctx) {
   const silhouettes=new THREE.Group();silhouettes.visible=false;root.add(silhouettes);
   const silhouetteMat=new THREE.MeshBasicMaterial({color:0x080507,transparent:true,opacity:0.85});
   for(const [x,z,ry] of seats){const g=new THREE.Group();g.position.set(x,.58,z-.3);g.rotation.y=ry;silhouettes.add(g);mesh(new THREE.CapsuleGeometry(.16,.52,4,10),silhouetteMat,[0,.6,0],g);mesh(new THREE.SphereGeometry(.16,14,10),silhouetteMat,[0,1.15,0],g);}
-  // Three clear safe lights; the same visual language is used in the upstairs sanctuary.
-  const safeZones=[V(0,0.02,13),V(-9,6.9,-16.0)];
-  for(const p of safeZones){
-    // The candles have a stone base; the notice stands beside them, never through them.
-    batch.box(mats.rock,1.35,.24,.5,p.x,p.y+.12,p.z);world.floor(p.x-.675,p.z-.25,p.x+.675,p.z+.25,p.y+.24);
-    for(let i=-1;i<=1;i++)ctx.candle(p.x+i*.48,p.y+.24,p.z,{lit:true,h:.4});
-    ctx.addLight({p:[p.x,p.y+1.4,p.z],color:0xe6ac6d,intensity:9,distance:9,floor:p.y>5?1:-1});
-    const sx=p.x+2.05,sz=p.z-.1;
-    mesh(new THREE.BoxGeometry(1.48,.36,.09),mats.woodDark,[sx,p.y+.87,sz]);
-    sign('勿應・退回燈下',1.4,.28,[sx,p.y+.87,sz+.047]).material.side=THREE.FrontSide;
-    for(const dx of [-.49,.49]){mesh(new THREE.BoxGeometry(.065,.78,.065),mats.woodDark,[sx+dx,p.y+.42,sz]);mesh(new THREE.BoxGeometry(.28,.06,.4),mats.woodDark,[sx+dx,p.y+.03,sz]);}
-    world.box(sx-.74,sz-.2,sx+.74,sz+.2,p.y,p.y+1.06);
+  // ── court：追逐的安全區是香火。它怕還有人在燒香記著的地方：廟埕是天公爐，二樓西側是一座小香爐。──
+  // 原本的三盞燭台與「勿應・退回燈下」立牌都拆掉了。光只剩香頭的暗紅餘燼，各重用原本的那一盞燈。
+  // safeZones 是 Story.beginChase 判定的圓心（半徑 2.2 m）：廟埕這一個就是天公爐的爐心，繞著爐站都算。
+  const safeZones=[V(0,0.02,8),V(-9,6.9,-16.0)];
+  for(let i=0;i<6;i++)rng(); // 原本六支點著的蠟燭各抽一次亂數：照抽，後面地下室的落石、布幔與燭台高度不變
+  const glowTex=glowTexture(),embers=[],incenseSmokes=[];
+  const incenseFire=(x,ash,z,{n,len,spread,seed,glow,light,floor,smoke,parent=root})=>{
+    const lr=mulberry32(seed),spots=[];let cx=0,cy=0,cz=0;
+    for(let i=0;i<n;i++){
+      const a=i/n*Math.PI*2+lr()*.7,r=spread*(.55+lr()*.45),lean=.05+lr()*.09,l=len*(.82+lr()*.18);
+      const dir=V(Math.sin(lean)*Math.cos(a),Math.cos(lean),Math.sin(lean)*Math.sin(a));
+      const base=V(x+Math.cos(a)*r,ash-.02,z+Math.sin(a)*r),tip=base.clone().addScaledVector(dir,l),end=tip.clone().addScaledVector(dir,.016);
+      batch.add(mats.wax,cylinderBetween(base,base.clone().addScaledVector(dir,Math.min(.09,l*.3)),.0056,.0056,5)); // 紅色的香腳
+      batch.add(mats.incense,cylinderBetween(base,tip,.0045,.0042,5));
+      batch.add(mats.ember,cylinderBetween(tip,end,.0064,.0056,6)); // 悶燒的香頭
+      if(lr()<.65)batch.add(mats.ridge,cylinderBetween(end,end.clone().addScaledVector(dir,.012+lr()*.02).add(V((lr()-.5)*.012,0,(lr()-.5)*.012)),.0058,.0048,5)); // 還沒掉的一截香灰
+      spots.push([end.x,end.y+.01,end.z]);cx+=end.x/n;cy+=end.y/n;cz+=end.z/n;
+    }
+    const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex,color:new THREE.Color(1,.3,.09),blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,opacity:glow.opacity}));
+    sp.name='IncenseEmbers';sp.position.set(cx,cy,cz);sp.scale.setScalar(glow.size);parent.add(sp);
+    embers.push({sp,base:glow.opacity,phase:lr()*20});
+    const s=createSmoke(spots,smoke);s.mesh.name='IncenseSmoke';parent.add(s.mesh);incenseSmokes.push(s);
+    ctx.addLight({p:[cx,cy+light.dy,cz],color:light.color,intensity:light.intensity,distance:light.distance,floor,flicker:.22});
+  };
+  // 廟埕：天公爐裡三炷新插的長香（爐緣高過眼睛，只看得到香頭的紅點、上面的煙，和照在爐口的一點暗紅）
+  incenseFire(0,0.02+1.1*1.7,8,{n:3,len:.5,spread:.055,seed:1113,glow:{size:.6,opacity:.5},light:{dy:.1,color:0xc4502a,intensity:6.5,distance:8.5},floor:-1,smoke:{height:2.6,width:.34,color:0x8f8b86,opacity:.15}});
+  // 二樓：西側回廊口一座小香爐，放在實心的矮爐座上（低頭就看得到爐裡的灰與香腳）
+  {
+    const p=safeZones[1],top=p.y+.5,g=ctx.floorGroups?.[1]||root,lr=mulberry32(1717);
+    batch.add(mats.woodDark,boxGeo(.6,.06,.6,p.x,top-.03,p.z,.8));
+    batch.add(mats.cabinet,boxGeo(.48,.38,.48,p.x,p.y+.06+.19,p.z,.8));
+    batch.add(mats.woodDark,boxGeo(.58,.06,.58,p.x,p.y+.03,p.z,.8));
+    for(const a of [-1,1])batch.add(mats.brass,boxGeo(.3,.012,.004,p.x,p.y+.3,p.z+a*.242,.4)); // 爐座前後的銅條
+    batch.add(mats.bronze,xf(incenseBurnerGeo(.4),{p:[p.x,top,p.z]}));
+    batch.add(mats.ridge,new THREE.CircleGeometry(.19,20).rotateX(-Math.PI/2).translate(p.x,top+1.1*.4+.006,p.z)); // 爐裡的香灰
+    for(let i=0;i<7;i++){const a=lr()*6.28,r=.03+lr()*.12,l=.04+lr()*.1,lean=(lr()-.5)*.5;batch.add(mats.incense,xf(new THREE.CylinderGeometry(.004,.004,l,4).translate(0,l/2,0),{p:[p.x+Math.cos(a)*r,top+1.1*.4,p.z+Math.sin(a)*r],r:[Math.cos(a)*lean,0,Math.sin(a)*lean]}));} // 燒剩的香腳
+    world.circle(p.x,p.z,.42,p.y,p.y+1.2);
+    incenseFire(p.x,top+1.1*.4,p.z,{n:3,len:.27,spread:.04,seed:1716,glow:{size:.32,opacity:.45},light:{dy:.45,color:0xc85a2e,intensity:5,distance:6.5},floor:1,parent:g,smoke:{height:1.5,width:.24,color:0x8f8b86,opacity:.14}});
   }
   // Optional relic beside a small, reachable grave near the west breach.
   const gy=terrainHeight(-39,-5);const relicPos=[-39,gy+0.6,-5];
@@ -195,7 +225,7 @@ export function buildStoryWorld(ctx) {
   for(const z of [-27.8,-20,-12.2])batch.box(mats.woodDark,14,.4,.4,55,-2.65,z);
   for(let i=0;i<28;i++){const x=i%2?48+rng()*.5:62-rng()*.5,z=-12-rng()*16;batch.add(mats.rock,new THREE.DodecahedronGeometry(.08+rng()*.16,0).scale(1,.5,1).translate(x,-6.95,z));}
   sign('返回石階',1.4,0.5,[55,-4.8,-11.45],Math.PI);
-  batch.span(mats.rock,53,-7,-27.5,57,-6.3,-24.8);world.box(53,-27.5,57,-24.8,-7,-3);
+  // finale：封印佛像的石座、地上的圓與六條紅線改由 finaleStage.js 建立（結局要能把它們移走）。
   const sealedBuddha=ctx.buddha.make({scale:1.6,style:'bronze',halo:true});sealedBuddha.position.set(55,-6.3,-26);root.add(sealedBuddha);
   for(const [i,x,z] of [[0,51,-22],[1,55,-23],[2,59,-22]]){
     desk(x,-7,z,1.2);sign(['姓名','遺物','錄音'][i],.95,.2,[x,-6.22,z+.405]);ctx.candle(x-0.3,-6.05,z,{lit:true});
@@ -209,9 +239,7 @@ export function buildStoryWorld(ctx) {
   ctx.addLight({p:[55,-3.7,-23],color:0xbe3020,intensity:22,distance:18,floor:4,flicker:0.9});
   ctx.addLight({p:[55,-4.0,-13],color:0x548b9d,intensity:12,distance:13,floor:4,flicker:0.1});
   for(let i=0;i<22;i++)ctx.banner(48+rng()*14,-2.6,-13-rng()*14,0.11,0.6+rng(),rng()*3,mats.clothDark);
-  // Physical ritual threads and an engraved floor circle.
-  const circle=mesh(new THREE.RingGeometry(3.45,3.51,96),mats.thread,[55,-6.98,-23]);circle.rotation.x=-Math.PI/2;
-  for(let i=0;i<6;i++){const th=i/6*Math.PI*2;batch.add(mats.thread,cylinderBetween(V(55+Math.sin(th)*3.5,-6.95,-23+Math.cos(th)*3.5),V(55,-5.1,-26),0.008,0.008,5));}
+  // Physical ritual threads and an engraved floor circle：見 finaleStage.js 的 SealedAltar。
   // Main hall art direction: layered tattered ribbons, warm altar grazing light, dense wax.
   for(let i=0;i<11;i++){const x=-9.5+i*1.9;batch.span(mats.woodDark,x,1.5,-33.55,x+1.75,6.3,-33.35,1.2);for(const xx of [x+.12,x+1.63])batch.box(mats.bronze,.028,4.3,.04,xx,3.9,-33.29);}
   for(const x of [-8,-6,6,8])ctx.banner(x,6.35,-25,0.6+rng()*0.5,2+rng()*2,0.15,mats.clothDark);
@@ -224,6 +252,7 @@ export function buildStoryWorld(ctx) {
   const offerings=new THREE.Group();offerings.name='ChangedOfferings';root.add(offerings);offerings.visible=false;
   for(let i=0;i<6;i++)mesh(new THREE.SphereGeometry(0.045,12,10),new THREE.MeshPhysicalMaterial({color:0x617b66,roughness:0.22,metalness:0.3}),[-1.2+i*0.45,2.03,-27.65],offerings);
   const ghost=createGhost(assets);root.add(ghost.root);
+  const finale=buildFinaleStage(ctx,{sealedBuddha,rabbit}); // finale：結局的演出陳設（全部預設隱藏），由 src/story/finale.js 操作
   const farewell=silhouettes.children[5].clone(true);farewell.name='XiaoyuMemory';farewell.position.set(55,-7,-24.2);farewell.visible=false;root.add(farewell);
   const memoryMat=new THREE.MeshStandardMaterial({color:0x9eaaa2,emissive:0x4b665a,emissiveIntensity:.35,transparent:true,opacity:.55,depthWrite:false,roughness:1});farewell.traverse(o=>{if(o.isMesh)o.material=memoryMat;});
   const returnedRabbit=rabbit.clone(true);returnedRabbit.position.set(.06,.52,.19);returnedRabbit.scale.setScalar(.5);farewell.add(returnedRabbit);
@@ -234,7 +263,7 @@ export function buildStoryWorld(ctx) {
   const eyePoint=new THREE.Vector3(),stepPoint={x:0,z:0};
   const statueFx={stare:0}; // stare > 0：佛像在被看著的時候也慢慢轉頭（由恐怖導演的事件設定）
   const endScare=()=>{ghost.root.visible=false;ghost.setGlitch?.(0);ghost.lookAt?.(null);ghost.setPose?.('idle',true);scare=null;};
-  return {targets,ghost,safeZones,rabbit,hatch,sealedBuddha,stageLight,silhouettes,loopProps,statues:ctx.statues,statueFx,
+  return {targets,ghost,safeZones,rabbit,hatch,sealedBuddha,stageLight,silhouettes,loopProps,statues:ctx.statues,statueFx,finale,
     triggerScare(kind){
       const c=SCARES[kind];if(!c)return;
       scare={kind,time:0,seen:false,seenTime:0,stepped:false,jerk:0,out:0,life:c.life};
@@ -277,6 +306,9 @@ export function buildStoryWorld(ctx) {
         else if(sc.time>sc.life||d<1.5){sc.out=1e-3;ghost.setGlitch?.(1);}
       }
       ghost.update(t,!!player.storyChase);smoke.material.opacity=0.11+Math.sin(t*.7)*.025;
+      // court：香頭的餘燼像在呼吸（有風時亮一下），香煙沿著同一個時間軸飄
+      for(const e of embers)e.sp.material.opacity=e.base*(.72+.28*Math.sin(t*1.3+e.phase)*Math.sin(t*.47+e.phase*1.7));
+      for(const s of incenseSmokes)s.update(t);
       if(state?.flags.sent){releaseTime??=t;const fade=Math.max(0,1-(t-releaseTime)/24);memoryMat.opacity=fade*.55;farewell.visible=fade>0;returnedRabbit.visible=fade>.12;}
       // story：o.live 由 Story 每 0.12 秒寫入（目前能不能調查）；沒寫入時維持舊行為。兩邊不再互搶 visible，提示光點不會每隔幾幀閃掉。
       // 調查提示：7 m 內淡淡浮現；走到伸手可及（畫面已有「E 調查」）時隱去，避免貼臉時變成擋在畫面中央的方塊
