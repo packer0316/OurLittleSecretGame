@@ -1,0 +1,17 @@
+{
+  "id": "home-letter",
+  "name": "阿哲寄回的照片",
+  "category": "clue",
+  "chapter": "住處序章",
+  "trigger": "Home.letter",
+  "caption": "照片先還你。02:47，聽到這裡再停。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/home-letter-apartment.png",
+  "runtime": "public/assets/story/visual-v2/home-letter.webp",
+  "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep exact envelope, wet wood shavings, note '02:47' '聽到這裡再停', face-down photo corner and mug. Place them on an ordinary worn dark desk, warm desk lamp ONLY, aluminum window black with midnight rain. Remove every candle, incense holder, temple column, altar and cobweb. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-b3161768-3970-4e53-962e-130e24a06f0c.png",
+  "previousFile": "art-direction/visual-bible-20261120/clues/home-letter.png",
+  "references": [
+    "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\home-letter.png"
+  ]
+}

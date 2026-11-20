@@ -1,0 +1,30 @@
+{
+  "id": "beat-camp-call",
+  "name": "錄音機還在點名",
+  "category": "beat",
+  "chapter": "第四章",
+  "trigger": "四樓錄音機演出：阿哲應聲那一刻",
+  "dialogue": [
+    [
+      "錄音裡的女孩",
+      "張明哲。"
+    ],
+    [
+      "阿哲",
+      "……有。"
+    ],
+    [
+      "以安・旁白",
+      "帶子早就轉到底了。"
+    ]
+  ],
+  "caption": "錄音裡的女孩：「張明哲。」\n阿哲：「……有。」\n以安・旁白：「帶子早就轉到底了。」",
+  "references": [
+    "art-direction/visual-bible-20261120/characters/zhang-mingzhe-2026-v2.png"
+  ],
+  "file": "art-direction/visual-bible-20261120/beats/beat-camp-call.png",
+  "runtime": "public/assets/story/visual-v2/beat-camp-call.webp",
+  "status": "generated",
+  "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Night2026 upper-floor temple. SAME40yearold Taiwanese equipment worker from reference has half risen from unzipped navy sleeping bag, head turning toward a sealed rusted floor hatch, mouth just opening as if answering. Black recorder with tiny redLED in foreground, long microphone cable enters hatch seam, three boxes of tapes and thermos. Brown work boots on his feet. Face caught in weak reflected candle light, dark headroom pressing down. No ghost or injury; dread of an ordinary reflex. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-8d16a443-0bef-4db1-8f3d-ea7fa601ed88.png"
+}

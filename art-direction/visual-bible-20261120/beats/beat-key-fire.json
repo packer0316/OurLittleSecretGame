@@ -1,0 +1,26 @@
+{
+  "id": "beat-key-fire",
+  "name": "這次不要放手",
+  "category": "beat",
+  "chapter": "第四章真相／真結局C",
+  "trigger": "舊鎖真相後，見證轉鑰匙時",
+  "dialogue": [
+    [
+      "以安",
+      "我是陳以安。門是我扣的。"
+    ],
+    [
+      "門內・小雨",
+      "你說你會回來。"
+    ]
+  ],
+  "caption": "以安：「我是陳以安。門是我扣的。」\n門內・小雨：「你說你會回來。」",
+  "references": [
+    "art-direction/visual-bible-20261120/characters/chen-yian-2026-v2.png"
+  ],
+  "file": "art-direction/visual-bible-20261120/beats/beat-key-fire.png",
+  "runtime": "public/assets/story/visual-v2/beat-key-fire.webp",
+  "status": "generated",
+  "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Extreme close-up of SAME adult Taiwanese man's RIGHT hand in charcoal jacket sleeve gripping a chipped brass key in scorched iron lock of shut wood door, tiny healed palm scar visible at edge. Only hand in frame, no child shown. Fireglow leaks through very narrow lower seam and small rectangular feed opening, smoke gathers above. Grip determined, NO burning skin, NO wounds or gore. Cinematic NIGHT, orange reflected fire within near-black shadows, evidence and emotional decision, not an actionposter. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-76252907-7b87-4beb-be36-6923dc96d5d5.png"
+}

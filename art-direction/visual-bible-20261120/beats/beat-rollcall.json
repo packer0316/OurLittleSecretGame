@@ -1,0 +1,34 @@
+{
+  "id": "beat-rollcall",
+  "name": "替她喊的那一聲",
+  "category": "beat",
+  "chapter": "第三章",
+  "trigger": "戲台第一次記憶重演；不能在序章播放",
+  "dialogue": [
+    [
+      "點名的人",
+      "……六。"
+    ],
+    [
+      "佩珊（童年）",
+      "有。"
+    ],
+    [
+      "以安・旁白",
+      "聲音，是從第五張椅子傳來的。"
+    ]
+  ],
+  "caption": "點名的人：「……六。」\n佩珊（童年）：「有。」\n以安・旁白：「聲音，是從第五張椅子傳來的。」",
+  "references": [
+    "art-direction/visual-bible-20261120/characters/chen-yian-1998.png",
+    "art-direction/visual-bible-20261120/characters/zhang-mingzhe-1998.png",
+    "art-direction/visual-bible-20261120/characters/xu-zhihao-1998.png",
+    "art-direction/visual-bible-20261120/characters/wu-bohan-1998.png",
+    "art-direction/visual-bible-20261120/characters/zhou-peishan-1998.png"
+  ],
+  "file": "art-direction/visual-bible-20261120/beats/beat-rollcall.png",
+  "runtime": "public/assets/story/visual-v2/beat-rollcall.webp",
+  "status": "generated",
+  "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Night1998 small Taiwanese temple opera stage, exactlySIX stools in a row. FIVE healthy uninjured children sitting on firstfive left-to-right: mustard-shirt boy11, offwhite-jersey boy12, blue-striped boy11, brick-striped glasses boy10, denim-pinafore girl10. Girl on FIFTH stool leans forward answering. SIXTH stool turned away, only faded red cloth rabbit on it. Dim tungsten backstage light, curtain hides rear hall. Photographic period clothing, no adult faces on children, no gore, wide view allsixcountable. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings match the stated time and location. Home is an ordinary lived-in old Taiwanese apartment, with no ritual props, no temple altar or columns and no cobweb-covered abandoned-room appearance. 1998/1999 temple memory has aged wood but is still in use. Night only, grounded realistic surroundings. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-baefc936-66e6-48ab-87d4-6b772c3926d7.png"
+}

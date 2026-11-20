@@ -1,0 +1,16 @@
+{
+  "id": "evidence-newspaper",
+  "name": "從外側扣上的門閂",
+  "category": "clue",
+  "chapter": "第二章",
+  "trigger": "EVIDENCE.newspaper",
+  "caption": "閂舌還在扣環裡。火卻是從另一面燒過來的。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/evidence-newspaper-night.png",
+  "runtime": "public/assets/story/visual-v2/evidence-newspaper.webp",
+  "prompt": "Use case: lighting-weather. Edit this game evidence photograph. Preserve exact evidence objects, their identity and count, the legible text, their positions and camera framing. Change lighting and exterior view to the DEAD OF NIGHT. Every opening shows pitch-black exterior, remove ALL daylight and sunlit greenery. Only off-camera narrow flashlight and faint candle light reveal the object, background largely invisible with a little rotten architecture. No new people or gore.  CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-9b31a46e-ec1f-452d-ad38-94f858c4a7d6.png",
+  "references": [
+    "art-direction/visual-bible-20261120/clues/evidence-newspaper.png"
+  ]
+}

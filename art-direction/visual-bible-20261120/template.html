@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>說好不說｜美術圖冊</title>
+<style>
+:root{color-scheme:dark;--paper:#e3d7bf;--muted:#a99d87;--red:#a34433;--line:#3a332b;background:#100f0d;color:var(--paper);font:16px/1.65 system-ui,"Microsoft JhengHei",sans-serif}*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1480px;margin:auto;padding:32px 40px}header{border-bottom:1px solid var(--line);padding-bottom:24px}small,.meta{color:var(--muted);font-size:12px;letter-spacing:.08em}h1{font:38px/1.25 Georgia,"PMingLiU",serif;letter-spacing:.14em;margin:12px 0}header p{max-width:850px;margin:12px 0;color:#bbb09d}nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}button,input,select{font:inherit;color:inherit;background:#1d1b17;border:1px solid #524538;padding:9px 16px;border-radius:3px}button{cursor:pointer}button:hover,button[aria-pressed=true]{background:#513028;border-color:#b25d48}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #e2bc76;outline-offset:3px}a{color:#e4bd83}label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}.tools{display:flex;gap:16px;align-items:end;flex-wrap:wrap;margin:0 0 24px}.tools input{width:300px}.tools output{margin-left:auto;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 20px}.card{border:1px solid var(--line);background:#181612;overflow:hidden}.open{display:block;width:100%;padding:0;border:0;border-radius:0;background:#080807}.open img{display:block;width:100%;aspect-ratio:3/2;object-fit:contain}.body{padding:16px 18px}.body h2{font-size:19px;margin:4px 0 10px;font-weight:500}.body p{font-size:14px;margin:8px 0;white-space:pre-line;color:#c4b9a5}.body .meta{font-size:11px}.pager{display:flex;align-items:center;justify-content:center;gap:16px;margin:30px 0}.pager button:disabled{opacity:.3;cursor:default}footer{border-top:1px solid var(--line);font-size:13px;color:var(--muted)}dialog{width:min(1260px,96vw);max-height:94vh;padding:0;border:1px solid #574936;background:#15130f;color:var(--paper)}dialog::backdrop{background:#000d}dialog img{width:100%;max-height:67vh;object-fit:contain;display:block;background:#050504}.dialogbar{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;align-items:center}.dialogtext{padding:0 22px 22px}.dialogtext h2{font-size:22px;margin:8px 0}.dialogtext p{white-space:pre-line}details{color:var(--muted);font-size:13px;overflow-wrap:anywhere}summary{cursor:pointer}.empty{padding:60px 0;color:var(--muted)}@media(max-width:950px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}header,main,footer{padding:24px}.tools output{margin-left:0}}@media(max-width:580px){.grid{grid-template-columns:1fr}header,main,footer{padding:20px}h1{font-size:29px}.tools{align-items:stretch}.tools label,.tools input,.tools select{width:100%}.tools output{width:100%}dialog img{max-height:53vh}.dialogbar button{padding:8px 12px}}
+</style>
+<header><small>OUR LITTLE SECRET · VISUAL BIBLE · 2026.11.20</small><h1>說好不說</h1><p>人記得的，物件也記得。<br>真人角色三視圖、夜間線索與關鍵劇情靜幀。點擊圖片可放大，使用 ← → 切換。</p><small>製作圖冊・包含全章及結局劇透</small><nav aria-label="圖片類別"><button data-category="clue" aria-pressed="true">線索物件</button><button data-category="beat" aria-pressed="false">圖片劇情</button><button data-category="character" aria-pressed="false">真人角色</button><button data-category="all" aria-pressed="false">全部</button></nav></header>
+<main><div class="tools"><label>搜尋人物／物件／台詞<input id="search" type="search" placeholder="例如：紅線、小雨、02:47"></label><label>章節／年代<select id="chapter"><option value="">全部章節</option></select></label><output id="count" aria-live="polite"></output></div><div class="grid" id="grid"></div><div class="pager"><button id="prev">← 上一頁</button><span id="page"></span><button id="next">下一頁 →</button></div></main>
+<footer>五位成年朋友 38～40 歲；小雨 7 歲、完整自然牙齒。線索以夜晚、潮濕、老舊為基調。<br>圖片生成：OpenAI 內建 image_gen。正文與出現時機另存於故事文件；三視圖供建模參考。<br><a href="manifest.json">圖片、提示詞與製作資料</a> · <a href="../../故事/07_真人角色與圖片敘事規範.md">人物規範</a> · <a href="../../故事/08_線索圖與圖片劇情腳本.md">圖片劇情腳本</a></footer>
+<dialog id="viewer" aria-labelledby="viewTitle"><div class="dialogbar"><span id="position" class="meta"></span><div><button id="back" aria-label="上一張">←</button> <button id="forward" aria-label="下一張">→</button> <button id="close" aria-label="關閉放大圖片">關閉 ×</button></div></div><img id="large" alt=""><div class="dialogtext"><h2 id="viewTitle"></h2><div id="viewMeta" class="meta"></div><p id="viewCaption"></p><details><summary>製作資料</summary><p id="viewTrigger"></p><a id="original" target="_blank" rel="noopener">開啟 PNG 原稿</a><p id="viewPrompt"></p></details></div></dialog>
+<script>
+const BOOK=/*__ASSET_DATA__*/;
+const $=id=>document.getElementById(id), labels={character:'真人角色',clue:'線索物件',beat:'圖片劇情'};
+let category=new URLSearchParams(location.search).get('category')||'clue', page=0, active=0, filtered=[];
+const perPage=12;
+const phase=a=>a.chapter||String(a.era)+'年';
+const caption=a=>a.caption||a.anchor||a.role||'';
+for(const name of [...new Set(BOOK.assets.map(phase))]){const o=document.createElement('option');o.textContent=name;o.value=name;$('chapter').append(o)}
+function render(){
+ document.querySelectorAll('[data-category]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===category)));
+ const query=$('search').value.trim().toLowerCase();
+ filtered=BOOK.assets.filter(a=>(category==='all'||a.category===category)&&(!$('chapter').value||phase(a)===$('chapter').value)&&(!query||[a.name,a.id,a.caption,a.anchor,a.role].join(' ').toLowerCase().includes(query)));
+ page=Math.min(page,Math.max(0,Math.ceil(filtered.length/perPage)-1));$('grid').replaceChildren();
+ filtered.slice(page*perPage,(page+1)*perPage).forEach((a,i)=>{
+  const card=document.createElement('article');card.className='card';
+  const open=document.createElement('button');open.className='open';open.setAttribute('aria-label','放大：'+a.name);open.onclick=()=>show(page*perPage+i);
+  const img=document.createElement('img');img.src=a.preview;img.alt=a.name;img.loading='lazy';open.append(img);
+  const body=document.createElement('div');body.className='body';
+  const meta=document.createElement('div');meta.className='meta';meta.textContent=labels[a.category]+' / '+phase(a)+(a.age?' / '+a.age+'歲':'');
+  const h=document.createElement('h2');h.textContent=a.name;const p=document.createElement('p');p.textContent=caption(a);body.append(meta,h,p);card.append(open,body);$('grid').append(card);
+ });
+ if(!filtered.length){const p=document.createElement('p');p.className='empty';p.textContent='沒有符合的圖片，請更換搜尋詞或章節。';$('grid').append(p)}
+ $('count').textContent=filtered.length+' 張圖片';$('page').textContent=(page+1)+' / '+Math.max(1,Math.ceil(filtered.length/perPage));$('prev').disabled=page===0;$('next').disabled=(page+1)*perPage>=filtered.length;
+}
+function show(index){active=(index+filtered.length)%filtered.length;const a=filtered[active];$('large').src=a.preview;$('large').alt=a.name;$('viewTitle').textContent=a.name;$('viewMeta').textContent=phase(a)+(a.age?'・'+a.age+'歲・'+a.height+'cm':'');$('viewCaption').textContent=caption(a);$('viewTrigger').textContent='出現時機：'+(a.trigger||a.role||'角色建模參考');$('viewPrompt').textContent=a.prompt;$('original').href='../../'+a.file;$('position').textContent=(active+1)+' / '+filtered.length;if(!$('viewer').open)$('viewer').showModal();}
+document.querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>{category=b.dataset.category;page=0;$('chapter').value='';render()});
+$('search').oninput=$('chapter').onchange=()=>{page=0;render()};$('prev').onclick=()=>{page--;render();scrollTo(0,0)};$('next').onclick=()=>{page++;render();scrollTo(0,0)};
+$('close').onclick=()=>$('viewer').close();$('back').onclick=()=>show(active-1);$('forward').onclick=()=>show(active+1);$('viewer').addEventListener('keydown',e=>{if(e.target.closest('a,summary'))return;if(e.key==='ArrowLeft'){e.preventDefault();show(active-1)}if(e.key==='ArrowRight'){e.preventDefault();show(active+1)}});
+render();
+</script></html>

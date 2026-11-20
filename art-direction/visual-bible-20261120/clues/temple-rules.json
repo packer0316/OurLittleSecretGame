@@ -1,0 +1,13 @@
+{
+  "id": "temple-rules",
+  "name": "天公爐上的刻字",
+  "category": "clue",
+  "chapter": "第一章",
+  "trigger": "Temple.rules",
+  "caption": "問路可，勿報己名。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/temple-rules.png",
+  "runtime": "public/assets/story/visual-v2/temple-rules.webp",
+  "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Close low-angle detail of large oxidized bronze three-legged Taiwanese sky-god incense burner outside temple, ash-filled rim engraved with a short worn Traditional Chinese phrase exactly '門內喚名勿應'. Three thin incense sticks smouldering, believable patina and ash clogging carved grooves. Wet granite courtyard and shut wood gate blurred behind. No statues facing camera, no people, no decorative fantasy glyphs. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-7a717527-0df6-4559-98e9-40fe628053b6.png"
+}

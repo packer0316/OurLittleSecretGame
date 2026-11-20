@@ -1,0 +1,13 @@
+{
+  "id": "note-rulebook",
+  "name": "郭師父的規矩簿",
+  "category": "clue",
+  "chapter": "第二章",
+  "trigger": "NOTES.rulebook",
+  "caption": "規矩替他們省掉了一件事：繼續聽她說話。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/note-rulebook.png",
+  "runtime": "public/assets/story/visual-v2/note-rulebook.webp",
+  "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A thin traditional Taiwanese hand-stitched account notebook reused as ritual rulebook, open on dark wood, old cream fibre paper with economical brushed ink, natural ruled ledger lines faint underneath. Main legible two short handwritten lines exactly '先還，後開' and '問完剪線'. Other writing small faint and out of focus. Tiny scissors and a coil of fine red thread at edge. Ordinary shop bookkeeping object, not fantasy occult grimoire, no pentagrams. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-63ab60b0-385e-472f-8967-70c6b98287b0.png"
+}

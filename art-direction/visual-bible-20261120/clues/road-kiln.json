@@ -1,0 +1,13 @@
+{
+  "id": "road-kiln",
+  "name": "沒有燒完的東西",
+  "category": "clue",
+  "chapter": "山村序章",
+  "trigger": "Road.kiln",
+  "caption": "紙人不會有牙。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/road-kiln.png",
+  "runtime": "public/assets/story/visual-v2/road-kiln.webp",
+  "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Close-up of a Taiwanese small brick paper-burning kiln mouth at night, gray warm ash, a small row of ARTIFICIAL PORCELAIN DENTURE TEETH and one lump of melted metal buttons embedded in ash, faint red embers reflecting flashlight. Clearly dental prosthetic material, no jawbone, no blood or organic remains. Tactile soot and ceramic glaze. No face or visible person. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-ff9718c7-0113-48ca-aa15-981bc8dd339a.png"
+}

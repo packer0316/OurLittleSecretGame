@@ -1,0 +1,17 @@
+{
+  "id": "home-calendar",
+  "name": "停在十二日的月曆",
+  "category": "clue",
+  "chapter": "住處序章",
+  "trigger": "Home.calendar",
+  "caption": "筆尖壓破了紙。牆上卻沒有痕跡。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/home-calendar-apartment.png",
+  "runtime": "public/assets/story/visual-v2/home-calendar.webp",
+  "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep 2026 November calendar, circled 12, arrow to punctured13, but make this a believable complete MONTH grid with small other dates, large readable 12/13. Hang on the chipped off-white plaster wall of an ORDINARY LIVED-IN TAIWANESE APARTMENT. No shrine, candles, temple columns, incense, cobwebs or severe mold. Worn light switch nearby. Oblique dim desk-lamp light at midnight, quiet dread. Behind paper wall remains unpunctured. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-d6242c63-570f-42f7-a2a4-fd3327cc8d76.png",
+  "previousFile": "art-direction/visual-bible-20261120/clues/home-calendar.png",
+  "references": [
+    "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\home-calendar.png"
+  ]
+}

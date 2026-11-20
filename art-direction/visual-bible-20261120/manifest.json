@@ -1,0 +1,1244 @@
+{
+  "title": "說好不說｜人物、線索與圖片劇情",
+  "version": "2026-11-20",
+  "generator": "OpenAI built-in image_gen",
+  "direction": "線索採夜晚、陰森、真實、老舊；五位朋友38～40歲；小雨7歲、完整牙齒。",
+  "integration": "圖片與文字製作資產；trigger是掛接位置，不代表本批已改動遊戲事件程式。",
+  "assets": [
+    {
+      "id": "chen-yian-2026-v2",
+      "file": "art-direction/visual-bible-20261120/characters/chen-yian-2026-v2.png",
+      "name": "陳以安",
+      "category": "character",
+      "era": 2026,
+      "age": 39,
+      "height": 173,
+      "role": "主角；當年扣門與放開鑰匙",
+      "description": "Taiwanese man39 who looks late30s, lean regular healthy build. Distinct narrow oval face, straight brows and rounded nose tip, slightly asymmetric eyelids, tiny mole just below LEFT eyebrow outer tip. Full short black hair with an ordinary side part, no receding hairline. Clean-shaven, faint fatigue but no deep wrinkles or sunken cheeks. Charcoal nylon zip jacket over washed mustard T-shirt, dark blue straight jeans, dark canvas sneakers. Healed small key-tooth scar on RIGHT palm (not an open wound).",
+      "anchor": "長窄臉、左眉尾下小痣；芥黃內搭；右掌鑰匙齒形舊疤。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Taiwanese man39 who looks late30s, lean regular healthy build. Distinct narrow oval face, straight brows and rounded nose tip, slightly asymmetric eyelids, tiny mole just below LEFT eyebrow outer tip. Full short black hair with an ordinary side part, no receding hairline. Clean-shaven, faint fatigue but no deep wrinkles or sunken cheeks. Charcoal nylon zip jacket over washed mustard T-shirt, dark blue straight jeans, dark canvas sneakers. Healed small key-tooth scar on RIGHT palm (not an open wound).",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-91daee12-8069-4af5-8e96-fe1b6ef67eec.png",
+      "preview": "previews/chen-yian-2026-v2.webp",
+      "bytes": 85388
+    },
+    {
+      "id": "zhang-mingzhe-2026-v2",
+      "file": "art-direction/visual-bible-20261120/characters/zhang-mingzhe-2026-v2.png",
+      "name": "張明哲／阿哲",
+      "category": "character",
+      "era": 2026,
+      "age": 40,
+      "height": 176,
+      "role": "器材清點者；當年提議先扣門",
+      "description": "Taiwanese man40, mature yet energetic, broad angular jaw and prominent slightly hooked nose, thick softly wavy short black hair, small notch in RIGHT eyebrow. Warm medium complexion, neatly short stubble and natural faint smile lines, NO exaggerated aging. Navy cotton work overshirt with rolled cuffs, charcoal T-shirt, olive cargo trousers, brown lace-up work boots. Small camera pouch worn at RIGHT hip with a plain blue label, no brand. Shoulders square, medium sturdy physique.",
+      "anchor": "方下顎、右眉斷口、微鷹鼻；藍色器材標籤、棕色工作靴。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Taiwanese man40, mature yet energetic, broad angular jaw and prominent slightly hooked nose, thick softly wavy short black hair, small notch in RIGHT eyebrow. Warm medium complexion, neatly short stubble and natural faint smile lines, NO exaggerated aging. Navy cotton work overshirt with rolled cuffs, charcoal T-shirt, olive cargo trousers, brown lace-up work boots. Small camera pouch worn at RIGHT hip with a plain blue label, no brand. Shoulders square, medium sturdy physique.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6d17fe5c-b749-434f-bd06-ce9a1f699450.png",
+      "preview": "previews/zhang-mingzhe-2026-v2.webp",
+      "bytes": 91862
+    },
+    {
+      "id": "xu-zhihao-2026-v2",
+      "file": "art-direction/visual-bible-20261120/characters/xu-zhihao-2026-v2.png",
+      "name": "許志豪",
+      "category": "character",
+      "era": 2026,
+      "age": 39,
+      "height": 168,
+      "role": "水電工；當年藏起小雨的鞋",
+      "description": "Taiwanese electrician man39, short stocky strong build without exaggerated obesity. Round wide face, broad nose, thick straight eyebrows, short even black crew cut. Sun-tanned healthy skin and very subtle forehead tan line, youthful firm cheeks, not a middle-aged weather-beaten50yearold. Open gray-green cotton utility vest over clean worn ivory undershirt, dark knee-length cargo shorts, iconic blue-and-white rubber flip-flops. Rough hardworking hands, plain silver wedding band LEFT ring finger.",
+      "anchor": "圓寬臉、平頭、厚實前臂；灰綠工作背心、藍白拖。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Taiwanese electrician man39, short stocky strong build without exaggerated obesity. Round wide face, broad nose, thick straight eyebrows, short even black crew cut. Sun-tanned healthy skin and very subtle forehead tan line, youthful firm cheeks, not a middle-aged weather-beaten50yearold. Open gray-green cotton utility vest over clean worn ivory undershirt, dark knee-length cargo shorts, iconic blue-and-white rubber flip-flops. Rough hardworking hands, plain silver wedding band LEFT ring finger.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-3ea3cd49-79d3-46c7-86f4-6366e4fa956d.png",
+      "preview": "previews/xu-zhihao-2026-v2.webp",
+      "bytes": 100478
+    },
+    {
+      "id": "wu-bohan-2026-v2",
+      "file": "art-direction/visual-bible-20261120/characters/wu-bohan-2026-v2.png",
+      "name": "吳柏翰",
+      "category": "character",
+      "era": 2026,
+      "age": 38,
+      "height": 179,
+      "role": "國小三年二班老師；告訴小雨後殿能聽見爸爸",
+      "description": "Taiwanese primary-school teacher man38, tall slim build, long narrow face and neck, prominent ears, delicate black rectangular eyeglasses, neatly parted black hair. Gentle observant eyes, small mole beside RIGHT mouth corner. Healthy skin with only faint expression lines, no deep eye bags. Pale blue small-check short sleeve button shirt tucked into sand beige trousers with brown belt; chalk residue on RIGHT fingertips. Gray sneakers with flattened heel counters, worn as slip-ons, footwear clearly visible.",
+      "anchor": "長臉、細框矩形眼鏡、右嘴角小痣；淡藍格紋襯衫、踩扁後跟球鞋。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Taiwanese primary-school teacher man38, tall slim build, long narrow face and neck, prominent ears, delicate black rectangular eyeglasses, neatly parted black hair. Gentle observant eyes, small mole beside RIGHT mouth corner. Healthy skin with only faint expression lines, no deep eye bags. Pale blue small-check short sleeve button shirt tucked into sand beige trousers with brown belt; chalk residue on RIGHT fingertips. Gray sneakers with flattened heel counters, worn as slip-ons, footwear clearly visible.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-569c3f27-762b-4d5f-a790-5cf38b1f0418.png",
+      "preview": "previews/wu-bohan-2026-v2.webp",
+      "bytes": 101502
+    },
+    {
+      "id": "zhou-peishan-2026-v2",
+      "file": "art-direction/visual-bible-20261120/characters/zhou-peishan-2026-v2.png",
+      "name": "周佩珊",
+      "category": "character",
+      "era": 2026,
+      "age": 38,
+      "height": 160,
+      "role": "山外見證者；當年代喊第六聲有",
+      "description": "Taiwanese woman38 with a healthy lively late30s appearance, softly square compact face, slightly upturned almond eyes, gentle LEFT cheek dimple, naturally even intact teeth and closed gentle smile. Straight black chin-length bob tucked behind left ear. Natural hydrated skin, fine smile lines only, no sagging or deep under-eye hollows, no glamour retouching. Sage green cardigan over cream cotton blouse, navy straight trousers, off-white canvas slip-on shoes, simple watch and dark cloth tote worn on shoulder.",
+      "anchor": "短方臉、左臉單酒窩、下巴短髮；鼠尾草綠外套、帆布袋。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Taiwanese woman38 with a healthy lively late30s appearance, softly square compact face, slightly upturned almond eyes, gentle LEFT cheek dimple, naturally even intact teeth and closed gentle smile. Straight black chin-length bob tucked behind left ear. Natural hydrated skin, fine smile lines only, no sagging or deep under-eye hollows, no glamour retouching. Sage green cardigan over cream cotton blouse, navy straight trousers, off-white canvas slip-on shoes, simple watch and dark cloth tote worn on shoulder.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6a48aa26-fb48-4d0d-ad1e-423903dbb63d.png",
+      "preview": "previews/zhou-peishan-2026-v2.webp",
+      "bytes": 77356
+    },
+    {
+      "id": "lin-xiaoyu-1998-v2",
+      "file": "art-direction/visual-bible-20261120/characters/lin-xiaoyu-1998-v2.png",
+      "name": "林小雨",
+      "category": "character",
+      "era": 1998,
+      "age": 7,
+      "height": 116,
+      "role": "第六個孩子；布兔主人",
+      "description": "A fictional Taiwanese girl exactly7 years old, age-appropriate116cm small-child proportions. Sweet round face, wide-set dark brown eyes, small rounded nose, full healthy COMPLETE NATURAL TEETH with NO missing teeth and NO gap, soft small closed-lip smile. Black jaw-length bob, home-cut but tidy fringe and two little red clips. Modest loose knee-length white cotton dress printed with tiny faded red flowers, short sleeves, white ankle socks and RED CLOTH MARY JANE SHOES on BOTH feet. Natural cute child, no makeup, not a doll. Healthy living1998 appearance; no injury, no ghost effects, no exposed body, hands empty.",
+      "anchor": "七歲、短圓臉、寬眼距、整齊自然牙齒；細花白棉裙、紅布鞋。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: A fictional Taiwanese girl exactly7 years old, age-appropriate116cm small-child proportions. Sweet round face, wide-set dark brown eyes, small rounded nose, full healthy COMPLETE NATURAL TEETH with NO missing teeth and NO gap, soft small closed-lip smile. Black jaw-length bob, home-cut but tidy fringe and two little red clips. Modest loose knee-length white cotton dress printed with tiny faded red flowers, short sleeves, white ankle socks and RED CLOTH MARY JANE SHOES on BOTH feet. Natural cute child, no makeup, not a doll. Healthy living1998 appearance; no injury, no ghost effects, no exposed body, hands empty.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-0080b472-02a7-4e3d-8719-3f506ce4c0b9.png",
+      "preview": "previews/lin-xiaoyu-1998-v2.webp",
+      "bytes": 124986
+    },
+    {
+      "id": "lin-meilan-1998-v2",
+      "file": "art-direction/visual-bible-20261120/characters/lin-meilan-1998-v2.png",
+      "name": "林美蘭",
+      "category": "character",
+      "era": 1998,
+      "age": 28,
+      "height": 158,
+      "role": "小雨母親；借聲問者",
+      "description": "Fictional Taiwanese mother28, clearly late20s youthful face with gentle maturity, short heart-shaped face, wide-set dark eyes, faint freckles on RIGHT cheek, small rounded nose; slim sturdy158cm body with real ordinary proportions. Long straight black hair in low simple bun, no makeup. Plain unbleached ivory cotton button-front long sleeve blouse and matching calf-length skirt, modest1998 Taiwanese home-sewn ceremonial plain clothes, NOT kimono hanfu wedding dress. Brown cloth Mary Jane flats. Thin RED COTTON CORD with three small knots around anatomical LEFT wrist. Kind calm human appearance, not ghostly.",
+      "anchor": "28歲年輕母親；短心形臉、右頰淡雀斑；米白素衣、左腕紅線。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Fictional Taiwanese mother28, clearly late20s youthful face with gentle maturity, short heart-shaped face, wide-set dark eyes, faint freckles on RIGHT cheek, small rounded nose; slim sturdy158cm body with real ordinary proportions. Long straight black hair in low simple bun, no makeup. Plain unbleached ivory cotton button-front long sleeve blouse and matching calf-length skirt, modest1998 Taiwanese home-sewn ceremonial plain clothes, NOT kimono hanfu wedding dress. Brown cloth Mary Jane flats. Thin RED COTTON CORD with three small knots around anatomical LEFT wrist. Kind calm human appearance, not ghostly.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-70962d6f-5878-4da5-9510-1fcab29763cc.png",
+      "preview": "previews/lin-meilan-1998-v2.webp",
+      "bytes": 68694
+    },
+    {
+      "id": "guo-jiancheng-2026-v2",
+      "file": "art-direction/visual-bible-20261120/characters/guo-jiancheng-2026-v2.png",
+      "name": "郭建成",
+      "category": "character",
+      "era": 2026,
+      "age": 46,
+      "height": 171,
+      "role": "紙紮行後人；代管廟務",
+      "description": "Taiwanese man46, broad trapezoid face, heavy eyelids with one eye slightly narrower, short black hair lightly grey at temples, small old healed nick across broad nose bridge, stocky171cm average worker build. Brown polo shirt beneath long indigo canvas workshop apron with white rice-paste stains, black straight work trousers, scuffed black rubber slip-on shoes. Gold wedding band LEFT ring finger. Both hands NORMAL INTACT. No deformity, no injuries, no implication he died. Everyday family paper-effigy craftsman, not fantasy priest.",
+      "anchor": "梯形寬臉、鬢角早白、鼻梁舊小疤；靛藍漿糊圍裙、左手金婚戒。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Taiwanese man46, broad trapezoid face, heavy eyelids with one eye slightly narrower, short black hair lightly grey at temples, small old healed nick across broad nose bridge, stocky171cm average worker build. Brown polo shirt beneath long indigo canvas workshop apron with white rice-paste stains, black straight work trousers, scuffed black rubber slip-on shoes. Gold wedding band LEFT ring finger. Both hands NORMAL INTACT. No deformity, no injuries, no implication he died. Everyday family paper-effigy craftsman, not fantasy priest.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-3f5c7ccc-28de-4b47-b598-2c4121612ad4.png",
+      "preview": "previews/guo-jiancheng-2026-v2.webp",
+      "bytes": 94958
+    },
+    {
+      "id": "guo-yongshun-1998",
+      "file": "art-direction/visual-bible-20261120/characters/guo-yongshun-1998.png",
+      "name": "郭永順／郭師父",
+      "category": "character",
+      "era": 1998,
+      "age": 52,
+      "height": 165,
+      "role": "郭建成父親；1998 借聲主事",
+      "description": "Taiwanese man52 in1998, wiry165cm elder craftsman with square flat face, high cheekbones, deep horizontal brow line, thin pressed lips, small round wire glasses low on nose, short side-parted salt-pepper hair. Grey-blue short sleeve woven button shirt, loose dark trousers, black cloth slip-on shoes. Threadbare dark brown waist apron with ink and rice-paste spots, simple pen clipped at shirt pocket. Hands stained with dried black ink, both normal intact. Human authority and fear, no occult costume, no monk robes, no ritual weapons.",
+      "anchor": "瘦矮、顴骨明顯、細圓眼鏡；灰藍短襯衫、墨漬半圍裙。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Taiwanese man52 in1998, wiry165cm elder craftsman with square flat face, high cheekbones, deep horizontal brow line, thin pressed lips, small round wire glasses low on nose, short side-parted salt-pepper hair. Grey-blue short sleeve woven button shirt, loose dark trousers, black cloth slip-on shoes. Threadbare dark brown waist apron with ink and rice-paste spots, simple pen clipped at shirt pocket. Hands stained with dried black ink, both normal intact. Human authority and fear, no occult costume, no monk robes, no ritual weapons.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-515b1b5f-f5b8-4800-b5a1-eb1530e745c7.png",
+      "preview": "previews/guo-yongshun-1998.webp",
+      "bytes": 96692
+    },
+    {
+      "id": "lin-zhengxiong-1998",
+      "file": "art-direction/visual-bible-20261120/characters/lin-zhengxiong-1998.png",
+      "name": "林正雄",
+      "category": "character",
+      "era": 1998,
+      "age": 31,
+      "height": 174,
+      "role": "小雨父親；春天過世，只以生前影像出現",
+      "description": "Fictional Taiwanese father31 in1998, cheerful broad oval face, slightly projecting ears, thick wavy black hair, wide warm smile with COMPLETE even natural teeth, robust174cm laborer build. Light brown sun-tan, clean shaven. Faded teal short-sleeve polo tucked into dark grey straight trousers, simple woven belt, brown rubber-soled sandals. Hands empty. This is an ordinary healthy living family-album appearance before death, absolutely no ghost or injury effects.",
+      "anchor": "31歲生前樣貌；招風耳、寬笑容、自然捲；青綠 POLO。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Fictional Taiwanese father31 in1998, cheerful broad oval face, slightly projecting ears, thick wavy black hair, wide warm smile with COMPLETE even natural teeth, robust174cm laborer build. Light brown sun-tan, clean shaven. Faded teal short-sleeve polo tucked into dark grey straight trousers, simple woven belt, brown rubber-soled sandals. Hands empty. This is an ordinary healthy living family-album appearance before death, absolutely no ghost or injury effects.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-2c8419ae-8a3d-497a-8e07-7f5fcb500f61.png",
+      "preview": "previews/lin-zhengxiong-1998.webp",
+      "bytes": 94336
+    },
+    {
+      "id": "building-caretaker-2026",
+      "file": "art-direction/visual-bible-20261120/characters/building-caretaker-2026.png",
+      "name": "公寓管理員",
+      "category": "character",
+      "era": 2026,
+      "age": 61,
+      "height": 169,
+      "role": "住處聲音來源；下落保持留白",
+      "description": "Fictional Taiwanese apartment caretaker man61, stocky169cm, round face, sparse silver hair neatly combed, thick dark brows, mild age spots and natural wrinkles, kind habitual neutral expression. Pale blue security uniform short sleeve shirt without company logo, navy sleeveless vest, dark trousers, black loafers. Plain blank name badge, bunch of dull keys at belt, cheap reading glasses on a thin neck cord. Ordinary Taiwanese residential building night attendant, no police insignia, no wounds.",
+      "anchor": "61歲暫定美術設定；圓臉銀髮、掛繩老花眼鏡、腰間鑰匙。",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Subject: Fictional Taiwanese apartment caretaker man61, stocky169cm, round face, sparse silver hair neatly combed, thick dark brows, mild age spots and natural wrinkles, kind habitual neutral expression. Pale blue security uniform short sleeve shirt without company logo, navy sleeveless vest, dark trousers, black loafers. Plain blank name badge, bunch of dull keys at belt, cheap reading glasses on a thin neck cord. Ordinary Taiwanese residential building night attendant, no police insignia, no wounds.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-c43b584c-9719-4839-b0d2-d6cb354f90e3.png",
+      "preview": "previews/building-caretaker-2026.webp",
+      "bytes": 71350
+    },
+    {
+      "id": "chen-yian-1998",
+      "file": "art-direction/visual-bible-20261120/characters/chen-yian-1998.png",
+      "name": "陳以安（童年）",
+      "category": "character",
+      "era": 1998,
+      "age": 11,
+      "height": 142,
+      "role": "1998 回憶版本",
+      "anchor": "芥黃色短袖、洗白牛仔短褲、帆布鞋",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/chen-yian-2026-v2.png"
+      ],
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Input reference: adult fictional identity reference ONLY, not final age. Reimagine this same person as a healthy Taiwanese 11-year-old CHILD in summer1998, 142cm tall. Child facial and body proportions, clearly not an adult shrunken down. Mustard yellow T-shirt, faded blue knee-length denim shorts, simple dark canvas sneakers. Short side-parted black child hair. Preserve small left eyebrow mole and narrow facial proportions, no palm scar yet (before fire). All three views show the identical child. Complete natural teeth, no tooth gaps, no injury, modest everyday clothing. The reference is for family resemblance and identity continuity, change age and outfit as specified.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-34e1f5e5-48cd-4016-8502-5182aa4f3ea4.png",
+      "preview": "previews/chen-yian-1998.webp",
+      "bytes": 78142
+    },
+    {
+      "id": "zhang-mingzhe-1998",
+      "file": "art-direction/visual-bible-20261120/characters/zhang-mingzhe-1998.png",
+      "name": "張明哲／阿哲（童年）",
+      "category": "character",
+      "era": 1998,
+      "age": 12,
+      "height": 148,
+      "role": "1998 回憶版本",
+      "anchor": "灰白運動背心、深藍短褲",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/zhang-mingzhe-2026-v2.png"
+      ],
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Input reference: adult fictional identity reference ONLY, not final age. Reimagine this same person as a healthy Taiwanese 12-year-old CHILD in summer1998, 148cm tall. Child facial and body proportions, clearly not an adult shrunken down. Off-white athletic sleeveless jersey with faded blue neckline, navy shorts, worn white trainers. Slight wavy black child hair and small right eyebrow notch; youthful rounded version of his angular jaw. No stubble. All three views show the identical child. Complete natural teeth, no tooth gaps, no injury, modest everyday clothing. The reference is for family resemblance and identity continuity, change age and outfit as specified.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-744b525c-aa51-4383-89c9-b6d9417d4c13.png",
+      "preview": "previews/zhang-mingzhe-1998.webp",
+      "bytes": 71802
+    },
+    {
+      "id": "xu-zhihao-1998",
+      "file": "art-direction/visual-bible-20261120/characters/xu-zhihao-1998.png",
+      "name": "許志豪（童年）",
+      "category": "character",
+      "era": 1998,
+      "age": 11,
+      "height": 140,
+      "role": "1998 回憶版本",
+      "anchor": "藍灰橫條短袖、卡其短褲、藍白拖",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/xu-zhihao-2026-v2.png"
+      ],
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Input reference: adult fictional identity reference ONLY, not final age. Reimagine this same person as a healthy Taiwanese 11-year-old CHILD in summer1998, 140cm tall. Child facial and body proportions, clearly not an adult shrunken down. Faded blue-grey striped T-shirt, loose khaki shorts, blue-and-white flip-flops. Sturdy but ordinary11yearold boy build with round cheeks and short crewcut. No wedding ring or adult muscles. All three views show the identical child. Complete natural teeth, no tooth gaps, no injury, modest everyday clothing. The reference is for family resemblance and identity continuity, change age and outfit as specified.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-5ae2c5fd-b16c-4b10-b6a8-5eedc3b49d65.png",
+      "preview": "previews/xu-zhihao-1998.webp",
+      "bytes": 98078
+    },
+    {
+      "id": "wu-bohan-1998",
+      "file": "art-direction/visual-bible-20261120/characters/wu-bohan-1998.png",
+      "name": "吳柏翰（童年）",
+      "category": "character",
+      "era": 1998,
+      "age": 10,
+      "height": 138,
+      "role": "1998 回憶版本",
+      "anchor": "磚紅白橫條 POLO、灰短褲、球鞋",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/wu-bohan-2026-v2.png"
+      ],
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Input reference: adult fictional identity reference ONLY, not final age. Reimagine this same person as a healthy Taiwanese 10-year-old CHILD in summer1998, 138cm tall. Child facial and body proportions, clearly not an adult shrunken down. Muted brick-red and cream striped short-sleeve polo, grey shorts and grey canvas sneakers. Thin child wire glasses, long ears and slim child build, complete teeth. All three views show the identical child. Complete natural teeth, no tooth gaps, no injury, modest everyday clothing. The reference is for family resemblance and identity continuity, change age and outfit as specified.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-e5d2bd4d-e3d0-48c0-9e15-799bfb3aafbe.png",
+      "preview": "previews/wu-bohan-1998.webp",
+      "bytes": 72032
+    },
+    {
+      "id": "zhou-peishan-1998",
+      "file": "art-direction/visual-bible-20261120/characters/zhou-peishan-1998.png",
+      "name": "周佩珊（童年）",
+      "category": "character",
+      "era": 1998,
+      "age": 10,
+      "height": 136,
+      "role": "1998 回憶版本",
+      "anchor": "白短袖、丹寧吊帶裙、白布鞋",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/zhou-peishan-2026-v2.png"
+      ],
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Input reference: adult fictional identity reference ONLY, not final age. Reimagine this same person as a healthy Taiwanese 10-year-old CHILD in summer1998, 136cm tall. Child facial and body proportions, clearly not an adult shrunken down. White short sleeve T-shirt under modest knee-length blue denim pinafore dress, white ankle socks and white canvas shoes. Jaw-length black bob, left cheek dimple. Natural10yearold girl's face, no makeup, complete teeth. All three views show the identical child. Complete natural teeth, no tooth gaps, no injury, modest everyday clothing. The reference is for family resemblance and identity continuity, change age and outfit as specified.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-e7c54cf0-b2a6-42c7-897d-f706cd320db7.png",
+      "preview": "previews/zhou-peishan-1998.webp",
+      "bytes": 92172
+    },
+    {
+      "id": "borrowed-meilan-1999",
+      "file": "art-direction/visual-bible-20261120/characters/borrowed-meilan-1999.png",
+      "name": "借聲者／林美蘭的外貌",
+      "category": "character",
+      "era": 1999,
+      "age": 29,
+      "height": 158,
+      "role": "同一張母親的臉；不能變成成年小雨",
+      "anchor": "同美蘭臉型；散落濕長髮、米白素衣、左腕紅線、赤腳；異常來自姿態。",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/lin-meilan-1998-v2.png"
+      ],
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Input reference: identity/costume reference. Preserve EXACT SAME fictional young Taiwanese woman and recognizable face as reference, now29 years old. This is her eerie supernatural appearance; she has not aged to60. Same ivory button blouse and calf-length skirt, now damp and slightly soil stained with frayed hems, hair undone to long wet black strands around cheeks, face STILL VISIBLE for modelling, neutral closed mouth, eyes slightly downcast, shoulders unnaturally still and lowered. Bare feet, long intact fingers. Thin red cotton cord on LEFT wrist. Subtle pallor not rotting, no lesions, no wounds, no blood, no monstrous jaw. THREE clear front/side/back full-body views. Plain grey backdrop, useful readable lighting rather than dark scene.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-d4fd73fa-52ee-45fa-98ec-c8c67e9c6310.png",
+      "preview": "previews/borrowed-meilan-1999.webp",
+      "bytes": 92396
+    },
+    {
+      "id": "guo-jiancheng-1998",
+      "file": "art-direction/visual-bible-20261120/characters/guo-jiancheng-1998.png",
+      "name": "郭建成（學徒）",
+      "category": "character",
+      "era": 1998,
+      "age": 18,
+      "height": 171,
+      "role": "郭師父身旁的年輕學徒",
+      "anchor": "郭建成年輕臉型；純黑短髮、白汗衫、短靛藍圍裙，無婚戒。",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/guo-jiancheng-2026-v2.png"
+      ],
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Production asset: a wide high-resolution photographic THREE-VIEW character turnaround for a Taiwanese live-action horror game. One fictional person appears exactly THREE times, left-to-right: straight FRONT, exact LEFT SIDE PROFILE facing right, straight BACK. Same person and outfit, same scale, feet aligned. Full body head-to-toe, generous edge clearance, hands empty in relaxed modest A-stance. Neutral light warm-grey seamless studio backdrop, soft even light, near-orthographic 85mm lens, real skin and cloth. Authentic ordinary Taiwan resident, not celebrity, not stylized CGI, not a fashion campaign. NO lettering, titles, logos, props covering body, watermarks, or extra figures. Input image is the fictional46yearold's identity reference only. Reimagine the SAME Taiwanese man as his18yearold young-adult self in1998,171cm, slim broad shouldered apprentice before middle-aged weight gain, youthful trapezoid face, slightly unequal eyelids, short fully BLACK crewcut, no wrinkles or grey hair. Ivory plain crewneck cotton T-shirt, short indigo workshop apron, black cotton pants, black cloth slip-on shoes. No wedding ring, no nose scar yet. THREE same person full body front/profile/back, completely ordinary healthy person, no horror effects.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-939b2cc8-21e7-4201-9ca7-1eee727a51ae.png",
+      "preview": "previews/guo-jiancheng-1998.webp",
+      "bytes": 78068
+    },
+    {
+      "id": "evidence-diary",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-diary-night.png",
+      "name": "停在六的計數器",
+      "category": "clue",
+      "chapter": "第二章",
+      "trigger": "EVIDENCE.diary",
+      "caption": "數字是六。留下記號的，卻只有五個。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-diary.webp",
+      "prompt": "Use case: lighting-weather. Edit this game evidence photograph. Preserve exact evidence objects, their identity and count, the legible text, their positions and camera framing. Change lighting and exterior view to the DEAD OF NIGHT. Every opening shows pitch-black exterior, remove ALL daylight and sunlit greenery. Only off-camera narrow flashlight and faint candle light reveal the object, background largely invisible with a little rotten architecture. No new people or gore.  CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-8c046b6f-c2a7-4f98-9b6f-3803c6eec69f.png",
+      "references": [
+        "art-direction/visual-bible-20261120/clues/evidence-diary.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/evidence-diary.webp",
+      "bytes": 267512
+    },
+    {
+      "id": "evidence-newspaper",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-newspaper-night.png",
+      "name": "從外側扣上的門閂",
+      "category": "clue",
+      "chapter": "第二章",
+      "trigger": "EVIDENCE.newspaper",
+      "caption": "閂舌還在扣環裡。火卻是從另一面燒過來的。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-newspaper.webp",
+      "prompt": "Use case: lighting-weather. Edit this game evidence photograph. Preserve exact evidence objects, their identity and count, the legible text, their positions and camera framing. Change lighting and exterior view to the DEAD OF NIGHT. Every opening shows pitch-black exterior, remove ALL daylight and sunlit greenery. Only off-camera narrow flashlight and faint candle light reveal the object, background largely invisible with a little rotten architecture. No new people or gore.  CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-9b31a46e-ec1f-452d-ad38-94f858c4a7d6.png",
+      "references": [
+        "art-direction/visual-bible-20261120/clues/evidence-newspaper.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/evidence-newspaper.webp",
+      "bytes": 331912
+    },
+    {
+      "id": "evidence-tape",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-tape-night.png",
+      "name": "被接回去的錄音",
+      "category": "clue",
+      "chapter": "第二章",
+      "trigger": "EVIDENCE.tape",
+      "caption": "我按了停止。身後卻有人把那半句接完。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-tape.webp",
+      "prompt": "Use case: lighting-weather. Edit this game evidence photograph. Preserve exact evidence objects, their identity and count, the legible text, their positions and camera framing. Change lighting and exterior view to the DEAD OF NIGHT. Every opening shows pitch-black exterior, remove ALL daylight and sunlit greenery. Only off-camera narrow flashlight and faint candle light reveal the object, background largely invisible with a little rotten architecture. No new people or gore.  CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-9b77e8c8-a3f9-4251-9bab-96f57c4c0d9a.png",
+      "references": [
+        "art-direction/visual-bible-20261120/clues/evidence-tape.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/evidence-tape.webp",
+      "bytes": 350392
+    },
+    {
+      "id": "evidence-stage",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-stage-night.png",
+      "name": "第六張椅子",
+      "category": "clue",
+      "chapter": "第三章",
+      "trigger": "EVIDENCE.stage",
+      "caption": "第六聲「有」，不是從第六張椅子傳來的。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-stage.webp",
+      "prompt": "Use case: lighting-weather. Edit this game evidence photograph. Preserve exact evidence objects, their identity and count, the legible text, their positions and camera framing. Change lighting and exterior view to the DEAD OF NIGHT. Every opening shows pitch-black exterior, remove ALL daylight and sunlit greenery. Only off-camera narrow flashlight and faint candle light reveal the object, background largely invisible with a little rotten architecture. No new people or gore.  CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object. CRITICAL: retain EXACTLY six stools; rotate the sixth far-right stool away and keep rabbit sitting on it; the large reflective frame must be a SMALL empty photo frame on a low wooden stand, NOT an oversized full-length mirror. Keep phones beneath third/fourth stool and badge beneath second.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-d147c7d9-40b4-4122-9db1-aa60e4414d8d.png",
+      "references": [
+        "art-direction/visual-bible-20261120/clues/evidence-stage.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/evidence-stage.webp",
+      "bytes": 190706
+    },
+    {
+      "id": "evidence-ritual",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-ritual-night.png",
+      "name": "被磨平的送行盤",
+      "category": "clue",
+      "chapter": "第二章／真結局",
+      "trigger": "EVIDENCE.ritual",
+      "caption": "先記其名，再歸其物，末留其事。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-ritual.webp",
+      "prompt": "Use case: lighting-weather. Edit this game evidence photograph. Preserve exact evidence objects, their identity and count, the legible text, their positions and camera framing. Change lighting and exterior view to the DEAD OF NIGHT. Every opening shows pitch-black exterior, remove ALL daylight and sunlit greenery. Only off-camera narrow flashlight and faint candle light reveal the object, background largely invisible with a little rotten architecture. No new people or gore.  CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-cefa4eae-879e-4c1c-9748-ccd0d6e9f911.png",
+      "references": [
+        "art-direction/visual-bible-20261120/clues/evidence-ritual.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/evidence-ritual.webp",
+      "bytes": 361792
+    },
+    {
+      "id": "evidence-death",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-death-night.png",
+      "name": "阿哲留下的手機",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "EVIDENCE.death",
+      "caption": "打給我的那一段，兩個星期前就錄好了。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-death.webp",
+      "prompt": "Use case: lighting-weather. Edit this game evidence photograph. Preserve exact evidence objects, their identity and count, the legible text, their positions and camera framing. Change lighting and exterior view to the DEAD OF NIGHT. Every opening shows pitch-black exterior, remove ALL daylight and sunlit greenery. Only off-camera narrow flashlight and faint candle light reveal the object, background largely invisible with a little rotten architecture. No new people or gore.  CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-55f6910e-5afb-4029-9210-00c2c562c9ce.png",
+      "references": [
+        "art-direction/visual-bible-20261120/clues/evidence-death.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/evidence-death.webp",
+      "bytes": 262396
+    },
+    {
+      "id": "evidence-births",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-births.png",
+      "name": "門框上的六道身高",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "EVIDENCE.births",
+      "caption": "最矮的那道，不是沒有名字。是被蓋住了。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-births.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A long salvaged narrow vertical wooden temple doorjamb laid diagonally on a carpenter support, SIX separate uneven childhood height scratches at different heights. Lowest mark uncovered beneath crumbling grey repair putty, handwritten Traditional Chinese '林小雨' next to simple tiny rabbit doodle with left ear bent. Five higher annotations faint and unreadable, no extra legible names. Half a clay pendant tied to reverse edge depicts a tree and gap in wall. Raking light reveals actual scratches and plaster edges. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-01608a89-9ea0-4c67-9879-35978e9d17fc.png",
+      "preview": "../../public/assets/story/visual-v2/evidence-births.webp",
+      "bytes": 201704
+    },
+    {
+      "id": "evidence-relic",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-relic.png",
+      "name": "補過左耳的布兔",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "EVIDENCE.relic",
+      "caption": "耳朵媽媽補好了。她還在等我們來找她。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-relic.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Inside an opened aged oilcloth bundle on mossy stone under a Taiwanese banyan tree: ONE small handmade faded red cotton rabbit with crooked repaired LEFT ear, tiny dense neat red-thread stitches, button eyes, cloth label clearly embroidered '林小雨'. Under rabbit ONE small red cloth Mary Jane child's shoe filled with dry incense ash, a corner of torn squared school exercise paper under insole. Only objects, no child or body. Gentle heartbreaking detail, dawnless night with warm flashlight, not graphic horror. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-d215f422-dc42-4523-bfd8-ecd1633dd420.png",
+      "preview": "../../public/assets/story/visual-v2/evidence-relic.webp",
+      "bytes": 250106
+    },
+    {
+      "id": "evidence-names",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-names.png",
+      "name": "五個重疊的手印",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "EVIDENCE.names",
+      "caption": "我以為有人塗掉了她。少的那張，卻在我口袋裡。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-names.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Close forensic view of abandoned plaster wall: EXACTLY FIVE faded RED INK adult palmprints in a row, each overlays a smaller child palmprint, visibly printed pigment NOT blood. Repeated scratched Traditional Chinese phrase '都出來了' partly visible. On floor a rusty tin with FIVE dried red marker pens and FOUR partly overlapping old group photographs with messy red ink face defacement; keep tiny photo faces indistinct. No people or injuries. Layered palmprint sizes and red pens tell story of coerced silence. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-0a9186a5-a6b0-45ac-b7fa-6cd9625d26ae.png",
+      "preview": "../../public/assets/story/visual-v2/evidence-names.webp",
+      "bytes": 328906
+    },
+    {
+      "id": "evidence-confession",
+      "file": "art-direction/visual-bible-20261120/clues/evidence-confession.png",
+      "name": "掌心裡的齒痕",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "EVIDENCE.confession",
+      "caption": "缺角壓上的地方，正好就是那道舊疤。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/evidence-confession.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Macro still life of a corroded old bronze padlock resting on dark stone with a plain worn brass key INSERTED in it, one clearly chipped corner of key tooth. Beside it the open anatomical RIGHT palm of an adult Taiwanese man39 in charcoal jacket sleeve, bearing a small HEALED pale key-tooth-shaped burn scar matching that notch. No fresh wound, no gore. Restrained readable evidence composition, warm flashlight glancing across the healed scar and oxidized key. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-3e566a0f-5841-4c86-935e-94021158ea0f.png",
+      "preview": "../../public/assets/story/visual-v2/evidence-confession.webp",
+      "bytes": 223600
+    },
+    {
+      "id": "note-log",
+      "file": "art-direction/visual-bible-20261120/clues/note-log.png",
+      "name": "阿哲的清點日誌",
+      "category": "clue",
+      "chapter": "第二章",
+      "trigger": "NOTES.log",
+      "caption": "他不是來清點帶子。他是來找那一分鐘。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-log.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A worn clipboard and open small practical audio-engineer notebook on a temple desk among blue sticky tabs, capped ballpoint pen and compact audio cable. Three handwritten date headers only '10/27', '10/28', '10/29', other lines natural small indistinct blue ink. Last line darker and hurried with uneven pressure. Real cheap Taiwanese stationery, humid paper curl and coffee ring, no gothic manuscript styling. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-e98158e0-941c-4a80-87bc-d1d773a68179.png",
+      "preview": "../../public/assets/story/visual-v2/note-log.webp",
+      "bytes": 209074
+    },
+    {
+      "id": "note-robe",
+      "file": "art-direction/visual-bible-20261120/clues/note-robe.png",
+      "name": "問者的素衣",
+      "category": "clue",
+      "chapter": "第二章",
+      "trigger": "NOTES.robe",
+      "caption": "剪刀沒有用過。她那晚沒有問完。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-robe.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: An unbleached ivory cotton button-front blouse folded on an old wooden crate. Two tightly gathered fist-shaped wrinkled bunches in CHEST fabric as if held by two hands, but no hands present. LEFT sleeve cuff has a thin red cord tied with THREE small knots, end burnt into a tiny black bead. Tiny unused shiny dressmaking scissors pinned at lapel. Loose cotton weave, humidity, ash flecks. No blood, no body, no graphic harm. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-0c8f290d-88dd-4331-9d9d-2cea72c20665.png",
+      "preview": "../../public/assets/story/visual-v2/note-robe.webp",
+      "bytes": 251988
+    },
+    {
+      "id": "note-rulebook",
+      "file": "art-direction/visual-bible-20261120/clues/note-rulebook.png",
+      "name": "郭師父的規矩簿",
+      "category": "clue",
+      "chapter": "第二章",
+      "trigger": "NOTES.rulebook",
+      "caption": "規矩替他們省掉了一件事：繼續聽她說話。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-rulebook.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A thin traditional Taiwanese hand-stitched account notebook reused as ritual rulebook, open on dark wood, old cream fibre paper with economical brushed ink, natural ruled ledger lines faint underneath. Main legible two short handwritten lines exactly '先還，後開' and '問完剪線'. Other writing small faint and out of focus. Tiny scissors and a coil of fine red thread at edge. Ordinary shop bookkeeping object, not fantasy occult grimoire, no pentagrams. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-63ab60b0-385e-472f-8967-70c6b98287b0.png",
+      "preview": "../../public/assets/story/visual-v2/note-rulebook.webp",
+      "bytes": 196036
+    },
+    {
+      "id": "note-flashlight",
+      "file": "art-direction/visual-bible-20261120/clues/note-flashlight.png",
+      "name": "還亮著的手電筒",
+      "category": "clue",
+      "chapter": "第二章",
+      "trigger": "NOTES.flashlight",
+      "caption": "他把光留在這裡，自己摸黑走了。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-flashlight.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A sturdy cylindrical work flashlight wrapped in black electrical tape lying ON beside lowest Buddhist shrine plinth, beam STILL LIT. Its beam picks out a pried-off wood skirting board and empty hollow. TWO knee-shaped impressions in fine gray incense dust directly in front. Short finger-written Traditional Chinese '鞋在老樹下' in dust, uneven strokes. A little prybar partly visible. No person, no shoe here, blindfolded small Buddha blurred safely above. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-94a227c9-aba9-4b5a-b43f-965876c6af1f.png",
+      "preview": "../../public/assets/story/visual-v2/note-flashlight.webp",
+      "bytes": 266366
+    },
+    {
+      "id": "note-chalk",
+      "file": "art-direction/visual-bible-20261120/clues/note-chalk.png",
+      "name": "柱子上的粉筆字",
+      "category": "clue",
+      "chapter": "第三章",
+      "trigger": "NOTES.chalk",
+      "caption": "他終於改口了。可是被叫了才答，仍然是應。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-chalk.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Lower portion of thick worn red temple pillar, many imperfect white CHALK repetitions of '都出來了', descending in size toward floor. Lowest repetition has a rough hand-drawn strike-through and beside it the pressed-hard words '還有一個'. Snapped short white chalk on floor with cheap chalk box, label only '三年二班'. Powder and pressure smears, plausible uneven human writing, no typographic overlay. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-0ef4abff-0b29-4e76-a233-1fdb209e7d23.png",
+      "preview": "../../public/assets/story/visual-v2/note-chalk.webp",
+      "bytes": 211024
+    },
+    {
+      "id": "note-tablet",
+      "file": "art-direction/visual-bible-20261120/clues/note-tablet.png",
+      "name": "翻過去的木牌",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "NOTES.tablet",
+      "caption": "這次妳叫，媽媽就應。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-tablet.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Reverse of a small unpainted plain wooden memorial tablet laid tilted on bottom shelf, drilled hole at top with burnt-ended thin red cord. Blue ballpoint handwritten Traditional Chinese only '小雨' near upper edge and '這次妳叫，媽媽就應。' smaller underneath, irregular tender careful human handwriting. Other lines faintly blurred. No photograph or face. Warm raking light, accumulated dust on surrounding anonymous tablet bases. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-7bb508fa-926b-480f-bbeb-933322ac0064.png",
+      "preview": "../../public/assets/story/visual-v2/note-tablet.webp",
+      "bytes": 186284
+    },
+    {
+      "id": "note-camp",
+      "file": "art-direction/visual-bible-20261120/clues/note-camp.png",
+      "name": "阿哲的地鋪",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "NOTES.camp",
+      "caption": "帶子早就轉到底了。紅燈還亮著。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-camp.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Deserted sleeping corner by west wall of upper Taiwanese temple hall: a thin rollmat, navy sleeping bag unzipped halfway with top thrown aside, rolled work jacket as pillow, thermos and empty instant noodle bowl, THREE cardboard boxes of audio cassettes. Black portable cassette recorder beside pillow has record button depressed and a tiny red LED STILL ON. Long black microphone cable snakes across floor toward narrow rusted hatch seam. No human figure, no extra bed. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-f4c7d936-d5a0-4cd6-88a5-116f2112f326.png",
+      "preview": "../../public/assets/story/visual-v2/note-camp.webp",
+      "bytes": 267530
+    },
+    {
+      "id": "note-register",
+      "file": "art-direction/visual-bible-20261120/clues/note-register.png",
+      "name": "郭師父的問者名冊",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "NOTES.register",
+      "caption": "亡者那一格空著。『還』那一格，寫的是她自己。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-register.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A worn hardcover handwritten Chinese ledger open flat on cassette box, vertical ink columns and faded red square stamps in preceding rows. Two final rows un-stamped; final row clearly reads '林美蘭' in questioner column, deceased-name cell LEFT EMPTY and far-right cell exactly '本人'. A blue sticky tab points to final row. Dense paper fibre and human pen pressure, few legible words only, no invented personal IDs. The empty cell must be visibly empty. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-19c759fb-505f-4702-91a3-ad9f97393490.png",
+      "preview": "../../public/assets/story/visual-v2/note-register.webp",
+      "bytes": 267182
+    },
+    {
+      "id": "note-bucket",
+      "file": "art-direction/visual-bible-20261120/clues/note-bucket.png",
+      "name": "燒黑的鐵桶",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "NOTES.bucket",
+      "caption": "二十八尊都還了。它一尊都沒有收。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-bucket.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Top-three-quarter close view inside a soot-black steel burn barrel: burned BAMBOO skeletons of small Taiwanese paper effigies, numerous intact flat painted PAPER FACES resting in ash all oriented toward same shadowy hatch outside frame. Their faces visibly paper craft, NOT real severed heads. A white empty cotton work glove at barrel base has unnaturally long stretched THUMB. Delivery paper with only '二十八尊' readable. No human remains or gore, uncanny mundane materials. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-deb01af6-a9b6-46ca-873f-380aac769b0f.png",
+      "preview": "../../public/assets/story/visual-v2/note-bucket.webp",
+      "bytes": 242596
+    },
+    {
+      "id": "note-shoes",
+      "file": "art-direction/visual-bible-20261120/clues/note-shoes.png",
+      "name": "門前的一雙女鞋",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "NOTES.shoes",
+      "caption": "這一次，她自己剪了線。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/note-shoes.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A neatly aligned PAIR of small adult women's brown cloth Mary Jane flat shoes, heels toward camera and toes toward a closed black temple door. Inside the LEFT shoe a short neatly CUT red cotton thread with crisp ends, not burned. Faint blue ballpoint ink inside insole. Wet stone and old dust stop at threshold. No feet, no body, no new blood. Visually intimate forensic focus on the cut thread. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-1186557e-b062-4a86-97bf-197857517bd6.png",
+      "preview": "../../public/assets/story/visual-v2/note-shoes.webp",
+      "bytes": 216256
+    },
+    {
+      "id": "home-letter",
+      "file": "art-direction/visual-bible-20261120/clues/home-letter-apartment.png",
+      "name": "阿哲寄回的照片",
+      "category": "clue",
+      "chapter": "住處序章",
+      "trigger": "Home.letter",
+      "caption": "照片先還你。02:47，聽到這裡再停。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/home-letter.webp",
+      "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep exact envelope, wet wood shavings, note '02:47' '聽到這裡再停', face-down photo corner and mug. Place them on an ordinary worn dark desk, warm desk lamp ONLY, aluminum window black with midnight rain. Remove every candle, incense holder, temple column, altar and cobweb. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-b3161768-3970-4e53-962e-130e24a06f0c.png",
+      "previousFile": "art-direction/visual-bible-20261120/clues/home-letter.png",
+      "references": [
+        "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\home-letter.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/home-letter.webp",
+      "bytes": 248982
+    },
+    {
+      "id": "home-slip",
+      "file": "art-direction/visual-bible-20261120/clues/home-slip-apartment.png",
+      "name": "退回來的封口",
+      "category": "clue",
+      "chapter": "住處序章",
+      "trigger": "Home.slip",
+      "caption": "同一道撕口。它怎麼拿到門外的？",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/home-slip.webp",
+      "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep exact torn envelope flap '照片收到，請回答。' under a closed worn BROWN APARTMENT FRONT DOOR on terrazzo. Doorframe of ordinary Taiwanese residential apartment with small yellowed plastic baseboard and clean-but-worn plaster. Remove temple columns, candles, incense holders, vines, cobwebs and thick mold. Thin hall light only under door. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-a05e4e0d-410e-4c80-934c-7aac3d4fcd55.png",
+      "previousFile": "art-direction/visual-bible-20261120/clues/home-slip.png",
+      "references": [
+        "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\home-slip.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/home-slip.webp",
+      "bytes": 169672
+    },
+    {
+      "id": "road-bus",
+      "file": "art-direction/visual-bible-20261120/clues/road-bus.png",
+      "name": "有人替我留了位子",
+      "category": "clue",
+      "chapter": "山村序章",
+      "trigger": "Road.bus",
+      "caption": "整張椅子都濕了。只有這個位子是乾的。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/road-bus.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Abandoned Taiwanese rural bus shelter at rain-soaked night, close view of long concrete bench entirely wet EXCEPT ONE person-width clean dry patch at center. Under dry patch an open black camera battery case with a plain blue label and rainwater inside. Mossy green metal shelter, old route board blurred. No people, no umbrella, no ghost. Flashlight highlights the unnatural sharp dry outline. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-2bd5b3af-b1a9-49e9-9657-122ea4c25f47.png",
+      "preview": "../../public/assets/story/visual-v2/road-bus.webp",
+      "bytes": 239632
+    },
+    {
+      "id": "road-notice",
+      "file": "art-direction/visual-bible-20261120/clues/road-notice.png",
+      "name": "整條街都搬走了",
+      "category": "clue",
+      "chapter": "山村序章",
+      "trigger": "Road.notice",
+      "caption": "電話打不通。作坊的燈卻還亮著。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/road-notice.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Rusted village notice board behind cracked glass in deserted rural Taiwan, dominant white municipal-looking evacuation sheet with clearly handwritten '2024' and Traditional Chinese heading '遷離公告', no official emblems. Beneath is a small yellowed ritual notice with only '七月初一' and '借一聲，還一尊'. A wet finger streak trails down glass across the old address line. Real humid paper layers, no giant text overlay. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-373b9ffa-ed0e-47cd-988f-24c222f68140.png",
+      "preview": "../../public/assets/story/visual-v2/road-notice.webp",
+      "bytes": 338580
+    },
+    {
+      "id": "road-remains",
+      "file": "art-direction/visual-bible-20261120/clues/road-remains.png",
+      "name": "還沒完成的手",
+      "category": "clue",
+      "chapter": "山村序章",
+      "trigger": "Road.remains",
+      "caption": "關節裡的纖維，像皮，也像泡過水的紙。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/road-remains.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: An eerie life-size unfinished ARTIFICIAL PAPER HAND on a Taiwanese paper-effigy maker's cutting table, five natural shaped fingers with rice-paper skin and bamboo/pulp fibrous seams visible, subtly skin-like yet clearly crafted material, plain gold wedding ring embedded on ring finger. No blood or raw tissue. Craft apron edge, glue bowl, scissors and ledger nearby; blank work badge bearing only '郭建成 46歲'. Hand pointing toward table's right edge. Preserve ambiguity; do NOT depict a severed human hand. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-12326dcd-a5d0-4357-b38c-aaaba1b75ea2.png",
+      "preview": "../../public/assets/story/visual-v2/road-remains.webp",
+      "bytes": 259824
+    },
+    {
+      "id": "road-camera",
+      "file": "art-direction/visual-bible-20261120/clues/road-camera.png",
+      "name": "十三秒的空畫面",
+      "category": "clue",
+      "chapter": "山村序章",
+      "trigger": "Road.ledger",
+      "caption": "第七秒，有一隻手搭上桌沿。他沒有回頭。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/road-camera.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A small battered early2000s-style consumer camcorder charging on a workbench, blue blank battery label. Its flip-out screen displays a static low-light recording of the SAME wood workbench with one ambiguous adult-looking PAPER HAND resting over far table edge. Tiny exact date '2026.10.27', timecode '00:00:07'. Camera equipment crate behind carries only '正殿西桌'. No human face, no gore. This is one still image, not a video or animation. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-be60aa27-9ce0-43ef-818f-c853ff68c8fe.png",
+      "preview": "../../public/assets/story/visual-v2/road-camera.webp",
+      "bytes": 285430
+    },
+    {
+      "id": "road-kiln",
+      "file": "art-direction/visual-bible-20261120/clues/road-kiln.png",
+      "name": "沒有燒完的東西",
+      "category": "clue",
+      "chapter": "山村序章",
+      "trigger": "Road.kiln",
+      "caption": "紙人不會有牙。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/road-kiln.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Close-up of a Taiwanese small brick paper-burning kiln mouth at night, gray warm ash, a small row of ARTIFICIAL PORCELAIN DENTURE TEETH and one lump of melted metal buttons embedded in ash, faint red embers reflecting flashlight. Clearly dental prosthetic material, no jawbone, no blood or organic remains. Tactile soot and ceramic glaze. No face or visible person. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-ff9718c7-0113-48ca-aa15-981bc8dd339a.png",
+      "preview": "../../public/assets/story/visual-v2/road-kiln.webp",
+      "bytes": 224914
+    },
+    {
+      "id": "road-car",
+      "file": "art-direction/visual-bible-20261120/clues/road-car-road.png",
+      "name": "車上的時鐘",
+      "category": "clue",
+      "chapter": "山村序章",
+      "trigger": "Road.car",
+      "caption": "這一路，我是一個人開上來的。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/road-car.webp",
+      "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep exact old car interior, empty passenger seat with seatbelt fastened, dashboard23:47 and phone02:16. Change exterior visible through windows to DARK ABANDONED TAIWANESE VILLAGE STREET before arrival at temple: shuttered tile-front shophouses, mossy concrete low wall, wet asphalt, unlit distant streetlamp. NO temple inside or immediately outside car, no altars, candles, incense or spiderwebs. Car is a used daily vehicle, remove thick mold from seats and dashboard but retain realistic use, minor dust and worn upholstery. Rain and deep night, phone/dashboard glow and very weak reflected streetlight only. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6e7283d4-e0ed-4a43-94e4-26661c43925a.png",
+      "previousFile": "art-direction/visual-bible-20261120/clues/road-car.png",
+      "references": [
+        "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\road-car.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/road-car.webp",
+      "bytes": 159782
+    },
+    {
+      "id": "home-calendar",
+      "file": "art-direction/visual-bible-20261120/clues/home-calendar-apartment.png",
+      "name": "停在十二日的月曆",
+      "category": "clue",
+      "chapter": "住處序章",
+      "trigger": "Home.calendar",
+      "caption": "筆尖壓破了紙。牆上卻沒有痕跡。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/home-calendar.webp",
+      "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep 2026 November calendar, circled 12, arrow to punctured13, but make this a believable complete MONTH grid with small other dates, large readable 12/13. Hang on the chipped off-white plaster wall of an ORDINARY LIVED-IN TAIWANESE APARTMENT. No shrine, candles, temple columns, incense, cobwebs or severe mold. Worn light switch nearby. Oblique dim desk-lamp light at midnight, quiet dread. Behind paper wall remains unpunctured. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-d6242c63-570f-42f7-a2a4-fd3327cc8d76.png",
+      "previousFile": "art-direction/visual-bible-20261120/clues/home-calendar.png",
+      "references": [
+        "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\home-calendar.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/home-calendar.webp",
+      "bytes": 164236
+    },
+    {
+      "id": "home-window",
+      "file": "art-direction/visual-bible-20261120/clues/home-window-apartment.png",
+      "name": "雨聲裡少了一拍",
+      "category": "clue",
+      "chapter": "住處序章",
+      "trigger": "Home.window",
+      "caption": "我停住，那聲音也停。這裡是七樓。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/home-window.webp",
+      "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep same seventh-floor aluminum window and night view of opposite Taiwanese tiled residential building, window bars and AC units. Remove indoor candles, temple columns, altar and heavy moss. Interior ordinary lived-in old Taiwanese apartment, chipped offwhite plaster, wooden desk corner and dim lamp reflected on glass. Outside midnight black and heavy rain. No balcony. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-0ef5fa2c-bab9-40e7-a1de-f2e4c4ae475c.png",
+      "previousFile": "art-direction/visual-bible-20261120/clues/home-window.png",
+      "references": [
+        "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\home-window.png"
+      ],
+      "preview": "../../public/assets/story/visual-v2/home-window.webp",
+      "bytes": 205596
+    },
+    {
+      "id": "home-message",
+      "file": "art-direction/visual-bible-20261120/clues/home-message-scale.png",
+      "name": "沒有送出的語音",
+      "category": "clue",
+      "chapter": "住處序章",
+      "trigger": "Home.message",
+      "caption": "第二段最後的拖椅聲，原本不在那裡。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/home-message.webp",
+      "prompt": "Use case: precise-object-edit. Correct ONLY the absurdly oversized phone in this exact image. Keep the identical camera, entire desk, notebook, lamp, chair, cup, nighttime rain window, lighting and background. Make the phone a normal physical smartphone 15cm long and7cm wide: reduce its apparent linear LENGTH AND WIDTH to 40 percent of the current phone (NOT merely shrink the screen), retaining the same perspective, then place it flat near the MIDDLE-RIGHT of the tabletop BESIDE the notebook rather than at the front edge. The notebook is an A4 notebook29.7cm long; the phone must be visibly about HALF its length on the same plane. Reconstruct the worn wooden tabletop where giant phone was. Keep sufficient realistic empty desk around the small phone. Thin standard USB cable and small connector, no giant accessories. Keep two audio recordings dated10/30 and11/12 with two small waveforms on screen, readable when zoomed but don't enlarge phone to read it. The phone is a small mundane object among household objects, not a tablet. Photorealistic, grounded ordinary Taiwanese old apartment at NIGHT, subdued desk lamp, sinister shadows. Do not change furniture scale, zoom camera, add objects, or brighten environment.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6bb4f4b8-13a3-49ac-9030-0932cb37eb84.png",
+      "previousFile": "art-direction/visual-bible-20261120/clues/home-message.png",
+      "references": [
+        "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6c214f14-603e-4cde-be01-71910ca3275e.png"
+      ],
+      "revision": "手機約15cm，縮小至原圖線性尺寸40%，核對筆記本與桌面比例",
+      "preview": "../../public/assets/story/visual-v2/home-message.webp",
+      "bytes": 200020
+    },
+    {
+      "id": "temple-rules",
+      "file": "art-direction/visual-bible-20261120/clues/temple-rules.png",
+      "name": "天公爐上的刻字",
+      "category": "clue",
+      "chapter": "第一章",
+      "trigger": "Temple.rules",
+      "caption": "問路可，勿報己名。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/temple-rules.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Close low-angle detail of large oxidized bronze three-legged Taiwanese sky-god incense burner outside temple, ash-filled rim engraved with a short worn Traditional Chinese phrase exactly '門內喚名勿應'. Three thin incense sticks smouldering, believable patina and ash clogging carved grooves. Wet granite courtyard and shut wood gate blurred behind. No statues facing camera, no people, no decorative fantasy glyphs. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-7a717527-0df6-4559-98e9-40fe628053b6.png",
+      "preview": "../../public/assets/story/visual-v2/temple-rules.webp",
+      "bytes": 254474
+    },
+    {
+      "id": "three-friends-shoes",
+      "file": "art-direction/visual-bible-20261120/clues/three-friends-shoes.png",
+      "name": "暗道邊的三雙鞋",
+      "category": "clue",
+      "chapter": "第四章",
+      "trigger": "Story.descent",
+      "caption": "阿哲、志豪、柏翰。我的鞋還穿在腳上。",
+      "status": "generated",
+      "runtime": "public/assets/story/visual-v2/three-friends-shoes.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: Exactly THREE PAIRS of footwear neatly set beside an unopened rusted wooden temple floor hatch, toes all facing the same hatch: pair1 brown lace-up WORK BOOTS, pair2 BLUE-AND-WHITE rubber FLIP-FLOPS, pair3 grey SNEAKERS with FLATTENED heel counters. No fourth pair, no people or legs. Rust line on hatch entirely undisturbed, dust with faint approach traces. Cold flashlight across grain, ominous ordinary detail. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-5d3deb69-5782-463f-bcc3-49cc42a8437c.png",
+      "preview": "../../public/assets/story/visual-v2/three-friends-shoes.webp",
+      "bytes": 230206
+    },
+    {
+      "id": "beat-home-door",
+      "file": "art-direction/visual-bible-20261120/beats/beat-home-door.png",
+      "name": "敲三下",
+      "category": "beat",
+      "chapter": "住處序章",
+      "trigger": "接聽完電話，門外自稱管理員時",
+      "dialogue": [
+        [
+          "門外",
+          "管理員。剛才送錯東西了，請開一下門。"
+        ],
+        [
+          "以安・旁白",
+          "對講機沒有亮過。"
+        ]
+      ],
+      "caption": "門外：「管理員。剛才送錯東西了，請開一下門。」\n以安・旁白：「對講機沒有亮過。」",
+      "references": [],
+      "runtime": "public/assets/story/visual-v2/beat-home-door.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. POV from inside an ordinary old Taiwanese apartment at midnight. Half-lit wood front door, adjacent beige intercom with ALL indicator lamps OFF, dangling old security chain, worn terrazzo. Beyond under-door gap only a narrow warm glow and an ambiguous interrupted shadow, NO visible person. Desk lamp reflection dies down hallway. Wet shoe prints stop facing the door, no departing prints. Frightening emptiness, night only. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings match the stated time and location. Home is an ordinary lived-in old Taiwanese apartment, with no ritual props, no temple altar or columns and no cobweb-covered abandoned-room appearance. 1998/1999 temple memory has aged wood but is still in use. Night only, grounded realistic surroundings. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-888c58e0-67d2-4f4e-853b-30ae3d84cca0.png",
+      "preview": "../../public/assets/story/visual-v2/beat-home-door.webp",
+      "bytes": 115944
+    },
+    {
+      "id": "beat-temple-arrival",
+      "file": "art-direction/visual-bible-20261120/beats/beat-temple-arrival.png",
+      "name": "停在同一分鐘",
+      "category": "beat",
+      "chapter": "第一章",
+      "trigger": "第一次點香、山門關上",
+      "dialogue": [
+        [
+          "以安",
+          "手機上的時間還是02:47。"
+        ],
+        [
+          "以安・旁白",
+          "我進山門，早就不只一分鐘了。"
+        ]
+      ],
+      "caption": "以安：「手機上的時間還是02:47。」\n以安・旁白：「我進山門，早就不只一分鐘了。」",
+      "references": [],
+      "runtime": "public/assets/story/visual-v2/beat-temple-arrival.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. POV entering abandoned Taiwanese mountain temple at02:47 at night, three smouldering incense sticks in front, every visible Buddha's EYES completely blindfolded with weathered red cloth. High torn vermilion fabric sways implied by folds, oily black columns, broken roof with barely perceptible cold night sky. A small phone in adult male hand at lower right shows '02:47'. Only weak candle pools and flashlight, deep black beyond altar, no identifiable supernatural face. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-29d3398a-30e8-4fe0-8ccb-7889e2c93ae8.png",
+      "preview": "../../public/assets/story/visual-v2/beat-temple-arrival.webp",
+      "bytes": 168654
+    },
+    {
+      "id": "beat-rollcall",
+      "file": "art-direction/visual-bible-20261120/beats/beat-rollcall.png",
+      "name": "替她喊的那一聲",
+      "category": "beat",
+      "chapter": "第三章",
+      "trigger": "戲台第一次記憶重演；不能在序章播放",
+      "dialogue": [
+        [
+          "點名的人",
+          "……六。"
+        ],
+        [
+          "佩珊（童年）",
+          "有。"
+        ],
+        [
+          "以安・旁白",
+          "聲音，是從第五張椅子傳來的。"
+        ]
+      ],
+      "caption": "點名的人：「……六。」\n佩珊（童年）：「有。」\n以安・旁白：「聲音，是從第五張椅子傳來的。」",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/chen-yian-1998.png",
+        "art-direction/visual-bible-20261120/characters/zhang-mingzhe-1998.png",
+        "art-direction/visual-bible-20261120/characters/xu-zhihao-1998.png",
+        "art-direction/visual-bible-20261120/characters/wu-bohan-1998.png",
+        "art-direction/visual-bible-20261120/characters/zhou-peishan-1998.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-rollcall.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Night1998 small Taiwanese temple opera stage, exactlySIX stools in a row. FIVE healthy uninjured children sitting on firstfive left-to-right: mustard-shirt boy11, offwhite-jersey boy12, blue-striped boy11, brick-striped glasses boy10, denim-pinafore girl10. Girl on FIFTH stool leans forward answering. SIXTH stool turned away, only faded red cloth rabbit on it. Dim tungsten backstage light, curtain hides rear hall. Photographic period clothing, no adult faces on children, no gore, wide view allsixcountable. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings match the stated time and location. Home is an ordinary lived-in old Taiwanese apartment, with no ritual props, no temple altar or columns and no cobweb-covered abandoned-room appearance. 1998/1999 temple memory has aged wood but is still in use. Night only, grounded realistic surroundings. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-baefc936-66e6-48ab-87d4-6b772c3926d7.png",
+      "preview": "../../public/assets/story/visual-v2/beat-rollcall.webp",
+      "bytes": 157476
+    },
+    {
+      "id": "beat-phone-draft",
+      "file": "art-direction/visual-bible-20261120/beats/beat-phone-draft.png",
+      "name": "它替他送完了",
+      "category": "beat",
+      "chapter": "第三章末",
+      "trigger": "擲筊拿到鑰匙後；不先展示阿哲下落",
+      "dialogue": [
+        [
+          "手機訊息・阿哲",
+          "鑰匙拿到就上來。我在。"
+        ],
+        [
+          "以安・旁白",
+          "送出時間，還是02:47。"
+        ]
+      ],
+      "caption": "手機訊息・阿哲：「鑰匙拿到就上來。我在。」\n以安・旁白：「送出時間，還是02:47。」",
+      "references": [],
+      "runtime": "public/assets/story/visual-v2/beat-phone-draft.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Close first-person still of an adult male Taiwanese hand holding phone showing one clear dark chat bubble Traditional Chinese '鑰匙拿到就上來。我在。' and time '02:47'; other hand holds small chipped brass key above open dusty divination drawer. Red wooden moon-block divination pieces lie on table. Abandoned temple atnight, narrow flashlight, decayed red cloth behind, no person visible, no portraits. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-0670d77d-0db2-4f27-b3f4-325d0365a562.png",
+      "preview": "../../public/assets/story/visual-v2/beat-phone-draft.webp",
+      "bytes": 209490
+    },
+    {
+      "id": "beat-meilan-return",
+      "file": "art-direction/visual-bible-20261120/beats/beat-meilan-return.png",
+      "name": "還：本人",
+      "category": "beat",
+      "chapter": "第四章支線",
+      "trigger": "讀過問者名冊與翻過去的木牌後",
+      "dialogue": [
+        [
+          "林美蘭・旁白",
+          "這一次不問妳爸爸，問妳。"
+        ],
+        [
+          "林美蘭",
+          "這次妳叫，媽媽就應。"
+        ]
+      ],
+      "caption": "林美蘭・旁白：「這一次不問妳爸爸，問妳。」\n林美蘭：「這次妳叫，媽媽就應。」",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/lin-meilan-1998-v2.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-meilan-return.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Night1999, SAME29yearold Taiwanese mother from reference kneels outside closed old wooden rear-temple door, ivory blouse/skirt, barefoot. Brown MaryJane shoes placed neatly beside her pointing inward. At left wrist fine red cord extends to iron door ring; in right hand small sewing scissors just after cutting cord. Ledger open beside shoes, no legible text. Face in profile resolute and sorrowful, not possessed, no self injury. One dying candle and coldmoonlight, no daylight, no unseen child shown. Human tenderness within frightening architecture. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings match the stated time and location. Home is an ordinary lived-in old Taiwanese apartment, with no ritual props, no temple altar or columns and no cobweb-covered abandoned-room appearance. 1998/1999 temple memory has aged wood but is still in use. Night only, grounded realistic surroundings. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-41eab0c8-37c5-4ddc-8738-43da02569826.png",
+      "preview": "../../public/assets/story/visual-v2/beat-meilan-return.webp",
+      "bytes": 152444
+    },
+    {
+      "id": "beat-camp-call",
+      "file": "art-direction/visual-bible-20261120/beats/beat-camp-call.png",
+      "name": "錄音機還在點名",
+      "category": "beat",
+      "chapter": "第四章",
+      "trigger": "四樓錄音機演出：阿哲應聲那一刻",
+      "dialogue": [
+        [
+          "錄音裡的女孩",
+          "張明哲。"
+        ],
+        [
+          "阿哲",
+          "……有。"
+        ],
+        [
+          "以安・旁白",
+          "帶子早就轉到底了。"
+        ]
+      ],
+      "caption": "錄音裡的女孩：「張明哲。」\n阿哲：「……有。」\n以安・旁白：「帶子早就轉到底了。」",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/zhang-mingzhe-2026-v2.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-camp-call.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Night2026 upper-floor temple. SAME40yearold Taiwanese equipment worker from reference has half risen from unzipped navy sleeping bag, head turning toward a sealed rusted floor hatch, mouth just opening as if answering. Black recorder with tiny redLED in foreground, long microphone cable enters hatch seam, three boxes of tapes and thermos. Brown work boots on his feet. Face caught in weak reflected candle light, dark headroom pressing down. No ghost or injury; dread of an ordinary reflex. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-8d16a443-0bef-4db1-8f3d-ea7fa601ed88.png",
+      "preview": "../../public/assets/story/visual-v2/beat-camp-call.webp",
+      "bytes": 134146
+    },
+    {
+      "id": "beat-six-seats",
+      "file": "art-direction/visual-bible-20261120/beats/beat-six-seats-opaque.png",
+      "name": "這次不要替她喊",
+      "category": "beat",
+      "chapter": "真結局C",
+      "trigger": "歸物後六張椅子出現",
+      "dialogue": [
+        [
+          "錄音",
+          "……六。"
+        ],
+        [
+          "以安・旁白",
+          "這一次，我等她自己回答。"
+        ]
+      ],
+      "caption": "錄音：「……六。」\n以安・旁白：「這一次，我等她自己回答。」",
+      "references": [
+        "C:\\Users\\JAOREN~1\\AppData\\Local\\Temp\\codex-clipboard-d0e5cde9-1dae-4fcd-9b6b-49f70a726be6.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-six-seats.webp",
+      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Edit this exact cinematic photograph. Change ONLY the red blindfolds on ALL THREE seated adult men. Each blindfold must be a WIDE, THICK, COMPLETELY OPAQUE dark crimson woven cloth band, wrapped tightly around the eye area. Its top edge ABOVE both eyebrows; its bottom edge BELOW the entire lower eyelids onto upper cheekbones, conforming snugly over the nose bridge and temples. Cover BOTH eyes completely on each man, including inner and outer corners. Absolutely NO visible eyeball, iris, eyelid, eye socket, thin gap, see-through fabric, hole or exposed outer eye corner on any of the three men. Give the cloth realistic heavy overlapping folds, wear only along outer trailing tails, NEVER holes where eyes are. Preserve exact identities, face shapes below blindfolds, hair, clothes, shoes, three men, six stools, poses, framing, dark night lighting and old Taiwanese temple. Photorealistic fabric contact and shadow. Do not move the band onto foreheads. No text or other alterations.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-2fac2208-143c-4744-b5dc-8e168e3f7bb1.png",
+      "revision": "三人紅布完全遮住雙眼，使用者修正",
+      "preview": "../../public/assets/story/visual-v2/beat-six-seats.webp",
+      "bytes": 142588
+    },
+    {
+      "id": "beat-key-fire",
+      "file": "art-direction/visual-bible-20261120/beats/beat-key-fire.png",
+      "name": "這次不要放手",
+      "category": "beat",
+      "chapter": "第四章真相／真結局C",
+      "trigger": "舊鎖真相後，見證轉鑰匙時",
+      "dialogue": [
+        [
+          "以安",
+          "我是陳以安。門是我扣的。"
+        ],
+        [
+          "門內・小雨",
+          "你說你會回來。"
+        ]
+      ],
+      "caption": "以安：「我是陳以安。門是我扣的。」\n門內・小雨：「你說你會回來。」",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/chen-yian-2026-v2.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-key-fire.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Extreme close-up of SAME adult Taiwanese man's RIGHT hand in charcoal jacket sleeve gripping a chipped brass key in scorched iron lock of shut wood door, tiny healed palm scar visible at edge. Only hand in frame, no child shown. Fireglow leaks through very narrow lower seam and small rectangular feed opening, smoke gathers above. Grip determined, NO burning skin, NO wounds or gore. Cinematic NIGHT, orange reflected fire within near-black shadows, evidence and emotional decision, not an actionposter. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-76252907-7b87-4beb-be36-6923dc96d5d5.png",
+      "preview": "../../public/assets/story/visual-v2/beat-key-fire.webp",
+      "bytes": 142000
+    },
+    {
+      "id": "beat-child-threshold",
+      "file": "art-direction/visual-bible-20261120/beats/beat-child-threshold.png",
+      "name": "你回來了",
+      "category": "beat",
+      "chapter": "真結局C",
+      "trigger": "成功轉開鎖，門開之後",
+      "dialogue": [
+        [
+          "小雨",
+          "你回來了。"
+        ],
+        [
+          "以安",
+          "對不起。我說我等一下就回來。"
+        ]
+      ],
+      "caption": "小雨：「你回來了。」\n以安：「對不起。我說我等一下就回來。」",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/lin-xiaoyu-1998-v2.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-child-threshold.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. SAME seven-year-old Taiwanese girl from reference sits quietly hugging knees on low weathered wooden temple threshold after door opened. Same shortbob redclips and modest white dress with tiny red flowers. Exactly ONE red cloth MaryJane shoe on RIGHT foot, LEFT foot with plain white sock but no shoe. Full body safe, face visible, healthy intact natural complete teeth if visible, gentle sad relief, no burns or injuries. Huge pitch-black room behind, soft off-camera flashlight and one tiny candle at side, night scene. Small child dwarfed by empty doorway. No monster. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-0e200f6f-9355-4c29-9efa-926074aecdfd.png",
+      "preview": "../../public/assets/story/visual-v2/beat-child-threshold.webp",
+      "bytes": 155802
+    },
+    {
+      "id": "beat-mother-daughter",
+      "file": "art-direction/visual-bible-20261120/beats/beat-mother-daughter.png",
+      "name": "這次媽媽有應",
+      "category": "beat",
+      "chapter": "真結局C",
+      "trigger": "美蘭恢復自己的聲音；重逢",
+      "dialogue": [
+        [
+          "林美蘭",
+          "……小雨？"
+        ],
+        [
+          "小雨",
+          "媽媽。"
+        ]
+      ],
+      "caption": "林美蘭：「……小雨？」\n小雨：「媽媽。」",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/lin-xiaoyu-1998-v2.png",
+        "art-direction/visual-bible-20261120/characters/borrowed-meilan-1999.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-mother-daughter.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Exact same29yearold Taiwanese mother and7yearold daughter from two reference sheets in a dark old temple doorway atnight. Mother kneeling at child's height, gently embracing her with face visibly human and relieved, damp long hair, ivory blouse and skirt, thin RED cord on LEFT wrist now loosely CUT. Child in tinyfloral white dress, redhairclips, one redcloth shoe, complete natural teeth, no injuries. Warm small candle light on faces against vast nearblack, olddoor and coarse stone, intimate real human reunion, no halos, fantasyglow or ghosts dissolving. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-e24e5591-cbfe-4f79-a540-d6617bb35cf5.png",
+      "preview": "../../public/assets/story/visual-v2/beat-mother-daughter.webp",
+      "bytes": 191872
+    },
+    {
+      "id": "beat-ending-a",
+      "file": "art-direction/visual-bible-20261120/beats/beat-ending-a.png",
+      "name": "又說了一次",
+      "category": "beat",
+      "chapter": "結局A",
+      "trigger": "離寺後的幾個月，自己的來電",
+      "dialogue": [
+        [
+          "自己的聲音",
+          "裡面還有沒有人？"
+        ],
+        [
+          "以安・旁白",
+          "這一次，沒有大人教我。"
+        ]
+      ],
+      "caption": "自己的聲音：「裡面還有沒有人？」\n以安・旁白：「這一次，沒有大人教我。」",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/chen-yian-2026-v2.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-ending-a.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Nighttime ordinary Taiwanese apartment months later. SAME39yearold man as reference sits in dark at desk, seen from rear threequarter profile, charcoal jacket, frozen expression reflected faintly in black window. Foreground phone brightly shows '23:47' and caller '陳以安'. Half-open wooden drawer contains another dead cracked phone. Weak desk lamp, stale stillness, deep shadows. No person duplicated, no jump-scare monster, realistic suspense. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings match the stated time and location. Home is an ordinary lived-in old Taiwanese apartment, with no ritual props, no temple altar or columns and no cobweb-covered abandoned-room appearance. 1998/1999 temple memory has aged wood but is still in use. Night only, grounded realistic surroundings. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6b05bb80-dc04-4c16-9a08-bc1dc9774e19.png",
+      "preview": "../../public/assets/story/visual-v2/beat-ending-a.webp",
+      "bytes": 78026
+    },
+    {
+      "id": "beat-ending-b",
+      "file": "art-direction/visual-bible-20261120/beats/beat-ending-b.png",
+      "name": "換妳了",
+      "category": "beat",
+      "chapter": "結局B",
+      "trigger": "替身拿起手機離開，主角留在第六張椅子",
+      "dialogue": [
+        [
+          "替身",
+          "佩珊，是我。"
+        ],
+        [
+          "替身",
+          "我出來了。換妳了。"
+        ]
+      ],
+      "caption": "替身：「佩珊，是我。」\n替身：「我出來了。換妳了。」",
+      "references": [
+        "art-direction/visual-bible-20261120/characters/chen-yian-2026-v2.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-ending-b.webp",
+      "status": "generated",
+      "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. POV through a NARROW horizontal gap between two dark-red rough cloth bands covering viewer's eyes. In distance SAME39yearold Taiwanese man from reference, charcoaljacket and mustardshirt, walks away up damp underground temple stairs with smartphone in hisright hand. His normal exact appearance is unnerving, not demonic. Near edges blurred wood stool rail implies viewer seated. Night, lone coldphoneglow, tiny candle below, no extra clones, no gore. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-21bb0f3e-2576-44b8-9c04-7454bb78cc07.png",
+      "preview": "../../public/assets/story/visual-v2/beat-ending-b.webp",
+      "bytes": 117550
+    },
+    {
+      "id": "beat-ending-c",
+      "file": "art-direction/visual-bible-20261120/beats/beat-ending-c-grounded.png",
+      "name": "裡面還有人",
+      "category": "beat",
+      "chapter": "結局C",
+      "trigger": "黎明救援，最後回答有",
+      "dialogue": [
+        [
+          "搜救隊",
+          "裡面還有沒有人？"
+        ],
+        [
+          "以安",
+          "有。地下，神壇後面那扇門。"
+        ],
+        [
+          "阿哲",
+          "……小雨。"
+        ]
+      ],
+      "caption": "搜救隊：「裡面還有沒有人？」\n以安：「有。地下，神壇後面那扇門。」\n阿哲：「……小雨。」",
+      "references": [
+        "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-cca13f12-2973-4c34-9b69-aaf9eb124ed3.png"
+      ],
+      "runtime": "public/assets/story/visual-v2/beat-ending-c.webp",
+      "status": "generated",
+      "prompt": "Use case: precise-object-edit. Correct the impossible ground intersections in this exact photorealistic rescue scene. Preserve the same four men, their faces, age, outfits, storytelling, abandoned Taiwanese temple, discarded red cloth, and cool dawn lighting. Recompose slightly WIDER to show complete bodies and complete stretcher undercarriage. Put the entire rescue group on ONE CLEAR FLAT WET CONCRETE LANDING at the bottom of the stairs. All stairs are BEHIND the group, never cutting through their legs or equipment. The conscious navy-shirt patient lies on a horizontal wheeled ambulance stretcher. Show its mechanically plausible yellow scissor undercarriage and all four solid rubber caster wheels fully visible ABOVE the flat concrete, wheel bottoms just touching it. Two orange-vest rescuers stand beside head and foot of stretcher; charcoal-jacket mustard-shirt protagonist stands beside patient. Show both shoes of each standing man fully and naturally placed on same landing, with visible shoe soles and coherent contact shadows. No feet, trousers, poles or wheels embedded in ground; no water deeper than a thin wet surface; no floating. Patient boots remain on mattress. Camera sufficiently wide and high so all feet and wheels have generous clearance from bottom crop. Fix all perspective and ground planes while retaining exact people and emotional connection. No text, no new people, no injury.",
+      "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-f2bef75f-aedf-4a68-856d-d6f67170a81b.png",
+      "revision": "鞋底與擔架完整露出，階梯改在救援平台後方",
+      "preview": "../../public/assets/story/visual-v2/beat-ending-c.webp",
+      "bytes": 424806
+    }
+  ]
+}

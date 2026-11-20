@@ -1,0 +1,26 @@
+{
+  "id": "beat-ending-a",
+  "name": "又說了一次",
+  "category": "beat",
+  "chapter": "結局A",
+  "trigger": "離寺後的幾個月，自己的來電",
+  "dialogue": [
+    [
+      "自己的聲音",
+      "裡面還有沒有人？"
+    ],
+    [
+      "以安・旁白",
+      "這一次，沒有大人教我。"
+    ]
+  ],
+  "caption": "自己的聲音：「裡面還有沒有人？」\n以安・旁白：「這一次，沒有大人教我。」",
+  "references": [
+    "art-direction/visual-bible-20261120/characters/chen-yian-2026-v2.png"
+  ],
+  "file": "art-direction/visual-bible-20261120/beats/beat-ending-a.png",
+  "runtime": "public/assets/story/visual-v2/beat-ending-a.webp",
+  "status": "generated",
+  "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Nighttime ordinary Taiwanese apartment months later. SAME39yearold man as reference sits in dark at desk, seen from rear threequarter profile, charcoal jacket, frozen expression reflected faintly in black window. Foreground phone brightly shows '23:47' and caller '陳以安'. Half-open wooden drawer contains another dead cracked phone. Weak desk lamp, stale stillness, deep shadows. No person duplicated, no jump-scare monster, realistic suspense. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings match the stated time and location. Home is an ordinary lived-in old Taiwanese apartment, with no ritual props, no temple altar or columns and no cobweb-covered abandoned-room appearance. 1998/1999 temple memory has aged wood but is still in use. Night only, grounded realistic surroundings. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6b05bb80-dc04-4c16-9a08-bc1dc9774e19.png"
+}

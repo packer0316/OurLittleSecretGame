@@ -1,0 +1,31 @@
+{
+  "id": "beat-ending-c",
+  "name": "裡面還有人",
+  "category": "beat",
+  "chapter": "結局C",
+  "trigger": "黎明救援，最後回答有",
+  "dialogue": [
+    [
+      "搜救隊",
+      "裡面還有沒有人？"
+    ],
+    [
+      "以安",
+      "有。地下，神壇後面那扇門。"
+    ],
+    [
+      "阿哲",
+      "……小雨。"
+    ]
+  ],
+  "caption": "搜救隊：「裡面還有沒有人？」\n以安：「有。地下，神壇後面那扇門。」\n阿哲：「……小雨。」",
+  "references": [
+    "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-cca13f12-2973-4c34-9b69-aaf9eb124ed3.png"
+  ],
+  "file": "art-direction/visual-bible-20261120/beats/beat-ending-c-grounded.png",
+  "runtime": "public/assets/story/visual-v2/beat-ending-c.webp",
+  "status": "generated",
+  "prompt": "Use case: precise-object-edit. Correct the impossible ground intersections in this exact photorealistic rescue scene. Preserve the same four men, their faces, age, outfits, storytelling, abandoned Taiwanese temple, discarded red cloth, and cool dawn lighting. Recompose slightly WIDER to show complete bodies and complete stretcher undercarriage. Put the entire rescue group on ONE CLEAR FLAT WET CONCRETE LANDING at the bottom of the stairs. All stairs are BEHIND the group, never cutting through their legs or equipment. The conscious navy-shirt patient lies on a horizontal wheeled ambulance stretcher. Show its mechanically plausible yellow scissor undercarriage and all four solid rubber caster wheels fully visible ABOVE the flat concrete, wheel bottoms just touching it. Two orange-vest rescuers stand beside head and foot of stretcher; charcoal-jacket mustard-shirt protagonist stands beside patient. Show both shoes of each standing man fully and naturally placed on same landing, with visible shoe soles and coherent contact shadows. No feet, trousers, poles or wheels embedded in ground; no water deeper than a thin wet surface; no floating. Patient boots remain on mattress. Camera sufficiently wide and high so all feet and wheels have generous clearance from bottom crop. Fix all perspective and ground planes while retaining exact people and emotional connection. No text, no new people, no injury.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-f2bef75f-aedf-4a68-856d-d6f67170a81b.png",
+  "revision": "鞋底與擔架完整露出，階梯改在救援平台後方"
+}

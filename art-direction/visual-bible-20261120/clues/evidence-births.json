@@ -1,0 +1,13 @@
+{
+  "id": "evidence-births",
+  "name": "門框上的六道身高",
+  "category": "clue",
+  "chapter": "第四章",
+  "trigger": "EVIDENCE.births",
+  "caption": "最矮的那道，不是沒有名字。是被蓋住了。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/evidence-births.png",
+  "runtime": "public/assets/story/visual-v2/evidence-births.webp",
+  "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A long salvaged narrow vertical wooden temple doorjamb laid diagonally on a carpenter support, SIX separate uneven childhood height scratches at different heights. Lowest mark uncovered beneath crumbling grey repair putty, handwritten Traditional Chinese '林小雨' next to simple tiny rabbit doodle with left ear bent. Five higher annotations faint and unreadable, no extra legible names. Half a clay pendant tied to reverse edge depicts a tree and gap in wall. Raking light reveals actual scratches and plaster edges. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-01608a89-9ea0-4c67-9879-35978e9d17fc.png"
+}

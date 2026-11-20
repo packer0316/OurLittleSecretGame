@@ -1,0 +1,27 @@
+{
+  "id": "beat-mother-daughter",
+  "name": "這次媽媽有應",
+  "category": "beat",
+  "chapter": "真結局C",
+  "trigger": "美蘭恢復自己的聲音；重逢",
+  "dialogue": [
+    [
+      "林美蘭",
+      "……小雨？"
+    ],
+    [
+      "小雨",
+      "媽媽。"
+    ]
+  ],
+  "caption": "林美蘭：「……小雨？」\n小雨：「媽媽。」",
+  "references": [
+    "art-direction/visual-bible-20261120/characters/lin-xiaoyu-1998-v2.png",
+    "art-direction/visual-bible-20261120/characters/borrowed-meilan-1999.png"
+  ],
+  "file": "art-direction/visual-bible-20261120/beats/beat-mother-daughter.png",
+  "runtime": "public/assets/story/visual-v2/beat-mother-daughter.webp",
+  "status": "generated",
+  "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. Exact same29yearold Taiwanese mother and7yearold daughter from two reference sheets in a dark old temple doorway atnight. Mother kneeling at child's height, gently embracing her with face visibly human and relieved, damp long hair, ivory blouse and skirt, thin RED cord on LEFT wrist now loosely CUT. Child in tinyfloral white dress, redhairclips, one redcloth shoe, complete natural teeth, no injuries. Warm small candle light on faces against vast nearblack, olddoor and coarse stone, intimate real human reunion, no halos, fantasyglow or ghosts dissolving. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-e24e5591-cbfe-4f79-a540-d6617bb35cf5.png"
+}

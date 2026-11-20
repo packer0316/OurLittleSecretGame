@@ -1,0 +1,18 @@
+{
+  "id": "home-message",
+  "name": "沒有送出的語音",
+  "category": "clue",
+  "chapter": "住處序章",
+  "trigger": "Home.message",
+  "caption": "第二段最後的拖椅聲，原本不在那裡。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/home-message-scale.png",
+  "runtime": "public/assets/story/visual-v2/home-message.webp",
+  "prompt": "Use case: precise-object-edit. Correct ONLY the absurdly oversized phone in this exact image. Keep the identical camera, entire desk, notebook, lamp, chair, cup, nighttime rain window, lighting and background. Make the phone a normal physical smartphone 15cm long and7cm wide: reduce its apparent linear LENGTH AND WIDTH to 40 percent of the current phone (NOT merely shrink the screen), retaining the same perspective, then place it flat near the MIDDLE-RIGHT of the tabletop BESIDE the notebook rather than at the front edge. The notebook is an A4 notebook29.7cm long; the phone must be visibly about HALF its length on the same plane. Reconstruct the worn wooden tabletop where giant phone was. Keep sufficient realistic empty desk around the small phone. Thin standard USB cable and small connector, no giant accessories. Keep two audio recordings dated10/30 and11/12 with two small waveforms on screen, readable when zoomed but don't enlarge phone to read it. The phone is a small mundane object among household objects, not a tablet. Photorealistic, grounded ordinary Taiwanese old apartment at NIGHT, subdued desk lamp, sinister shadows. Do not change furniture scale, zoom camera, add objects, or brighten environment.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6bb4f4b8-13a3-49ac-9030-0932cb37eb84.png",
+  "previousFile": "art-direction/visual-bible-20261120/clues/home-message.png",
+  "references": [
+    "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6c214f14-603e-4cde-be01-71910ca3275e.png"
+  ],
+  "revision": "手機約15cm，縮小至原圖線性尺寸40%，核對筆記本與桌面比例"
+}

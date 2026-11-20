@@ -1,0 +1,17 @@
+{
+  "id": "home-window",
+  "name": "雨聲裡少了一拍",
+  "category": "clue",
+  "chapter": "住處序章",
+  "trigger": "Home.window",
+  "caption": "我停住，那聲音也停。這裡是七樓。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/home-window-apartment.png",
+  "runtime": "public/assets/story/visual-v2/home-window.webp",
+  "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep same seventh-floor aluminum window and night view of opposite Taiwanese tiled residential building, window bars and AC units. Remove indoor candles, temple columns, altar and heavy moss. Interior ordinary lived-in old Taiwanese apartment, chipped offwhite plaster, wooden desk corner and dim lamp reflected on glass. Outside midnight black and heavy rain. No balcony. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-0ef5fa2c-bab9-40e7-a1de-f2e4c4ae475c.png",
+  "previousFile": "art-direction/visual-bible-20261120/clues/home-window.png",
+  "references": [
+    "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\home-window.png"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "road-remains",
+  "name": "還沒完成的手",
+  "category": "clue",
+  "chapter": "山村序章",
+  "trigger": "Road.remains",
+  "caption": "關節裡的纖維，像皮，也像泡過水的紙。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/road-remains.png",
+  "runtime": "public/assets/story/visual-v2/road-remains.webp",
+  "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: An eerie life-size unfinished ARTIFICIAL PAPER HAND on a Taiwanese paper-effigy maker's cutting table, five natural shaped fingers with rice-paper skin and bamboo/pulp fibrous seams visible, subtly skin-like yet clearly crafted material, plain gold wedding ring embedded on ring finger. No blood or raw tissue. Craft apron edge, glue bowl, scissors and ledger nearby; blank work badge bearing only '郭建成 46歲'. Hand pointing toward table's right edge. Preserve ambiguity; do NOT depict a severed human hand. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-12326dcd-a5d0-4357-b38c-aaaba1b75ea2.png"
+}

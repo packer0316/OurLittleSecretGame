@@ -1,0 +1,16 @@
+{
+  "id": "evidence-stage",
+  "name": "第六張椅子",
+  "category": "clue",
+  "chapter": "第三章",
+  "trigger": "EVIDENCE.stage",
+  "caption": "第六聲「有」，不是從第六張椅子傳來的。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/evidence-stage-night.png",
+  "runtime": "public/assets/story/visual-v2/evidence-stage.webp",
+  "prompt": "Use case: lighting-weather. Edit this game evidence photograph. Preserve exact evidence objects, their identity and count, the legible text, their positions and camera framing. Change lighting and exterior view to the DEAD OF NIGHT. Every opening shows pitch-black exterior, remove ALL daylight and sunlit greenery. Only off-camera narrow flashlight and faint candle light reveal the object, background largely invisible with a little rotten architecture. No new people or gore.  CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object. CRITICAL: retain EXACTLY six stools; rotate the sixth far-right stool away and keep rabbit sitting on it; the large reflective frame must be a SMALL empty photo frame on a low wooden stand, NOT an oversized full-length mirror. Keep phones beneath third/fourth stool and badge beneath second.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-d147c7d9-40b4-4122-9db1-aa60e4414d8d.png",
+  "references": [
+    "art-direction/visual-bible-20261120/clues/evidence-stage.png"
+  ]
+}

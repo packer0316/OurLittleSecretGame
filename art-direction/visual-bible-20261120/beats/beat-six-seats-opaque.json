@@ -1,0 +1,27 @@
+{
+  "id": "beat-six-seats",
+  "name": "這次不要替她喊",
+  "category": "beat",
+  "chapter": "真結局C",
+  "trigger": "歸物後六張椅子出現",
+  "dialogue": [
+    [
+      "錄音",
+      "……六。"
+    ],
+    [
+      "以安・旁白",
+      "這一次，我等她自己回答。"
+    ]
+  ],
+  "caption": "錄音：「……六。」\n以安・旁白：「這一次，我等她自己回答。」",
+  "references": [
+    "C:\\Users\\JAOREN~1\\AppData\\Local\\Temp\\codex-clipboard-d0e5cde9-1dae-4fcd-9b6b-49f70a726be6.png"
+  ],
+  "file": "art-direction/visual-bible-20261120/beats/beat-six-seats-opaque.png",
+  "runtime": "public/assets/story/visual-v2/beat-six-seats.webp",
+  "status": "generated",
+  "prompt": "Use case: precise-object-edit. Edit this exact cinematic photograph. Change ONLY the red blindfolds on ALL THREE seated adult men. Each blindfold must be a WIDE, THICK, COMPLETELY OPAQUE dark crimson woven cloth band, wrapped tightly around the eye area. Its top edge ABOVE both eyebrows; its bottom edge BELOW the entire lower eyelids onto upper cheekbones, conforming snugly over the nose bridge and temples. Cover BOTH eyes completely on each man, including inner and outer corners. Absolutely NO visible eyeball, iris, eyelid, eye socket, thin gap, see-through fabric, hole or exposed outer eye corner on any of the three men. Give the cloth realistic heavy overlapping folds, wear only along outer trailing tails, NEVER holes where eyes are. Preserve exact identities, face shapes below blindfolds, hair, clothes, shoes, three men, six stools, poses, framing, dark night lighting and old Taiwanese temple. Photorealistic fabric contact and shadow. Do not move the band onto foreheads. No text or other alterations.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-2fac2208-143c-4744-b5dc-8e168e3f7bb1.png",
+  "revision": "三人紅布完全遮住雙眼，使用者修正"
+}

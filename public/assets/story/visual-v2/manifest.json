@@ -1,0 +1,558 @@
+[
+  {
+    "id": "evidence-diary",
+    "name": "停在六的計數器",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-diary.webp",
+    "chapter": "第二章",
+    "trigger": "EVIDENCE.diary",
+    "caption": "數字是六。留下記號的，卻只有五個。"
+  },
+  {
+    "id": "evidence-newspaper",
+    "name": "從外側扣上的門閂",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-newspaper.webp",
+    "chapter": "第二章",
+    "trigger": "EVIDENCE.newspaper",
+    "caption": "閂舌還在扣環裡。火卻是從另一面燒過來的。"
+  },
+  {
+    "id": "evidence-tape",
+    "name": "被接回去的錄音",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-tape.webp",
+    "chapter": "第二章",
+    "trigger": "EVIDENCE.tape",
+    "caption": "我按了停止。身後卻有人把那半句接完。"
+  },
+  {
+    "id": "evidence-stage",
+    "name": "第六張椅子",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-stage.webp",
+    "chapter": "第三章",
+    "trigger": "EVIDENCE.stage",
+    "caption": "第六聲「有」，不是從第六張椅子傳來的。"
+  },
+  {
+    "id": "evidence-ritual",
+    "name": "被磨平的送行盤",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-ritual.webp",
+    "chapter": "第二章／真結局",
+    "trigger": "EVIDENCE.ritual",
+    "caption": "先記其名，再歸其物，末留其事。"
+  },
+  {
+    "id": "evidence-death",
+    "name": "阿哲留下的手機",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-death.webp",
+    "chapter": "第四章",
+    "trigger": "EVIDENCE.death",
+    "caption": "打給我的那一段，兩個星期前就錄好了。"
+  },
+  {
+    "id": "evidence-births",
+    "name": "門框上的六道身高",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-births.webp",
+    "chapter": "第四章",
+    "trigger": "EVIDENCE.births",
+    "caption": "最矮的那道，不是沒有名字。是被蓋住了。"
+  },
+  {
+    "id": "evidence-relic",
+    "name": "補過左耳的布兔",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-relic.webp",
+    "chapter": "第四章",
+    "trigger": "EVIDENCE.relic",
+    "caption": "耳朵媽媽補好了。她還在等我們來找她。"
+  },
+  {
+    "id": "evidence-names",
+    "name": "五個重疊的手印",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-names.webp",
+    "chapter": "第四章",
+    "trigger": "EVIDENCE.names",
+    "caption": "我以為有人塗掉了她。少的那張，卻在我口袋裡。"
+  },
+  {
+    "id": "evidence-confession",
+    "name": "掌心裡的齒痕",
+    "category": "clue",
+    "image": "assets/story/visual-v2/evidence-confession.webp",
+    "chapter": "第四章",
+    "trigger": "EVIDENCE.confession",
+    "caption": "缺角壓上的地方，正好就是那道舊疤。"
+  },
+  {
+    "id": "note-log",
+    "name": "阿哲的清點日誌",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-log.webp",
+    "chapter": "第二章",
+    "trigger": "NOTES.log",
+    "caption": "他不是來清點帶子。他是來找那一分鐘。"
+  },
+  {
+    "id": "note-robe",
+    "name": "問者的素衣",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-robe.webp",
+    "chapter": "第二章",
+    "trigger": "NOTES.robe",
+    "caption": "剪刀沒有用過。她那晚沒有問完。"
+  },
+  {
+    "id": "note-rulebook",
+    "name": "郭師父的規矩簿",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-rulebook.webp",
+    "chapter": "第二章",
+    "trigger": "NOTES.rulebook",
+    "caption": "規矩替他們省掉了一件事：繼續聽她說話。"
+  },
+  {
+    "id": "note-flashlight",
+    "name": "還亮著的手電筒",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-flashlight.webp",
+    "chapter": "第二章",
+    "trigger": "NOTES.flashlight",
+    "caption": "他把光留在這裡，自己摸黑走了。"
+  },
+  {
+    "id": "note-chalk",
+    "name": "柱子上的粉筆字",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-chalk.webp",
+    "chapter": "第三章",
+    "trigger": "NOTES.chalk",
+    "caption": "他終於改口了。可是被叫了才答，仍然是應。"
+  },
+  {
+    "id": "note-tablet",
+    "name": "翻過去的木牌",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-tablet.webp",
+    "chapter": "第四章",
+    "trigger": "NOTES.tablet",
+    "caption": "這次妳叫，媽媽就應。"
+  },
+  {
+    "id": "note-camp",
+    "name": "阿哲的地鋪",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-camp.webp",
+    "chapter": "第四章",
+    "trigger": "NOTES.camp",
+    "caption": "帶子早就轉到底了。紅燈還亮著。"
+  },
+  {
+    "id": "note-register",
+    "name": "郭師父的問者名冊",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-register.webp",
+    "chapter": "第四章",
+    "trigger": "NOTES.register",
+    "caption": "亡者那一格空著。『還』那一格，寫的是她自己。"
+  },
+  {
+    "id": "note-bucket",
+    "name": "燒黑的鐵桶",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-bucket.webp",
+    "chapter": "第四章",
+    "trigger": "NOTES.bucket",
+    "caption": "二十八尊都還了。它一尊都沒有收。"
+  },
+  {
+    "id": "note-shoes",
+    "name": "門前的一雙女鞋",
+    "category": "clue",
+    "image": "assets/story/visual-v2/note-shoes.webp",
+    "chapter": "第四章",
+    "trigger": "NOTES.shoes",
+    "caption": "這一次，她自己剪了線。"
+  },
+  {
+    "id": "home-letter",
+    "name": "阿哲寄回的照片",
+    "category": "clue",
+    "image": "assets/story/visual-v2/home-letter.webp",
+    "chapter": "住處序章",
+    "trigger": "Home.letter",
+    "caption": "照片先還你。02:47，聽到這裡再停。"
+  },
+  {
+    "id": "home-slip",
+    "name": "退回來的封口",
+    "category": "clue",
+    "image": "assets/story/visual-v2/home-slip.webp",
+    "chapter": "住處序章",
+    "trigger": "Home.slip",
+    "caption": "同一道撕口。它怎麼拿到門外的？"
+  },
+  {
+    "id": "road-bus",
+    "name": "有人替我留了位子",
+    "category": "clue",
+    "image": "assets/story/visual-v2/road-bus.webp",
+    "chapter": "山村序章",
+    "trigger": "Road.bus",
+    "caption": "整張椅子都濕了。只有這個位子是乾的。"
+  },
+  {
+    "id": "road-notice",
+    "name": "整條街都搬走了",
+    "category": "clue",
+    "image": "assets/story/visual-v2/road-notice.webp",
+    "chapter": "山村序章",
+    "trigger": "Road.notice",
+    "caption": "電話打不通。作坊的燈卻還亮著。"
+  },
+  {
+    "id": "road-remains",
+    "name": "還沒完成的手",
+    "category": "clue",
+    "image": "assets/story/visual-v2/road-remains.webp",
+    "chapter": "山村序章",
+    "trigger": "Road.remains",
+    "caption": "關節裡的纖維，像皮，也像泡過水的紙。"
+  },
+  {
+    "id": "road-camera",
+    "name": "十三秒的空畫面",
+    "category": "clue",
+    "image": "assets/story/visual-v2/road-camera.webp",
+    "chapter": "山村序章",
+    "trigger": "Road.ledger",
+    "caption": "第七秒，有一隻手搭上桌沿。他沒有回頭。"
+  },
+  {
+    "id": "road-kiln",
+    "name": "沒有燒完的東西",
+    "category": "clue",
+    "image": "assets/story/visual-v2/road-kiln.webp",
+    "chapter": "山村序章",
+    "trigger": "Road.kiln",
+    "caption": "紙人不會有牙。"
+  },
+  {
+    "id": "road-car",
+    "name": "車上的時鐘",
+    "category": "clue",
+    "image": "assets/story/visual-v2/road-car.webp",
+    "chapter": "山村序章",
+    "trigger": "Road.car",
+    "caption": "這一路，我是一個人開上來的。"
+  },
+  {
+    "id": "home-calendar",
+    "name": "停在十二日的月曆",
+    "category": "clue",
+    "image": "assets/story/visual-v2/home-calendar.webp",
+    "chapter": "住處序章",
+    "trigger": "Home.calendar",
+    "caption": "筆尖壓破了紙。牆上卻沒有痕跡。"
+  },
+  {
+    "id": "home-window",
+    "name": "雨聲裡少了一拍",
+    "category": "clue",
+    "image": "assets/story/visual-v2/home-window.webp",
+    "chapter": "住處序章",
+    "trigger": "Home.window",
+    "caption": "我停住，那聲音也停。這裡是七樓。"
+  },
+  {
+    "id": "home-message",
+    "name": "沒有送出的語音",
+    "category": "clue",
+    "image": "assets/story/visual-v2/home-message.webp",
+    "chapter": "住處序章",
+    "trigger": "Home.message",
+    "caption": "第二段最後的拖椅聲，原本不在那裡。"
+  },
+  {
+    "id": "temple-rules",
+    "name": "天公爐上的刻字",
+    "category": "clue",
+    "image": "assets/story/visual-v2/temple-rules.webp",
+    "chapter": "第一章",
+    "trigger": "Temple.rules",
+    "caption": "問路可，勿報己名。"
+  },
+  {
+    "id": "three-friends-shoes",
+    "name": "暗道邊的三雙鞋",
+    "category": "clue",
+    "image": "assets/story/visual-v2/three-friends-shoes.webp",
+    "chapter": "第四章",
+    "trigger": "Story.descent",
+    "caption": "阿哲、志豪、柏翰。我的鞋還穿在腳上。"
+  },
+  {
+    "id": "beat-home-door",
+    "name": "敲三下",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-home-door.webp",
+    "chapter": "住處序章",
+    "trigger": "接聽完電話，門外自稱管理員時",
+    "caption": "門外：「管理員。剛才送錯東西了，請開一下門。」\n以安・旁白：「對講機沒有亮過。」",
+    "dialogue": [
+      [
+        "門外",
+        "管理員。剛才送錯東西了，請開一下門。"
+      ],
+      [
+        "以安・旁白",
+        "對講機沒有亮過。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-temple-arrival",
+    "name": "停在同一分鐘",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-temple-arrival.webp",
+    "chapter": "第一章",
+    "trigger": "第一次點香、山門關上",
+    "caption": "以安：「手機上的時間還是02:47。」\n以安・旁白：「我進山門，早就不只一分鐘了。」",
+    "dialogue": [
+      [
+        "以安",
+        "手機上的時間還是02:47。"
+      ],
+      [
+        "以安・旁白",
+        "我進山門，早就不只一分鐘了。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-rollcall",
+    "name": "替她喊的那一聲",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-rollcall.webp",
+    "chapter": "第三章",
+    "trigger": "戲台第一次記憶重演；不能在序章播放",
+    "caption": "點名的人：「……六。」\n佩珊（童年）：「有。」\n以安・旁白：「聲音，是從第五張椅子傳來的。」",
+    "dialogue": [
+      [
+        "點名的人",
+        "……六。"
+      ],
+      [
+        "佩珊（童年）",
+        "有。"
+      ],
+      [
+        "以安・旁白",
+        "聲音，是從第五張椅子傳來的。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-phone-draft",
+    "name": "它替他送完了",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-phone-draft.webp",
+    "chapter": "第三章末",
+    "trigger": "擲筊拿到鑰匙後；不先展示阿哲下落",
+    "caption": "手機訊息・阿哲：「鑰匙拿到就上來。我在。」\n以安・旁白：「送出時間，還是02:47。」",
+    "dialogue": [
+      [
+        "手機訊息・阿哲",
+        "鑰匙拿到就上來。我在。"
+      ],
+      [
+        "以安・旁白",
+        "送出時間，還是02:47。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-meilan-return",
+    "name": "還：本人",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-meilan-return.webp",
+    "chapter": "第四章支線",
+    "trigger": "讀過問者名冊與翻過去的木牌後",
+    "caption": "林美蘭・旁白：「這一次不問妳爸爸，問妳。」\n林美蘭：「這次妳叫，媽媽就應。」",
+    "dialogue": [
+      [
+        "林美蘭・旁白",
+        "這一次不問妳爸爸，問妳。"
+      ],
+      [
+        "林美蘭",
+        "這次妳叫，媽媽就應。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-camp-call",
+    "name": "錄音機還在點名",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-camp-call.webp",
+    "chapter": "第四章",
+    "trigger": "四樓錄音機演出：阿哲應聲那一刻",
+    "caption": "錄音裡的女孩：「張明哲。」\n阿哲：「……有。」\n以安・旁白：「帶子早就轉到底了。」",
+    "dialogue": [
+      [
+        "錄音裡的女孩",
+        "張明哲。"
+      ],
+      [
+        "阿哲",
+        "……有。"
+      ],
+      [
+        "以安・旁白",
+        "帶子早就轉到底了。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-six-seats",
+    "name": "這次不要替她喊",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-six-seats.webp",
+    "chapter": "真結局C",
+    "trigger": "歸物後六張椅子出現",
+    "caption": "錄音：「……六。」\n以安・旁白：「這一次，我等她自己回答。」",
+    "dialogue": [
+      [
+        "錄音",
+        "……六。"
+      ],
+      [
+        "以安・旁白",
+        "這一次，我等她自己回答。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-key-fire",
+    "name": "這次不要放手",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-key-fire.webp",
+    "chapter": "第四章真相／真結局C",
+    "trigger": "舊鎖真相後，見證轉鑰匙時",
+    "caption": "以安：「我是陳以安。門是我扣的。」\n門內・小雨：「你說你會回來。」",
+    "dialogue": [
+      [
+        "以安",
+        "我是陳以安。門是我扣的。"
+      ],
+      [
+        "門內・小雨",
+        "你說你會回來。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-child-threshold",
+    "name": "你回來了",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-child-threshold.webp",
+    "chapter": "真結局C",
+    "trigger": "成功轉開鎖，門開之後",
+    "caption": "小雨：「你回來了。」\n以安：「對不起。我說我等一下就回來。」",
+    "dialogue": [
+      [
+        "小雨",
+        "你回來了。"
+      ],
+      [
+        "以安",
+        "對不起。我說我等一下就回來。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-mother-daughter",
+    "name": "這次媽媽有應",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-mother-daughter.webp",
+    "chapter": "真結局C",
+    "trigger": "美蘭恢復自己的聲音；重逢",
+    "caption": "林美蘭：「……小雨？」\n小雨：「媽媽。」",
+    "dialogue": [
+      [
+        "林美蘭",
+        "……小雨？"
+      ],
+      [
+        "小雨",
+        "媽媽。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-ending-a",
+    "name": "又說了一次",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-ending-a.webp",
+    "chapter": "結局A",
+    "trigger": "離寺後的幾個月，自己的來電",
+    "caption": "自己的聲音：「裡面還有沒有人？」\n以安・旁白：「這一次，沒有大人教我。」",
+    "dialogue": [
+      [
+        "自己的聲音",
+        "裡面還有沒有人？"
+      ],
+      [
+        "以安・旁白",
+        "這一次，沒有大人教我。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-ending-b",
+    "name": "換妳了",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-ending-b.webp",
+    "chapter": "結局B",
+    "trigger": "替身拿起手機離開，主角留在第六張椅子",
+    "caption": "替身：「佩珊，是我。」\n替身：「我出來了。換妳了。」",
+    "dialogue": [
+      [
+        "替身",
+        "佩珊，是我。"
+      ],
+      [
+        "替身",
+        "我出來了。換妳了。"
+      ]
+    ]
+  },
+  {
+    "id": "beat-ending-c",
+    "name": "裡面還有人",
+    "category": "beat",
+    "image": "assets/story/visual-v2/beat-ending-c.webp",
+    "chapter": "結局C",
+    "trigger": "黎明救援，最後回答有",
+    "caption": "搜救隊：「裡面還有沒有人？」\n以安：「有。地下，神壇後面那扇門。」\n阿哲：「……小雨。」",
+    "dialogue": [
+      [
+        "搜救隊",
+        "裡面還有沒有人？"
+      ],
+      [
+        "以安",
+        "有。地下，神壇後面那扇門。"
+      ],
+      [
+        "阿哲",
+        "……小雨。"
+      ]
+    ]
+  }
+]

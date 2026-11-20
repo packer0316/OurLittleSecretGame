@@ -1,0 +1,13 @@
+{
+  "id": "note-flashlight",
+  "name": "還亮著的手電筒",
+  "category": "clue",
+  "chapter": "第二章",
+  "trigger": "NOTES.flashlight",
+  "caption": "他把光留在這裡，自己摸黑走了。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/note-flashlight.png",
+  "runtime": "public/assets/story/visual-v2/note-flashlight.webp",
+  "prompt": "Use case: photorealistic-natural. Asset type: one close-up evidence photograph for a Taiwanese folk-horror game, landscape3:2. Meticulously realistic physical object, tactile worn materials, shallow but sufficient depth of field with key clues all in focus, practical flashlight and muted amber spill, damp abandoned Taiwanese mountain temple in2026, grounded documentary photography. Suspense from concrete evidence rather than monsters. One coherent photograph, not collage or split panels. No captions, no UI, no watermark, no extraneous lettering. Keep important object well exposed and complete in frame. Subject: A sturdy cylindrical work flashlight wrapped in black electrical tape lying ON beside lowest Buddhist shrine plinth, beam STILL LIT. Its beam picks out a pried-off wood skirting board and empty hollow. TWO knee-shaped impressions in fine gray incense dust directly in front. Short finger-written Traditional Chinese '鞋在老樹下' in dust, uneven strokes. A little prybar partly visible. No person, no shoe here, blindfolded small Buddha blurred safely above. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-94a227c9-aba9-4b5a-b43f-965876c6af1f.png"
+}

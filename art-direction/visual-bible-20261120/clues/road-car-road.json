@@ -1,0 +1,17 @@
+{
+  "id": "road-car",
+  "name": "車上的時鐘",
+  "category": "clue",
+  "chapter": "山村序章",
+  "trigger": "Road.car",
+  "caption": "這一路，我是一個人開上來的。",
+  "status": "generated",
+  "file": "art-direction/visual-bible-20261120/clues/road-car-road.png",
+  "runtime": "public/assets/story/visual-v2/road-car.webp",
+  "prompt": "Use case: precise-object-edit. Edit this exact evidence photograph. CORRECT ONLY THE LOCATION AND LIGHTING while retaining the featured clue objects and composition. Keep exact old car interior, empty passenger seat with seatbelt fastened, dashboard23:47 and phone02:16. Change exterior visible through windows to DARK ABANDONED TAIWANESE VILLAGE STREET before arrival at temple: shuttered tile-front shophouses, mossy concrete low wall, wet asphalt, unlit distant streetlamp. NO temple inside or immediately outside car, no altars, candles, incense or spiderwebs. Car is a used daily vehicle, remove thick mold from seats and dashboard but retain realistic use, minor dust and worn upholstery. Rain and deep night, phone/dashboard glow and very weak reflected streetlight only. Photorealistic horror at NIGHT, sinister low-key shadows, aged believable materials, key clue still readable. No sunshine, bright studio light, new people or monsters. Old does not mean a ruined temple in every location. No text overlays.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-6e7283d4-e0ed-4a43-94e4-26661c43925a.png",
+  "previousFile": "art-direction/visual-bible-20261120/clues/road-car.png",
+  "references": [
+    "D:\\GIT_TMD\\Git_Self_Project\\OurLittleSecretGame\\art-direction\\visual-bible-20261120\\clues\\road-car.png"
+  ]
+}

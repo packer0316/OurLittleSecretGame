@@ -1,0 +1,24 @@
+{
+  "id": "beat-temple-arrival",
+  "name": "停在同一分鐘",
+  "category": "beat",
+  "chapter": "第一章",
+  "trigger": "第一次點香、山門關上",
+  "dialogue": [
+    [
+      "以安",
+      "手機上的時間還是02:47。"
+    ],
+    [
+      "以安・旁白",
+      "我進山門，早就不只一分鐘了。"
+    ]
+  ],
+  "caption": "以安：「手機上的時間還是02:47。」\n以安・旁白：「我進山門，早就不只一分鐘了。」",
+  "references": [],
+  "file": "art-direction/visual-bible-20261120/beats/beat-temple-arrival.png",
+  "runtime": "public/assets/story/visual-v2/beat-temple-arrival.webp",
+  "status": "generated",
+  "prompt": "Use case: photorealistic-natural. Asset type: single cinematic STILL image for a Taiwanese folk-horror game's image-and-subtitle story sequence, wide16:9 composition. Live-action photographic realism, practical light, detailed skin and weathered ordinary Taiwanese architecture, expressive restrained acting. One decisive moment, not comic panels, no built-in subtitles, no title, no watermark. Lower15percent kept visually quiet for editable text. Preserve identity and costumes from supplied fictional character reference sheets; each reference shows three views of ONE person, never duplicate those views in scene. POV entering abandoned Taiwanese mountain temple at02:47 at night, three smouldering incense sticks in front, every visible Buddha's EYES completely blindfolded with weathered red cloth. High torn vermilion fabric sways implied by folds, oily black columns, broken roof with barely perceptible cold night sky. A small phone in adult male hand at lower right shows '02:47'. Only weak candle pools and flashlight, deep black beyond altar, no identifiable supernatural face. CRITICAL ART DIRECTION: This must be a frightening NIGHT-TIME location photograph, NOT a clean studio product shot or daytime illustration. Background falls into deep near-black darkness, only a narrow off-camera FLASHLIGHT beam with faint dying candle spill reveals the evidence. Surroundings ancient, neglected, water-damaged, cracked wood, mold, cobwebs, grime, realistic soot. Low-key cold desaturated green-black shadows, dirty muted amber highlights. Claustrophobic, unsettling horror-film realism, fine believable materials. No sunshine, bright window, white studio backdrop, glossy showroom, excessive fog hiding clues, or comic illustration. Keep clue readable in the flashlight pool; do not underexpose the key object.",
+  "source": "C:\\Users\\jaorenhuang\\.codex\\generated_images\\01a1d417-e50a-76e2-8b03-68014ee20825\\exec-29d3398a-30e8-4fe0-8ccb-7889e2c93ae8.png"
+}
