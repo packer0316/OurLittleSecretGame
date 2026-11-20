@@ -9,6 +9,9 @@ import { createPhoneScreen } from './phoneScreen.js';
 import { buildHomeDecor } from './decor.js';
 import { createGlassRain } from '../../core/air.js';
 
+/** 門縫下字條的起點（門外）與停點（門墊中央，墊子範圍 z 3.09–3.55） */
+const SLIP_GAP=3.92,SLIP_REST=3.4;
+
 export const ASSETS={textures:['dark_wood','weathered_brown_planks','painted_plaster_wall','velour_velvet'],images:['children-1998'],scans:['ghost_woman']};
 
 /** A lived-in apartment, metres at human scale. The desk lamp is the only visible indoor light source. */
@@ -116,14 +119,17 @@ export async function create(game){
   const peep=cyl(.018,.018,.035,1.65,1.57,3.794,brass);peep.rotation.x=Math.PI/2;
   const doorHandle=rod([2.04,1.02,3.79],[2.04,.92,3.79],.026,brass);box(.35,.055,.018,1.65,.38,3.799,brass);
   for(let i=0;i<14;i++){const c=mesh(new THREE.TorusGeometry(.012,.003,6,10),brass,1.14+i*.013,1.44-Math.sin(i/13*Math.PI)*.035,3.78);c.rotation.y=i%2*Math.PI/2;}
-  const slip=flat(handwritten(['照片收到，請回答。','','七樓　七樓'],.32,.22,448),.32,.22,1.6,.006,3.52,.15);slip.visible=false;
+  const slip=flat(handwritten(['照片收到，請回答。','','七樓　七樓'],.32,.22,448),.32,.22,1.6,.0095,SLIP_REST,.15);slip.visible=false;
+  Object.assign(slip.material,{polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1});
+  // 字條路徑：門縫下要高過發光門檻（頂面 y≈.019、門板底 .03），滑進來後落在門墊（y=.006）上方 3.5mm，整張停在墊子範圍內，不與墊子共面
+  const poseSlip=u=>{const ease=u*u*(3-2*u),z=SLIP_GAP*(1-ease)+SLIP_REST*ease,lift=THREE.MathUtils.smoothstep(z,3.56,3.66);slip.position.set(1.6,.0095+.0115*lift,z);slip.rotation.z=-.06+.21*ease;};
   const shoe=mat(0x272321);for(let i=0;i<2;i++)box(.11,.08,.26,1.0+i*.17,.04,3.35,shoe,true);
   // Fine dust suspended in the lamp cone, without screen-space noise cards.
   const dustData=[];for(let i=0;i<100;i++)dustData.push(-1+rand()*2,.9+rand()*1.2,-3+rand()*1.6);
   const dustG=new THREE.BufferGeometry();dustG.setAttribute('position',new THREE.Float32BufferAttribute(dustData,3));const dust=new THREE.Points(dustG,new THREE.PointsMaterial({size:.006,color:0xddc2a1,transparent:true,opacity:.18,depthWrite:false}));scene.add(dust);
   // 場景美術：床、衣櫃、冰箱、窗簾、地毯等生活陳設（合併成五個網格）與牆面的使用痕跡
   const decor=buildHomeDecor({scene,world,mats:{wood,textile,plaster,floor}});
-  const targets=[['letter','查看阿哲寄來的信封',[-.08,.9,-2.37]],['photo','端詳舊合照',[.38,.91,-2.42]],['phone','查看手機',[.82,.91,-2.48]],['calendar','查看牆上月曆',[-2.4,1.65,-3.87]],['window','聽窗外的雨',[.75,1.8,-3.82]],['message','聽尚未送出的語音',[-.65,.89,-2.28]],['slip','撿起門縫下的字條',[1.6,.08,3.52]],['kit','拿起手電筒與鑰匙',[2.95,.55,2.7]],['door','查看門外',[1.65,1.3,3.75]]].map(([id,label,p])=>({id,label,position:new THREE.Vector3(...p)}));
+  const targets=[['letter','查看阿哲寄來的信封',[-.08,.9,-2.37]],['photo','端詳舊合照',[.38,.91,-2.42]],['phone','查看手機',[.82,.91,-2.48]],['calendar','查看牆上月曆',[-2.4,1.65,-3.87]],['window','聽窗外的雨',[.75,1.8,-3.82]],['message','聽尚未送出的語音',[-.65,.89,-2.28]],['slip','撿起門縫下的字條',[1.6,.08,SLIP_REST]],['kit','拿起手電筒與鑰匙',[2.95,.55,2.7]],['door','查看門外',[1.65,1.3,3.75]]].map(([id,label,p])=>({id,label,position:new THREE.Vector3(...p)}));
   let step=0,doorEvent=null,photoPlacement=null,phoneAnswered=false,chairMoved=false,chairMotion=0;
   const photoHome=new THREE.Vector3(.38,.852,-2.42),letterHome=new THREE.Vector3(-.08,.85,-2.37),letterAside=new THREE.Vector3(-.35,.85,-2.49);
   const photoTarget=targets.find(t=>t.id==='photo'),letterTarget=targets.find(t=>t.id==='letter');
@@ -142,8 +148,8 @@ export async function create(game){
     get doorEventActive(){return !!doorEvent;},
     get doorEventTime(){return doorEvent?.time??null;},
     get slipPosition(){return slip.position;},
-    startDoorEvent(){doorEvent={time:0,knocks:0,slideTime:null};slip.visible=false;slip.position.z=3.92;slip.rotation.z=-.06;},
-    setState(s){step=s.home?.step||0;if(!doorEvent){slip.visible=step>=3;slip.position.z=3.52;slip.rotation.z=.15;}kit.visible=step<5;
+    startDoorEvent(){doorEvent={time:0,knocks:0,slideTime:null};slip.visible=false;poseSlip(0);},
+    setState(s){step=s.home?.step||0;if(!doorEvent){slip.visible=step>=3;poseSlip(1);}kit.visible=step<5;
       if(!photoPlacement){photo.visible=step>=1;photo.position.copy(photoHome);photo.rotation.z=-.12;letter.position.copy(step>=1?letterAside:letterHome);syncDeskTargets();}
       mark.visible=!s.flags.sent;
       phone.setMode(step===2?(phoneAnswered?'connected':'incoming'):step>2?'ended':'idle');
@@ -179,8 +185,8 @@ export async function create(game){
         const knockTimes=[.15,.85,1.8];while(e.knocks<3&&e.time>=knockTimes[e.knocks]){game.audio.doorKnock(e.knocks===2?.65:1);e.knocks++;}
         const near=Math.hypot(game.player.pos.x-1.65,game.player.pos.z-3.6)<2.5;
         if(e.time>=2.5&&near&&e.slideTime===null)e.slideTime=0;
-        if(e.slideTime!==null){e.slideTime+=dt;slip.visible=true;const u=Math.min(1,e.slideTime/2.2),ease=u*u*(3-2*u);slip.position.z=3.92-.4*ease;slip.rotation.z=-.06+.21*ease;}
-        if(e.slideTime>=2.5){doorEvent=null;doorHandle.rotation.z=0;slip.position.z=3.52;slip.rotation.z=.15;hallSpill.intensity=12;game.story?.toast('敲門聲停了。紙從門縫滑進來，正好停在你腳前。');}
+        if(e.slideTime!==null){e.slideTime+=dt;slip.visible=true;poseSlip(Math.min(1,e.slideTime/2.2));}
+        if(e.slideTime>=2.5){doorEvent=null;doorHandle.rotation.z=0;poseSlip(1);hallSpill.intensity=12;game.story?.toast('敲門聲停了。紙從門縫滑進來，正好停在你腳前。');}
       }
     },
     dispose(){game.audio.profile=null;game.film.uniforms.grain.value=.03;game.film.uniforms.aberration.value=.0012;scene.traverse(o=>{o.geometry?.dispose();o.shadow?.map?.dispose();});materials.forEach(m=>m.dispose());rain.material.dispose();dust.material.dispose();glassRain.dispose();decor.dispose();textures.forEach(t=>t.dispose());phone.dispose();},

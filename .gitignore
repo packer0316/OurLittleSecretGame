@@ -4,6 +4,8 @@ shots/
 *.log
 artifacts/
 backups/
+tmp/
+__pycache__/
 art-direction/research-models/
 art-direction/objaverse-paths.json.gz
 art-direction/*preview*.jpg
@@ -11,3 +13,7 @@ art-direction/*-gltf.json
 .env
 .env.*
 !.env.example
+
+# 錄音素材的原始下載（可重新下載；來源與授權記在 art-direction/audio-sources/ledger-*.json）
+art-direction/audio-sources/_raw/
+art-direction/audio-sources/_work/

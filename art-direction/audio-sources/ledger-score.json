@@ -1,0 +1,1023 @@
+{
+ "group": "score（配樂與節奏組）",
+ "build": "python -I scripts/audio-score-build.py（原始檔放 art-direction/audio-sources/_raw/score/，可依下列網址重新下載）",
+ "format": "48 kHz、單聲道、Ogg Vorbis q4；量測報告 art-direction/audio-sources/_work/score/report.json",
+ "downloaded_unused": [
+  {
+   "title": "Freesound #569841「#1 Erhu D3.wav」",
+   "author": "tarane468",
+   "license": "CC0 1.0",
+   "url": "https://freesound.org/people/tarane468/sounds/569841/"
+  },
+  {
+   "title": "Freesound #477169「Erhu sample」",
+   "author": "irzirgpznj",
+   "license": "CC0 1.0",
+   "url": "https://freesound.org/people/irzirgpznj/sounds/477169/"
+  },
+  {
+   "title": "Freesound #347035「Winding Noise - Music Box.mp3」",
+   "author": "charcrone",
+   "license": "CC0 1.0",
+   "url": "https://freesound.org/people/charcrone/sounds/347035/"
+  }
+ ],
+ "files": [
+  {
+   "file": "public/assets/audio/score/score_bed.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Strings/Solo Contrabass/SusNV/BKCtbss_SusNV_E0_v1_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Contrabass/SusNV/BKCtbss_SusNV_E0_v1_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Solo Contrabass/SusNV/BKCtbss_SusNV_G0_v1_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Contrabass/SusNV/BKCtbss_SusNV_G0_v1_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Solo Contrabass/SusNV/BKCtbss_SusNV_A#0_v1_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Contrabass/SusNV/BKCtbss_SusNV_A%230_v1_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/susvib/susvib_E1_v3_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/susvib/susvib_E1_v3_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Woodwinds/Bassoon/sus/PSBassoon_F1_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Woodwinds/Bassoon/sus/PSBassoon_F1_v1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/bassdrum_rub2_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/bassdrum_rub2_v1.wav"
+    }
+   ],
+   "notes": "低音弦樂群鳴床：E1／F1／B♭1 群鳴＋大提琴 E2＋低音管 F2，隨機疊接延長、各聲部慢速起伏，合成殘響；另有從三支低音提琴以 Chebyshev 多項式產生的 4–8 次諧波層（190–520 Hz，讓筆電喇叭聽得見，60 Hz 以下不增加），並把 150 Hz 附近讓出 6.5 dB；16 秒無縫循環（前後各多 0.1 秒接續內容，循環點 0.1–16.1 秒）"
+  },
+  {
+   "file": "public/assets/audio/score/score_unease.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_B4_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_B4_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_B4_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_B4_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_D5_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_D5_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/susCymb1-bow-1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/susCymb1-bow-1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/susCymb1-bow-4.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/susCymb1-bow-4.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/susCymb1-bow-3.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/susCymb1-bow-3.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/gongscrape_pp.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/gongscrape_pp.wav"
+    }
+   ],
+   "notes": "不安層：B5／C6／C#6 半音簇顫弓（模擬 sul ponticello：高通、4–6 kHz 提升、輕微飽和）、弓擦鈸、壓低四度的銅鑼刮奏；13 秒循環"
+  },
+  {
+   "file": "public/assets/audio/score/score_chase.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Strings/Solo Contrabass/Spic/BKCtbss_Spic_E0_v3_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Contrabass/Spic/BKCtbss_Spic_E0_v3_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/spic/spic_E1_v2_RR1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/spic/spic_E1_v2_RR1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v5_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v5_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_B4_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_B4_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_B4_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_B4_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Buzz/Trombone_Buzz_C2_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Buzz/Trombone_Buzz_C2_v1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Buzz/Trombone_Buzz_A1_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Buzz/Trombone_Buzz_A1_v1_1.wav"
+    }
+   ],
+   "notes": "追逐層：126 BPM、3-3-2 重音的低音頓弓固定音型（E E F B♭），定音鼓、大鼓、高把位顫弓與第四小節的銅管短重音；四小節循環"
+  },
+  {
+   "file": "public/assets/audio/score/score_pulse_1.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani1_Hit_v1_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani1_Hit_v1_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v3_rr2_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v3_rr2_Sum.wav"
+    }
+   ],
+   "notes": "逼近段的脈動：軟槌定音鼓＋大鼓（降兩個半音）"
+  },
+  {
+   "file": "public/assets/audio/score/score_pulse_2.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani5_Hit_v1_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani5_Hit_v1_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v3_rr2_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v3_rr2_Sum.wav"
+    }
+   ],
+   "notes": "脈動變體"
+  },
+  {
+   "file": "public/assets/audio/score/score_tick_1.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Strings/Solo Contrabass/Spic/BKCtbss_Spic_E0_v3_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Contrabass/Spic/BKCtbss_Spic_E0_v3_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/spic/spic_E1_v2_RR1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/spic/spic_E1_v2_RR1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Claves1_Hit_v1_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Claves1_Hit_v1_rr1_Sum.wav"
+    }
+   ],
+   "notes": "col legno 般的短促頓弓＋木頭聲"
+  },
+  {
+   "file": "public/assets/audio/score/score_tick_2.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Strings/Solo Contrabass/Spic/BKCtbss_Spic_E0_v3_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Contrabass/Spic/BKCtbss_Spic_E0_v3_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/spic/spic_E1_v2_RR1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/spic/spic_E1_v2_RR1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Claves1_Hit_v1_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Claves1_Hit_v1_rr1_Sum.wav"
+    }
+   ],
+   "notes": "同上，高半音"
+  },
+  {
+   "file": "public/assets/audio/score/score_heart_lub.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v2_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v2_rr1_Sum.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "心跳第一下：大鼓低通＋下滑正弦，110 Hz 提升讓筆電喇叭也聽得到"
+  },
+  {
+   "file": "public/assets/audio/score/score_heart_dub.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v2_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v2_rr1_Sum.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "心跳第二下"
+  },
+  {
+   "file": "public/assets/audio/score/score_hit_big_1.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v7_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v7_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/gongHit_fff.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/gongHit_fff.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/susCymb1-hit_fff_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/susCymb1-hit_fff_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/trem/trem_C1_v2_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/trem/trem_C1_v2_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/trem/trem_F2_v2_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/trem/trem_F2_v2_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_B4_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_B4_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_D5_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_D5_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_D5_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_D5_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Sustain/Trombone_Sustain_C2_v3_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Sustain/Trombone_Sustain_C2_v3_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Buzz/Trombone_Buzz_C2_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Buzz/Trombone_Buzz_C2_v1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/Tuba/sus/Tuba3_sus_F1_v2_rr1_Mid.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/Tuba/sus/Tuba3_sus_F1_v2_rr1_Mid.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Solo Violin/Trem/LLVln_trem_G5_v1_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Violin/Trem/LLVln_trem_G5_v1_rr1.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "大爆點：次低頻下墜（合成）＋大鼓與定音鼓的打擊＋C2／F#3／B5／C6／C#6 弦樂群顫弓＋銅管群＋銅鑼與鈸＋往上滑的獨奏小提琴尖嘯；爆點在 0 秒"
+  },
+  {
+   "file": "public/assets/audio/score/score_hit_big_2.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v7_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v7_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: VSCO 1 Percussion/varMetal/Gong/gong_smack_low_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/VSCO%201%20Percussion/varMetal/Gong/gong_smack_low_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/susCymb1-scrape2_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/susCymb1-scrape2_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn2_rr1_002.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn2_rr1_002.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn2_rr1_004.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn2_rr1_004.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn2_rr1_006.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn2_rr1_006.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn2_rr1_008.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn2_rr1_008.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn2_rr1_010.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn2_rr1_010.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/trem/trem_C1_v2_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/trem/trem_C1_v2_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/trem/trem_F2_v2_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/trem/trem_F2_v2_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_D5_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_D5_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_B4_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_B4_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Solo Violin/Trem/LLVln_trem_G5_v1_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Violin/Trem/LLVln_trem_G5_v1_rr1.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "大爆點變體：低音區鋼琴群砸下（預置鋼琴般）＋另一組弦樂群＋低沉銅鑼＋鈸刮"
+  },
+  {
+   "file": "public/assets/audio/score/score_hit_big_3.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v7_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v7_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_D5_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_D5_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_B4_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_B4_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_D5_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_D5_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/trem/trem_C1_v2_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/trem/trem_C1_v2_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/trem/trem_F2_v2_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/trem/trem_F2_v2_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Anvil_Hit1_v1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Anvil_Hit1_v1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: VSCO 1 Percussion/varMetal/Gong/gong_hit_ff_hard.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/VSCO%201%20Percussion/varMetal/Gong/gong_hit_ff_hard.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "大爆點變體：高把位顫弓群從上往下抹九個半音的尖叫、鐵砧撞擊、硬打銅鑼、低音弦樂群與次低頻"
+  },
+  {
+   "file": "public/assets/audio/score/score_hit_small_1.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_B4_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_B4_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_B4_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_B4_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_D5_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_D5_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: VSCO 1 Percussion/varMetal/Gong/gong_scrape_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/VSCO%201%20Percussion/varMetal/Gong/gong_scrape_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v7_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v7_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "小刺：高把位弦樂群短刺＋銅鑼刮"
+  },
+  {
+   "file": "public/assets/audio/score/score_hit_small_2.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn1_rr1_004.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn1_rr1_004.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn1_rr1_008.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn1_rr1_008.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Solo Violin/Trem/LLVln_trem_G5_v1_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Violin/Trem/LLVln_trem_G5_v1_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v7_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v7_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "小刺：低音鋼琴＋短尖嘯"
+  },
+  {
+   "file": "public/assets/audio/score/score_hit_small_3.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Fall/Trombone_Fall_A1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Fall/Trombone_Fall_A1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Fall/Trombone_Fall_G1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Fall/Trombone_Fall_G1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/susCymb1-scrape1_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/susCymb1-scrape1_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/spic/spic_C1_v2_RR1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/spic/spic_C1_v2_RR1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/BDrumNewhit_v7_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/BDrumNewhit_v7_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani2_Hit_v4_rr1_Sum.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "小刺：長號下滑＋鈸刮＋大提琴頓弓"
+  },
+  {
+   "file": "public/assets/audio/score/score_riser.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/susCymb1-cresc-Long_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/susCymb1-cresc-Long_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_G4_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_G4_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/Trem/VlnEns_Trem_B4_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/Trem/VlnEns_Trem_B4_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/trem/Violas_trem_D5_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/trem/Violas_trem_D5_v2_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Cello Section/trem/trem_C1_v2_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Cello%20Section/trem/trem_C1_v2_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Rolls/Timpani1_Roll_v5_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Rolls/Timpani1_Roll_v5_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/gongHit_mf.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/gongHit_mf.wav"
+    }
+   ],
+   "notes": "8 秒預捲：鈸的漸強滾奏（峰值對齊結尾）、顫弓群滑上九個半音、大提琴滑上七個半音、定音鼓滾奏、倒放銅鑼；結尾 = 爆點（引擎用 offset 播出 2–8 秒的版本）"
+  },
+  {
+   "file": "public/assets/audio/score/score_riser_rev.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn2_rr1_004.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn2_rr1_004.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn2_rr1_006.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn2_rr1_006.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn2_rr1_008.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn2_rr1_008.wav"
+    },
+    {
+     "title": "VSCO-2-CE: VSCO 1 Percussion/varMetal/Gong/gong_hit_ff_hard.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/VSCO%201%20Percussion/varMetal/Gong/gong_hit_ff_hard.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/susCymb1-hit_fff_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/susCymb1-hit_fff_rr1.wav"
+    }
+   ],
+   "notes": "5 秒倒吸：鋼琴群＋銅鑼＋鈸的殘響倒放；結尾 = 爆點；也用在 presence（身邊擦過去）"
+  },
+  {
+   "file": "public/assets/audio/score/score_braam.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Buzz/Trombone_Buzz_G1_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Buzz/Trombone_Buzz_G1_v1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Buzz/Trombone_Buzz_A1_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Buzz/Trombone_Buzz_A1_v1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/OldTrombone/Buzz/Trombone_Buzz_C2_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/OldTrombone/Buzz/Trombone_Buzz_C2_v1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Brass/Tuba/sus/Tuba3_sus_F1_v2_rr1_Mid.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Brass/Tuba/sus/Tuba3_sus_F1_v2_rr1_Mid.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Woodwinds/Bassoon/sus/PSBassoon_A#0_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Woodwinds/Bassoon/sus/PSBassoon_A%230_v1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Solo Contrabass/Trem/BKCtbss_Trem_E0_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Contrabass/Trem/BKCtbss_Trem_E0_v2_rr1.wav"
+    }
+   ],
+   "notes": "「它」：1.2 秒倒吸般的預捲（自身殘響倒放）＋E2／F2／B♭2 低音銅管 braam、26 Hz 低吼調變、低音管與低音提琴顫弓；braam 起音在 1.2 秒"
+  },
+  {
+   "file": "public/assets/audio/score/score_swell.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/bassdrum_rub2_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/bassdrum_rub2_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: VSCO 1 Percussion/varMetal/Gong/gong_hit_pppp.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/VSCO%201%20Percussion/varMetal/Gong/gong_hit_pppp.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Solo Contrabass/Trem/BKCtbss_Trem_E0_v2_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Contrabass/Trem/BKCtbss_Trem_E0_v2_rr1.wav"
+    },
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "低頻湧上（取代程序化 _k_sub）：大鼓摩擦、降八度的極弱銅鑼、低音提琴顫弓、30→45 Hz 正弦；1.5 秒漲、0.7 秒停、之後退去"
+  },
+  {
+   "file": "public/assets/audio/score/score_tail.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/susVib/VlnEns_susVib_B4_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/susVib/VlnEns_susVib_B4_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Violin Section/susVib/VlnEns_susVib_D5_v1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Violin%20Section/susVib/VlnEns_susVib_D5_v1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Viola Section/susvib/ViolaEns_susvib_F3_v1_1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Viola%20Section/susvib/ViolaEns_susvib_F3_v1_1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/gongHit_p.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/gongHit_p.wav"
+    }
+   ],
+   "notes": "爆點後的餘韻：很弱的高把位弦樂群＋降五度銅鑼的綻放，慢慢散去"
+  },
+  {
+   "file": "public/assets/audio/score/score_qing.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Percussion/TB_hit_G4_v4_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/TB_hit_G4_v4_rr1.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/TB_hit_C4_v4_rr1.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/TB_hit_C4_v4_rr1.wav"
+    }
+   ],
+   "notes": "寺廟的磬：管鐘打擊音＋微微走調的第二層（銅磬特有的拍頻）＋長殘響；標記章節與重大發現"
+  },
+  {
+   "file": "public/assets/audio/score/score_count.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn1_rr1_004.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn1_rr1_004.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani1_Hit_v1_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani1_Hit_v1_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Claves1_Hit_v1_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Claves1_Hit_v1_rr1_Sum.wav"
+    }
+   ],
+   "notes": "點名的一聲：悶住的低音鋼琴（E1）＋軟槌定音鼓＋一點木頭聲"
+  },
+  {
+   "file": "public/assets/audio/score/score_count6.ogg",
+   "sources": [
+    {
+     "title": "VSCO-2-CE: Keys/Upright Piano/Player_dyn1_rr1_004.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/Player_dyn1_rr1_004.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Timpani/Timpani1_Hit_v1_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Timpani/Timpani1_Hit_v1_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Percussion/Claves1_Hit_v1_rr1_Sum.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Percussion/Claves1_Hit_v1_rr1_Sum.wav"
+    },
+    {
+     "title": "VSCO-2-CE: Strings/Solo Violin/Arco Vib/LLVln_ArcoVib_A5_p.wav",
+     "author": "Versilian Studios / Sam Gossner（VSCO-2 Community Edition）",
+     "license": "CC0 1.0",
+     "url": "https://github.com/sgossner/VSCO-2-CE/blob/master/Strings/Solo%20Violin/Arco%20Vib/LLVln_ArcoVib_A5_p.wav"
+    }
+   ],
+   "notes": "不對的第六聲：低 45 音分、拖得更長，多一個 B♭5 的 sul ponticello 高泛音"
+  },
+  {
+   "file": "public/assets/audio/score/score_mbox_72.ogg",
+   "sources": [
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "小雨的八音盒簧片（C5）：懸臂梁非諧波泛音 1 : 6.27 : 17.55 合成、撥片噪音、小木盒共鳴；童謠旋律由引擎即時排出（原創，C 大調五聲音階，第 21 拍的 F#6 是錯音；真結局換回 D6）"
+  },
+  {
+   "file": "public/assets/audio/score/score_mbox_79.ogg",
+   "sources": [
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "八音盒簧片（G5）"
+  },
+  {
+   "file": "public/assets/audio/score/score_mbox_84.ogg",
+   "sources": [
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "八音盒簧片（C6）"
+  },
+  {
+   "file": "public/assets/audio/score/score_mbox_91.ogg",
+   "sources": [
+    {
+     "title": "程式合成（numpy／scipy，scripts/audio-score-build.py）",
+     "author": "本專案",
+     "license": "CC0 1.0（自製）",
+     "url": ""
+    }
+   ],
+   "notes": "八音盒簧片（G6）"
+  },
+  {
+   "file": "public/assets/audio/score/score_windup.ogg",
+   "sources": [
+    {
+     "title": "Freesound #336610「music box - wind up 05.wav」",
+     "author": "Anthousai",
+     "license": "CC0 1.0",
+     "url": "https://freesound.org/people/Anthousai/sounds/336610/"
+    }
+   ],
+   "notes": "八音盒上發條的聲音（裁成 1.3 秒、高通、淡出）"
+  },
+  {
+   "file": "public/assets/audio/score/score_meilan.ogg",
+   "sources": [
+    {
+     "title": "Freesound #467482「006-Erhu-F5.wav」",
+     "author": "tarane468",
+     "license": "CC0 1.0",
+     "url": "https://freesound.org/people/tarane468/sounds/467482/"
+    }
+   ],
+   "notes": "美蘭的哭腔：真實二胡 F5 長音，以變速重取樣做出 D 羽調式的滑音、越來越寬的顫音與最後往下垂的尾音，加殘響（像從另一個房間傳來）"
+  },
+  {
+   "file": "public/assets/audio/score/score_suona.ogg",
+   "sources": [
+    {
+     "title": "Freesound #514114「suona.wav」",
+     "author": "jiemojiemo",
+     "license": "CC0 1.0",
+     "url": "https://freesound.org/people/jiemojiemo/sounds/514114/"
+    }
+   ],
+   "notes": "山路：遠處出殯的嗩吶（降兩個半音、帶通、低通、大量殘響）"
+  }
+ ]
+}

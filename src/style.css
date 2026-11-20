@@ -117,7 +117,7 @@ button:focus-visible,select:focus-visible,input:focus-visible { outline:2px soli
   background:
     linear-gradient(90deg, rgba(4, 8, 9, .62), transparent 72%),
     linear-gradient(0deg, #040909, transparent 27%),
-    url('/assets/story/temple-blindfold-menu.webp') 84% center / cover no-repeat; /* perf：同一張圖的 WebP（1.7 MB → 90 KB），由 scripts/perf-images.py 產生 */
+    url('/assets/title/looking-back-opaque-v2.webp') 84% center / cover no-repeat; /* 不透光眼罩與清晰皮膚細節；保留原尺寸，以高品質 WebP 載入。 */
 }
 .lobby-bg::after { opacity:.035; }
 .lobby-topline { display:flex;justify-content:space-between;color:#b8aa91;font:11px var(--sans);letter-spacing:.26em;opacity:.75; }
@@ -159,7 +159,19 @@ button:focus-visible,select:focus-visible,input:focus-visible { outline:2px soli
 #interact-prompt kbd { border-color:#bca58190;background:#14120fbb;font-size:14px;padding:4px 9px;border-radius:1px; }
 #story-toast { position:absolute;left:50%;bottom:14%;transform:translateX(-50%) translateY(8px);padding:13px 22px;max-width:min(750px,85vw);background:linear-gradient(90deg,transparent,#070b0de8,transparent);color:#ddd0b8;font:13px/1.7 var(--serif);text-align:center;opacity:0;transition:opacity .4s,transform .4s; }
 #story-toast.show { opacity:1;transform:translateX(-50%) translateY(0); }
-#waypoint { position:absolute;color:#b5a27a;font:22px Georgia;transform:translate(-50%,-50%);opacity:.55;text-shadow:0 2px 10px #000; }
+/* 方向提示箭頭（src/story/waypoint.js）：位置與旋轉由程式每一幀寫入 transform */
+#waypoint { position:absolute;left:0;top:0;width:0;height:0;opacity:0;visibility:hidden;pointer-events:none;will-change:transform,opacity; }
+#waypoint .wp-rot { position:absolute;left:-19.25px;top:-22px;width:38.5px;height:44px;transform-origin:50% 50%; }
+#waypoint .wp-arrow { display:block;overflow:visible;animation:wp-bob 1.5s ease-in-out infinite;filter:drop-shadow(0 0 5px rgba(222,196,140,.4)) drop-shadow(0 1px 3px rgba(0,0,0,.9)); }
+#waypoint .wp-head { fill:#dcc89c;stroke:rgba(14,10,6,.85);stroke-width:1.3;stroke-linejoin:round; }
+#waypoint .wp-trail { fill:none;stroke:#dcc89c;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.55; }
+#waypoint .wp-label { position:absolute;left:0;top:-29px;transform:translate(-50%,-100%);white-space:nowrap;font:11px/1 var(--sans);letter-spacing:.14em;color:#ddd2ba;text-shadow:0 1px 6px #000,0 0 2px #000;opacity:0; }
+#waypoint.danger .wp-head { fill:#d2634c; }
+#waypoint.danger .wp-trail { stroke:#d2634c; }
+#waypoint.danger .wp-arrow { filter:drop-shadow(0 0 6px rgba(210,80,60,.55)) drop-shadow(0 1px 3px rgba(0,0,0,.9)); }
+#waypoint.danger .wp-label { color:#eebcae; }
+@keyframes wp-bob { 0%,100% { transform:translateY(-3px); } 50% { transform:translateY(1.5px); } }
+@media (prefers-reduced-motion:reduce) { #waypoint .wp-arrow { animation:none; } }
 #danger-vignette { position:absolute;inset:0;box-shadow:inset 0 0 160px 50px #72170b;opacity:0;pointer-events:none;transition:opacity .25s; }
 #chase-hud { position:absolute;top:19%;left:0;right:0;text-align:center;color:#e8bbae;letter-spacing:.15em;font-size:15px;text-shadow:0 2px 8px #000; }
 #ritual-hud { position:absolute;right:35px;top:32px;width:265px;padding:18px;background:#080b0dcc;border:1px solid #aa845740; }

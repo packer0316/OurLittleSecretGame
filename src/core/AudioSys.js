@@ -12,7 +12,14 @@
  *   horror(kind, { pan, dist, intensity })、setTension(x)、duck(seconds)
  *   既有：footstep、creak、click、bell、woodenFish、breathCue、storyCue、phoneRing、presence、doorKnock
  * 地圖可每幀寫入 audio.zone（'crypt' | 'grave' | 'workshop' …）指定聲學空間，沒寫就依 profile 與室內外推斷。
+ *
+ * 錄音素材與聲音模組（src/audio/）：init() 之後 audio.bank 是錄音素材庫，src/audio/modules/ 的模組（配樂 score、
+ * 環境與擬音 foley、人聲與驚嚇 vox）以 override / onUpdate / envHook / layerMul 疊加或取代這裡的程序化聲音。
+ * 素材沒載入（測試、離線、下載失敗）時一律退回程序化版本。另外兩條匯流排：scoreBus（配樂，跟著緊張層一起被 duck 抽空）、uiBus（介面音，乾聲）。
  */
+
+import { createBank } from '../audio/bank.js';
+import { installModules } from '../audio/index.js';
 
 const TAU = Math.PI * 2;
 const rnd = (a, b) => a + Math.random() * (b - a);
@@ -72,6 +79,27 @@ export class AudioSys {
     this._stepSide = 1;
     this._surface = 'dirt';
     this._duckUntil = 0;
+    // 聲音模組（src/audio/index.js）
+    this.bank = null;
+    this.modules = {};
+    this.layerMul = { wind: 1, howl: 1, leaf: 1, room: 1, bug: 1, rain: 1, pane: 1, hum: 1, ember: 1, drone: 1, strings: 1, heartbeat: 1 };
+    this._updaters = [];
+    this._envHooks = Object.create(null);
+    this._mapHooks = [];
+    this._gustNow = 0.4;
+  }
+
+  /** 覆寫一個方法：fn(orig, ...args)，orig 是覆寫前的版本（可疊加或退回程序化聲音） */
+  override(name, fn) {
+    const prev = typeof this[name] === 'function' ? this[name].bind(this) : () => {};
+    this[name] = (...args) => fn(prev, ...args);
+  }
+  onUpdate(fn) { this._updaters.push(fn); }
+  envHook(name, fn) { this._envHooks[name] = fn; }
+  onMap(fn) { this._mapHooks.push(fn); }
+  /** Game.loadMap 在地圖建好、素材載完之後呼叫 */
+  mapReady(mapId) {
+    for (const fn of this._mapHooks) { try { fn(mapId); } catch (err) { console.warn('[audio] onMap failed', err); } }
   }
 
   /** 必須在使用者手勢（點擊）後呼叫。測試可傳入 OfflineAudioContext。 */
@@ -171,6 +199,12 @@ export class AudioSys {
       o.connect(G(a)).connect(this.droneGain);
     }
     this.droneGain.connect(this.droneMix).connect(this.tensionDuck);
+
+    // ── 配樂與介面音匯流排、錄音素材庫、聲音模組 ──
+    this.scoreBus = G(1); this.scoreBus.connect(this.tensionDuck);
+    this.uiBus = G(1); this.uiBus.connect(this.master);
+    this.bank = createBank(this);
+    installModules(this);
   }
 
   // ───────────────────────── 素材 ─────────────────────────
@@ -382,37 +416,42 @@ export class AudioSys {
       this._gust = Math.random() < 0.22 ? rnd(0.02, 0.12) : rnd(0.2, 1);
       this._howlHz = rnd(520, 1220);
     }
-    const gust = this._gust * (rel ? 0.45 : 1);
-    this._set(this.windGain.gain, S.wind * (0.2 + 1.05 * gust * gust), 1.9);
+    const gust = this._gust * (rel ? 0.45 : 1), M = this.layerMul;
+    this._gustNow = gust;
+    this._set(this.windGain.gain, M.wind * S.wind * (0.2 + 1.05 * gust * gust), 1.9);
     this._set(this.windLP.frequency, S.lp * (0.8 + 0.5 * gust), 2.2);
-    this._set(this.howlGain.gain, rel ? 0 : S.howl * (gust > 0.55 ? 0.004 + 0.012 * (gust - 0.55) / 0.45 : 0.0009), 2.2);
+    this._set(this.howlGain.gain, rel ? 0 : M.howl * S.howl * (gust > 0.55 ? 0.004 + 0.012 * (gust - 0.55) / 0.45 : 0.0009), 2.2);
     this._set(this.howlBP.frequency, this._howlHz, 2.5);
-    this._set(this.leafGain.gain, S.leaf * (0.004 + 0.03 * gust * gust), 1.4);
-    this._set(this.roomGain.gain, S.room * 0.05, 0.8);
+    this._set(this.leafGain.gain, M.leaf * S.leaf * (0.004 + 0.03 * gust * gust), 1.4);
+    this._set(this.roomGain.gain, M.room * S.room * 0.05, 0.8);
 
     // 夜蟲：偶爾自己停下來；緊張度升高時整片安靜
     if (this._t > this._nextChirp) {
       this._nextChirp = this._t + rnd(2.5, 9);
       this._bugOn = Math.random() < 0.72 ? 1 : 0;
     }
-    this._set(this.cricketGate.gain, S.bug * (rel ? 0.6 : this._bugOn * (1 - sstep(0.25, 0.6, T))) * (this.profile === 'road' ? 0.7 : 1), 0.35);
+    this._set(this.cricketGate.gain, M.bug * S.bug * (rel ? 0.6 : this._bugOn * (1 - sstep(0.25, 0.6, T))) * (this.profile === 'road' ? 0.7 : 1), 0.35);
 
     if (this.rainGain) {
       const on = S.rain ? 1 : 0, near = clamp(this.windowNear);
-      this._set(this.rainGain.gain, on * (0.028 + 0.034 * near) * (0.75 + 0.5 * gust), 1.2);
+      this._set(this.rainGain.gain, M.rain * on * (0.028 + 0.034 * near) * (0.75 + 0.5 * gust), 1.2);
       this._set(this.rainLP.frequency, 2600 + 4200 * near, 0.6);
-      this._set(this.paneGain.gain, on * (0.09 + 0.42 * near * near) * (0.6 + 0.6 * gust), 1.0);
-      this._set(this.humGain.gain, on * 0.0035, 0.5);
+      this._set(this.paneGain.gain, M.pane * on * (0.09 + 0.42 * near * near) * (0.6 + 0.6 * gust), 1.0);
+      this._set(this.humGain.gain, M.hum * on * 0.0035, 0.5);
     }
-    if (this.emberGain) this._set(this.emberGain.gain, S.ember && !rel ? 0.09 : 0, 0.8);
+    if (this.emberGain) this._set(this.emberGain.gain, S.ember && !rel ? M.ember * 0.09 : 0, 0.8);
 
     // 緊張層：低鳴平時只是緩慢起伏的一點點，不會整場轟轟作響
     const swell = 0.5 + 0.5 * Math.sin(this._t * 0.043);
     const droneBase = this.profile === 'home' ? 0 : rel ? 0.12 : 0.03 + 0.2 * swell * swell * swell;
-    this._set(this.droneMix.gain, droneBase + 0.62 * sstep(0.1, 0.9, T), 1.2);
-    if (T > 0.45) this._ensureStrings();
-    if (this.stringGain) this._set(this.stringGain.gain, 0.045 * sstep(0.5, 1, T), 0.9);
+    this._set(this.droneMix.gain, M.drone * (droneBase + 0.62 * sstep(0.1, 0.9, T)), 1.2);
+    if (T > 0.45 && M.strings > 0) this._ensureStrings();
+    if (this.stringGain) this._set(this.stringGain.gain, M.strings * 0.045 * sstep(0.5, 1, T), 0.9);
 
+    if (this._updaters.length) {
+      const s = { space: this.space, tension: T, rawTension: this.tension, indoor: this.indoor, gust, released: rel, profile: this.profile, time: this._t, ducked: this.ctx.currentTime < this._duckUntil };
+      for (const fn of this._updaters) { try { fn(dt, s); } catch (err) { console.warn('[audio] module update failed', err); } }
+    }
     this._pump();
   }
 
@@ -437,16 +476,17 @@ export class AudioSys {
       if (ev[name] === undefined) ev[name] = now + rnd(a, b) * (name === 'bell' || name === 'dog' ? 0.6 : 0.45);
       for (let guard = 0; ev[name] < H && guard < 6; guard++) {
         const t = Math.max(now + 0.02, ev[name]);
-        if (on) fire(t);
+        const hook = this._envHooks[name];
+        if (on) { if (hook) { try { hook(t, fire); } catch (err) { console.warn('[audio] envHook failed', name, err); } } else fire(t); }
         ev[name] = t + rnd(a, b);
       }
     }
     // 心跳
-    if (T > 0.3 && !rel) {
+    if (T > 0.3 && !rel && this.layerMul.heartbeat > 0) {
       if (this._beatAt < now) this._beatAt = now + 0.05;
       for (let guard = 0; this._beatAt < H && guard < 40; guard++) {
         const k = (T - 0.3) / 0.7, gap = 60 / (56 + 78 * k);
-        this._beat(this._beatAt, 0.25 + 0.75 * Math.pow(k, 0.8), gap);
+        this._beat(this._beatAt, this.layerMul.heartbeat * (0.25 + 0.75 * Math.pow(k, 0.8)), gap);
         this._beatAt += gap * rnd(0.97, 1.03);
       }
     }

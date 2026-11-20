@@ -31,7 +31,7 @@ for (const selected of records) {
   assets.push(asset);
 }
 const manifest = {
-  title: '說好不說｜人物、線索與圖片劇情', version: '2026-11-20',
+  title: '借聲｜人物、線索與圖片劇情', version: '2026-11-20',
   generator: 'OpenAI built-in image_gen',
   direction: '線索採夜晚、陰森、真實、老舊；五位朋友38～40歲；小雨7歲、完整牙齒。',
   integration: '33張線索圖與13張劇情圖已接入遊戲事件；按調查進度解鎖，可於筆記回看與放大。18張人物三視圖保留為製作參考。',

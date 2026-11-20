@@ -12,6 +12,7 @@ import { buildInteriors } from './interiors.js';
 import { buildCompound, buildGraveyard, buildNature, buildFog } from './outdoors.js';
 import { buildForest } from './trees.js';
 import { buildStoryWorld } from './storyWorld.js';
+import { createTempleRoute } from './nav.js';
 import { createClothSystem } from './cloth.js';
 
 export const ASSETS = {
@@ -273,6 +274,8 @@ export async function create(game, onProgress) {
     scene, world, storyWorld, cloth,
     fx, lights, flames, floorGroups, floorIndex, hemi, moon, statues: ctx.statues,
     spawn: SPAWN,
+    // 方向提示：目標在別層或殿外時，先指向樓梯、殿門、山門（src/maps/temple/nav.js）
+    route: createTempleRoute({ targets: storyWorld.targets, ground: (x, z) => world.terrain(x, z) }),
     indoorAt,
     surfaceAt(pos) {
       if (pos.x > 45 && pos.y < 0) return 'stone'; // 地下封印室

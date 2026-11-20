@@ -64,9 +64,13 @@ const offline = await page.evaluate(async () => {
   const out = { kinds: {}, pan: {}, ambience: {}, cues: {} };
 
   const KINDS = { whisper: 4, breath: 4.5, stinger: 5, sub: 6, stepBehind: 2.5, knock: 3.5, scrape: 4.5, slam: 4.5, hum: 12, static: 3, ring: 7.5, bellFar: 11, gasp: 2.5, marble: 5, howl: 6.5, sob: 7, creak: 3, drip: 2.5, heartbeat: 2, knock1: 2 };
+  // intensity 1 與 2 用同一組亂數（程序化聲音帶隨機變化；不同亂數時兩次的峰值本身就會差 30%，比較會偶發失敗）
+  const realRandom = Math.random;
+  const seeded = (seed) => () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
   for (const [kind, seconds] of Object.entries(KINDS)) {
     const row = {};
     for (const intensity of [1, 2]) {
+      Math.random = seeded(kind.length * 7919 + kind.charCodeAt(0));
       const { ctx, sys } = make(seconds + AT);
       const { buf, ret } = await renderWith(ctx, () => ({ played: sys.horror(kind, { pan: 0.4, dist: 2, intensity }), ...sys.debug() }));
       const s = stats(buf);
@@ -74,6 +78,7 @@ const offline = await page.evaluate(async () => {
     }
     out.kinds[kind] = row;
   }
+  Math.random = realRandom;
   // 未知的 kind 不可丟例外
   { const { sys } = make(1); out.unknown = sys.horror('no-such-kind'); out.noArgs = sys.horror('knock'); }
 

@@ -15,10 +15,10 @@ try{
     await page.screenshot({path:out+'/01-before-slide.png'});const start=await page.evaluate(()=>window.__game.map.storyWorld.slipPosition.z);
     await page.waitForTimeout(1150);const mid=await page.evaluate(()=>window.__game.map.storyWorld.slipPosition.z);await page.screenshot({path:out+'/02-mid-slide.png'});
     await page.waitForFunction(()=>!window.__game.map.storyWorld.doorEventActive);const end=await page.evaluate(()=>window.__game.map.storyWorld.slipPosition.z);await page.screenshot({path:out+'/03-after-slide.png'});
-    if(!(start>mid&&mid>end)||Math.abs(end-3.52)>.001)throw Error(`motion ${start}, ${mid}, ${end}`);
+    if(!(start>mid&&mid>end)||Math.abs(end-3.4)>.001)throw Error(`motion ${start}, ${mid}, ${end}`);
     if(!await page.evaluate(()=>window.__game.story.active('slip')&&window.__game.knockCount===3))throw Error('not inspectable or duplicate knocks');
   });
-  await test('reload during a cue restores a usable clue instead of a blocked step',async()=>{await page.evaluate(()=>{const s=window.__game.story;s.world.startDoorEvent();s.save();});await page.goto('http://127.0.0.1:5178/?auto&map=home&resume');await page.waitForFunction(()=>window.__game?.running&&window.__game.story?.state.home.step===3);if(!await page.evaluate(()=>window.__game.story.active('slip')&&!window.__game.map.storyWorld.doorEventActive&&window.__game.map.storyWorld.slipPosition.z===3.52))throw Error('cue resume blocked');});
+  await test('reload during a cue restores a usable clue instead of a blocked step',async()=>{await page.evaluate(()=>{const s=window.__game.story;s.world.startDoorEvent();s.save();});await page.goto('http://127.0.0.1:5178/?auto&map=home&resume');await page.waitForFunction(()=>window.__game?.running&&window.__game.story?.state.home.step===3);if(!await page.evaluate(()=>window.__game.story.active('slip')&&!window.__game.map.storyWorld.doorEventActive&&window.__game.map.storyWorld.slipPosition.z===3.4))throw Error('cue resume blocked');});
 }catch(e){errors.push(e.stack||String(e));}
 finally{fs.writeFileSync(out+'/results.json',JSON.stringify({results,errors},null,2));console.log('ERRORS',errors);await browser.close();}
 if(errors.length||results.some(r=>!r.pass))process.exitCode=1;

@@ -4,6 +4,7 @@ import { Story, readSave } from './story/Story.js';
 import { HomeStory } from './story/HomeStory.js';
 import { RoadStory } from './story/RoadStory.js';
 import { loadHandwriting } from './core/handwriting.js';
+import { CHECKPOINTS, DECISION_KEY, checkpointState, backupBeforeJump, restoreBackup, writeCheckpoint, placePlayer, createChapterPanel } from './debug/chapterJump.js';
 
 const $ = (id) => document.getElementById(id);
 const canvas = $('game');
@@ -11,6 +12,8 @@ const game = new Game(canvas);
 const params = new URLSearchParams(location.search);
 const AUTO = params.has('auto'); // 自動化測試 / 截圖用：不鎖定滑鼠直接開始
 const DEV = params.has('dev');
+// 章節跳轉（除錯）：開發伺服器一律可用；正式打包要在網址加 ?dev 或 ?debug
+const DEBUG = import.meta.env.DEV || DEV || params.has('debug');
 // 自動化測試不做轉場淡入淡出，也不自動調整解析度（截圖才會穩定、清楚）；要量動態解析度時加 &drs
 game.transitions = !AUTO;
 if (AUTO && !params.has('drs')) game.perf.drs.enabled = false;
@@ -48,7 +51,14 @@ function buildLobby() {
     enterMap(MAPS[0],false);
   };
   $('continue-story').onclick=()=>enterMap(MAPS.find(m=>m.id===saved?.scene)||MAPS.find(m=>m.id==='temple'),true);
+  if(DEBUG){
+    const b=document.createElement('button');b.className='menu-entry debug-entry';b.id='debug-jump';
+    b.innerHTML='<span class="menu-number">DBG</span><span>章節跳轉<small>除錯：直接跳到任一章節、恐怖段落或結局（F9）</small></span><span class="menu-arrow">↗</span>';
+    b.onclick=()=>chapterPanel.open();
+    ui.list.querySelector('.menu-meta').before(b);
+  }
 }
+function saveSummary(s){return !s?'尚無調查紀錄':s.scene==='home'?`序章・住處（步驟 ${s.home.step}）`:s.scene==='road'?`序章之二・舊山路（步驟 ${s.road.step}）`:`慈雲寺 第 ${s.chapter} 章 · 證據 ${s.evidence.length}/11${s.flags.underground?' · 地下':''}`;}
 
 let settings = {};
 try { settings = JSON.parse(localStorage.getItem('ols-settings') || '{}') || {}; } catch {}
@@ -77,6 +87,7 @@ let entering = false;
 async function enterMap(def, resume = false) {
   if (state === 'loading' || entering) return;
   entering = true;
+  pendingAfter = null;
   const travelling = state === 'playing';
   currentMap = def;
   game.audio.init(); // 在使用者點擊時建立音訊
@@ -117,6 +128,7 @@ function beginPlay(first) {
   game.start();
   game.story?.start();
   game.player.enabled = !game.story?.modal && !game.story?.busy;
+  if (pendingAfter) { const cp = pendingAfter; pendingAfter = null; runAfter(cp); }
   if (first) {
     game.blink(700); // 從黑畫面淡入
     ui.intro.textContent = (currentMap.intro || []).join('\n');
@@ -163,6 +175,53 @@ function returnToLobby() {
   buildLobby();
 }
 ui.toLobby.addEventListener('click', returnToLobby);
+
+// ───── 除錯：章節跳轉（src/debug/chapterJump.js） ─────
+let pendingAfter = null; // 檢查點要在玩家真正進入遊戲後才做的事（開始恐怖段落、結局某一段）
+function runAfter(cp) { try { cp.after?.(game); } catch (err) { console.warn('[debug] checkpoint action failed', cp.id, err); } }
+/** 先拔掉目前的劇情，避免它在換場途中把舊進度寫回自動存檔 */
+function dropStory() { game.stop(); game.story?.dispose(); game.story = null; }
+async function jumpTo(id) {
+  const cp = CHECKPOINTS.find((c) => c.id === id);
+  const def = cp && MAPS.find((m) => m.id === cp.scene);
+  if (!def || state === 'loading' || entering) return false;
+  let s;
+  try { s = checkpointState(cp); } catch (err) { console.error(err); flash('這個檢查點的存檔不合法：' + id); return false; }
+  dropStory();
+  backupBeforeJump();
+  try { writeCheckpoint(cp, s); } catch { flash('瀏覽器無法寫入存檔，無法跳轉。'); return false; }
+  if (state === 'playing') setState('paused'); // 換場不再淡出淡入：上一張地圖的劇情已經拔掉了
+  await enterMap(def, true);
+  if (!game.story || game.map?.id !== cp.scene) return false;
+  placePlayer(game, cp);
+  game.story.save();
+  if (cp.decision) game.story.save(DECISION_KEY); // 「回到最後抉擇」回到這裡
+  if (cp.after) { if (state === 'playing') runAfter(cp); else pendingAfter = cp; }
+  return true;
+}
+const chapterPanel = DEBUG ? createChapterPanel({
+  onJump: jumpTo,
+  onRestore: () => {
+    if (game.map) { dropStory(); game.audio.stop(); game.unloadMap(); firstEntry = true; }
+    restoreBackup(); setState('lobby'); buildLobby();
+  },
+  describe: () => `目前存檔：${saveSummary(readSave())}`,
+}) : null;
+if (DEBUG) {
+  const b = document.createElement('button'); b.id = 'btn-jump'; b.className = 'btn'; b.textContent = '章節跳轉';
+  b.addEventListener('click', () => chapterPanel.open());
+  document.querySelector('.overlay-actions').appendChild(b);
+  const keys = document.querySelector('.overlay-keys');
+  if (keys) keys.insertAdjacentHTML('beforeend', '<span><kbd>F9</kbd> 章節跳轉</span>');
+  window.addEventListener('keydown', (e) => {
+    if (e.code !== 'F9' || e.repeat) return;
+    e.preventDefault();
+    if (state === 'loading' || entering) return;
+    chapterPanel.toggle(); // 打開時會解除滑鼠鎖定，遊戲自動進入暫停
+  });
+  window.__jump = jumpTo;
+  window.__checkpoints = () => CHECKPOINTS.map((c) => ({ id: c.id, group: c.group, title: c.title, scene: c.scene }));
+}
 
 // ───── 遊戲中 HUD 與驗證用快捷鍵 ─────
 const TELEPORTS = {
@@ -230,4 +289,5 @@ if (!AUTO) {
 window.__game = game; // 除錯 / 自動化測試用
 window.__enter = (id) => enterMap(MAPS.find((m) => m.id === id));
 if (DEV) document.querySelector('.overlay-keys').classList.add('dev-visible');
-if (AUTO && params.get('map')) enterMap(MAPS.find(m=>m.id===params.get('map'))||MAPS[0],params.has('resume'));
+if (DEBUG && params.get('jump')) jumpTo(params.get('jump'));
+else if (AUTO && params.get('map')) enterMap(MAPS.find(m=>m.id===params.get('map'))||MAPS[0],params.has('resume'));

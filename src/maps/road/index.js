@@ -11,6 +11,7 @@ import { buildVillage,bakeStatics } from './village.js';
 import { buildEffigies } from './effigies.js';
 import { createNightSky } from '../../core/sky.js';
 import { createAirDust } from '../../core/air.js';
+import { createRoute } from '../../core/nav.js';
 
 export const ASSETS={textures:['forest_ground_04','asphalt_02','worn_mossy_plasterwall','weathered_brown_planks','wood_peeling_paint_weathered','mossy_rock','bark_brown_02','velour_velvet','red_brick_plaster_patch_02','rusty_corrugated_iron','rusted_shutter','concrete_floor_worn_001','clay_roof_tiles_02'],scans:['ritual_hand','ghost_woman']};
 export function create(game){
@@ -117,13 +118,15 @@ export function create(game){
     targets,setState(){},
     triggerScare(kind){
       if(played.has(kind))return;played.add(kind);
-      encounter={kind,time:0,seen:false,sounded:false};
+      encounter={kind,time:0,seen:false,seenTime:0,out:0,sounded:false};
       watcher.root.position.set(kind==='bridge'?-2.3:8.5,0,kind==='bridge'?7.3:-14.1);
-      watcher.root.visible=true;
+      watcher.setGlitch?.(0);watcher.root.visible=true;
     },
     get scareActive(){return !!encounter;},
   };
   return {id:'road',scene,world,storyWorld,cloth,remains,watchers:effigies.watchers,spawn:{x:-1.2,z:33.2,yaw:0,pitch:-.03},
+    // 方向提示：作坊只有正面一個寬開口（x 7～10），目標在作坊裡時先指向入口
+    route:createRoute({zone:p=>p.x>5&&p.x<12&&p.z>-22.5&&p.z<-14.5?'shop':'street',links:[['street','shop',[8.5,1.1,-14.5],{label:'作坊入口'}]]}),
     zoneName:p=>p.z>14?'舊山路・停駛的站牌':p.z>7?'石橋・下方沒有水聲':p.x>4.8&&p.z<-14&&p.z>-23?'廢村・榮昌紙紮行':p.z<-30?'慈雲寺・舊參道':'慈雲里・無人的街',
     indoorAt:p=>p.x>5&&p.z<-14&&p.z>-23,surfaceAt:p=>p.x>5&&p.x<12&&p.z<-14.5&&p.z>-22.5?'stone':Math.abs(p.x)<2.6?'stone':Math.abs(p.x)<4.8?'gravel':'dirt',setQuality(q){moon.shadow.mapSize.set(q.shadow,q.shadow);if(moon.shadow.map&&moon.shadow.map.width!==q.shadow){moon.shadow.map.dispose();moon.shadow.map=null;}moon.shadow.needsUpdate=true;game.film.uniforms.grain.value=.032;game.film.uniforms.aberration.value=.0018;},
     update(dt,t){
@@ -132,10 +135,14 @@ export function create(game){
         encounter.time+=dt;
         const p=game.player,dx=watcher.root.position.x-p.pos.x,dz=watcher.root.position.z-p.pos.z,d=Math.hypot(dx,dz);
         const facing=(dx*-Math.sin(p.yaw)+dz*-Math.cos(p.yaw))/Math.max(.01,d);
-        if(facing>.7)encounter.seen=true;
+        if(facing>.7){encounter.seen=true;encounter.seenTime+=dt;}
         watcher.root.rotation.y=Math.atan2(-dx,-dz);
         if(!encounter.sounded&&encounter.time>.6){game.audio.presence?.(encounter.kind==='bridge'?-.7:.7);encounter.sounded=true;}
-        if(encounter.time>10||(encounter.seen&&encounter.time>2&&facing<.2)||d<1.3){watcher.root.visible=false;encounter=null;}
+        const gone=()=>{watcher.root.visible=false;watcher.setGlitch?.(0);encounter=null;};
+        // 被看到之後不久留：盯著約 0.9 秒就在眼前抽搐兩三幀消失；看一眼就移開視線，回頭已經不在
+        if(encounter.out>0){encounter.out+=dt;watcher.root.visible=Math.sin(encounter.out*60)>-.3;if(encounter.out>.16)gone();}
+        else if(encounter.seenTime>.9||d<1.3){encounter.out=1e-3;watcher.setGlitch?.(1);}
+        else if((encounter.seen&&encounter.time>.5&&facing<.2)||encounter.time>10)gone();
       }
       watcher.update(t);
       sky.update(t);airDust.strength=.55;cloth.update(t,game.camera);remains.update(t);furnace.intensity=4.5*(1+.08*Math.sin(t*2.1));for(const f of fog){f.o.quaternion.copy(game.camera.quaternion);f.o.position.x=f.x+Math.sin(t*.08+f.phase)*2;}},

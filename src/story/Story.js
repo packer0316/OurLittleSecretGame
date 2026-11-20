@@ -4,6 +4,7 @@ import { preludeRecords } from './preludeRecords.js';
 import { PHOTO_MARK_STYLE } from './photoLayout.js';
 import { createFinale } from './finale.js';
 import { PICTURES, evidencePicture, notePicture, normalizePictures, pictureChapter } from './illustrations.js';
+import { createWaypoint } from './waypoint.js';
 
 const $=id=>document.getElementById(id);
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -22,8 +23,9 @@ export class Story {
     this.game=game;this.world=game.map.storyWorld;this.state=resume?(readSave()||newState()):newState();
     // scene：正在跑的腳本演出 id（例如 'finale'、'sp:hideseek'），null 表示自由探索。設定期間恐怖導演的隨機事件暫停。
     this.onResume=onResume;this.onLobby=onLobby;this.modal=null;this.started=false;this.chase=null;this.ritual=null;this.scene=null;this.toastTime=0;this.tick=0;
-    this.look=new THREE.Vector3();this.delta=new THREE.Vector3();this.projected=new THREE.Vector3();this.events=[];
-    this.mount();this.sync();
+    this.look=new THREE.Vector3();this.delta=new THREE.Vector3();this.events=[];
+    this.guideTo=new THREE.Vector3();
+    this.mount();this.waypoint=createWaypoint($('waypoint'),game.camera);this.sync();
     if(resume&&this.state.position){game.player.teleport(...this.state.position);}
     if(this.state.ending)this.state.ending=null; // continue from last safe play state, never lock the session in an ending
     this.onKey=e=>{
@@ -399,7 +401,19 @@ export class Story {
     if(preludeRecords(s).length){const b=document.createElement('button');b.className='prelude-link';b.textContent='回看住處、山村與佩珊的紀錄';b.onclick=()=>this.preludeJournal();$('story-layer').querySelector('.route-note').before(b);}
     this.addPictureJournalLink();
   }
-  update(dt){if(this.modal||this.state.ending){$('interact-prompt').textContent='';return;}
+  /** 方向提示箭頭要指的地方：{to, label?, danger?}；null 時箭頭淡出。閱讀、演出、恐怖段落與結局中不指路；追逐時改指香火。 */
+  guide(){const s=this.state;
+    if(this.modal||s.ending||this.scene||this.ritual||this.transitioning||this.busy)return null;
+    if(this.chase)return {to:this.guideTo.copy(this.chase.safe).setY(this.chase.safe.y+1),label:'香火',danger:true};
+    const goal=objectives(s)[0],t=goal&&this.world.targets.find(t=>t.id===goal.id);
+    return t?{to:t.position}:null;
+  }
+  /** 每一幀更新箭頭。目標在別層或屋外時，地圖的 route() 會先指向樓梯、門口（src/core/nav.js）。 */
+  updateWaypoint(dt){const g=this.guide(),p=this.game.player.pos;
+    const r=g&&this.game.map?.route?.(p,g.to);
+    this.waypoint.update(dt,g&&{point:r?r.point:g.to,label:r?.via?r.label:(g.label||''),danger:!!g.danger},p);
+  }
+  update(dt){this.updateWaypoint(dt);if(this.modal||this.state.ending){$('interact-prompt').textContent='';return;}
     this.state.elapsed+=dt;this.tick+=dt;if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0)$('story-toast').classList.remove('show');}
     if(this.chase){const c=this.chase;c.time+=dt;const g=this.world.ghost.root,p=this.game.player.pos;this.delta.copy(p).sub(g.position);this.delta.y=0;const d=this.delta.length();
       if(c.time>1.2&&d>0.2){this.delta.normalize();const next={x:g.position.x+this.delta.x*3.15*dt,z:g.position.z+this.delta.z*3.15*dt};this.game.map.world.resolve(next,0.22,g.position.y);g.position.x=next.x;g.position.z=next.z;g.rotation.y=Math.atan2(this.delta.x,this.delta.z);}
@@ -412,12 +426,10 @@ export class Story {
     if(this.tick<0.12)return;this.tick=0;const p=this.game.player.pos;const focused=this.focused();$('interact-prompt').innerHTML=focused?`<kbd>E</kbd><span>${escape(focused.label)}</span>`:'';
     const goal=objectives(this.state)[0];const target=this.world.targets.find(t=>t.id===goal.id);
     $('objective-title').textContent=goal.title;$('objective-place').textContent=goal.location;
-    if(target){const d=p.distanceTo(target.position);const dy=target.position.y-p.y;$('objective-distance').textContent=`${Math.round(d)} m${dy>4?' · 往樓上':dy<-4?' · 往樓下':''}`;
-      this.projected.copy(target.position).project(this.game.camera);const front=this.delta.copy(target.position).sub(this.game.camera.position).dot(this.game.camera.getWorldDirection(this.look))>0;
-      const marker=$('waypoint');marker.classList.toggle('hidden',!front||Math.abs(this.projected.x)>.94||Math.abs(this.projected.y)>.85||d<3.3||!!this.chase||!!this.ritual);marker.style.left=`${(this.projected.x*.5+.5)*100}%`;marker.style.top=`${(-this.projected.y*.5+.5)*100}%`;marker.textContent='◇';}
+    if(target){const d=p.distanceTo(target.position);const dy=target.position.y-p.y;$('objective-distance').textContent=`${Math.round(d)} m${dy>4?' · 往樓上':dy<-4?' · 往樓下':''}`;}
     // 提示光點只留給「現在能調查、而且還沒讀過」的東西；實際顯示由 storyWorld 依距離決定。
     for(const t of this.world.targets)t.live=this.active(t.id)&&!(NOTES[t.id]&&this.state.notes?.includes(t.id));
     if((this.state.flags.sent||this.state.flags.sealed)&&p.z>24&&Math.abs(p.x)<4)this.finish(this.state.flags.sent?'C':'A');
   }
-  dispose(){this.finale?.dispose();window.removeEventListener('keydown',this.onKey);window.removeEventListener('beforeunload',this.onUnload);$('story-layer')?.remove();$('story-hud')?.remove();this.modal=null;}
+  dispose(){this.finale?.dispose();this.waypoint?.dispose();window.removeEventListener('keydown',this.onKey);window.removeEventListener('beforeunload',this.onUnload);$('story-layer')?.remove();$('story-hud')?.remove();this.modal=null;}
 }

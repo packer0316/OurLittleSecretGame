@@ -36,6 +36,7 @@ export function createDirector(h) {
     else if (p === 'approach') { phaseDur = (12 + rng() * 9) * T; nextEvent = (2 + rng() * 3) * T; }
     else if (p === 'peak') { phaseDur = 7; peakWantsFalse = rng() < (h.id === 'home' ? 0.16 : 0.34); attemptT = 0; } // 約三次裡有一次是假警報
     else if (p === 'calm') { phaseDur = (24 + rng() * 16) * (1 - 0.3 * I) * T; nextEvent = (13 + rng() * 8) * T; }
+    h.game.audio?.score?.phase(p); // 配樂跟著節奏走（src/audio/modules/score.js）
   }
 
   const ghostBusy = () => { for (let i = 0; i < active.length; i++) if (active[i].ghost) return true; return false; };

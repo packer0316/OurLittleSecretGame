@@ -294,16 +294,16 @@ export function buildStoryWorld(ctx) {
         g.rotation.y=Math.atan2(player.pos.x-g.position.x,player.pos.z-g.position.z);
         eyePoint.set(player.pos.x,player.pos.y+(player.eye||1.6),player.pos.z);ghost.lookAt?.(eyePoint); // 頭一直跟著你
         if(sc.kind==='stage'&&sc.time<3)g.position.z+=dt*.5;
-        // 被盯著超過一秒：抽搐著朝你踏近一步（每次演出只有一次）
-        if(!sc.stepped&&sc.seenTime>1&&d>4.2&&sc.kind!=='stage'){
+        // 被盯著約半秒：抽搐著朝你踏近一步（每次演出只有一次），再過半秒就消失，不在眼前久留
+        if(!sc.stepped&&sc.seenTime>.45&&d>4.2&&sc.kind!=='stage'){
           sc.stepped=true;sc.jerk=.24;ghost.setGlitch?.(1);
           stepPoint.x=g.position.x-temp.x*1.1;stepPoint.z=g.position.z-temp.z*1.1;world.resolve(stepPoint,.25,g.position.y);
           g.position.x=stepPoint.x;g.position.z=stepPoint.z;
         }
         if(sc.jerk>0){sc.jerk-=dt;if(sc.jerk<=0)ghost.setGlitch?.(.15);}
         if(sc.out>0){sc.out+=dt;g.visible=Math.sin(sc.out*60)>-.3;if(sc.out>.16)endScare();} // 在你眼前消失：抽搐兩三幀（明滅不超過兩次）
-        else if(sc.time>1.8&&sc.seen&&facing<.15)endScare(); // 移開視線：回頭已經不在
-        else if(sc.time>sc.life||d<1.5){sc.out=1e-3;ghost.setGlitch?.(1);}
+        else if(sc.time>.5&&sc.seen&&facing<.15)endScare(); // 移開視線：回頭已經不在
+        else if(sc.seenTime>1||sc.time>sc.life||d<1.5){sc.out=1e-3;ghost.setGlitch?.(1);} // 被盯著約一秒，或一直沒被看到直到 life 用完
       }
       ghost.update(t,!!player.storyChase);smoke.material.opacity=0.11+Math.sin(t*.7)*.025;
       // court：香頭的餘燼像在呼吸（有風時亮一下），香煙沿著同一個時間軸飄

@@ -3,27 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>說好不說 — We Promised Not to Tell</title>
+    <title>借聲 — Borrowed Voice</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 fill=%22%23050506%22/><rect x=%224%22 y=%2212%22 width=%2224%22 height=%228%22 fill=%22%238f1712%22/></svg>" />
     <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/ui/titleScreen.css" />
   </head>
   <body>
     <canvas id="game"></canvas>
 
     <!-- 大廳 -->
     <section id="lobby" class="screen">
-      <div class="lobby-bg"></div>
-      <div class="lobby-topline"><span>一段未播完的錄音</span><span>慈雲寺 · 02:47 AM</span></div>
+      <div class="lobby-bg" aria-hidden="true"></div>
+      <div class="lobby-shade" aria-hidden="true"></div>
+      <div class="lobby-topline"><span>一段未播完的錄音</span><span class="lobby-time"><i aria-hidden="true"></i> 02:47 <b>AM</b></span></div>
+      <div class="lobby-body">
       <header class="lobby-head">
-        <p class="eyebrow">WE PROMISED NOT TO TELL</p>
-        <h1>說好<span>不說</span></h1>
-        <p class="tagline">朋友寄來一張照片。<br>那晚，他在電話裡說了兩次同一句話。</p>
+        <p class="eyebrow">BORROWED VOICE</p>
+        <h1 class="title-mark logo-unavailable"><span class="title-text">借聲</span></h1>
+        <p class="tagline">如果它叫你的名字，<em>別回答。</em></p>
+        <p class="lobby-premise">朋友在電話裡，說了兩次同一句話。<br>第二次，聲音是從門外傳來的。</p>
       </header>
-      <main class="lobby-main">
-        <div class="section-title"><span>先把那通電話聽完。</span></div>
+      <main class="lobby-main" aria-label="遊戲主選單">
+        <div class="section-title"><span>那一晚，還沒有結束。</span></div>
         <div id="map-list" class="map-list"></div>
       </main>
+      </div>
+      <p class="lobby-omen" aria-hidden="true">她沒有看見你。<br><span>她聽見了。</span></p>
       <footer class="lobby-foot">
+        <details class="lobby-options">
+          <summary>遊戲設定<span aria-hidden="true">＋</span></summary>
         <div class="settings">
           <label>滑鼠靈敏度 <input id="set-sens" type="range" min="0.3" max="2.5" step="0.05" value="1" /></label>
           <label>音量 <input id="set-vol" type="range" min="0" max="1" step="0.05" value="0.8" /></label>
@@ -44,7 +52,9 @@
           <span><kbd>J</kbd> 筆記</span>
           <span><kbd>Esc</kbd> 暫停</span>
         </div>
-        <p class="notice">台灣民俗懸疑 · 第一人稱故事　／　建議使用耳機・字幕敘事版　／　<a href="./assets/CREDITS.html" target="_blank" rel="noopener">素材與製作名單</a></p>
+        </details>
+        <p class="lobby-listen">建議戴上耳機<span>調查進度自動保存</span></p>
+        <p class="notice">台灣民俗恐怖 · 圖文敘事　／　<a href="./assets/CREDITS.html" target="_blank" rel="noopener">製作名單</a></p>
       </footer>
     </section>
 
@@ -86,6 +96,7 @@
       <pre id="debug" class="debug hidden"></pre>
     </div>
 
+    <script type="module" src="/src/ui/titleScreen.js"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

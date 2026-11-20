@@ -145,6 +145,9 @@ export class Game {
     this.unloadMap();
     const P = this.perf;
     const mod = await def.load();
+    // 錄音素材和貼圖、模型同時下載與解碼（解碼在背景執行緒，不會拖長載入）；沒有音訊時跳過
+    this.audio.bank?.stopLoops(0.2);
+    const sounds = this.audio.bank ? this.audio.bank.preload(def.id).catch((err) => console.warn('[audio] preload failed', err)) : null;
     await this.assets.preload(mod.ASSETS, (p) => onProgress?.(p * 0.55, '載入素材'));
     onProgress?.(0.56, '建構場景');
     await sleep(30);
@@ -162,6 +165,8 @@ export class Game {
     this._applyScale();
     await this._warmup(map, onProgress);
     P.late.attach(map.scene);
+    if (sounds) { onProgress?.(0.99, '載入聲音'); await sounds; }
+    this.audio.mapReady?.(map.id);
     onProgress?.(1, '完成');
   }
 
@@ -241,6 +246,8 @@ export class Game {
     this.story = null;
     if (!this.map) return;
     this.horror.detach();
+    this.audio.bank?.stopLoops(0.2);
+    this.audio.mapReady?.(null); // 聲音模組：地圖卸載（停掉自己的持續聲）
     const P = this.perf, scene = this.map.scene;
     P.late.detach();
     P.prepass.detach();

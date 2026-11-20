@@ -1,0 +1,1574 @@
+[
+ {
+  "file": "amb/dawn_birds.ogg",
+  "sources": [
+   {
+    "title": "Dawn chorus.wav",
+    "author": "Synge101",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Synge101/sounds/611453/"
+   }
+  ],
+  "notes": "黎明的鳥叫（森林的晨間合唱），無縫循環"
+ },
+ {
+  "file": "amb/home_city.ogg",
+  "sources": [
+   {
+    "title": "city hum 3am winter 140217_0090.wav",
+    "author": "klankbeeld",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/klankbeeld/sounds/219877/"
+   }
+  ],
+  "notes": "住處：凌晨三點遠方城市的低鳴（窗外）（取 261.5s 起 10 秒，2 秒交叉淡化成無縫循環，正規化到約 −30 LUFS）"
+ },
+ {
+  "file": "amb/home_fridge.ogg",
+  "sources": [
+   {
+    "title": "Large Refrigerator compressor hum 1",
+    "author": "FOSSarts",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/FOSSarts/sounds/740110/"
+   }
+  ],
+  "notes": "住處：冰箱壓縮機的低哼（取 2.0s 起 6 秒，1 秒交叉淡化成無縫循環，正規化到約 −30 LUFS）"
+ },
+ {
+  "file": "amb/home_rain.ogg",
+  "sources": [
+   {
+    "title": "Rain on window (interior)",
+    "author": "xkeril",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/xkeril/sounds/669486/"
+   }
+  ],
+  "notes": "住處：屋內聽到的雨打在窗上（取 14.5s 起 14 秒，2 秒交叉淡化成無縫循環，正規化到約 −30 LUFS）"
+ },
+ {
+  "file": "amb/road_night.ogg",
+  "sources": [
+   {
+    "title": "Countryside ambiance in village outskirts near forest at night with cricket, cicada, light wind, foliage, distant village atmosphere and distant dog barking",
+    "author": "felix.blume",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/felix.blume/sounds/668654/"
+   }
+  ],
+  "notes": "山村舊路：村莊外圍、靠近樹林的夜（蟋蟀、遠處的蟲、微風）（取 7.0s 起 14 秒，2 秒交叉淡化成無縫循環，正規化到約 −30 LUFS）"
+ },
+ {
+  "file": "amb/temple_crypt.ogg",
+  "sources": [
+   {
+    "title": "Ambience INT water drip dropping cave grotto spooky (quinta da regaleira portugal).flac",
+    "author": "corkob",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/corkob/sounds/392668/"
+   }
+  ],
+  "notes": "地下封印室：洞穴裡的滴水與潮濕的空氣（突出的水滴瞬態以限制器壓低）（取 2.5s 起 9 秒，2 秒交叉淡化成無縫循環，正規化到約 −30 LUFS）"
+ },
+ {
+  "file": "amb/temple_grave.ogg",
+  "sources": [
+   {
+    "title": "Night wind, trees ans crickets 2",
+    "author": "fran_marenco",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/fran_marenco/sounds/853993/"
+   }
+  ],
+  "notes": "亂葬崗：夜風吹過樹林、乾葉沙沙作響，遠處零星的蟲鳴（取 242.0s 起 11 秒，2 秒交叉淡化成無縫循環，正規化到約 −30 LUFS）"
+ },
+ {
+  "file": "amb/temple_hall.ogg",
+  "sources": [
+   {
+    "title": "AMB_Wind_Howling_empty Church close to window_48kHz.wav",
+    "author": "Tonmeister88",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Tonmeister88/sounds/557380/"
+   },
+   {
+    "title": "room-tone empty church in village Bokhoven 357 PM 241220_0967",
+    "author": "klankbeeld",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/klankbeeld/sounds/788451/"
+   }
+  ],
+  "notes": "殿內：空教堂窗邊的風嘯（風從縫隙灌進來）疊上空教堂的空間底噪（取 67.0s 起 11 秒，2 秒交叉淡化成無縫循環，正規化到約 −30 LUFS）"
+ },
+ {
+  "file": "amb/temple_night.ogg",
+  "sources": [
+   {
+    "title": "Summertime Drizzly Night Time Field-Recordings in the Woods of Chiayi County, Taiwan",
+    "author": "SonnySoundOfTaiwan",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SonnySoundOfTaiwan/sounds/476645/"
+   }
+  ],
+  "notes": "寺廟外的山林夜：台灣嘉義梅山山區夏夜（細雨、蟲鳴、遠處的蛙）（取 196.5s 起 13 秒，2 秒交叉淡化成無縫循環，正規化到約 −30 LUFS）"
+ },
+ {
+  "file": "foley/bang_01.ogg",
+  "sources": [
+   {
+    "title": "door metal knock heavy bang from other side.flac",
+    "author": "kyles",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/kyles/sounds/637480/"
+   }
+  ],
+  "notes": "從門的另一邊用力拍門（厚重的門板）"
+ },
+ {
+  "file": "foley/bang_02.ogg",
+  "sources": [
+   {
+    "title": "door metal knock heavy bang from other side.flac",
+    "author": "kyles",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/kyles/sounds/637480/"
+   }
+  ],
+  "notes": "從門的另一邊用力拍門（厚重的門板）"
+ },
+ {
+  "file": "foley/bark_01.ogg",
+  "sources": [
+   {
+    "title": "Single Dog Bark",
+    "author": "kwahmah_02",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/kwahmah_02/sounds/277058/"
+   }
+  ],
+  "notes": "山谷另一頭的狗叫（單聲，遊戲裡排成兩三聲、加距離感）"
+ },
+ {
+  "file": "foley/bark_02.ogg",
+  "sources": [
+   {
+    "title": "single bark - small to medium dog",
+    "author": "haulaway",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/haulaway/sounds/630648/"
+   }
+  ],
+  "notes": "山谷另一頭的狗叫（單聲，遊戲裡排成兩三聲、加距離感）"
+ },
+ {
+  "file": "foley/bark_03.ogg",
+  "sources": [
+   {
+    "title": "Dogs bark and howl",
+    "author": "Weak_Hero",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Weak_Hero/sounds/612856/"
+   }
+  ],
+  "notes": "山谷另一頭的狗叫（單聲，遊戲裡排成兩三聲、加距離感）"
+ },
+ {
+  "file": "foley/bell_temple.ogg",
+  "sources": [
+   {
+    "title": "temple_bell_002.wav",
+    "author": "tec_studio",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/tec_studio/sounds/668647/"
+   }
+  ],
+  "notes": "大型銅鐘（遠處的廟鐘）：取前 6 秒、3.5 秒後淡出，開頭補一記撞木的悶響；遊戲裡與原本的程序化鐘聲疊加"
+ },
+ {
+  "file": "foley/chant_01.ogg",
+  "sources": [
+   {
+    "title": "Buddhist Monk Chant / prayer, China",
+    "author": "mycompasstv",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/mycompasstv/sounds/383167/"
+   }
+  ],
+  "notes": "男聲誦經（福州南少林寺）片段：高通 140 Hz、低通 2.4 kHz（隔著牆）、輕微殘響、前後淡入淡出"
+ },
+ {
+  "file": "foley/chant_02.ogg",
+  "sources": [
+   {
+    "title": "Buddhist Monk Chant / prayer, China",
+    "author": "mycompasstv",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/mycompasstv/sounds/383167/"
+   }
+  ],
+  "notes": "男聲誦經（福州南少林寺）片段：高通 140 Hz、低通 2.4 kHz（隔著牆）、輕微殘響、前後淡入淡出"
+ },
+ {
+  "file": "foley/chime_01.ogg",
+  "sources": [
+   {
+    "title": "Furin japanese wind chime.wav",
+    "author": "ayustat2001",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/ayustat2001/sounds/501168/"
+   }
+  ],
+  "notes": "屋簷下的風鈴被風吹響（單一陣）"
+ },
+ {
+  "file": "foley/chime_02.ogg",
+  "sources": [
+   {
+    "title": "Furin japanese wind chime.wav",
+    "author": "ayustat2001",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/ayustat2001/sounds/501168/"
+   }
+  ],
+  "notes": "屋簷下的風鈴被風吹響（單一陣）"
+ },
+ {
+  "file": "foley/click_01.ogg",
+  "sources": [
+   {
+    "title": "Small_Flashlight_Click_on_Fast.wav",
+    "author": "Rudmer_Rotteveel",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Rudmer_Rotteveel/sounds/502506/"
+   }
+  ],
+  "notes": "手電筒／開關按下去的喀一聲"
+ },
+ {
+  "file": "foley/click_02.ogg",
+  "sources": [
+   {
+    "title": "Flashlight Switch Click",
+    "author": "Ralph0o7",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Ralph0o7/sounds/690300/"
+   }
+  ],
+  "notes": "手電筒／開關按下去的喀一聲"
+ },
+ {
+  "file": "foley/cloth_01.ogg",
+  "sources": [
+   {
+    "title": "Clothing Ruffle 01.wav",
+    "author": "WhiteFire43",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/WhiteFire43/sounds/641383/"
+   }
+  ],
+  "notes": "布料摩擦、蓋下來的沙沙聲"
+ },
+ {
+  "file": "foley/cloth_02.ogg",
+  "sources": [
+   {
+    "title": "Clothing Ruffle 01.wav",
+    "author": "WhiteFire43",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/WhiteFire43/sounds/641383/"
+   }
+  ],
+  "notes": "布料摩擦、蓋下來的沙沙聲"
+ },
+ {
+  "file": "foley/creak_floor_01.ogg",
+  "sources": [
+   {
+    "title": "Creaking Floorboards 02",
+    "author": "qubodup",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/qubodup/sounds/802574/"
+   }
+  ],
+  "notes": "老木地板被踩到時的吱嘎（短），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/creak_floor_02.ogg",
+  "sources": [
+   {
+    "title": "Creaking Floorboards 05",
+    "author": "qubodup",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/qubodup/sounds/802577/"
+   }
+  ],
+  "notes": "老木地板被踩到時的吱嘎（短），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/creak_floor_03.ogg",
+  "sources": [
+   {
+    "title": "Creaking Floorboards 07",
+    "author": "qubodup",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/qubodup/sounds/802579/"
+   }
+  ],
+  "notes": "老木地板被踩到時的吱嘎（短），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/creak_floor_04.ogg",
+  "sources": [
+   {
+    "title": "Creaking Floorboards 08",
+    "author": "qubodup",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/qubodup/sounds/802580/"
+   }
+  ],
+  "notes": "老木地板被踩到時的吱嘎（短），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/creak_floor_05.ogg",
+  "sources": [
+   {
+    "title": "Creaking Floorboards 15",
+    "author": "qubodup",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/qubodup/sounds/802597/"
+   }
+  ],
+  "notes": "老木地板被踩到時的吱嘎（短），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/creak_long_01.ogg",
+  "sources": [
+   {
+    "title": "Creaking Floorboards 13 Long Slow",
+    "author": "qubodup",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/qubodup/sounds/802595/"
+   }
+  ],
+  "notes": "木構造慢慢被壓出來的長吱嘎（樑柱、樓板），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/creak_long_02.ogg",
+  "sources": [
+   {
+    "title": "Creaking Floorboards 11",
+    "author": "qubodup",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/qubodup/sounds/802593/"
+   }
+  ],
+  "notes": "木構造慢慢被壓出來的長吱嘎（樑柱、樓板），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/door_creak_01.ogg",
+  "sources": [
+   {
+    "title": "Door Opening Creaking",
+    "author": "dleverett",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/dleverett/sounds/710510/"
+   }
+  ],
+  "notes": "舊木門被推開時門軸的長吱嘎"
+ },
+ {
+  "file": "foley/drag_01.ogg",
+  "sources": [
+   {
+    "title": "Body Drag.wav",
+    "author": "Wallch503",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Wallch503/sounds/507473/"
+   }
+  ],
+  "notes": "身體／腳跟在地上被拖著走"
+ },
+ {
+  "file": "foley/drip_01.ogg",
+  "sources": [
+   {
+    "title": "Water Drip Free",
+    "author": "AardsReal",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/AardsReal/sounds/842164/"
+   }
+  ],
+  "notes": "水滴落下（地下室、天花板滲水），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/drip_02.ogg",
+  "sources": [
+   {
+    "title": "Water_drop_9.wav",
+    "author": "deleted_user_2104797",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/deleted_user_2104797/sounds/166325/"
+   }
+  ],
+  "notes": "水滴落下（地下室、天花板滲水），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/drip_03.ogg",
+  "sources": [
+   {
+    "title": "Drop - Water",
+    "author": "mattfinarelli",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/mattfinarelli/sounds/533146/"
+   }
+  ],
+  "notes": "水滴落下（地下室、天花板滲水），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/drip_04.ogg",
+  "sources": [
+   {
+    "title": "Dripping water",
+    "author": "Electroviolence",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Electroviolence/sounds/234554/"
+   }
+  ],
+  "notes": "水滴落下（地下室、天花板滲水），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/drip_05.ogg",
+  "sources": [
+   {
+    "title": "Dripping water",
+    "author": "Electroviolence",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Electroviolence/sounds/234554/"
+   }
+  ],
+  "notes": "水滴落下（地下室、天花板滲水），去低頻、去頭尾、正規化"
+ },
+ {
+  "file": "foley/fire_loop.ogg",
+  "sources": [
+   {
+    "title": "Wood fire crackling, near flames",
+    "author": "felix.blume",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/felix.blume/sounds/779877/"
+   }
+  ],
+  "notes": "近距離的木柴燃燒（爆裂、嘶嘶），無縫循環；結局火場與紙紮行的餘燼"
+ },
+ {
+  "file": "foley/fire_pop_01.ogg",
+  "sources": [
+   {
+    "title": "Wood fire crackling, near flames",
+    "author": "felix.blume",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/felix.blume/sounds/779877/"
+   }
+  ],
+  "notes": "木頭在火裡爆裂的一聲（切自燃燒錄音）"
+ },
+ {
+  "file": "foley/fire_pop_02.ogg",
+  "sources": [
+   {
+    "title": "Wood fire crackling, near flames",
+    "author": "felix.blume",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/felix.blume/sounds/779877/"
+   }
+  ],
+  "notes": "木頭在火裡爆裂的一聲（切自燃燒錄音）"
+ },
+ {
+  "file": "foley/fire_pop_03.ogg",
+  "sources": [
+   {
+    "title": "Wood fire crackling, near flames",
+    "author": "felix.blume",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/felix.blume/sounds/779877/"
+   }
+  ],
+  "notes": "木頭在火裡爆裂的一聲（切自燃燒錄音）"
+ },
+ {
+  "file": "foley/fire_pop_04.ogg",
+  "sources": [
+   {
+    "title": "Wood fire crackling, near flames",
+    "author": "felix.blume",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/felix.blume/sounds/779877/"
+   }
+  ],
+  "notes": "木頭在火裡爆裂的一聲（切自燃燒錄音）"
+ },
+ {
+  "file": "foley/grind_loop.ogg",
+  "sources": [
+   {
+    "title": "Stone Slab Door Grinding - Heavy Rock Scrape (Mono)",
+    "author": "NahuelMartinez",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/NahuelMartinez/sounds/844329/"
+   }
+  ],
+  "notes": "沉重的石塊在石地上摩擦（羅漢移動），無縫循環"
+ },
+ {
+  "file": "foley/howl_01.ogg",
+  "sources": [
+   {
+    "title": "dog howling.wav",
+    "author": "simcotter",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/simcotter/sounds/115357/"
+   }
+  ],
+  "notes": "狗吹螺：遠處的狗拉長聲音嚎叫"
+ },
+ {
+  "file": "foley/inkin_01.ogg",
+  "sources": [
+   {
+    "title": "INKIN 1.mp3",
+    "author": "mnickel5c",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/mnickel5c/sounds/555439/"
+   }
+  ],
+  "notes": "引磬（日本「印金」，同類的手持小磬）一擊，5.5 秒自然衰減"
+ },
+ {
+  "file": "foley/knock_01.ogg",
+  "sources": [
+   {
+    "title": "Wooden door knock.wav",
+    "author": "775noise",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/775noise/sounds/494569/"
+   }
+  ],
+  "notes": "指節敲在木門板上的單一下（切自連續敲門的錄音）；遊戲裡排成「叩、叩、叩」"
+ },
+ {
+  "file": "foley/knock_02.ogg",
+  "sources": [
+   {
+    "title": "Wooden door knock.wav",
+    "author": "775noise",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/775noise/sounds/494569/"
+   }
+  ],
+  "notes": "指節敲在木門板上的單一下（切自連續敲門的錄音）；遊戲裡排成「叩、叩、叩」"
+ },
+ {
+  "file": "foley/knock_03.ogg",
+  "sources": [
+   {
+    "title": "Wooden door knock.wav",
+    "author": "775noise",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/775noise/sounds/494569/"
+   }
+  ],
+  "notes": "指節敲在木門板上的單一下（切自連續敲門的錄音）；遊戲裡排成「叩、叩、叩」"
+ },
+ {
+  "file": "foley/knock_04.ogg",
+  "sources": [
+   {
+    "title": "Knocking_Wooden_Door.wav",
+    "author": "Islabonita",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Islabonita/sounds/541492/"
+   }
+  ],
+  "notes": "指節敲在木門板上的單一下（切自連續敲門的錄音）；遊戲裡排成「叩、叩、叩」"
+ },
+ {
+  "file": "foley/knock_05.ogg",
+  "sources": [
+   {
+    "title": "Knocking_Wooden_Door.wav",
+    "author": "Islabonita",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Islabonita/sounds/541492/"
+   }
+  ],
+  "notes": "指節敲在木門板上的單一下（切自連續敲門的錄音）；遊戲裡排成「叩、叩、叩」"
+ },
+ {
+  "file": "foley/knock_door_01.ogg",
+  "sources": [
+   {
+    "title": "Knock on the door",
+    "author": "HunteR4708",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/HunteR4708/sounds/256513/"
+   }
+  ],
+  "notes": "住處的門：拳頭敲在實心門板上（較重、較低）的單一下"
+ },
+ {
+  "file": "foley/knock_door_02.ogg",
+  "sources": [
+   {
+    "title": "Knock on the door",
+    "author": "HunteR4708",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/HunteR4708/sounds/256513/"
+   }
+  ],
+  "notes": "住處的門：拳頭敲在實心門板上（較重、較低）的單一下"
+ },
+ {
+  "file": "foley/knock_door_03.ogg",
+  "sources": [
+   {
+    "title": "Knock on the door",
+    "author": "HunteR4708",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/HunteR4708/sounds/256513/"
+   }
+  ],
+  "notes": "住處的門：拳頭敲在實心門板上（較重、較低）的單一下"
+ },
+ {
+  "file": "foley/lock_clunk.ogg",
+  "sources": [
+   {
+    "title": "Lock - strong door",
+    "author": "Vrymaa",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Vrymaa/sounds/734641/"
+   }
+  ],
+  "notes": "沉重的門鎖：金屬栓彈開"
+ },
+ {
+  "file": "foley/marble_01.ogg",
+  "sources": [
+   {
+    "title": "marble bounce 01.ogg",
+    "author": "pbimal",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/pbimal/sounds/646755/"
+   },
+   {
+    "title": "Marble (single) rolling on wooden floor.wav",
+    "author": "LiezelDippenaar",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/LiezelDippenaar/sounds/707545/"
+   }
+  ],
+  "notes": "樓上的彈珠：落在木地板上越彈越密，最後滾走"
+ },
+ {
+  "file": "foley/owl_01.ogg",
+  "sources": [
+   {
+    "title": "Tawny owl hooting",
+    "author": "Patrick_Corra",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Patrick_Corra/sounds/745208/"
+   }
+  ],
+  "notes": "夜裡的貓頭鷹（遠處的啼叫）"
+ },
+ {
+  "file": "foley/paper_01.ogg",
+  "sources": [
+   {
+    "title": "Paper Fluttering.wav",
+    "author": "bbrocer",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/bbrocer/sounds/382654/"
+   }
+  ],
+  "notes": "符紙被風掀動、翻動的沙沙聲"
+ },
+ {
+  "file": "foley/paper_02.ogg",
+  "sources": [
+   {
+    "title": "Paper_Shake.aif",
+    "author": "kbnevel",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/kbnevel/sounds/119847/"
+   }
+  ],
+  "notes": "符紙被風掀動、翻動的沙沙聲"
+ },
+ {
+  "file": "foley/paper_03.ogg",
+  "sources": [
+   {
+    "title": "rustling paper.wav",
+    "author": "keweldog",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/keweldog/sounds/181774/"
+   }
+  ],
+  "notes": "符紙被風掀動、翻動的沙沙聲"
+ },
+ {
+  "file": "foley/ringtone.ogg",
+  "sources": [
+   {
+    "title": "程序合成（本專案自製）",
+    "author": "本專案",
+    "license": "CC0 1.0（自製）",
+    "url": ""
+   }
+  ],
+  "notes": "原創手機鈴聲（本專案程序合成：八個音的短句，模擬手機小喇叭的頻寬與失真），非任何品牌鈴聲"
+ },
+ {
+  "file": "foley/rustle_01.ogg",
+  "sources": [
+   {
+    "title": "Game Rustle Leaves",
+    "author": "Fupicat",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Fupicat/sounds/538152/"
+   }
+  ],
+  "notes": "草叢裡有東西動了一下（樹葉沙沙）"
+ },
+ {
+  "file": "foley/rustle_02.ogg",
+  "sources": [
+   {
+    "title": "looking_in_bushes.wav",
+    "author": "vibe_crc",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/vibe_crc/sounds/59315/"
+   }
+  ],
+  "notes": "草叢裡有東西動了一下（樹葉沙沙）"
+ },
+ {
+  "file": "foley/scrape_01.ogg",
+  "sources": [
+   {
+    "title": "Chair - Dragged on the ground",
+    "author": "Vrymaa",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Vrymaa/sounds/735345/"
+   }
+  ],
+  "notes": "木椅腳在地板上被拖動（黏滑、頓挫）"
+ },
+ {
+  "file": "foley/scrape_02.ogg",
+  "sources": [
+   {
+    "title": "Chair Scrape",
+    "author": "bangcorrupt",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/bangcorrupt/sounds/832998/"
+   }
+  ],
+  "notes": "木椅腳在地板上被拖動（黏滑、頓挫）"
+ },
+ {
+  "file": "foley/scuff_01.ogg",
+  "sources": [
+   {
+    "title": "DeLisa Foley scrape 01.wav",
+    "author": "pushkin",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/pushkin/sounds/149302/"
+   }
+  ],
+  "notes": "鞋底在地上蹭了一下（急停、轉身）"
+ },
+ {
+  "file": "foley/scuff_02.ogg",
+  "sources": [
+   {
+    "title": "DeLisa Foley scrape 01.wav",
+    "author": "pushkin",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/pushkin/sounds/149302/"
+   }
+  ],
+  "notes": "鞋底在地上蹭了一下（急停、轉身）"
+ },
+ {
+  "file": "foley/sizzle_loop.ogg",
+  "sources": [
+   {
+    "title": "ShovelSizzle8_mod.MP3",
+    "author": "rabban625",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/rabban625/sounds/436470/"
+   }
+  ],
+  "notes": "灼熱的金屬遇到水氣的滋滋聲（鑰匙燙手），無縫循環"
+ },
+ {
+  "file": "foley/slam_01.ogg",
+  "sources": [
+   {
+    "title": "Slamming Door.mp3",
+    "author": "bmusic92",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/bmusic92/sounds/232931/"
+   }
+  ],
+  "notes": "木門被甩上：門板撞擊、門框的餘震"
+ },
+ {
+  "file": "foley/slam_02.ogg",
+  "sources": [
+   {
+    "title": "Wooden Door Slamming Open.wav",
+    "author": "krnash",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/krnash/sounds/389811/"
+   }
+  ],
+  "notes": "木門被甩上：門板撞擊、門框的餘震"
+ },
+ {
+  "file": "foley/snuff_01.ogg",
+  "sources": [
+   {
+    "title": "Candle flame flickers, blown out",
+    "author": "DeqstersLab",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/DeqstersLab/sounds/826338/"
+   }
+  ],
+  "notes": "吹熄燭火（氣流與火焰的噗一聲）"
+ },
+ {
+  "file": "foley/snuff_02.ogg",
+  "sources": [
+   {
+    "title": "Candle flame flickers, blown out",
+    "author": "DeqstersLab",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/DeqstersLab/sounds/826338/"
+   }
+  ],
+  "notes": "吹熄燭火（氣流與火焰的噗一聲）"
+ },
+ {
+  "file": "foley/static_01.ogg",
+  "sources": [
+   {
+    "title": "Radio tuning-static-interference",
+    "author": "quantumriver",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/quantumriver/sounds/552160/"
+   }
+  ],
+  "notes": "收音機／錄音帶的雜訊與爆裂（電話、錄音機裡）"
+ },
+ {
+  "file": "foley/static_02.ogg",
+  "sources": [
+   {
+    "title": "Washy Radio Interference - Industrial SFX",
+    "author": "9voltplasma",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/9voltplasma/sounds/724710/"
+   }
+  ],
+  "notes": "收音機／錄音帶的雜訊與爆裂（電話、錄音機裡）"
+ },
+ {
+  "file": "foley/step_dirt_01.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on the Dirt",
+    "author": "Ismode",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Ismode/sounds/853198/"
+   }
+  ],
+  "notes": "泥土路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_dirt_02.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on the Dirt",
+    "author": "Ismode",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Ismode/sounds/853198/"
+   }
+  ],
+  "notes": "泥土路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_dirt_03.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on the Dirt",
+    "author": "Ismode",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Ismode/sounds/853198/"
+   }
+  ],
+  "notes": "泥土路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_dirt_04.ogg",
+  "sources": [
+   {
+    "title": "Walking in nature.WAV",
+    "author": "DDT197",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/DDT197/sounds/445786/"
+   }
+  ],
+  "notes": "泥土路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_dirt_05.ogg",
+  "sources": [
+   {
+    "title": "Walking in nature.WAV",
+    "author": "DDT197",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/DDT197/sounds/445786/"
+   }
+  ],
+  "notes": "泥土路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_dirt_06.ogg",
+  "sources": [
+   {
+    "title": "Walking in nature.WAV",
+    "author": "DDT197",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/DDT197/sounds/445786/"
+   }
+  ],
+  "notes": "泥土路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_dirt_07.ogg",
+  "sources": [
+   {
+    "title": "Walking in nature.WAV",
+    "author": "DDT197",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/DDT197/sounds/445786/"
+   }
+  ],
+  "notes": "泥土路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_floor_01.ogg",
+  "sources": [
+   {
+    "title": "01-24 Footsteps, Rug, Slippers, Slow Pace.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/260116/"
+   }
+  ],
+  "notes": "住處：穿拖鞋走在室內地板上，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_floor_02.ogg",
+  "sources": [
+   {
+    "title": "01-24 Footsteps, Rug, Slippers, Slow Pace.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/260116/"
+   }
+  ],
+  "notes": "住處：穿拖鞋走在室內地板上，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_floor_03.ogg",
+  "sources": [
+   {
+    "title": "01-24 Footsteps, Rug, Slippers, Slow Pace.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/260116/"
+   }
+  ],
+  "notes": "住處：穿拖鞋走在室內地板上，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_floor_04.ogg",
+  "sources": [
+   {
+    "title": "01-24 Footsteps, Rug, Slippers, Slow Pace.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/260116/"
+   }
+  ],
+  "notes": "住處：穿拖鞋走在室內地板上，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_floor_05.ogg",
+  "sources": [
+   {
+    "title": "01-24 Footsteps, Rug, Slippers, Slow Pace.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/260116/"
+   }
+  ],
+  "notes": "住處：穿拖鞋走在室內地板上，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_floor_06.ogg",
+  "sources": [
+   {
+    "title": "01-24 Footsteps, Rug, Slippers, Slow Pace.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/260116/"
+   }
+  ],
+  "notes": "住處：穿拖鞋走在室內地板上，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_floor_07.ogg",
+  "sources": [
+   {
+    "title": "footsteps soft slippers",
+    "author": "Yuval",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Yuval/sounds/208878/"
+   }
+  ],
+  "notes": "住處：穿拖鞋走在室內地板上，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_grass_01.ogg",
+  "sources": [
+   {
+    "title": "01-20 Footsteps, sneakers on dry leaves.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/218305/"
+   }
+  ],
+  "notes": "雜草與落葉上的腳步（亂葬崗），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_grass_02.ogg",
+  "sources": [
+   {
+    "title": "01-20 Footsteps, sneakers on dry leaves.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/218305/"
+   }
+  ],
+  "notes": "雜草與落葉上的腳步（亂葬崗），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_grass_03.ogg",
+  "sources": [
+   {
+    "title": "01-20 Footsteps, sneakers on dry leaves.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/218305/"
+   }
+  ],
+  "notes": "雜草與落葉上的腳步（亂葬崗），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_grass_04.ogg",
+  "sources": [
+   {
+    "title": "01-20 Footsteps, sneakers on dry leaves.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/218305/"
+   }
+  ],
+  "notes": "雜草與落葉上的腳步（亂葬崗），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_grass_05.ogg",
+  "sources": [
+   {
+    "title": "01-20 Footsteps, sneakers on dry leaves.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/218305/"
+   }
+  ],
+  "notes": "雜草與落葉上的腳步（亂葬崗），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_grass_06.ogg",
+  "sources": [
+   {
+    "title": "grass footsteps fast.mp3",
+    "author": "DSOADigital",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/DSOADigital/sounds/362249/"
+   }
+  ],
+  "notes": "雜草與落葉上的腳步（亂葬崗），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_grass_07.ogg",
+  "sources": [
+   {
+    "title": "Hiking Boot Footsteps on Grass",
+    "author": "Fission9",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Fission9/sounds/521587/"
+   }
+  ],
+  "notes": "雜草與落葉上的腳步（亂葬崗），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_gravel_01.ogg",
+  "sources": [
+   {
+    "title": "Footsteps_Mountain_Boots_Gravel_Mono.wav",
+    "author": "Nox_Sound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Nox_Sound/sounds/556002/"
+   }
+  ],
+  "notes": "碎石路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_gravel_02.ogg",
+  "sources": [
+   {
+    "title": "Footsteps_Mountain_Boots_Gravel_Mono.wav",
+    "author": "Nox_Sound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Nox_Sound/sounds/556002/"
+   }
+  ],
+  "notes": "碎石路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_gravel_03.ogg",
+  "sources": [
+   {
+    "title": "Footsteps_Mountain_Boots_Gravel_Mono.wav",
+    "author": "Nox_Sound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Nox_Sound/sounds/556002/"
+   }
+  ],
+  "notes": "碎石路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_gravel_04.ogg",
+  "sources": [
+   {
+    "title": "Footsteps_Mountain_Boots_Gravel_Mono.wav",
+    "author": "Nox_Sound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Nox_Sound/sounds/556002/"
+   }
+  ],
+  "notes": "碎石路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_gravel_05.ogg",
+  "sources": [
+   {
+    "title": "Footsteps_Mountain_Boots_Gravel_Mono.wav",
+    "author": "Nox_Sound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Nox_Sound/sounds/556002/"
+   }
+  ],
+  "notes": "碎石路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_gravel_06.ogg",
+  "sources": [
+   {
+    "title": "Footsteps outdoors gravel.wav",
+    "author": "jedg",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/jedg/sounds/505831/"
+   }
+  ],
+  "notes": "碎石路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_gravel_07.ogg",
+  "sources": [
+   {
+    "title": "Footsteps outdoors gravel.wav",
+    "author": "jedg",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/jedg/sounds/505831/"
+   }
+  ],
+  "notes": "碎石路上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_stone_01.ogg",
+  "sources": [
+   {
+    "title": "Hiking Boot Footsteps on Stone",
+    "author": "Fission9",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Fission9/sounds/521590/"
+   }
+  ],
+  "notes": "石板／水泥地上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_stone_02.ogg",
+  "sources": [
+   {
+    "title": "Footsteps stone floor",
+    "author": "HenKonen",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/HenKonen/sounds/757207/"
+   }
+  ],
+  "notes": "石板／水泥地上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_stone_03.ogg",
+  "sources": [
+   {
+    "title": "Footsteps stone floor",
+    "author": "HenKonen",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/HenKonen/sounds/757207/"
+   }
+  ],
+  "notes": "石板／水泥地上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_stone_04.ogg",
+  "sources": [
+   {
+    "title": "Hiking Boot Footsteps on Stone",
+    "author": "Fission9",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Fission9/sounds/521590/"
+   }
+  ],
+  "notes": "石板／水泥地上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_stone_05.ogg",
+  "sources": [
+   {
+    "title": "Footsteps - Stone, Rock, Concrete, Cement",
+    "author": "SecureSubset",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SecureSubset/sounds/813622/"
+   }
+  ],
+  "notes": "石板／水泥地上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_stone_06.ogg",
+  "sources": [
+   {
+    "title": "footstops - stone tile floor.wav",
+    "author": "soundmary",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/soundmary/sounds/117631/"
+   }
+  ],
+  "notes": "石板／水泥地上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_stone_07.ogg",
+  "sources": [
+   {
+    "title": "Footsteps stone floor",
+    "author": "HenKonen",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/HenKonen/sounds/757207/"
+   }
+  ],
+  "notes": "石板／水泥地上的腳步，切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wet_01.ogg",
+  "sources": [
+   {
+    "title": "Footsteps, barefoot on wet tile.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/338106/"
+   }
+  ],
+  "notes": "濕的赤腳踩在磁磚上（寺內濕腳步），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wet_02.ogg",
+  "sources": [
+   {
+    "title": "Footsteps, barefoot on wet tile.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/338106/"
+   }
+  ],
+  "notes": "濕的赤腳踩在磁磚上（寺內濕腳步），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wet_03.ogg",
+  "sources": [
+   {
+    "title": "Footsteps, barefoot on wet tile.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/338106/"
+   }
+  ],
+  "notes": "濕的赤腳踩在磁磚上（寺內濕腳步），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wet_04.ogg",
+  "sources": [
+   {
+    "title": "Footsteps, barefoot on wet tile.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/338106/"
+   }
+  ],
+  "notes": "濕的赤腳踩在磁磚上（寺內濕腳步），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wet_05.ogg",
+  "sources": [
+   {
+    "title": "Footsteps, barefoot on wet tile.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/338106/"
+   }
+  ],
+  "notes": "濕的赤腳踩在磁磚上（寺內濕腳步），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wet_06.ogg",
+  "sources": [
+   {
+    "title": "Footsteps, barefoot on wet tile.wav",
+    "author": "SpliceSound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/SpliceSound/sounds/338106/"
+   }
+  ],
+  "notes": "濕的赤腳踩在磁磚上（寺內濕腳步），切成單步、去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wood_01.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on hollow wood",
+    "author": "florianreichelt",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/florianreichelt/sounds/459970/"
+   }
+  ],
+  "notes": "中空木地板上的腳步（寺廟架高的老木地板），由一段連續走路的錄音切出單步，去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wood_02.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on hollow wood",
+    "author": "florianreichelt",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/florianreichelt/sounds/459970/"
+   }
+  ],
+  "notes": "中空木地板上的腳步（寺廟架高的老木地板），由一段連續走路的錄音切出單步，去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wood_03.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on hollow wood",
+    "author": "florianreichelt",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/florianreichelt/sounds/459970/"
+   }
+  ],
+  "notes": "中空木地板上的腳步（寺廟架高的老木地板），由一段連續走路的錄音切出單步，去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wood_04.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on hollow wood",
+    "author": "florianreichelt",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/florianreichelt/sounds/459970/"
+   }
+  ],
+  "notes": "中空木地板上的腳步（寺廟架高的老木地板），由一段連續走路的錄音切出單步，去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wood_05.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on hollow wood",
+    "author": "florianreichelt",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/florianreichelt/sounds/459970/"
+   }
+  ],
+  "notes": "中空木地板上的腳步（寺廟架高的老木地板），由一段連續走路的錄音切出單步，去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wood_06.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on hollow wood",
+    "author": "florianreichelt",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/florianreichelt/sounds/459970/"
+   }
+  ],
+  "notes": "中空木地板上的腳步（寺廟架高的老木地板），由一段連續走路的錄音切出單步，去 DC、正規化"
+ },
+ {
+  "file": "foley/step_wood_07.ogg",
+  "sources": [
+   {
+    "title": "Footsteps on hollow wood",
+    "author": "florianreichelt",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/florianreichelt/sounds/459970/"
+   }
+  ],
+  "notes": "中空木地板上的腳步（寺廟架高的老木地板），由一段連續走路的錄音切出單步，去 DC、正規化"
+ },
+ {
+  "file": "foley/stone_crack.ogg",
+  "sources": [
+   {
+    "title": "RockCrack03",
+    "author": "falcospizaetus",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/falcospizaetus/sounds/489905/"
+   }
+  ],
+  "notes": "石頭裂開的一聲（佛像轉頭）"
+ },
+ {
+  "file": "foley/tape_loop.ogg",
+  "sources": [
+   {
+    "title": "Analog cassette tape noise 2",
+    "author": "LukaCafuka",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/LukaCafuka/sounds/815869/"
+   }
+  ],
+  "notes": "類比錄音帶的底噪與細碎爆裂，無縫循環（阿哲手機的雜訊）"
+ },
+ {
+  "file": "foley/thunder_01.ogg",
+  "sources": [
+   {
+    "title": "Distant Thunder 4",
+    "author": "Fission9",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Fission9/sounds/581125/"
+   }
+  ],
+  "notes": "遠方的雷聲（雨夜）"
+ },
+ {
+  "file": "foley/thunder_02.ogg",
+  "sources": [
+   {
+    "title": "Distant Thunder Clap_Gentle.wav",
+    "author": "mikala_oidua",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/mikala_oidua/sounds/347562/"
+   }
+  ],
+  "notes": "遠方的雷聲（雨夜）"
+ },
+ {
+  "file": "foley/vibrate_01.ogg",
+  "sources": [
+   {
+    "title": "cell phone vibrate glass_loopable.wav",
+    "author": "mobaudio",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/mobaudio/sounds/384487/"
+   }
+  ],
+  "notes": "手機在硬桌面上震動一下"
+ },
+ {
+  "file": "foley/woodfish_01.ogg",
+  "sources": [
+   {
+    "title": "Fischtrommel_Muyu.mp3",
+    "author": "the_very_Real_Horst",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/the_very_Real_Horst/sounds/205999/"
+   }
+  ],
+  "notes": "木魚單擊（切自連續敲擊的錄音），去低頻與 DC、正規化；遊戲裡依原本的節奏排程"
+ },
+ {
+  "file": "foley/woodfish_02.ogg",
+  "sources": [
+   {
+    "title": "Fischtrommel_Muyu.mp3",
+    "author": "the_very_Real_Horst",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/the_very_Real_Horst/sounds/205999/"
+   }
+  ],
+  "notes": "木魚單擊（切自連續敲擊的錄音），去低頻與 DC、正規化；遊戲裡依原本的節奏排程"
+ },
+ {
+  "file": "foley/woodfish_03.ogg",
+  "sources": [
+   {
+    "title": "Fischtrommel_Muyu.mp3",
+    "author": "the_very_Real_Horst",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/the_very_Real_Horst/sounds/205999/"
+   }
+  ],
+  "notes": "木魚單擊（切自連續敲擊的錄音），去低頻與 DC、正規化；遊戲裡依原本的節奏排程"
+ },
+ {
+  "file": "foley/woodfish_04.ogg",
+  "sources": [
+   {
+    "title": "Mokugyo.wav",
+    "author": "jonopodmore",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/jonopodmore/sounds/607215/"
+   }
+  ],
+  "notes": "木魚單擊（切自連續敲擊的錄音），去低頻與 DC、正規化；遊戲裡依原本的節奏排程"
+ }
+]

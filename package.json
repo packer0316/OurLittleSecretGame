@@ -2,7 +2,7 @@
   "name": "our-little-secret-game",
   "private": true,
   "version": "0.2.0",
-  "description": "說好不說：四章台灣民俗懸疑恐怖遊戲 (Three.js)",
+  "description": "借聲：四章台灣民俗懸疑恐怖遊戲 (Three.js)",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -101,7 +101,7 @@ export function ghostEvents(h) {
         if (!a.active) return true;
         if (phase === 1) { if (a.alpha <= 0.02) { a.hide(); return true; } return false; }
         if (a.seen > 0.35 && !flagged) { flagged = true; fx.sfx('sub', fx.panOf(s.bearing(a.root.position.x, a.root.position.z)), a.dist, 0.5); h.director.spike(0.16); }
-        if (a.seen > 1.5 || a.lit > 0.5) { a.fadeTo(0, 2.4); a.fig.setGlitch?.(0.4); phase = 1; } else if (a.dist < 7.5) { if (a.visibleNow) a.vanish('glitch'); else a.hide(); } else if (t > 36 && !a.visibleNow) a.hide();
+        if (a.seen > 0.8 || a.lit > 0.35) { a.fadeTo(0, 4); a.fig.setGlitch?.(0.4); phase = 1; } // 被看到不久留 else if (a.dist < 7.5) { if (a.visibleNow) a.vanish('glitch'); else a.hide(); } else if (t > 36 && !a.visibleNow) a.hide();
         return false;
       },
       stop() { figs.release(ev); },
@@ -141,7 +141,7 @@ export function ghostEvents(h) {
         if (done > 0) { done += dt; return done > 1.6; }
         if (!a.active) return true;
         away = a.visibleNow ? 0 : away + dt;
-        stare = a.visibleNow && a.gaze < 0.35 ? stare + dt : 0;
+        stare = a.visibleNow && a.gaze < 0.6 ? stare + dt : 0;
         if (dark > 0) { // 盯著它看太久：手電筒暗掉的那一下它已經換了位置
           dark += dt;
           if (dark > 0.55 && dark < 9) { hop(true); dark = 9; fx.flash(1, 30); }
@@ -152,7 +152,8 @@ export function ghostEvents(h) {
           a.fig.setPose?.('reach');
           if (a.seen > 0.22 || a.dist < 1.1) { stingerAt(a); a.vanish('glitch'); fx.sfxAt(1.4, 'breath', 0, 0.3, 1); fx.duck(3); h.director.spike(0.5); done = 1e-3; }
         } else if (a.seen > 0.2 && away > 0.5 && stage < 4) hop(false);
-        else if (stare > 4.5 && s.flashLit && stage < 4) { dark = 1e-3; fx.flash(0, 30); a.fig.setGlitch?.(0.5); }
+        else if (stare > 1.6 && s.flashLit && stage < 4) { dark = 1e-3; fx.flash(0, 30); a.fig.setGlitch?.(0.5); } // 盯著它不放：手電筒一暗，它就換了位置
+        else if (stare > 1.6 || (stage >= 4 && a.seen > 0.8)) { a.vanish('glitch'); h.director.spike(0.2); done = 1e-3; } // 沒有手電筒可以借、或已經走不動：在眼前消失，不久留
         if (a.dist < 1.1 && !final) { a.vanish('glitch'); done = 1e-3; }
         if (t > 55 && !a.visibleNow) { a.hide(); return true; }
         return false;

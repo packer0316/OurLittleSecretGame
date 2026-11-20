@@ -9,6 +9,7 @@ import { createReactive } from './reactive.js';
 import { ghostEvents } from './events/ghosts.js';
 import { worldEvents } from './events/world.js';
 import { placeEvents } from './events/places.js';
+import { createSetpieces } from './setpieces/index.js';
 
 /**
  * 恐怖導演：跨地圖的環境驚嚇、壓迫感與節奏排程。
@@ -24,7 +25,9 @@ import { placeEvents } from './events/places.js';
  *
  * 網址參數：?auto 時環境事件預設關閉，加 &horror 才啟用；&nohorror 一律關閉；&hseed=數字 固定亂數種子；
  *           &hfallback 強制使用程序化黑影（不走鬼模型合約的 shadow / child，回歸測試用）。
- * 除錯／驗收：game.horror.debug = { list(), trigger(id), stop(id), state, hold, aim(), run(秒) }
+ *           寺內恐怖段落（setpieces/，dread）：?auto 下預設不自動觸發，加 &setpieces 才會；&nosetpieces 一律關閉。
+ * 除錯／驗收：game.horror.debug = { list(), trigger(id), stop(id), state, hold, aim(), run(秒),
+ *             setpiece(id, opts), setpieceStop(), setpieceKey(code, down), setpieceState }
  */
 export function createHorror(game) {
   const params = new URLSearchParams(typeof location !== 'undefined' ? location.search : '');
@@ -36,7 +39,7 @@ export function createHorror(game) {
 
   const h = {
     game, sense, fx, ambient,
-    map: null, def: null, id: '', figs: null, props: null, director: null, reactive: null, mapGhostRoot: null,
+    map: null, def: null, id: '', figs: null, props: null, director: null, reactive: null, mapGhostRoot: null, setpieces: null,
     rng: Math.random, time: 0, intensity: 0, hold: false, focus, hasFocus: false,
     get story() { return game.story; },
     /** 事件把自己的視覺放在哪裡（測試截圖與除錯用） */
@@ -63,7 +66,8 @@ export function createHorror(game) {
     dt = dt > 0 ? Math.min(dt, 0.1) : 0; // 第一幀的 dt 可能是負的（rAF 時間戳早於 start()）
     if (warm) endWarm();
     const st = game.story;
-    const paused = !!(st && (st.modal || st.busy || st.transitioning || st.state?.ending));
+    // st.scene：劇情或寺內段落正在跑腳本演出（字串 id），隨機環境事件一律暫停，避免搶戲。
+    const paused = !!(st && (st.modal || st.busy || st.transitioning || st.scene || st.state?.ending));
     const edt = paused || h.hold ? 0 : dt;
     h.time += dt;
     sense.flashScale = fx.flashMul;
@@ -73,8 +77,12 @@ export function createHorror(game) {
     h.figs.update(dt, paused || h.hold);
     h.props.update(edt);
     fx.update(edt, dt);
-    fx.writeFilm(h.director.dread, h.director.pulse);
-    fx.tension(h.director.dread, dt);
+    // 寺內恐怖段落：自己決定何時開始，演出時用 story.scene 暫停上面的隨機事件
+    const sp = h.setpieces;
+    if (sp) { try { sp.update(dt); } catch (err) { h.fault(err); console.warn('[horror] setpieces failed', err); } }
+    const dread = Math.max(h.director.dread, sp?.dread || 0);
+    fx.writeFilm(dread, h.director.pulse);
+    fx.tension(dread, dt);
   }
 
   const api = {
@@ -94,7 +102,10 @@ export function createHorror(game) {
         h.director = createDirector(h); h.reactive = createReactive(h);
         const events = [...ghostEvents(h).map((e) => { e.ghost = true; return e; }), ...worldEvents(h), ...placeEvents(h)];
         h.director.setup(events);
-        if (h.id === 'temple') fx.prepareRush();
+        if (h.id === 'temple') {
+          fx.prepareRush();
+          try { h.setpieces = createSetpieces(h); } catch (err) { console.warn('[horror] setpieces unavailable', err); h.fault(err); h.setpieces = null; }
+        }
         beginWarm();
         attached = true;
       } catch (err) {
@@ -108,6 +119,8 @@ export function createHorror(game) {
       if (!attached && !force) return;
       attached = false; warm = null;
       try { h.director?.stopAll(); } catch { /* ignore */ }
+      try { h.setpieces?.dispose(); } catch { /* ignore */ }
+      h.setpieces = null;
       try { h.figs?.dispose(); } catch { /* ignore */ }
       try { h.props?.dispose(); } catch { /* ignore */ }
       try { fx.detach(); } catch { /* ignore */ }
@@ -148,6 +161,13 @@ export function createHorror(game) {
         const n = Math.ceil(seconds / step);
         for (let i = 0; i < n && game.map; i++) { game.time += step; game.player.update(step, game.map.world); game.map.update(step, game.time, game.player); game.story?.update(step); api.update(step); }
       },
+      /** 寺內恐怖段落：不看觸發條件直接開始（劇情仍需允許）。opts 例如 { phase: 'search' }、{ skipIntro: true } */
+      setpiece(id, opts) { return attached && h.setpieces ? h.setpieces.start(id, opts) : false; },
+      setpieceStop() { h.setpieces?.stop(); },
+      setpiecePoke(opts) { return h.setpieces ? h.setpieces.poke(opts) : false; },
+      /** 模擬按鍵（Space 數數／屏息、E 躲藏），不經過 DOM */
+      setpieceKey(code, down) { h.setpieces?.kit.setKey(code, down); },
+      get setpieceState() { return h.setpieces ? h.setpieces.state() : null; },
       get state() {
         const d = h.director;
         return {

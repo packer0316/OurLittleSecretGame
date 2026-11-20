@@ -143,9 +143,10 @@ export function placeEvents(h) {
           if (!a.active) return true;
           if (phase === 0) {
             if (a.visibleNow && a.gaze < 0.3) look += dt;
-            if (look > 0.35 || a.dist < 1.3 || (t > 50 && !a.visibleNow)) {
-              phase = 1; a.fadeTo(0, 2.2);
-              if (look > 0.35) { h.director.spike(0.3); fx.sfx('gasp', 0, 1, 0.6); fx.duck(2.5); }
+            const caught = look > 0.35 || a.seen > 0.6; // 正眼看到，或用眼角餘光看了一陣子
+            if (caught || a.dist < 1.3 || (t > 50 && !a.visibleNow)) {
+              phase = 1; a.fadeTo(0, 3.5);
+              if (caught) { h.director.spike(0.3); fx.sfx('gasp', 0, 1, 0.6); fx.duck(2.5); }
             }
             return false;
           }
@@ -218,7 +219,10 @@ export function placeEvents(h) {
         update(dt) {
           t += dt;
           if (!a.active) return true;
-          if (a.seen > 1.3 && !a.visibleNow) { a.hide(); h.director.spike(0.2); return true; }
+          if (a.leaving) return false;
+          // 被看到之後不久留：看一眼就移開，回頭已經不在；一直盯著，約 0.8 秒就在眼前抽搐消失
+          if (a.seen > 0.15 && !a.visibleNow) { a.hide(); h.director.spike(0.2); return true; }
+          if (a.seen > 0.8) { a.vanish('glitch'); h.director.spike(0.2); return false; }
           if (a.dist < 8) { if (a.visibleNow) a.vanish('glitch'); else a.hide(); }
           if (t > 70 && !a.visibleNow) a.hide();
           return false;

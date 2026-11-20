@@ -39,11 +39,19 @@ try {
         must(first.before.sfx.includes('sub'), 'no swell when it appears: ' + first.before.sfx);
         must(first.sfx.includes('stinger'), 'no stinger when first seen: ' + first.sfx);
         await frames(5); await shot(page, `fixed_${kind}_1`);
-        const second = await ev(() => { const g = window.__game, d = g.horror.debug; d.run(1.3); d.aim(); return { ...g.map.storyWorld.scare }; });
+        const second = await ev(() => { const g = window.__game, d = g.horror.debug; d.run(0.3); d.aim(); return { ...g.map.storyWorld.scare }; });
         if (kind !== 'stage') must(second.stepped, 'did not step closer while being watched');
         await frames(5); await shot(page, `fixed_${kind}_2`);
-        const gone = await ev(() => { const g = window.__game, d = g.horror.debug; g.player.yaw += Math.PI; d.run(2.6); return { active: g.map.storyWorld.scareActive, visible: g.map.storyWorld.ghost.root.visible }; });
-        must(!gone.active && !gone.visible, 'figure stayed after looking away');
+        // 被看到之後不久留：一直盯著，約一秒內就在眼前消失
+        const stared = await ev(() => { const g = window.__game, d = g.horror.debug; d.aim(); d.run(0.9); return { active: g.map.storyWorld.scareActive, visible: g.map.storyWorld.ghost.root.visible }; });
+        must(!stared.active && !stared.visible, 'figure lingered while being watched');
+        // 看一眼就移開視線：回頭已經不在
+        const gone = await ev((kind) => {
+          const g = window.__game, d = g.horror.debug, sw = g.map.storyWorld;
+          sw.triggerScare(kind); d.run(0.2); d.aim(); d.run(0.4); const seen = sw.scare?.seen;
+          g.player.yaw += Math.PI; d.run(0.3); return { seen, active: sw.scareActive, visible: sw.ghost.root.visible };
+        }, kind);
+        must(gone.seen && !gone.active && !gone.visible, 'figure stayed after looking away: ' + JSON.stringify(gone));
         await ev(() => { const g = window.__game; g.player.yaw -= Math.PI; g.player.pitch = -0.35; g.player.flashQuat.copy(g.camera.quaternion); });
         await frames(5); await shot(page, `fixed_${kind}_3_after`);
         await faults();
@@ -119,8 +127,13 @@ try {
         must(r.active, 'figure not shown');
         must(r.before.includes('sub') && r.sfx.includes('stinger'), 'missing cues: ' + r.sfx);
         await frames(5); await shot(page, `fixed_road_${kind}`);
-        const gone = await ev(() => { const g = window.__game, d = g.horror.debug; d.run(1.9); g.player.yaw += Math.PI; d.run(2.5); return g.map.storyWorld.scareActive; });
-        must(!gone, 'figure stayed after looking away');
+        // 每種演出只會播一次：石橋測「一直盯著，約一秒內在眼前消失」，紙紮行測「看一眼就移開，回頭已經不在」
+        const gone = await ev((kind) => {
+          const g = window.__game, d = g.horror.debug;
+          if (kind === 'bridge') d.run(1.0); else { g.player.yaw += Math.PI; d.run(0.3); }
+          return g.map.storyWorld.scareActive;
+        }, kind);
+        must(!gone, kind === 'bridge' ? 'figure lingered while being watched' : 'figure stayed after looking away');
         await faults();
       });
     }

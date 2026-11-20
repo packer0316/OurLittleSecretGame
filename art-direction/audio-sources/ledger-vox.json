@@ -1,0 +1,1210 @@
+[
+ {
+  "file": "vox/lines.bin",
+  "sources": [
+   {
+    "title": "Microsoft Hanhan（Windows OneCore zh-TW 語音，本機離線合成）",
+    "author": "Microsoft（Windows 內建語音）",
+    "license": "Windows 內建 TTS 輸出，僅作原料、經大幅處理",
+    "url": ""
+   },
+   {
+    "title": "Microsoft Yating（Windows OneCore zh-TW 語音，本機離線合成）",
+    "author": "Microsoft（Windows 內建語音）",
+    "license": "Windows 內建 TTS 輸出，僅作原料、經大幅處理",
+    "url": ""
+   },
+   {
+    "title": "Microsoft Zhiwei（Windows OneCore zh-TW 語音，本機離線合成）",
+    "author": "Microsoft（Windows 內建語音）",
+    "license": "Windows 內建 TTS 輸出，僅作原料、經大幅處理",
+    "url": ""
+   },
+   {
+    "title": "Women gasping.wav",
+    "author": "FloydP",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/FloydP/sounds/346213/"
+   },
+   {
+    "title": "Horror shrieks woman",
+    "author": "AderuMoro",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/AderuMoro/sounds/320740/"
+   }
+  ],
+  "notes": "中文台詞：以本機 Windows OneCore zh-TW 語音離線念出（文字未送到任何線上服務），再以 WORLD 聲碼器改音高、共振峰、氣聲、節奏，並加上角色質感（小孩、借來的聲音、「它」的多層聲音、錄音帶、電話、無線電、隔著門）。美蘭的嘶喊前疊一口真人倒抽氣（Freesound 346213），「它」的「應我」底下疊一層降調的真人尖叫（Freesound 320740）。TTS 只是原料。",
+  "lines": [
+   {
+    "id": "s_child_lundao",
+    "key": "s|child|w|lun2 dao4 ni3 shu3 le5",
+    "tts": "yating",
+    "fx": "childWhisper"
+   },
+   {
+    "id": "s_child_toukan",
+    "key": "s|child|w|bu4 ke3 yi3 tou1 kan4",
+    "tts": "yating",
+    "fx": "childWhisper"
+   },
+   {
+    "id": "s_child_kuaidian",
+    "key": "s|child|w|kuai4 dian3 shu3",
+    "tts": "hanhan",
+    "fx": "childWhisper"
+   },
+   {
+    "id": "s_child_haole_1",
+    "key": "s|child|v|hao3 le5",
+    "tts": "yating",
+    "fx": "kidBoy"
+   },
+   {
+    "id": "s_child_haole_2",
+    "key": "s|child|v|hao3 le5",
+    "tts": "hanhan",
+    "fx": "kidGirl"
+   },
+   {
+    "id": "s_child_haole_3",
+    "key": "s|child|v|hao3 le5",
+    "tts": "yating",
+    "fx": "kidBoy"
+   },
+   {
+    "id": "s_child_haole_4",
+    "key": "s|child|v|hao3 le5",
+    "tts": "hanhan",
+    "fx": "kidBoy"
+   },
+   {
+    "id": "s_child_haole_5",
+    "key": "s|child|v|hao3 le5",
+    "tts": "yating",
+    "fx": "kidGirl"
+   },
+   {
+    "id": "s_child_haole_w",
+    "key": "s|child|w|hao3 le5",
+    "tts": "yating",
+    "fx": "childWhisper"
+   },
+   {
+    "id": "s_child_zhaodao",
+    "key": "s|child|w|zhao3 dao4 ni3 le5",
+    "tts": "yating",
+    "fx": "childWhisper"
+   },
+   {
+    "id": "s_kid_cabinet",
+    "key": "s|child|v|xian1 kou4 shang4 da4 ren2 deng3 yi2 xia4 jiu4 lai2",
+    "tts": "yating",
+    "fx": "kidBoy"
+   },
+   {
+    "id": "s_kid_table",
+    "key": "s|child|v|wo3 bang1 ta1 han3 you3 le5",
+    "tts": "hanhan",
+    "fx": "kidGirl"
+   },
+   {
+    "id": "s_kid_curtain",
+    "key": "s|child|v|hou4 dian4 jin1 tian1 wan3 shang5 ting1 de5 dao4 ni3 ba4 ba5 o5",
+    "tts": "yating",
+    "fx": "kidBoy"
+   },
+   {
+    "id": "s_kid_drum",
+    "key": "s|child|v|xie2 wo3 cang2 zai4 gu3 li3 la5 rang4 ta1 zhao3 jiu3 yi4 dian3",
+    "tts": "hanhan",
+    "fx": "kidBoy"
+   },
+   {
+    "id": "s_kid_stairs",
+    "key": "s|child|w|wo3 deng3 yi2 xia4 hui2 lai2",
+    "tts": "yating",
+    "fx": "childWhisper"
+   },
+   {
+    "id": "s_man_haolemei",
+    "key": "s|man|v|hao3 le5 mei2",
+    "tts": "zhiwei",
+    "fx": "selfQuiet"
+   },
+   {
+    "id": "s_woman_xiaoyu",
+    "key": "s|woman|v|xiao3 yu3",
+    "tts": "hanhan",
+    "fx": "womanCall"
+   },
+   {
+    "id": "s_woman_xiaoyu_alarm",
+    "key": "s|woman|v|xiao3 yu3",
+    "tts": "hanhan",
+    "fx": "womanCall"
+   },
+   {
+    "id": "s_woman_nali",
+    "key": "s|woman|v|xiao3 yu3 ni3 zai4 na3 li3",
+    "tts": "hanhan",
+    "fx": "womanCall"
+   },
+   {
+    "id": "s_woman_zheli",
+    "key": "s|woman|v|ma1 ma5 zai4 zhe4 li3",
+    "tts": "hanhan",
+    "fx": "womanCall"
+   },
+   {
+    "id": "s_woman_chulai",
+    "key": "s|woman|v|chu1 lai2 hao3 bu4 hao3",
+    "tts": "hanhan",
+    "fx": "womanCall"
+   },
+   {
+    "id": "s_woman_yian",
+    "key": "s|woman|v|yi3 an1",
+    "tts": "hanhan",
+    "fx": "womanCall"
+   },
+   {
+    "id": "s_womanw_zhaodao",
+    "key": "s|woman|w|zhao3 dao4 ni3 le5",
+    "tts": "hanhan",
+    "fx": "womanWhisper"
+   },
+   {
+    "id": "s_womanw_xiaoyu",
+    "key": "s|woman|w|xiao3 yu3",
+    "tts": "hanhan",
+    "fx": "womanWhisper"
+   },
+   {
+    "id": "s_womanw_inspect1",
+    "key": "s|woman|w|xiao3 yu3 chu1 lai2 ma1 ma5 bu2 hui4 ma4 ni3",
+    "tts": "hanhan",
+    "fx": "womanWhisper"
+   },
+   {
+    "id": "s_womanw_inspect2",
+    "key": "s|woman|w|wo3 zhi1 dao4 ni3 zai4 li3 mian4",
+    "tts": "hanhan",
+    "fx": "womanWhisper"
+   },
+   {
+    "id": "s_womanw_bushi",
+    "key": "s|woman|w|bu2 shi4",
+    "tts": "hanhan",
+    "fx": "womanWhisper"
+   },
+   {
+    "id": "s_womanw_a",
+    "key": "s|woman|w|a5",
+    "tts": "hanhan",
+    "fx": "womanWhisper"
+   },
+   {
+    "id": "s_echo_you_bohan",
+    "key": "s|man|v|you3",
+    "tts": "zhiwei",
+    "fx": "manCloth"
+   },
+   {
+    "id": "s_echo_you_zhihao",
+    "key": "s|man|v|you3",
+    "tts": "zhiwei",
+    "fx": "manCloth"
+   },
+   {
+    "id": "s_echo_you_ahzhe",
+    "key": "s|man|v|you3",
+    "tts": "zhiwei",
+    "fx": "manCloth"
+   },
+   {
+    "id": "s_echo_haiyou",
+    "key": "s|man|w|hai2 you3 yi2 ge5",
+    "tts": "zhiwei",
+    "fx": "manClothWhisper"
+   },
+   {
+    "id": "s_echo_xie",
+    "key": "s|man|w|xie2 wo3 fang4 hui2 qu4 le5",
+    "tts": "zhiwei",
+    "fx": "manClothWhisper"
+   },
+   {
+    "id": "f_it_douchulai",
+    "key": "f|it|dou1 chu1 lai2 le0",
+    "tts": "zhiwei",
+    "fx": "itDoor"
+   },
+   {
+    "id": "f_self_linxiaoyu",
+    "key": "f|self|lin2 xiao3 yu3",
+    "tts": "zhiwei",
+    "fx": "self"
+   },
+   {
+    "id": "f_self_jide",
+    "key": "f|self|lin2 xiao3 yu3 wo3 ji4 de5 ni3",
+    "tts": "zhiwei",
+    "fx": "self"
+   },
+   {
+    "id": "f_mother_yian",
+    "key": "f|mother|yi3 an1",
+    "tts": "hanhan",
+    "fx": "borrowed"
+   },
+   {
+    "id": "f_ahzhe_huitou",
+    "key": "f|ahzhe|yi3 an1 ni3 hui2 tou2 kan4 yi2 xia4",
+    "tts": "zhiwei",
+    "fx": "borrowed"
+   },
+   {
+    "id": "f_peishan_zhuan",
+    "key": "f|peishan|yi3 an1 shi4 wo3 ni3 zhuan3 guo4 lai2",
+    "tts": "yating",
+    "fx": "borrowed"
+   },
+   {
+    "id": "f_self_yian",
+    "key": "f|self|yi3 an1",
+    "tts": "zhiwei",
+    "fx": "borrowed"
+   },
+   {
+    "id": "f_it_yian3",
+    "key": "f|it|yi3 an1 yi3 an1 a1 an1",
+    "tts": "zhiwei",
+    "fx": "itChoir"
+   },
+   {
+    "id": "f_it_huitou",
+    "key": "f|it|hui2 tou2",
+    "tts": "zhiwei",
+    "fx": "itWhisper"
+   },
+   {
+    "id": "f_it_nihuitoule",
+    "key": "f|it|ni3 hui2 tou2 le0",
+    "tts": "zhiwei",
+    "fx": "it"
+   },
+   {
+    "id": "f_self_erduo",
+    "key": "f|self|zhe4 shi4 ni3 de5 er3 duo5 shi4 ni3 ma1 ma1 bu3 de5",
+    "tts": "zhiwei",
+    "fx": "self"
+   },
+   {
+    "id": "f_guo_dianming",
+    "key": "f|guo|dian3 ming2",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_guo_liu",
+    "key": "f|guo|liu4",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_ahzhe_bang",
+    "key": "f|ahzhe|yi3 an1 ni3 bang1 ta1 han3 yi2 xia4",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_bohan_han",
+    "key": "f|bohan|han3 yi4 sheng1 jiu4 hao3 le0 gen1 na4 shi2 hou4 yi2 yang4",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_zhihao_buhan",
+    "key": "f|zhihao|ni3 bu4 han3 ta1 jiu4 yi4 zhi2 zai4 li3 mian4",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_guo_liuliu",
+    "key": "f|guo|liu4 liu4",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_ahzhe_yian",
+    "key": "f|ahzhe|yi3 an1",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_zhihao_yian",
+    "key": "f|zhihao|yi3 an1",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_bohan_yian",
+    "key": "f|bohan|yi3 an1",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_childfar_you",
+    "key": "f|childFar|you3",
+    "tts": "yating",
+    "fx": "childFar"
+   },
+   {
+    "id": "f_self_you",
+    "key": "f|self|you3",
+    "tts": "zhiwei",
+    "fx": "self"
+   },
+   {
+    "id": "f_it_youyouyou",
+    "key": "f|it|you3 you3 you3",
+    "tts": "zhiwei",
+    "fx": "it"
+   },
+   {
+    "id": "f_self_kou",
+    "key": "f|self|wo3 shi4 chen2 yi3 an1 men2 shi4 wo3 kou4 de5",
+    "tts": "zhiwei",
+    "fx": "self"
+   },
+   {
+    "id": "f_guo_qiao",
+    "key": "f|guo|dao4 le0 jiu4 qiao1 san1 xia4",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_meilan_tape",
+    "key": "f|meilan|li3 mian4 hai2 you3 mei2 you3 ren2",
+    "tts": "hanhan",
+    "fx": "tapeWoman"
+   },
+   {
+    "id": "f_child_mama_zai",
+    "key": "f|child|ma1 ma1 wo3 hai2 zai4",
+    "tts": "yating",
+    "fx": "childDoor"
+   },
+   {
+    "id": "f_meilan_scream",
+    "key": "f|meilan|xiao3 yu3",
+    "tts": "hanhan",
+    "fx": "meilanScream"
+   },
+   {
+    "id": "f_child_zai2",
+    "key": "f|child|wo3 hai2 zai4 wo3 hai2 zai4",
+    "tts": "yating",
+    "fx": "childDoor"
+   },
+   {
+    "id": "f_guo_buneng",
+    "key": "f|guo|bu4 neng2 kai1 xian1 huan2 zai4 kai1",
+    "tts": "zhiwei",
+    "fx": "adults"
+   },
+   {
+    "id": "f_self_fangshou",
+    "key": "f|self|fang4 shou3 ba5 ni3 mei2 you3 zuo4 cuo4",
+    "tts": "zhiwei",
+    "fx": "selfDoor"
+   },
+   {
+    "id": "f_meilan_bufang",
+    "key": "f|meilan|yi3 an1 bu2 yao4 fang4",
+    "tts": "hanhan",
+    "fx": "meilanScream"
+   },
+   {
+    "id": "f_self_tang",
+    "key": "f|self|hen3 tang4 ba5 fang4 shou3 jiu4 bu4 tang4 le0",
+    "tts": "zhiwei",
+    "fx": "selfDoor"
+   },
+   {
+    "id": "f_child_shini",
+    "key": "f|child|yi3 an1 shi4 ni3 ma5",
+    "tts": "yating",
+    "fx": "childDoor"
+   },
+   {
+    "id": "f_childfar_zai",
+    "key": "f|childFar|wo3 hai2 zai4",
+    "tts": "yating",
+    "fx": "childFar"
+   },
+   {
+    "id": "f_guo_douchulai",
+    "key": "f|guo|dou1 chu1 lai2 le0",
+    "tts": "zhiwei",
+    "fx": "adults"
+   },
+   {
+    "id": "f_child_huilai",
+    "key": "f|child|ni3 hui2 lai2 le0",
+    "tts": "yating",
+    "fx": "child"
+   },
+   {
+    "id": "f_self_duibuqi",
+    "key": "f|self|dui4 bu5 qi3",
+    "tts": "zhiwei",
+    "fx": "selfQuiet"
+   },
+   {
+    "id": "f_child_xie",
+    "key": "f|child|wo3 de5 xie2 zhao3 bu2 dao4 le0",
+    "tts": "yating",
+    "fx": "child"
+   },
+   {
+    "id": "f_it_yingwo",
+    "key": "f|it|ying4 wo3",
+    "tts": "hanhan",
+    "fx": "itScream"
+   },
+   {
+    "id": "f_meilantrue_xiaoyu",
+    "key": "f|meilanTrue|xiao3 yu3",
+    "tts": "hanhan",
+    "fx": "meilanTrue"
+   },
+   {
+    "id": "f_child_mama",
+    "key": "f|child|ma1 ma1",
+    "tts": "yating",
+    "fx": "child"
+   },
+   {
+    "id": "f_meilantrue_tingdao",
+    "key": "f|meilanTrue|ma1 ma1 ting1 dao4 le0",
+    "tts": "hanhan",
+    "fx": "meilanTrue"
+   },
+   {
+    "id": "f_meilantrue_ying",
+    "key": "f|meilanTrue|zhe4 ci4 ni3 jiao4 ma1 ma1 jiu4 ying4",
+    "tts": "hanhan",
+    "fx": "meilanTrue"
+   },
+   {
+    "id": "f_ahzhe_hoarse",
+    "key": "f|ahzheHoarse|yi3 an1",
+    "tts": "zhiwei",
+    "fx": "hoarse"
+   },
+   {
+    "id": "f_rescuer_youren",
+    "key": "f|rescuer|you3 ren2 ma5",
+    "tts": "zhiwei",
+    "fx": "rescuer"
+   },
+   {
+    "id": "f_rescuer_haoma",
+    "key": "f|rescuer|xian1 sheng5 ni3 hai2 hao3 ma5",
+    "tts": "zhiwei",
+    "fx": "rescuer"
+   },
+   {
+    "id": "f_phone_shanmen",
+    "key": "f|phone|shan1 men2 zhao3 dao4 yi2 wei4",
+    "tts": "zhiwei",
+    "fx": "radio"
+   },
+   {
+    "id": "f_rescuer_limian",
+    "key": "f|rescuer|li3 mian4 hai2 you3 mei2 you3 ren2",
+    "tts": "zhiwei",
+    "fx": "rescuer"
+   },
+   {
+    "id": "f_self_sange",
+    "key": "f|self|di4 xia4 san1 ge5 ren2",
+    "tts": "zhiwei",
+    "fx": "selfQuiet"
+   },
+   {
+    "id": "f_self_haiyou",
+    "key": "f|self|hai2 you3 yi2 ge4 ta1 jiao4 lin2 xiao3 yu3",
+    "tts": "zhiwei",
+    "fx": "selfQuiet"
+   },
+   {
+    "id": "f_rescuer_danjia",
+    "key": "f|rescuer|dan1 jia4 di4 xia4 hai2 you3 ren2",
+    "tts": "zhiwei",
+    "fx": "rescuer"
+   },
+   {
+    "id": "f_rescuer_zhaodao",
+    "key": "f|rescuer|zhao3 dao4 le0 dou1 hai2 you3 hu1 xi1",
+    "tts": "zhiwei",
+    "fx": "rescuer"
+   },
+   {
+    "id": "f_ahzhe_weak",
+    "key": "f|ahzheWeak|xiao3 yu3",
+    "tts": "zhiwei",
+    "fx": "hoarse"
+   },
+   {
+    "id": "f_ahzhe_door_shini",
+    "key": "f|ahzhe|yi3 an1 shi4 ni3 ma5",
+    "tts": "zhiwei",
+    "fx": "friendDoor"
+   },
+   {
+    "id": "f_zhihao_door_kai",
+    "key": "f|zhihao|yi3 an1 kai1 men2 men2 da3 bu4 kai1",
+    "tts": "zhiwei",
+    "fx": "friendDoor"
+   },
+   {
+    "id": "f_bohan_door_baituo",
+    "key": "f|bohan|bai4 tuo1 wo3 hai2 zai4",
+    "tts": "zhiwei",
+    "fx": "friendDoor"
+   },
+   {
+    "id": "f_ahzhe_door_you",
+    "key": "f|ahzhe|ni3 you4 yao4 shuo1 dou1 chu1 lai2 le0 ma5",
+    "tts": "zhiwei",
+    "fx": "friendDoor"
+   },
+   {
+    "id": "f_zhihao_door_zai",
+    "key": "f|zhihao|yi3 an1 kai1 men2 wo3 hai2 zai4",
+    "tts": "zhiwei",
+    "fx": "friendDoor"
+   },
+   {
+    "id": "f_bohan_door_zai",
+    "key": "f|bohan|wo3 hai2 zai4",
+    "tts": "zhiwei",
+    "fx": "friendDoor"
+   },
+   {
+    "id": "f_ahzhe_door_kai",
+    "key": "f|ahzhe|kai1 men2",
+    "tts": "zhiwei",
+    "fx": "friendDoor"
+   },
+   {
+    "id": "f_child_dengyixia",
+    "key": "f|child|yi3 an1 ni3 shuo1 ni3 deng3 yi2 xia4 jiu4 hui2 lai2",
+    "tts": "yating",
+    "fx": "childDoor"
+   },
+   {
+    "id": "f_it_yian",
+    "key": "f|it|yi3 an1",
+    "tts": "zhiwei",
+    "fx": "itWhisper"
+   },
+   {
+    "id": "f_it_wangle",
+    "key": "f|it|ni3 wang4 le0 yi2 ge4",
+    "tts": "zhiwei",
+    "fx": "it"
+   },
+   {
+    "id": "f_self_douchulai",
+    "key": "f|self|dou1 chu1 lai2 le0",
+    "tts": "zhiwei",
+    "fx": "selfQuiet"
+   },
+   {
+    "id": "f_rescuer_xiashan",
+    "key": "f|rescuer|hao3 wo3 men5 xian1 dai4 ni3 xia4 shan1",
+    "tts": "zhiwei",
+    "fx": "rescuer"
+   },
+   {
+    "id": "f_phone_shoudui",
+    "key": "f|phone|ta1 shuo1 dou1 chu1 lai2 le0 shou1 dui4",
+    "tts": "zhiwei",
+    "fx": "radio"
+   },
+   {
+    "id": "f_phone_limian",
+    "key": "f|phone|li3 mian4 hai2 you3 mei2 you3 ren2",
+    "tts": "zhiwei",
+    "fx": "phoneIt"
+   },
+   {
+    "id": "f_phone_queding",
+    "key": "f|phone|ni3 que4 ding4 chu1 lai2 de5 shi4 ni3 ma5",
+    "tts": "zhiwei",
+    "fx": "phoneIt"
+   },
+   {
+    "id": "f_self_guan",
+    "key": "f|self|wo3 bu2 hui4 zai4 ba3 ni3 guan1 qi3 lai2",
+    "tts": "zhiwei",
+    "fx": "self"
+   },
+   {
+    "id": "f_childfar_daying",
+    "key": "f|childFar|wo3 zhi1 dao4 ni3 da1 ying4 le0",
+    "tts": "yating",
+    "fx": "childFar"
+   },
+   {
+    "id": "f_meilan_yingle",
+    "key": "f|meilan|ying4 le0 jiu4 hao3",
+    "tts": "hanhan",
+    "fx": "borrowed"
+   },
+   {
+    "id": "f_self_yuanlai",
+    "key": "f|self|yuan2 lai2 you3 zi4 ji3 de5 sheng1 yin1 shi4 zhe4 yang4",
+    "tts": "zhiwei",
+    "fx": "borrowed"
+   },
+   {
+    "id": "f_guo_yi",
+    "key": "f|guo|yi1",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_guo_er",
+    "key": "f|guo|er4",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_guo_san",
+    "key": "f|guo|san1",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_guo_si",
+    "key": "f|guo|si4",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_guo_wu",
+    "key": "f|guo|wu3",
+    "tts": "zhiwei",
+    "fx": "tape"
+   },
+   {
+    "id": "f_selfchild_you",
+    "key": "f|selfChild|you3",
+    "tts": "yating",
+    "fx": "kidBoy"
+   },
+   {
+    "id": "f_ahzhe_you",
+    "key": "f|ahzhe|you3",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_zhihao_you",
+    "key": "f|zhihao|you3",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_bohan_you",
+    "key": "f|bohan|you3",
+    "tts": "zhiwei",
+    "fx": "seat"
+   },
+   {
+    "id": "f_peishanchild_you",
+    "key": "f|peishanChild|you3",
+    "tts": "hanhan",
+    "fx": "kidGirl"
+   },
+   {
+    "id": "f_it_you",
+    "key": "f|it|you3",
+    "tts": "zhiwei",
+    "fx": "itMouth"
+   },
+   {
+    "id": "f_phone_peishan",
+    "key": "f|phone|pei4 shan1 shi4 wo3",
+    "tts": "zhiwei",
+    "fx": "phoneIt"
+   },
+   {
+    "id": "f_phone_chulaile",
+    "key": "f|phone|wo3 chu1 lai2 le0",
+    "tts": "zhiwei",
+    "fx": "phoneIt"
+   },
+   {
+    "id": "f_phone_huanni",
+    "key": "f|phone|huan4 ni3 le0",
+    "tts": "zhiwei",
+    "fx": "phoneIt"
+   }
+  ]
+ },
+ {
+  "file": "vox/whisper_01.ogg",
+  "sources": [
+   {
+    "title": "Whisper.wav",
+    "author": "PlumForestPodcast",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/PlumForestPodcast/sounds/517868/"
+   }
+  ],
+  "notes": "貼耳耳語：男聲與四層男聲疊錄切成音節長度的小段、打亂順序並部分倒放；女聲瑞典語段落整段倒放。任何語言的字句都拼不回來"
+ },
+ {
+  "file": "vox/whisper_02.ogg",
+  "sources": [
+   {
+    "title": "Whisper.wav",
+    "author": "PlumForestPodcast",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/PlumForestPodcast/sounds/517868/"
+   }
+  ],
+  "notes": "貼耳耳語：男聲與四層男聲疊錄切成音節長度的小段、打亂順序並部分倒放；女聲瑞典語段落整段倒放。任何語言的字句都拼不回來"
+ },
+ {
+  "file": "vox/whisper_03.ogg",
+  "sources": [
+   {
+    "title": "Four_Voices_Whispering_6.wav",
+    "author": "geoneo0",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/geoneo0/sounds/193812/"
+   }
+  ],
+  "notes": "貼耳耳語：男聲與四層男聲疊錄切成音節長度的小段、打亂順序並部分倒放；女聲瑞典語段落整段倒放。任何語言的字句都拼不回來"
+ },
+ {
+  "file": "vox/whisper_04.ogg",
+  "sources": [
+   {
+    "title": "woman whispering.wav",
+    "author": "drotzruhn",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/drotzruhn/sounds/405210/"
+   }
+  ],
+  "notes": "貼耳耳語：男聲與四層男聲疊錄切成音節長度的小段、打亂順序並部分倒放；女聲瑞典語段落整段倒放。任何語言的字句都拼不回來"
+ },
+ {
+  "file": "vox/whisper_05.ogg",
+  "sources": [
+   {
+    "title": "woman whispering.wav",
+    "author": "drotzruhn",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/drotzruhn/sounds/405210/"
+   }
+  ],
+  "notes": "貼耳耳語：男聲與四層男聲疊錄切成音節長度的小段、打亂順序並部分倒放；女聲瑞典語段落整段倒放。任何語言的字句都拼不回來"
+ },
+ {
+  "file": "vox/core.bin#whisperCloud",
+  "sources": [
+   {
+    "title": "Deafening Whispers",
+    "author": "unfa",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/unfa/sounds/185059/"
+   },
+   {
+    "title": "Four_Voices_Whispering_6.wav",
+    "author": "geoneo0",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/geoneo0/sounds/193812/"
+   }
+  ],
+  "notes": "多層耳語疊成的耳語雲（一層切成音節打亂、一層整段倒放，聽不出任何字；淡入淡出的一次性湧現）（1 個變體）"
+ },
+ {
+  "file": "vox/breath_01.ogg",
+  "sources": [
+   {
+    "title": "Male Breathing Slow",
+    "author": "Kodack",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Kodack/sounds/271045/"
+   }
+  ],
+  "notes": "頸後的呼吸（吸一口、吐一口），近距離、乾聲"
+ },
+ {
+  "file": "vox/breath_02.ogg",
+  "sources": [
+   {
+    "title": "Male Breathing Slow",
+    "author": "Kodack",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Kodack/sounds/271045/"
+   }
+  ],
+  "notes": "頸後的呼吸（吸一口、吐一口），近距離、乾聲"
+ },
+ {
+  "file": "vox/breath_03.ogg",
+  "sources": [
+   {
+    "title": "Creepy_Breathing.wav",
+    "author": "georgisound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/georgisound/sounds/369294/"
+   }
+  ],
+  "notes": "頸後的呼吸（吸一口、吐一口），近距離、乾聲"
+ },
+ {
+  "file": "vox/breath_04.ogg",
+  "sources": [
+   {
+    "title": "Male_Breath_Scared_Frozen_Loop_Stereo.wav",
+    "author": "Nox_Sound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Nox_Sound/sounds/554906/"
+   }
+  ],
+  "notes": "頸後的呼吸（吸一口、吐一口），近距離、乾聲"
+ },
+ {
+  "file": "vox/gasp_01.ogg",
+  "sources": [
+   {
+    "title": "surprise_gasps.wav",
+    "author": "esperar",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/esperar/sounds/171942/"
+   }
+  ],
+  "notes": "受驚倒抽氣（男聲，玩家自己喘出聲）"
+ },
+ {
+  "file": "vox/gasp_02.ogg",
+  "sources": [
+   {
+    "title": "surprise_gasps.wav",
+    "author": "esperar",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/esperar/sounds/171942/"
+   }
+  ],
+  "notes": "受驚倒抽氣（男聲，玩家自己喘出聲）"
+ },
+ {
+  "file": "vox/gasp_03.ogg",
+  "sources": [
+   {
+    "title": "surprise_gasps.wav",
+    "author": "esperar",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/esperar/sounds/171942/"
+   }
+  ],
+  "notes": "受驚倒抽氣（男聲，玩家自己喘出聲）"
+ },
+ {
+  "file": "vox/gasp_04.ogg",
+  "sources": [
+   {
+    "title": "Shocked gasp.wav",
+    "author": "GentlemanWalrus",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/GentlemanWalrus/sounds/180005/"
+   }
+  ],
+  "notes": "受驚倒抽氣（男聲，玩家自己喘出聲）"
+ },
+ {
+  "file": "vox/core.bin#sob",
+  "sources": [
+   {
+    "title": "crying woman.wav",
+    "author": "AlucardsBride",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/AlucardsBride/sounds/172738/"
+   },
+   {
+    "title": "Woman crying",
+    "author": "akoecreative",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/akoecreative/sounds/790620/"
+   },
+   {
+    "title": "Woman Crying.wav",
+    "author": "purplereptar",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/purplereptar/sounds/449439/"
+   }
+  ],
+  "notes": "女人壓抑的啜泣與抽氣（3 個變體）"
+ },
+ {
+  "file": "vox/core.bin#childLaugh",
+  "sources": [
+   {
+    "title": "Boy or Young Child Laughing",
+    "author": "OBXJohn",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/OBXJohn/sounds/365632/"
+   },
+   {
+    "title": "2-3 Laugh little girl.wav",
+    "author": "viktorullri",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/viktorullri/sounds/461790/"
+   },
+   {
+    "title": "child laughing.wav",
+    "author": "ashjenx",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/ashjenx/sounds/135387/"
+   },
+   {
+    "title": "Child's laugh 1 - medyk3D.wav",
+    "author": "medyk3D",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/medyk3D/sounds/616088/"
+   }
+  ],
+  "notes": "單一個小孩的笑聲（男孩、女孩）（4 個變體）"
+ },
+ {
+  "file": "vox/core.bin#childLaughFar",
+  "sources": [
+   {
+    "title": "Creepy Girl Laugh",
+    "author": "IENBA",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/IENBA/sounds/652992/"
+   }
+  ],
+  "notes": "遠處、帶回音的女孩笑聲（1 個變體）"
+ },
+ {
+  "file": "vox/core.bin#giggle",
+  "sources": [
+   {
+    "title": "Giggling.wav",
+    "author": "mrbriandesign",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/mrbriandesign/sounds/86991/"
+   },
+   {
+    "title": "Boy or Young Child Laughing",
+    "author": "OBXJohn",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/OBXJohn/sounds/365632/"
+   }
+  ],
+  "notes": "壓低的小孩竊笑（短、悶，像躲在布幔後面）（3 個變體）"
+ },
+ {
+  "file": "vox/core.bin#childHum",
+  "sources": [
+   {
+    "title": "Casual Humming",
+    "author": "Topschool",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Topschool/sounds/442600/"
+   }
+  ],
+  "notes": "小孩哼唱的嗓音（真人），以 WORLD 換成遊戲的走音童謠旋律（第 4／5 與第 11 個音偏低）（2 個變體）"
+ },
+ {
+  "file": "vox/core.bin#motherHum",
+  "sources": [
+   {
+    "title": "Mockingbird.mp3",
+    "author": "AlucardsBride",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/AlucardsBride/sounds/179928/"
+   }
+  ],
+  "notes": "女人哼搖籃曲的嗓音（真人），換成同一首童謠——這一次每個音都是準的（1 個變體）"
+ },
+ {
+  "file": "vox/core.bin#scream",
+  "sources": [
+   {
+    "title": "scream.wav",
+    "author": "analogchill",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/analogchill/sounds/35716/"
+   },
+   {
+    "title": "Horror shrieks woman",
+    "author": "AderuMoro",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/AderuMoro/sounds/320740/"
+   }
+  ],
+  "notes": "女人恐懼的尖叫（無字）（2 個變體）"
+ },
+ {
+  "file": "vox/core.bin#shriek",
+  "sources": [
+   {
+    "title": "Scream, female x2",
+    "author": "peridactyloptrix",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/peridactyloptrix/sounds/208893/"
+   },
+   {
+    "title": "Horror shrieks woman",
+    "author": "AderuMoro",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/AderuMoro/sounds/320740/"
+   }
+  ],
+  "notes": "「它」的尖嘯：真人尖叫降調疊加、倒放、環形調變與飽和（2 個變體）"
+ },
+ {
+  "file": "vox/core.bin#moan",
+  "sources": [
+   {
+    "title": "Female groaning creepy",
+    "author": "BlueSiren",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/BlueSiren/sounds/377737/"
+   },
+   {
+    "title": "Zombie groan",
+    "author": "indieground",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/indieground/sounds/235796/"
+   },
+   {
+    "title": "A Moaning Zombie.wav",
+    "author": "kathol",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/kathol/sounds/58626/"
+   }
+  ],
+  "notes": "低吟／呻吟（女聲的鬼魅低吟、男聲的低沉呻吟、放慢的長呻吟）（3 個變體）"
+ },
+ {
+  "file": "vox/core.bin#childCry",
+  "sources": [
+   {
+    "title": "pleurs_enfant.wav",
+    "author": "Lendewell",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Lendewell/sounds/504681/"
+   }
+  ],
+  "notes": "小女孩的啜泣（2 個變體）"
+ },
+ {
+  "file": "vox/core.bin#shush",
+  "sources": [
+   {
+    "title": "woman sexy shhh.wav",
+    "author": "JanJanTO",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/JanJanTO/sounds/321588/"
+   }
+  ],
+  "notes": "貼耳的「噓——」（2 個變體）"
+ },
+ {
+  "file": "vox/core.bin#cough",
+  "sources": [
+   {
+    "title": "Coughing Young Man (me).wav",
+    "author": "RutgerMuller",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/RutgerMuller/sounds/51136/"
+   },
+   {
+    "title": "Coughing.wav",
+    "author": "georgisound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/georgisound/sounds/369295/"
+   },
+   {
+    "title": "coughing",
+    "author": "Eelke",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Eelke/sounds/184871/"
+   }
+  ],
+  "notes": "成年男人的咳嗽（一陣兩三聲）（3 個變體）"
+ },
+ {
+  "file": "vox/core.bin#inhale",
+  "sources": [
+   {
+    "title": "surprise_gasps.wav",
+    "author": "esperar",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/esperar/sounds/171942/"
+   }
+  ],
+  "notes": "屏住呼吸前很快地吸一口氣（1 個變體）"
+ },
+ {
+  "file": "vox/core.bin#itBreath",
+  "sources": [
+   {
+    "title": "Creepy_Breathing.wav",
+    "author": "georgisound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/georgisound/sounds/369294/"
+   }
+  ],
+  "notes": "倒放的吸氣（加倒放殘響與降調的影子），「它」的動機（1 個變體）"
+ },
+ {
+  "file": "vox/core.bin#phoneBreath",
+  "sources": [
+   {
+    "title": "Male_Breath_Scared_Frozen_Loop_Stereo.wav",
+    "author": "Nox_Sound",
+    "license": "CC0 1.0",
+    "url": "https://freesound.org/people/Nox_Sound/sounds/554906/"
+   }
+  ],
+  "notes": "電話線路裡的吸氣：同一口氣、完全一樣地重複兩次（1 個變體）"
+ },
+ {
+  "file": "vox/core.bin#counting",
+  "sources": [
+   {
+    "title": "Microsoft Yating（Windows OneCore zh-TW 語音，本機離線合成）",
+    "author": "Microsoft（Windows 內建語音）",
+    "license": "Windows 內建 TTS 輸出，僅作原料、經大幅處理",
+    "url": ""
+   },
+   {
+    "title": "Microsoft Zhiwei（Windows OneCore zh-TW 語音，本機離線合成）",
+    "author": "Microsoft（Windows 內建語音）",
+    "license": "Windows 內建 TTS 輸出，僅作原料、經大幅處理",
+    "url": ""
+   },
+   {
+    "title": "Microsoft Hanhan（Windows OneCore zh-TW 語音，本機離線合成）",
+    "author": "Microsoft（Windows 內建語音）",
+    "license": "Windows 內建 TTS 輸出，僅作原料、經大幅處理",
+    "url": ""
+   }
+  ],
+  "notes": "點名動機：小孩耳語數「一、二、三、四、五」，第六聲換成「它」低沉的聲音（本機 TTS 原料，WORLD 耳語化與多層處理）（1 個變體）"
+ }
+]

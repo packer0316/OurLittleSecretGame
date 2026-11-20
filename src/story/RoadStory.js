@@ -49,14 +49,17 @@ export class RoadStory extends Story {
     ],()=>{this.state.road.peishan=choice;this.save();this.toast('佩珊在聯絡救援。先到正殿確認阿哲的設備。');},'山外有人正在找你');
   }
   journal(){this.preludeJournal();}
+  /** 方向提示：指向目前這一步的物件；物件在作坊裡時，地圖的 route() 會先指向作坊入口。 */
+  guide(){if(this.modal||this.transitioning)return null;const t=this.world.targets.find(t=>t.id===goals[Math.min(this.state.road.step,4)][0]);return t?{to:t.position}:null;}
   update(dt){
+    this.updateWaypoint(dt);
     if(this.modal||this.transitioning){$('interact-prompt').textContent='';return;}this.state.elapsed+=dt;this.tick+=dt;
     if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0)$('story-toast').classList.remove('show');}
     const p=this.game.player.pos;
     if(!this.callNotified&&this.state.road.step>=4&&!this.state.road.peishan&&p.z>-14){this.callNotified=true;this.game.audio.phoneRing();this.toast('手機恢復訊號。佩珊回電了。按 R 接聽，或先沿路前進。');}
     if(!this.bridgeCue&&p.z<11&&p.z>7){this.bridgeCue=true;this.world.triggerScare?.('bridge');this.toast('我已經停步了。橋下卻又響了一步。');}
     if(this.tick<.12)return;this.tick=0;const target=this.focused();$('interact-prompt').innerHTML=target?`<kbd>E</kbd><span>${target.label}</span>`:'';
-    const goal=goals[Math.min(this.state.road.step,4)],t=this.world.targets.find(t=>t.id===goal[0]);$('objective-title').textContent=goal[1];$('objective-place').textContent=goal[2]+(this.callNotified&&!this.state.road.peishan?' · R 接聽佩珊回電':'');$('objective-distance').textContent=`${Math.round(p.distanceTo(t.position))} m`;$('waypoint').classList.add('hidden');
+    const goal=goals[Math.min(this.state.road.step,4)],t=this.world.targets.find(t=>t.id===goal[0]);$('objective-title').textContent=goal[1];$('objective-place').textContent=goal[2]+(this.callNotified&&!this.state.road.peishan?' · R 接聽佩珊回電':'');$('objective-distance').textContent=`${Math.round(p.distanceTo(t.position))} m`;
   }
   dispose(){window.removeEventListener('keydown',this.onRadio);super.dispose();}
 }

@@ -80,12 +80,15 @@ export class HomeStory extends Story {
     this.onTravel('road');
   }
   journal(){const h=this.state.home;this.show({eyebrow:'出發之前・住處筆記',title:'還沒離開家，事情已經開始了',body:`<p>目前：${goals[Math.min(h.step,5)][1]}</p><p>23:42　阿哲寄回我的那張合照，背面寫著 02:47。<br>${h.step>=3?`23:47　阿哲的來電把第一句重複了一次。門外敲了三下。${h.answered?'我應了。':'我沒有應。'}<br>`:''}${h.step>=4?'23:51　信封的封口從門外滑了回來：「照片收到，請回答。」':''}</p><p>已調查：${h.notes.map(n=>({calendar:'月曆',window:'窗外雨聲',message:'沒送出的語音'})[n]).join('、')||'尚無額外筆記'}</p><aside class="deduction">${h.step>=3?'夜裡有人敲三下，先不要應。':'燈光照得見的東西，和聲音說的，不一定一樣。'}</aside>`,dismiss:true});this.addPictureJournalLink();}
+  /** 方向提示：住處只有一個房間，直接指向目前這一步要調查的物件。 */
+  guide(){if(this.modal||this.transitioning||this.busy)return null;const t=this.world.targets.find(t=>t.id===goals[Math.min(this.state.home.step,5)][0]);return t?{to:t.position}:null;}
   update(dt){
+    this.updateWaypoint(dt);
     if(this.modal||this.transitioning||this.busy){$('interact-prompt').textContent='';return;}
     this.state.elapsed+=dt;this.tick+=dt;
     if(this.toastTime>0){this.toastTime-=dt;if(this.toastTime<=0)$('story-toast').classList.remove('show');}
     if(this.tick<.1)return;this.tick=0;
     const target=this.focused();$('interact-prompt').innerHTML=target?`<kbd>E</kbd><span>${target.label}</span>`:'';
-    const goal=goals[Math.min(this.state.home.step,5)];$('objective-title').textContent=this.world.doorEventActive?'走向玄關，留意門縫下方':goal[1];$('objective-place').textContent=goal[2];$('objective-distance').textContent='';$('waypoint').classList.add('hidden');
+    const goal=goals[Math.min(this.state.home.step,5)];$('objective-title').textContent=this.world.doorEventActive?'走向玄關，留意門縫下方':goal[1];$('objective-place').textContent=goal[2];$('objective-distance').textContent='';
   }
 }

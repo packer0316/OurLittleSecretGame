@@ -1,0 +1,1242 @@
+{
+ "_doc": "vox 組台詞表。k = 查詢鍵：結局 finaleAudio.speak → 'f|聲音|拼音'；寺內段落 synth.speak → 's|who|w(耳語)/v|拼音'，p = synth 的 pitch 標籤（同一鍵多個角色時用最接近的）。text = 給本機 TTS 念的文字（多音字用同音字避開誤讀）；tts = zhiwei/yating/hanhan；fx = scripts/vox/build.py 的角色處理；takes = 變體數；grp = 打包分組（依劇情順序排列，播放時預先解碼後面幾句）。",
+ "lines": [
+  {
+   "id": "s_child_lundao",
+   "k": "s|child|w|lun2 dao4 ni3 shu3 le5",
+   "text": "輪到你數了。",
+   "tts": "yating",
+   "fx": "childWhisper",
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_toukan",
+   "k": "s|child|w|bu4 ke3 yi3 tou1 kan4",
+   "text": "不可以偷看。",
+   "tts": "yating",
+   "fx": "childWhisper",
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_kuaidian",
+   "k": "s|child|w|kuai4 dian3 shu3",
+   "text": "快點數啦。",
+   "tts": "hanhan",
+   "fx": "childWhisper",
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_haole_1",
+   "k": "s|child|v|hao3 le5",
+   "p": 0.92,
+   "text": "好了！",
+   "tts": "yating",
+   "fx": "kidBoy",
+   "fxp": {
+    "f0": 1.42,
+    "fmt": 1.16
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_haole_2",
+   "k": "s|child|v|hao3 le5",
+   "p": 0.97,
+   "text": "好了。",
+   "tts": "hanhan",
+   "fx": "kidGirl",
+   "fxp": {
+    "f0": 1.5,
+    "fmt": 1.18
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_haole_3",
+   "k": "s|child|v|hao3 le5",
+   "p": 1.02,
+   "text": "好了～",
+   "tts": "yating",
+   "fx": "kidBoy",
+   "fxp": {
+    "f0": 1.36,
+    "fmt": 1.14
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_haole_4",
+   "k": "s|child|v|hao3 le5",
+   "p": 1.07,
+   "text": "好了啦。",
+   "tts": "hanhan",
+   "fx": "kidBoy",
+   "fxp": {
+    "f0": 1.46,
+    "fmt": 1.17
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_haole_5",
+   "k": "s|child|v|hao3 le5",
+   "p": 1.12,
+   "text": "好了。",
+   "tts": "yating",
+   "fx": "kidGirl",
+   "fxp": {
+    "f0": 1.6,
+    "fmt": 1.2
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_haole_w",
+   "k": "s|child|w|hao3 le5",
+   "text": "好……了。",
+   "tts": "yating",
+   "fx": "childWhisper",
+   "fxp": {
+    "slow": 1.35
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_child_zhaodao",
+   "k": "s|child|w|zhao3 dao4 ni3 le5",
+   "text": "找到你了。",
+   "tts": "yating",
+   "fx": "childWhisper",
+   "fxp": {
+    "slow": 1.15
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_kid_cabinet",
+   "k": "s|child|v|xian1 kou4 shang4 da4 ren2 deng3 yi2 xia4 jiu4 lai2",
+   "text": "先扣上，大人等一下就來。",
+   "tts": "yating",
+   "fx": "kidBoy",
+   "fxp": {
+    "f0": 1.38,
+    "fmt": 1.15
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_kid_table",
+   "k": "s|child|v|wo3 bang1 ta1 han3 you3 le5",
+   "text": "我幫她喊有了。",
+   "tts": "hanhan",
+   "fx": "kidGirl",
+   "fxp": {
+    "f0": 1.52,
+    "fmt": 1.19
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_kid_curtain",
+   "k": "s|child|v|hou4 dian4 jin1 tian1 wan3 shang5 ting1 de5 dao4 ni3 ba4 ba5 o5",
+   "text": "後殿今天晚上，聽得到妳爸爸喔。",
+   "tts": "yating",
+   "fx": "kidBoy",
+   "fxp": {
+    "f0": 1.33,
+    "fmt": 1.13,
+    "sly": 1
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_kid_drum",
+   "k": "s|child|v|xie2 wo3 cang2 zai4 gu3 li3 la5 rang4 ta1 zhao3 jiu3 yi4 dian3",
+   "text": "鞋我藏在鼓裡啦。讓她找久一點。",
+   "tts": "hanhan",
+   "fx": "kidBoy",
+   "fxp": {
+    "f0": 1.4,
+    "fmt": 1.15,
+    "sly": 1
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_kid_stairs",
+   "k": "s|child|w|wo3 deng3 yi2 xia4 hui2 lai2",
+   "text": "我等一下回來。",
+   "tts": "yating",
+   "fx": "childWhisper",
+   "fxp": {
+    "f0": 1.38,
+    "fmt": 1.15
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_man_haolemei",
+   "k": "s|man|v|hao3 le5 mei2",
+   "text": "好了沒？",
+   "tts": "zhiwei",
+   "fx": "selfQuiet",
+   "grp": "dread"
+  },
+  {
+   "id": "s_woman_xiaoyu",
+   "k": "s|woman|v|xiao3 yu3",
+   "p": 1.0,
+   "text": "小雨……",
+   "tts": "hanhan",
+   "fx": "womanCall",
+   "fxp": {
+    "hold": 0.9
+   },
+   "takes": 2,
+   "grp": "dread"
+  },
+  {
+   "id": "s_woman_xiaoyu_alarm",
+   "k": "s|woman|v|xiao3 yu3",
+   "p": 1.15,
+   "text": "小雨！",
+   "tts": "hanhan",
+   "fx": "womanCall",
+   "fxp": {
+    "hold": 0.5,
+    "f0": 1.12,
+    "rough": 0.5
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_woman_nali",
+   "k": "s|woman|v|xiao3 yu3 ni3 zai4 na3 li3",
+   "text": "小雨，妳在哪裡？",
+   "tts": "hanhan",
+   "fx": "womanCall",
+   "fxp": {
+    "hold": 0.25
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_woman_zheli",
+   "k": "s|woman|v|ma1 ma5 zai4 zhe4 li3",
+   "text": "媽媽在這裡。",
+   "tts": "hanhan",
+   "fx": "womanCall",
+   "fxp": {
+    "hold": 0.25
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_woman_chulai",
+   "k": "s|woman|v|chu1 lai2 hao3 bu4 hao3",
+   "text": "出來好不好？",
+   "tts": "hanhan",
+   "fx": "womanCall",
+   "fxp": {
+    "hold": 0.25
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_woman_yian",
+   "k": "s|woman|v|yi3 an1",
+   "text": "以安……",
+   "tts": "hanhan",
+   "fx": "womanCall",
+   "fxp": {
+    "hold": 0.6
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_womanw_zhaodao",
+   "k": "s|woman|w|zhao3 dao4 ni3 le5",
+   "text": "找到妳了。",
+   "tts": "hanhan",
+   "fx": "womanWhisper",
+   "fxp": {
+    "slow": 1.2
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_womanw_xiaoyu",
+   "k": "s|woman|w|xiao3 yu3",
+   "text": "小雨。",
+   "tts": "hanhan",
+   "fx": "womanWhisper",
+   "grp": "dread"
+  },
+  {
+   "id": "s_womanw_inspect1",
+   "k": "s|woman|w|xiao3 yu3 chu1 lai2 ma1 ma5 bu2 hui4 ma4 ni3",
+   "text": "小雨，出來。媽媽不會罵妳。",
+   "tts": "hanhan",
+   "fx": "womanWhisper",
+   "grp": "dread"
+  },
+  {
+   "id": "s_womanw_inspect2",
+   "k": "s|woman|w|wo3 zhi1 dao4 ni3 zai4 li3 mian4",
+   "text": "我知道妳在裡面。",
+   "tts": "hanhan",
+   "fx": "womanWhisper",
+   "fxp": {
+    "slow": 1.1
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_womanw_bushi",
+   "k": "s|woman|w|bu2 shi4",
+   "text": "不是。",
+   "tts": "hanhan",
+   "fx": "womanWhisper",
+   "fxp": {
+    "slow": 1.2
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_womanw_a",
+   "k": "s|woman|w|a5",
+   "text": "啊？",
+   "tts": "hanhan",
+   "fx": "womanWhisper",
+   "grp": "dread"
+  },
+  {
+   "id": "s_echo_you_bohan",
+   "k": "s|man|v|you3",
+   "p": 1.0,
+   "text": "有。",
+   "tts": "zhiwei",
+   "fx": "manCloth",
+   "fxp": {
+    "f0": 1.08,
+    "fmt": 1.03
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_echo_you_zhihao",
+   "k": "s|man|v|you3",
+   "p": 0.95,
+   "text": "有。",
+   "tts": "zhiwei",
+   "fx": "manCloth",
+   "fxp": {
+    "f0": 0.88,
+    "fmt": 0.95
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_echo_you_ahzhe",
+   "k": "s|man|v|you3",
+   "p": 0.9,
+   "text": "有。",
+   "tts": "zhiwei",
+   "fx": "manCloth",
+   "fxp": {
+    "f0": 0.96,
+    "fmt": 1.0
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_echo_haiyou",
+   "k": "s|man|w|hai2 you3 yi2 ge5",
+   "text": "……還有一個。",
+   "tts": "zhiwei",
+   "fx": "manClothWhisper",
+   "fxp": {
+    "f0": 1.08,
+    "fmt": 1.03
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "s_echo_xie",
+   "k": "s|man|w|xie2 wo3 fang4 hui2 qu4 le5",
+   "text": "……鞋我放回去了。",
+   "tts": "zhiwei",
+   "fx": "manClothWhisper",
+   "fxp": {
+    "f0": 0.88,
+    "fmt": 0.95
+   },
+   "grp": "dread"
+  },
+  {
+   "id": "f_it_douchulai",
+   "k": "f|it|dou1 chu1 lai2 le0",
+   "text": "都出來了。",
+   "tts": "zhiwei",
+   "fx": "itDoor",
+   "takes": 3,
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_linxiaoyu",
+   "k": "f|self|lin2 xiao3 yu3",
+   "text": "林小雨。",
+   "tts": "zhiwei",
+   "fx": "self",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_jide",
+   "k": "f|self|lin2 xiao3 yu3 wo3 ji4 de5 ni3",
+   "text": "林小雨。我記得妳。",
+   "tts": "zhiwei",
+   "fx": "self",
+   "grp": "finale"
+  },
+  {
+   "id": "f_mother_yian",
+   "k": "f|mother|yi3 an1",
+   "text": "以安。",
+   "tts": "hanhan",
+   "fx": "borrowed",
+   "fxp": {
+    "f0": 0.92,
+    "fmt": 1.0,
+    "wrong": 0.6
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_huitou",
+   "k": "f|ahzhe|yi3 an1 ni3 hui2 tou2 kan4 yi2 xia4",
+   "text": "以安，你回頭看一下。",
+   "tts": "zhiwei",
+   "fx": "borrowed",
+   "fxp": {
+    "f0": 0.96,
+    "fmt": 1.0,
+    "wrong": 0.5
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_peishan_zhuan",
+   "k": "f|peishan|yi3 an1 shi4 wo3 ni3 zhuan3 guo4 lai2",
+   "text": "以安……是我。你轉過來。",
+   "tts": "yating",
+   "fx": "borrowed",
+   "fxp": {
+    "f0": 1.04,
+    "fmt": 1.02,
+    "wrong": 0.6
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_yian",
+   "k": "f|self|yi3 an1",
+   "text": "以安。",
+   "tts": "zhiwei",
+   "fx": "borrowed",
+   "fxp": {
+    "f0": 1.0,
+    "fmt": 1.0,
+    "wrong": 0.75
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_it_yian3",
+   "k": "f|it|yi3 an1 yi3 an1 a1 an1",
+   "text": "以安。以安。阿安。",
+   "tts": "zhiwei",
+   "fx": "itChoir",
+   "grp": "finale"
+  },
+  {
+   "id": "f_it_huitou",
+   "k": "f|it|hui2 tou2",
+   "text": "回頭。",
+   "tts": "zhiwei",
+   "fx": "itWhisper",
+   "takes": 3,
+   "grp": "finale"
+  },
+  {
+   "id": "f_it_nihuitoule",
+   "k": "f|it|ni3 hui2 tou2 le0",
+   "text": "你回頭了。",
+   "tts": "zhiwei",
+   "fx": "it",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_erduo",
+   "k": "f|self|zhe4 shi4 ni3 de5 er3 duo5 shi4 ni3 ma1 ma1 bu3 de5",
+   "text": "這是妳的。耳朵是妳媽媽補的。",
+   "tts": "zhiwei",
+   "fx": "self",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_dianming",
+   "k": "f|guo|dian3 ming2",
+   "text": "點名。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_liu",
+   "k": "f|guo|liu4",
+   "text": "六。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "takes": 3,
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_bang",
+   "k": "f|ahzhe|yi3 an1 ni3 bang1 ta1 han3 yi2 xia4",
+   "text": "以安，你幫她喊一下。",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 0.96,
+    "fmt": 1.0
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_bohan_han",
+   "k": "f|bohan|han3 yi4 sheng1 jiu4 hao3 le0 gen1 na4 shi2 hou4 yi2 yang4",
+   "text": "喊一聲就好了。跟那時候一樣。",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 1.08,
+    "fmt": 1.03
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_zhihao_buhan",
+   "k": "f|zhihao|ni3 bu4 han3 ta1 jiu4 yi4 zhi2 zai4 li3 mian4",
+   "text": "你不喊，她就一直在裡面。",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 0.88,
+    "fmt": 0.95
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_liuliu",
+   "k": "f|guo|liu4 liu4",
+   "text": "六。六。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_yian",
+   "k": "f|ahzhe|yi3 an1",
+   "text": "以安——",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 0.96,
+    "fmt": 1.0,
+    "hold": 0.4
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_zhihao_yian",
+   "k": "f|zhihao|yi3 an1",
+   "text": "以安——",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 0.88,
+    "fmt": 0.95,
+    "hold": 0.45
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_bohan_yian",
+   "k": "f|bohan|yi3 an1",
+   "text": "以安——",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 1.08,
+    "fmt": 1.03,
+    "hold": 0.35
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_childfar_you",
+   "k": "f|childFar|you3",
+   "text": "……有。",
+   "tts": "yating",
+   "fx": "childFar",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_you",
+   "k": "f|self|you3",
+   "text": "有。",
+   "tts": "zhiwei",
+   "fx": "self",
+   "grp": "finale"
+  },
+  {
+   "id": "f_it_youyouyou",
+   "k": "f|it|you3 you3 you3",
+   "text": "有。……有。有。",
+   "tts": "zhiwei",
+   "fx": "it",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_kou",
+   "k": "f|self|wo3 shi4 chen2 yi3 an1 men2 shi4 wo3 kou4 de5",
+   "text": "我是陳以安。門是我扣的。",
+   "tts": "zhiwei",
+   "fx": "self",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_qiao",
+   "k": "f|guo|dao4 le0 jiu4 qiao1 san1 xia4",
+   "text": "到了就敲三下。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "grp": "finale"
+  },
+  {
+   "id": "f_meilan_tape",
+   "k": "f|meilan|li3 mian4 hai2 you3 mei2 you3 ren2",
+   "text": "裡面還有沒有人？",
+   "tts": "hanhan",
+   "fx": "tapeWoman",
+   "grp": "finale"
+  },
+  {
+   "id": "f_child_mama_zai",
+   "k": "f|child|ma1 ma1 wo3 hai2 zai4",
+   "text": "媽媽，我還在。",
+   "tts": "yating",
+   "fx": "childDoor",
+   "grp": "finale"
+  },
+  {
+   "id": "f_meilan_scream",
+   "k": "f|meilan|xiao3 yu3",
+   "text": "小雨！讓我開門！",
+   "tts": "hanhan",
+   "fx": "meilanScream",
+   "grp": "finale"
+  },
+  {
+   "id": "f_child_zai2",
+   "k": "f|child|wo3 hai2 zai4 wo3 hai2 zai4",
+   "text": "我還在。我還在。",
+   "tts": "yating",
+   "fx": "childDoor",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_buneng",
+   "k": "f|guo|bu4 neng2 kai1 xian1 huan2 zai4 kai1",
+   "text": "不能開！先環再開！",
+   "tts": "zhiwei",
+   "fx": "adults",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_fangshou",
+   "k": "f|self|fang4 shou3 ba5 ni3 mei2 you3 zuo4 cuo4",
+   "text": "放手吧。你沒有做錯。",
+   "tts": "zhiwei",
+   "fx": "selfDoor",
+   "grp": "finale"
+  },
+  {
+   "id": "f_meilan_bufang",
+   "k": "f|meilan|yi3 an1 bu2 yao4 fang4",
+   "text": "以安！不要放！",
+   "tts": "hanhan",
+   "fx": "meilanScream",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_tang",
+   "k": "f|self|hen3 tang4 ba5 fang4 shou3 jiu4 bu4 tang4 le0",
+   "text": "很燙吧。放手，就不燙了。",
+   "tts": "zhiwei",
+   "fx": "selfDoor",
+   "grp": "finale"
+  },
+  {
+   "id": "f_child_shini",
+   "k": "f|child|yi3 an1 shi4 ni3 ma5",
+   "text": "以安？是你嗎？你說你會回來。",
+   "tts": "yating",
+   "fx": "childDoor",
+   "grp": "finale"
+  },
+  {
+   "id": "f_childfar_zai",
+   "k": "f|childFar|wo3 hai2 zai4",
+   "text": "……我還在……",
+   "tts": "yating",
+   "fx": "childFar",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_douchulai",
+   "k": "f|guo|dou1 chu1 lai2 le0",
+   "text": "都出來了？",
+   "tts": "zhiwei",
+   "fx": "adults",
+   "fxp": {
+    "solo": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_child_huilai",
+   "k": "f|child|ni3 hui2 lai2 le0",
+   "text": "你回來了。",
+   "tts": "yating",
+   "fx": "child",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_duibuqi",
+   "k": "f|self|dui4 bu5 qi3",
+   "text": "……對不起。我說我等一下就回來。",
+   "tts": "zhiwei",
+   "fx": "selfQuiet",
+   "grp": "finale",
+   "fxp": {
+    "slow": 0.88
+   }
+  },
+  {
+   "id": "f_child_xie",
+   "k": "f|child|wo3 de5 xie2 zhao3 bu2 dao4 le0",
+   "text": "我的鞋找不到了。",
+   "tts": "yating",
+   "fx": "child",
+   "grp": "finale"
+  },
+  {
+   "id": "f_it_yingwo",
+   "k": "f|it|ying4 wo3",
+   "text": "映我！",
+   "tts": "hanhan",
+   "fx": "itScream",
+   "grp": "finale"
+  },
+  {
+   "id": "f_meilantrue_xiaoyu",
+   "k": "f|meilanTrue|xiao3 yu3",
+   "text": "……小雨？",
+   "tts": "hanhan",
+   "fx": "meilanTrue",
+   "grp": "finale"
+  },
+  {
+   "id": "f_child_mama",
+   "k": "f|child|ma1 ma1",
+   "text": "媽媽。",
+   "tts": "yating",
+   "fx": "child",
+   "grp": "finale"
+  },
+  {
+   "id": "f_meilantrue_tingdao",
+   "k": "f|meilanTrue|ma1 ma1 ting1 dao4 le0",
+   "text": "媽媽聽到了。妳一直說妳還在……",
+   "tts": "hanhan",
+   "fx": "meilanTrue",
+   "grp": "finale",
+   "fxp": {
+    "slow": 0.86
+   }
+  },
+  {
+   "id": "f_meilantrue_ying",
+   "k": "f|meilanTrue|zhe4 ci4 ni3 jiao4 ma1 ma1 jiu4 ying4",
+   "text": "這次妳叫，媽媽就映。",
+   "tts": "hanhan",
+   "fx": "meilanTrue",
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_hoarse",
+   "k": "f|ahzheHoarse|yi3 an1",
+   "text": "……以安？",
+   "tts": "zhiwei",
+   "fx": "hoarse",
+   "fxp": {
+    "f0": 0.9
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_rescuer_youren",
+   "k": "f|rescuer|you3 ren2 ma5",
+   "text": "有人嗎——",
+   "tts": "zhiwei",
+   "fx": "rescuer",
+   "fxp": {
+    "hold": 0.6,
+    "shout": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_rescuer_haoma",
+   "k": "f|rescuer|xian1 sheng5 ni3 hai2 hao3 ma5",
+   "text": "先生？你還好嗎？",
+   "tts": "zhiwei",
+   "fx": "rescuer",
+   "grp": "finale"
+  },
+  {
+   "id": "f_phone_shanmen",
+   "k": "f|phone|shan1 men2 zhao3 dao4 yi2 wei4",
+   "text": "山門找到一位。",
+   "tts": "zhiwei",
+   "fx": "radio",
+   "fxp": {
+    "f0": 0.92
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_rescuer_limian",
+   "k": "f|rescuer|li3 mian4 hai2 you3 mei2 you3 ren2",
+   "text": "裡面還有沒有人？",
+   "tts": "zhiwei",
+   "fx": "rescuer",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_sange",
+   "k": "f|self|di4 xia4 san1 ge5 ren2",
+   "text": "地下，那扇門。三個人。",
+   "tts": "zhiwei",
+   "fx": "selfQuiet",
+   "grp": "finale",
+   "fxp": {
+    "slow": 0.8
+   }
+  },
+  {
+   "id": "f_self_haiyou",
+   "k": "f|self|hai2 you3 yi2 ge4 ta1 jiao4 lin2 xiao3 yu3",
+   "text": "……還有一個。她叫林小雨。",
+   "tts": "zhiwei",
+   "fx": "selfQuiet",
+   "grp": "finale",
+   "fxp": {
+    "slow": 0.88
+   }
+  },
+  {
+   "id": "f_rescuer_danjia",
+   "k": "f|rescuer|dan1 jia4 di4 xia4 hai2 you3 ren2",
+   "text": "擔架！地下還有人！",
+   "tts": "zhiwei",
+   "fx": "rescuer",
+   "fxp": {
+    "shout": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_rescuer_zhaodao",
+   "k": "f|rescuer|zhao3 dao4 le0 dou1 hai2 you3 hu1 xi1",
+   "text": "找到了！三個，都還有呼吸！",
+   "tts": "zhiwei",
+   "fx": "rescuer",
+   "fxp": {
+    "shout": 1,
+    "f0": 0.94
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_weak",
+   "k": "f|ahzheWeak|xiao3 yu3",
+   "text": "……小雨。",
+   "tts": "zhiwei",
+   "fx": "hoarse",
+   "fxp": {
+    "f0": 0.88,
+    "slow": 1.3
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_door_shini",
+   "k": "f|ahzhe|yi3 an1 shi4 ni3 ma5",
+   "text": "以安？……是你嗎？",
+   "tts": "zhiwei",
+   "fx": "friendDoor",
+   "fxp": {
+    "f0": 0.96,
+    "fmt": 1.0
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_zhihao_door_kai",
+   "k": "f|zhihao|yi3 an1 kai1 men2 men2 da3 bu4 kai1",
+   "text": "以安，開門！門打不開！",
+   "tts": "zhiwei",
+   "fx": "friendDoor",
+   "fxp": {
+    "f0": 0.9,
+    "fmt": 0.95,
+    "panic": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_bohan_door_baituo",
+   "k": "f|bohan|bai4 tuo1 wo3 hai2 zai4",
+   "text": "拜託……我還在。我還在啦！",
+   "tts": "zhiwei",
+   "fx": "friendDoor",
+   "fxp": {
+    "f0": 1.1,
+    "fmt": 1.03,
+    "panic": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_door_you",
+   "k": "f|ahzhe|ni3 you4 yao4 shuo1 dou1 chu1 lai2 le0 ma5",
+   "text": "你又要說都出來了嗎？",
+   "tts": "zhiwei",
+   "fx": "friendDoor",
+   "fxp": {
+    "f0": 0.96,
+    "fmt": 1.0
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_zhihao_door_zai",
+   "k": "f|zhihao|yi3 an1 kai1 men2 wo3 hai2 zai4",
+   "text": "以安，開門——我還在——",
+   "tts": "zhiwei",
+   "fx": "friendDoor",
+   "fxp": {
+    "f0": 0.9,
+    "fmt": 0.95,
+    "panic": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_bohan_door_zai",
+   "k": "f|bohan|wo3 hai2 zai4",
+   "text": "我還在！",
+   "tts": "zhiwei",
+   "fx": "friendDoor",
+   "fxp": {
+    "f0": 1.1,
+    "fmt": 1.03,
+    "panic": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_door_kai",
+   "k": "f|ahzhe|kai1 men2",
+   "text": "開門！",
+   "tts": "zhiwei",
+   "fx": "friendDoor",
+   "fxp": {
+    "f0": 0.96,
+    "fmt": 1.0,
+    "panic": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_child_dengyixia",
+   "k": "f|child|yi3 an1 ni3 shuo1 ni3 deng3 yi2 xia4 jiu4 hui2 lai2",
+   "text": "以安，你說你等一下就回來。",
+   "tts": "yating",
+   "fx": "childDoor",
+   "grp": "finale"
+  },
+  {
+   "id": "f_it_yian",
+   "k": "f|it|yi3 an1",
+   "text": "以安。",
+   "tts": "zhiwei",
+   "fx": "itWhisper",
+   "grp": "finale"
+  },
+  {
+   "id": "f_it_wangle",
+   "k": "f|it|ni3 wang4 le0 yi2 ge4",
+   "text": "你忘了一個。",
+   "tts": "zhiwei",
+   "fx": "it",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_douchulai",
+   "k": "f|self|dou1 chu1 lai2 le0",
+   "text": "都出來了。",
+   "tts": "zhiwei",
+   "fx": "selfQuiet",
+   "grp": "finale"
+  },
+  {
+   "id": "f_rescuer_xiashan",
+   "k": "f|rescuer|hao3 wo3 men5 xian1 dai4 ni3 xia4 shan1",
+   "text": "好。我們先帶你下山。",
+   "tts": "zhiwei",
+   "fx": "rescuer",
+   "grp": "finale"
+  },
+  {
+   "id": "f_phone_shoudui",
+   "k": "f|phone|ta1 shuo1 dou1 chu1 lai2 le0 shou1 dui4",
+   "text": "……他說，都出來了。收隊。",
+   "tts": "zhiwei",
+   "fx": "radio",
+   "fxp": {
+    "f0": 0.92
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_phone_limian",
+   "k": "f|phone|li3 mian4 hai2 you3 mei2 you3 ren2",
+   "text": "……裡面還有沒有人？",
+   "tts": "zhiwei",
+   "fx": "phoneIt",
+   "grp": "finale"
+  },
+  {
+   "id": "f_phone_queding",
+   "k": "f|phone|ni3 que4 ding4 chu1 lai2 de5 shi4 ni3 ma5",
+   "text": "你確定，出來的是你嗎？",
+   "tts": "zhiwei",
+   "fx": "phoneIt",
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_guan",
+   "k": "f|self|wo3 bu2 hui4 zai4 ba3 ni3 guan1 qi3 lai2",
+   "text": "我不會再把妳關起來。",
+   "tts": "zhiwei",
+   "fx": "self",
+   "grp": "finale"
+  },
+  {
+   "id": "f_childfar_daying",
+   "k": "f|childFar|wo3 zhi1 dao4 ni3 da1 ying4 le0",
+   "text": "我知道。你答應了。",
+   "tts": "yating",
+   "fx": "childFar",
+   "fxp": {
+    "near": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_meilan_yingle",
+   "k": "f|meilan|ying4 le0 jiu4 hao3",
+   "text": "映了就好。",
+   "tts": "hanhan",
+   "fx": "borrowed",
+   "fxp": {
+    "f0": 0.9,
+    "fmt": 0.98,
+    "wrong": 0.8,
+    "slow": 1.15
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_self_yuanlai",
+   "k": "f|self|yuan2 lai2 you3 zi4 ji3 de5 sheng1 yin1 shi4 zhe4 yang4",
+   "text": "原來，有自己的聲音是這樣。",
+   "tts": "zhiwei",
+   "fx": "borrowed",
+   "fxp": {
+    "f0": 1.0,
+    "fmt": 1.0,
+    "wrong": 0.45,
+    "slow": 1.05
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_yi",
+   "k": "f|guo|yi1",
+   "text": "一。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_er",
+   "k": "f|guo|er4",
+   "text": "二。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_san",
+   "k": "f|guo|san1",
+   "text": "三。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_si",
+   "k": "f|guo|si4",
+   "text": "四。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "grp": "finale"
+  },
+  {
+   "id": "f_guo_wu",
+   "k": "f|guo|wu3",
+   "text": "五。",
+   "tts": "zhiwei",
+   "fx": "tape",
+   "grp": "finale"
+  },
+  {
+   "id": "f_selfchild_you",
+   "k": "f|selfChild|you3",
+   "text": "有。",
+   "tts": "yating",
+   "fx": "kidBoy",
+   "fxp": {
+    "f0": 1.36,
+    "fmt": 1.14,
+    "seat": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_ahzhe_you",
+   "k": "f|ahzhe|you3",
+   "text": "有。",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 0.96,
+    "fmt": 1.0
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_zhihao_you",
+   "k": "f|zhihao|you3",
+   "text": "有。",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 0.88,
+    "fmt": 0.95
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_bohan_you",
+   "k": "f|bohan|you3",
+   "text": "有。",
+   "tts": "zhiwei",
+   "fx": "seat",
+   "fxp": {
+    "f0": 1.08,
+    "fmt": 1.03
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_peishanchild_you",
+   "k": "f|peishanChild|you3",
+   "text": "有。",
+   "tts": "hanhan",
+   "fx": "kidGirl",
+   "fxp": {
+    "f0": 1.5,
+    "fmt": 1.18,
+    "seat": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_it_you",
+   "k": "f|it|you3",
+   "text": "有。",
+   "tts": "zhiwei",
+   "fx": "itMouth",
+   "grp": "finale"
+  },
+  {
+   "id": "f_phone_peishan",
+   "k": "f|phone|pei4 shan1 shi4 wo3",
+   "text": "佩珊，是我。",
+   "tts": "zhiwei",
+   "fx": "phoneIt",
+   "fxp": {
+    "calm": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_phone_chulaile",
+   "k": "f|phone|wo3 chu1 lai2 le0",
+   "text": "我出來了。",
+   "tts": "zhiwei",
+   "fx": "phoneIt",
+   "fxp": {
+    "calm": 1
+   },
+   "grp": "finale"
+  },
+  {
+   "id": "f_phone_huanni",
+   "k": "f|phone|huan4 ni3 le0",
+   "text": "換妳了。",
+   "tts": "zhiwei",
+   "fx": "phoneIt",
+   "fxp": {
+    "calm": 1,
+    "slow": 1.2
+   },
+   "grp": "finale"
+  }
+ ]
+}
